@@ -1,0 +1,1361 @@
+<title>YBK Audio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+/* ============================================================
+   YBK AUDIO — one committed visual world, taken from the logo:
+   royal blue arrowhead and red arms on starry black.
+   Deliberately single-theme: the page looks identical for every
+   viewer, whatever their system or Claude theme is set to.
+   ============================================================ */
+:root{
+  color-scheme:dark;
+
+  /* brand marks */
+  --logo-blue:#1C60C4;
+  --logo-red:#EE1B24;
+
+  --ground:#0B0B0C;
+  --surface:#141417;
+  --surface-2:#1D1E21;
+  --ink:#FFFFFF;
+  --muted:#9B9B9A;
+  --rule:#2A2B2F;
+  --accent:#3B82EE;
+  --accent-deep:#1C60C4;
+  --accent-soft:#111B2E;
+  --hot:#F03A41;
+  --ok:#3DD68C;
+  --shadow:rgba(0,0,0,.55);
+
+  /* the starry black — the page's actual ground */
+  --s1:rgba(255,255,255,.92);
+  --s2:rgba(255,255,255,.58);
+  --s3:rgba(255,255,255,.30);
+  --halo:rgba(28,96,196,.40);
+
+  --f-display:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --f-body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
+
+  --page:1180px;
+  --gap:clamp(28px,5vw,64px);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  background:var(--ground);
+}
+
+/* Starfield on its own fixed layer. Three tile scales overlaid so the repeat
+   never reads as a grid, plus a faint nebula wash so the black isn't dead
+   flat. This must NOT be `background-attachment:fixed` on the body — that
+   repaints every gradient on every scroll frame and stalls the page. A fixed
+   pseudo-element is painted once and composited instead. */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 22px 34px,   var(--s1) 50%, transparent 51%),
+    radial-gradient(1px 1px     at 108px 62px,  var(--s2) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 58px 126px,  var(--s2) 50%, transparent 51%),
+    radial-gradient(1px 1px     at 142px 144px, var(--s3) 50%, transparent 51%),
+    radial-gradient(1px 1px     at 88px 14px,   var(--s3) 50%, transparent 51%),
+    radial-gradient(1.6px 1.6px at 132px 100px, var(--s1) 50%, transparent 51%),
+    radial-gradient(1.1px 1.1px at 44px 208px,  var(--s2) 50%, transparent 51%),
+    radial-gradient(1.8px 1.8px at 226px 78px,  var(--s1) 50%, transparent 51%),
+    radial-gradient(1px 1px     at 168px 252px, var(--s3) 50%, transparent 51%),
+    radial-gradient(1.3px 1.3px at 262px 186px, var(--s2) 50%, transparent 51%),
+    radial-gradient(1px 1px     at 96px 288px,  var(--s3) 50%, transparent 51%),
+    radial-gradient(2.2px 2.2px at 318px 122px, var(--s1) 50%, transparent 51%),
+    radial-gradient(1px 1px     at 74px 356px,  var(--s3) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 392px 302px, var(--s2) 50%, transparent 51%),
+    radial-gradient(1px 1px     at 208px 412px, var(--s3) 50%, transparent 51%),
+    radial-gradient(2px 2px     at 448px 42px,  var(--s1) 50%, transparent 51%),
+    radial-gradient(900px 620px at 78% 4%,  rgba(28,96,196,.16), transparent 70%),
+    radial-gradient(760px 560px at 6% 62%,  rgba(238,27,36,.07), transparent 70%);
+  background-size:
+    160px 160px, 160px 160px, 160px 160px, 160px 160px, 160px 160px, 160px 160px,
+    300px 300px, 300px 300px, 300px 300px, 300px 300px, 300px 300px,
+    500px 500px, 500px 500px, 500px 500px, 500px 500px, 500px 500px,
+    100% 100%, 100% 100%;
+}
+.wrap{max-width:var(--page);margin:0 auto;padding:0 clamp(20px,4vw,44px)}
+
+/* ---------- shared type ---------- */
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{
+  font-family:var(--f-mono);font-size:11px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0}
+a{color:var(--accent)}
+
+/* ---------- logo ----------
+   Traced to vector from the artwork so it carries NO background — just the
+   blue arrowhead and the two drooped red arms, transparent behind. Fills are
+   presentation attributes, not CSS: selectors do not cross the <use> boundary. */
+.logo{display:block;flex:none;height:auto}
+
+/* ---------- masthead ---------- */
+.brandbar{display:flex;height:3px}
+.brandbar i{display:block;height:100%}
+.brandbar .b{background:var(--logo-blue);flex:1 1 auto}
+.brandbar .r{background:var(--logo-red);flex:0 0 22%}
+
+.masthead{border-bottom:1px solid var(--rule);background:rgba(11,11,12,.82);backdrop-filter:blur(8px)}
+.masthead .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;flex-wrap:wrap;padding-block:14px;
+}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.brand .logo{width:30px}
+.wordmark{
+  font-family:var(--f-display);font-weight:900;font-size:19px;
+  letter-spacing:-.02em;text-transform:uppercase;line-height:1;
+}
+.wordmark i{font-style:normal;color:var(--logo-red)}
+.nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.navlink{
+  font-family:var(--f-mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  padding:7px 10px;border-radius:2px;border:1px solid transparent;
+}
+.navlink:hover{color:var(--ink)}
+.navlink[aria-current="page"]{color:var(--ink);border-color:var(--rule);background:var(--surface)}
+/* NB: not `.acct` — that class belongs to the account page section, whose
+   padding would otherwise inflate this link and stretch the whole masthead. */
+.navlink.nav-acct{color:var(--ink);border-color:var(--rule)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--f-mono);font-size:12.5px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:15px 22px;border-radius:2px;text-decoration:none;cursor:pointer;
+  border:1px solid var(--logo-blue);background:var(--logo-blue);color:#FFF;
+  transition:transform .12s ease,filter .12s ease;
+}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.12)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn.ghost:hover{border-color:var(--accent);filter:none}
+.btn[disabled],.btn[aria-disabled="true"]{
+  opacity:.5;cursor:not-allowed;transform:none;filter:none;
+  background:transparent;color:var(--muted);border-color:var(--rule);
+}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(44px,7vw,88px) clamp(38px,6vw,68px)}
+.hero-top{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:center}
+@media(min-width:900px){.hero-top{grid-template-columns:auto minmax(0,1fr)}}
+.hero-mark{width:clamp(152px,20vw,264px);filter:drop-shadow(0 0 46px var(--halo))}
+.hero-flag{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:5px 11px 5px 9px;border:1px solid var(--accent);border-radius:2px;
+  margin-bottom:clamp(18px,2.6vw,26px);color:var(--ink);
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--hot);flex:none}
+h1{
+  font-weight:900;font-size:clamp(44px,9.2vw,116px);line-height:.86;
+  letter-spacing:-.045em;text-transform:uppercase;margin:0;
+}
+h1 em{font-style:normal;color:var(--logo-red)}
+.hero-body{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap);
+  border-top:1px solid var(--rule);
+  margin-top:clamp(30px,4.5vw,52px);padding-top:26px;
+}
+@media(min-width:820px){.hero-body{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
+.ledes{display:flex;flex-direction:column;gap:13px}
+.lede{font-size:clamp(17px,2vw,20px);line-height:1.55;max-width:60ch;margin:0}
+.lede.strong{font-weight:600}
+.hero-notes{display:flex;flex-direction:column;gap:14px;margin:0}
+.note{display:grid;grid-template-columns:82px minmax(0,1fr);gap:14px;align-items:start}
+.note dt{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);padding-top:3px;
+}
+.note dd{margin:0;font-size:14.5px;line-height:1.5}
+
+/* ---------- bands ---------- */
+.band{border-top:1px solid var(--rule);padding-block:clamp(44px,6vw,80px)}
+.status{
+  display:inline-block;font-family:var(--f-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--hot);
+  border:1px solid var(--hot);border-radius:2px;padding:3px 8px;margin-bottom:16px;
+}
+h2{
+  font-weight:900;font-size:clamp(32px,5.2vw,60px);line-height:.94;
+  letter-spacing:-.035em;text-transform:uppercase;margin-bottom:10px;
+}
+.kicker{
+  margin:0;font-family:var(--f-display);font-weight:500;
+  font-size:clamp(18px,2.3vw,24px);line-height:1.28;
+  color:var(--ink);letter-spacing:-.015em;max-width:32ch;
+  border-left:3px solid var(--accent);padding-left:14px;
+}
+.prose{display:flex;flex-direction:column;gap:14px}
+.prose p{margin:0;max-width:56ch;font-size:15.5px}
+
+/* home product summary */
+.summary{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap);align-items:start;margin-top:clamp(28px,4vw,42px)}
+@media(min-width:900px){.summary{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.sum-actions{margin-top:24px}
+
+/* ---------- product page ---------- */
+.pagehead{padding-block:clamp(28px,4vw,44px) 0}
+.backlink{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);text-decoration:none;
+}
+.backlink:hover{color:var(--ink)}
+.prod-title{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;margin-top:20px;
+}
+.prod-price{
+  font-family:var(--f-display);font-weight:900;
+  font-size:clamp(38px,6vw,64px);line-height:.9;letter-spacing:-.04em;
+}
+.prod-price small{
+  display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  margin-top:8px;letter-spacing:.12em;
+}
+
+/* active-usage photo slot */
+.usage{
+  margin-top:clamp(26px,3.6vw,40px);
+  border:1px dashed var(--rule);
+  background:
+    linear-gradient(180deg, rgba(28,96,196,.05), transparent 60%),
+    var(--surface);
+  aspect-ratio:16/9;
+  display:grid;place-items:center;
+  text-align:center;padding:24px;
+}
+.usage .mark{width:52px;margin:0 auto 16px;opacity:.5}
+.usage .lbl{
+  font-family:var(--f-mono);font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--hot);
+}
+.usage .sub{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin-top:8px;
+}
+.usage-cap{
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  margin:10px 0 0;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* feature list */
+.features{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:1px;
+  background:var(--rule);border:1px solid var(--rule);
+  margin-top:clamp(30px,4vw,46px);
+}
+@media(min-width:700px){.features{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.feat{background:var(--ground);padding:22px 20px;display:flex;flex-direction:column;gap:8px}
+.feat .n{
+  font-family:var(--f-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--accent);
+}
+.feat h4{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.feat p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+
+/* spec table */
+.specs{
+  width:100%;border-collapse:collapse;
+  margin-top:clamp(30px,4vw,46px);
+  font-family:var(--f-mono);font-size:12.5px;font-variant-numeric:tabular-nums;
+}
+.specs caption{
+  text-align:left;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);padding-bottom:10px;
+}
+.specs th,.specs td{text-align:left;padding:9px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.specs th{
+  font-weight:500;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);width:38%;padding-right:16px;
+}
+.specs td{font-weight:500}
+
+/* requirement callout */
+.requires{margin-top:24px;padding:16px 18px;background:var(--surface);border-left:3px solid var(--hot)}
+.requires h3{
+  font-size:12px;font-family:var(--f-mono);font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;
+}
+.requires p{margin:0;font-size:14px;line-height:1.5;max-width:52ch}
+
+/* ---------- interface concept figures ---------- */
+.figs{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(20px,3vw,28px);margin-top:clamp(30px,4vw,46px)}
+@media(min-width:820px){.figs.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fig{display:flex;flex-direction:column;gap:10px}
+.fig .frame{margin-top:auto}
+.frame{
+  background:var(--surface);border:1px solid var(--rule);
+  padding:clamp(18px,2.6vw,30px);
+  display:flex;align-items:center;justify-content:center;
+  min-height:224px;overflow-x:auto;
+}
+.frame svg{display:block;max-width:100%;height:auto}
+.frame-cap{
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:0;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);
+}
+.frame-cap b{color:var(--hot);font-weight:600}
+.scanner{width:100%;max-width:430px;font-family:var(--f-mono);font-size:12px}
+.scan-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding-bottom:10px;border-bottom:1px solid var(--rule);
+  letter-spacing:.1em;text-transform:uppercase;font-size:10.5px;color:var(--muted);
+}
+.scan-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--rule)}
+.scan-row .glyph{
+  width:20px;height:20px;flex:none;border-radius:2px;
+  background:var(--surface-2);border:1px solid var(--rule);display:grid;place-items:center;
+}
+.scan-row .glyph i{display:block;width:7px;height:7px;border-radius:50%;background:var(--accent);font-style:normal}
+.scan-row.dim .glyph i{background:#34353B}
+.scan-row .nm{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.scan-row .ver{color:var(--muted);font-size:11px;flex:none}
+.scan-foot{
+  display:flex;align-items:center;gap:12px;padding-top:14px;
+  font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+.meter{flex:1 1 auto;height:4px;background:#34353B;position:relative;border-radius:2px;overflow:hidden}
+.meter i{position:absolute;inset:0 34% 0 0;background:var(--accent);border-radius:2px}
+.roll{width:100%}
+.roll svg{display:block;width:100%;height:auto}
+
+/* ---------- purchase ---------- */
+.buy{
+  margin-top:clamp(34px,4.5vw,52px);
+  border:1px solid var(--rule);border-top:2px solid var(--logo-blue);
+  background:var(--surface);
+  padding:clamp(22px,3vw,32px);
+  display:grid;grid-template-columns:minmax(0,1fr);gap:26px;align-items:start;
+}
+@media(min-width:820px){.buy{grid-template-columns:minmax(0,1fr) minmax(0,.9fr)}}
+.buy h3{
+  font-weight:900;font-size:clamp(24px,3.4vw,34px);line-height:.98;
+  letter-spacing:-.03em;text-transform:uppercase;margin-bottom:12px;
+}
+.buy .gets{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.buy .gets li{
+  display:grid;grid-template-columns:16px minmax(0,1fr);gap:11px;
+  font-size:14.5px;line-height:1.45;
+}
+.buy .gets svg{width:16px;height:16px;margin-top:4px}
+.buy-side{display:flex;flex-direction:column;gap:14px}
+.buy-total{
+  display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  padding-bottom:14px;border-bottom:1px solid var(--rule);
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);
+}
+.buy-total b{
+  font-family:var(--f-display);font-size:32px;font-weight:900;
+  letter-spacing:-.03em;color:var(--ink);
+}
+.buy .fineprint{margin:0;font-size:12.5px;color:var(--muted);line-height:1.5}
+
+/* checkout state */
+.licnote{
+  grid-column:1/-1;margin:0;
+  padding:14px 16px;
+  border:1px solid var(--rule);border-left:3px solid var(--hot);
+  background:var(--ground);
+  font-size:13.5px;line-height:1.55;color:var(--muted);
+}
+.licnote b{color:var(--ink)}
+
+/* what does and doesn't end an activation */
+.breaks{
+  grid-column:1/-1;
+  display:grid;grid-template-columns:minmax(0,1fr);gap:1px;
+  background:var(--rule);border:1px solid var(--rule);
+}
+@media(min-width:700px){.breaks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.breaks > div{background:var(--ground);padding:18px}
+.breaks h4{
+  font-family:var(--f-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;
+}
+.breaks .keep h4{color:var(--ok)}
+.breaks .end h4{color:var(--hot)}
+.breaks ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.breaks li{display:grid;grid-template-columns:13px minmax(0,1fr);gap:10px;font-size:13.5px;line-height:1.45;color:var(--muted)}
+.breaks .sym{font-family:var(--f-mono);font-weight:600}
+.breaks .keep .sym{color:var(--ok)}
+.breaks .end .sym{color:var(--hot)}
+
+/* sign-in form */
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.field label{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);
+}
+.field input{
+  padding:12px 13px;border-radius:2px;border:1px solid var(--rule);
+  background:var(--ground);color:var(--ink);
+  font-family:var(--f-body);font-size:15px;
+}
+.field input:disabled{opacity:.5;cursor:not-allowed}
+.divider{
+  display:flex;align-items:center;gap:12px;margin:20px 0;
+  color:var(--muted);font-family:var(--f-mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;
+}
+.divider::before,.divider::after{content:"";flex:1 1 auto;height:1px;background:var(--rule)}
+.forgot{font-size:12.5px;color:var(--muted);margin:10px 0 0}
+
+.checkout{
+  margin-top:16px;padding:18px;
+  border:1px solid var(--hot);border-radius:2px;
+  background:rgba(240,58,65,.06);
+}
+.checkout h4{
+  font-family:var(--f-mono);font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--hot);margin-bottom:10px;
+}
+.checkout p{margin:0 0 12px;font-size:14px;line-height:1.5}
+.checkout p:last-child{margin-bottom:0}
+.checkout ol{margin:0 0 12px;padding-left:20px;font-size:13.5px;color:var(--muted);line-height:1.6}
+
+/* ---------- account ---------- */
+.acct{padding-block:clamp(40px,6vw,80px)}
+.acct-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap);align-items:start}
+@media(min-width:820px){.acct-grid{grid-template-columns:minmax(0,1fr) minmax(0,.9fr)}}
+.signin{
+  border:1px solid var(--rule);border-top:2px solid var(--logo-blue);
+  background:var(--surface);padding:clamp(22px,3vw,32px);
+}
+.gbtn{
+  display:flex;align-items:center;justify-content:center;gap:12px;width:100%;
+  padding:14px 18px;border-radius:2px;
+  border:1px solid var(--rule);background:var(--ground);color:var(--muted);
+  font-family:var(--f-body);font-size:15px;font-weight:500;
+  cursor:not-allowed;
+}
+.gbtn svg{width:19px;height:19px;flex:none;opacity:.55}
+.pending{
+  display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--hot);
+}
+.acct-list{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.acct-list li{
+  display:grid;grid-template-columns:18px minmax(0,1fr);gap:12px;
+  font-size:14.5px;line-height:1.45;color:var(--muted);
+}
+.acct-list b{color:var(--ink);font-weight:600}
+
+/* ---------- price / signup / footer ---------- */
+.price-band{border-top:1px solid var(--rule);padding-block:clamp(40px,5vw,64px)}
+.price-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap)}
+@media(min-width:820px){.price-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
+.tiers{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media(min-width:560px){.tiers{grid-template-columns:1fr 1fr}}
+.tier{
+  background:var(--surface);padding:22px 20px;
+  display:flex;flex-direction:column;gap:8px;border-top:2px solid var(--accent);
+}
+.tier .nm{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tier .amt{font-family:var(--f-display);font-weight:900;font-size:40px;line-height:1;letter-spacing:-.03em;color:var(--ink)}
+.tier .desc{font-size:13.5px;color:var(--muted);line-height:1.45}
+.tier .btn{margin-top:6px;padding:12px 16px;font-size:11.5px}
+.blurb{margin:0;font-size:15px;max-width:38ch;color:var(--ink)}
+
+.signup{border-top:1px solid var(--rule);padding-block:clamp(44px,6vw,80px)}
+.signup-inner{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap);align-items:start}
+@media(min-width:820px){.signup-inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+h3.big{
+  font-weight:900;font-size:clamp(28px,4.4vw,48px);line-height:.95;
+  letter-spacing:-.035em;text-transform:uppercase;margin-bottom:14px;
+}
+h3.big em{font-style:normal;color:var(--logo-red)}
+.signup .blurb{font-size:15.5px;max-width:46ch;color:var(--ink)}
+.cta-note{margin:14px 0 0;font-size:13px;color:var(--muted);max-width:44ch}
+
+footer{border-top:1px solid var(--rule);padding-block:26px 40px}
+.foot{
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);
+}
+.foot .logo{width:20px}
+.foot-l{display:flex;align-items:center;gap:10px}
+
+/* ---------- editor chrome ---------- */
+#ybk-bar{
+  position:fixed;right:16px;bottom:16px;z-index:9999;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;
+  max-width:calc(100vw - 32px);
+  background:var(--ground);border:1px solid var(--rule);
+  border-radius:3px;padding:8px;box-shadow:0 6px 26px var(--shadow);
+}
+#ybk-bar button{
+  font-family:var(--f-mono);font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:9px 13px;border-radius:2px;cursor:pointer;
+  border:1px solid var(--rule);background:var(--surface);color:var(--ink);
+}
+#ybk-bar button.primary{background:var(--logo-blue);border-color:var(--logo-blue);color:#FFF}
+#ybk-bar button:disabled{opacity:.45;cursor:default}
+#ybk-bar button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#ybk-status{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);padding:0 4px;max-width:210px;
+}
+#ybk-status.err{color:var(--hot)}
+
+body.ybk-editing [data-copy]{outline:1px dashed var(--rule);outline-offset:3px;border-radius:2px;cursor:text}
+body.ybk-editing [data-copy]:hover{outline-color:var(--accent)}
+body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offset:3px;background:var(--accent-soft)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="ybk-logo">
+      <path fill="#1C60C4" d="M722 286 L1057 1172 L722 916 L387 1173 Z"/>
+      <path fill="#EE1B24" d="M860 548 L1151 507 L964 800 Z"/>
+      <path fill="#EE1B24" d="M585 547 L293 506 L481 799 Z"/>
+    </g>
+    <g id="tick">
+      <path fill="none" stroke="#3B82EE" stroke-width="2.4" stroke-linecap="round"
+            stroke-linejoin="round" d="M3 8.6 L6.6 12.2 L13 4.4"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="brandbar" aria-hidden="true"><i class="b"></i><i class="r"></i></div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="#/">
+      <svg class="logo" viewBox="283 276 878 907" role="img" aria-label="YBK Audio home"><use href="#ybk-logo"/></svg>
+      <span class="wordmark"><span data-copy="wm">YBK</span><i>.</i><span data-copy="wm2">Audio</span></span>
+    </a>
+    <nav class="nav">
+      <a class="navlink" href="#/synth-player" data-nav="synth">Synth Player</a>
+      <a class="navlink" href="#/midside" data-nav="midside">MidSide</a>
+      <a class="navlink nav-acct" href="#/account" data-nav="account">Account</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ==================== HOME ==================== -->
+<div data-page="home">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <svg class="logo hero-mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
+        <div>
+          <span class="hero-flag mono eyebrow"><span class="dot" aria-hidden="true"></span><span data-copy="flag">Two Windows apps · In development</span></span>
+          <h1><span data-copy="h1a">Music software</span><br><span data-copy="h1b">made simple</span><em>.</em></h1>
+        </div>
+      </div>
+      <div class="hero-body">
+        <div class="ledes">
+          <p class="lede" data-copy="lede1">Every tool a producer owns is trapped inside a DAW. Want to try an instrument? Boot the DAW. Want to check a mix in mono? Boot the DAW.</p>
+          <p class="lede strong" data-copy="lede2">YBK Audio builds the small standalone apps that should have existed all along — they run on the desktop, simple and necessary.</p>
+        </div>
+        <dl class="hero-notes">
+          <div class="note"><dt data-copy="n1t">Platform</dt><dd data-copy="n1d">Windows 10 &amp; 11. Native desktop applications, built in C++ with JUCE.</dd></div>
+          <div class="note"><dt data-copy="n2t">Price</dt><dd data-copy="n2d">$5 per app. One single-use code per purchase — it activates one machine, once.</dd></div>
+          <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">Both apps are in active development. No release date announced yet.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <span class="status" data-copy="h-sp-status">In development</span>
+      <h2 data-copy="h-sp-name">YBK Synth Player</h2>
+      <p class="kicker" data-copy="h-sp-k">Play, Recover, Edit, Export.</p>
+      <div class="summary">
+        <div class="prose">
+          <p data-copy="h-sp-p1">Synth Player scans the VST instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
+          <p data-copy="h-sp-p2">And it records the whole time, so the phrase you stumbled into before you were ready is still there when you want it.</p>
+          <div class="sum-actions btnrow">
+            <a class="btn" href="#/synth-player"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div>
+          <div class="usage" style="aspect-ratio:16/10">
+            <div>
+              <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
+              <div class="lbl" data-copy="h-sp-ph">Photo coming soon</div>
+              <div class="sub" data-copy="h-sp-ph2">Synth Player in use</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <span class="status" data-copy="h-ms-status">In development</span>
+      <h2 data-copy="h-ms-name">YBK MidSide</h2>
+      <p class="kicker" data-copy="h-ms-k">A mixing console for everything your PC plays.</p>
+      <div class="summary">
+        <div class="prose">
+          <p data-copy="h-ms-p1">A floating capsule that sits above every other window and processes your system audio in real time — Mid/Side balance, stereo width and a sweepable band-pass filter, applied to anything.</p>
+          <p data-copy="h-ms-p2">Check a reference mix in mono. Solo the side channel of a finished record. Then close the window — it keeps running in the tray.</p>
+          <div class="sum-actions btnrow">
+            <a class="btn" href="#/midside"><span data-copy="h-ms-cta">Get now</span><span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div>
+          <div class="usage" style="aspect-ratio:16/10">
+            <div>
+              <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
+              <div class="lbl" data-copy="h-ms-ph">Photo coming soon</div>
+              <div class="sub" data-copy="h-ms-ph2">MidSide in use</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="price-band">
+    <div class="wrap price-grid">
+      <div>
+        <span class="eyebrow" data-copy="pr-eye">Pricing</span>
+        <h3 class="big"><span data-copy="pr-h1">Five</span><br><span data-copy="pr-h2">dollars</span><em>.</em></h3>
+        <p class="blurb" data-copy="pr-p">Five dollars, one machine, once. Each purchase is a single-use code that activates one computer and expires the moment it does — no subscription, no seats, no transfers. That’s the whole reason it costs five dollars.</p>
+      </div>
+      <div class="tiers">
+        <div class="tier">
+          <span class="nm" data-copy="t1n">YBK Synth Player</span>
+          <span class="amt" data-copy="t1a">$5</span>
+          <span class="desc" data-copy="t1d">Standalone VST instrument host with always-on MIDI capture.</span>
+          <a class="btn" href="#/synth-player" data-copy="t1b">Get now</a>
+        </div>
+        <div class="tier">
+          <span class="nm" data-copy="t2n">YBK MidSide</span>
+          <span class="amt" data-copy="t2a">$5</span>
+          <span class="desc" data-copy="t2d">Real-time Mid/Side, width and band sweep on system audio.</span>
+          <a class="btn" href="#/midside" data-copy="t2b">Get now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="signup">
+    <div class="wrap signup-inner">
+      <div>
+        <span class="eyebrow" data-copy="su-eye">Launch list</span>
+        <h3 class="big"><span data-copy="su-h">Hear it first</span><em>.</em></h3>
+        <p class="blurb" data-copy="su-p">Both apps are still being built. Leave a note and you’ll get one email when they’re ready to buy — nothing else, ever.</p>
+      </div>
+      <div>
+        <a class="btn" href="mailto:producerybk@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches">
+          <span data-copy="su-cta">Email the launch list</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <p class="cta-note" data-copy="su-note">Opens your mail app. This becomes a proper signup form once the domain is registered.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== SYNTH PLAYER ==================== -->
+<div data-page="synth" hidden>
+  <section class="pagehead">
+    <div class="wrap">
+      <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="sp-back">All apps</span></a>
+      <div class="prod-title">
+        <div>
+          <span class="status" data-copy="sp-status">In development</span>
+          <h2 data-copy="sp-name">YBK Synth Player</h2>
+          <p class="kicker" data-copy="sp-k">Play, Recover, Edit, Export. Your VSTs, without the DAW.</p>
+        </div>
+        <div class="prod-price">
+          <span data-copy="sp-price">$5</span>
+          <small data-copy="sp-price-sub">One-time · One license · One device</small>
+        </div>
+      </div>
+
+      <div class="usage">
+        <div>
+          <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
+          <div class="lbl" data-copy="sp-usage">Photo coming soon</div>
+          <div class="sub" data-copy="sp-usage2">Synth Player running an instrument</div>
+        </div>
+      </div>
+      <p class="usage-cap">
+        <span data-copy="sp-usage-cap">Fig. 1 — the app in use</span>
+        <span data-copy="sp-usage-cap2">Drop a 16:9 screenshot or clip here</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band" style="border-top:none">
+    <div class="wrap">
+      <div class="prose">
+        <p data-copy="sp-p1">Synth Player is a standalone host for the VST instruments you already own. It scans your plugin folders on launch, lists what it finds, and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
+        <p data-copy="sp-p2">No empty project. No track to arm. No plugin window buried behind an arrangement view. Click the instrument, play the instrument. Don’t let DAW shenanigans get in the way of your creativity.</p>
+        <p data-copy="sp-p3">And because the best thing you play is almost always the thing you played before you were ready, it records continuously in the background. Every note, every bend, every held pedal, from the moment the instrument opens.</p>
+      </div>
+
+      <div class="features">
+        <div class="feat">
+          <span class="n" data-copy="f1n">Standalone hosting</span>
+          <h4 data-copy="f1h">Any instrument, on its own</h4>
+          <p data-copy="f1p">Opens VST instruments installed on your system with their full interface, no host project required.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="f2n">Automatic scan</span>
+          <h4 data-copy="f2h">Finds what you already own</h4>
+          <p data-copy="f2p">Scans your plugin folders on launch and lists every instrument it can load.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="f3n">Always-on capture</span>
+          <h4 data-copy="f3h">Nothing to arm, nothing to press</h4>
+          <p data-copy="f3p">Recording runs the whole session, so an idea is saved before you decide you wanted it.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="f4n">Edit and export</span>
+          <h4 data-copy="f4h">Trim it, fix it, take it with you</h4>
+          <p data-copy="f4p">Scroll back, trim the take, nudge the notes that landed late, then export a standard .mid file for your DAW.</p>
+        </div>
+      </div>
+
+      <div class="figs two">
+        <div class="fig">
+          <div class="frame">
+            <div class="scanner" role="img" aria-label="Illustration of the Synth Player instrument browser listing scanned instruments">
+              <div class="scan-head"><span data-copy="sc-h">Instruments found</span><span>04</span></div>
+              <div class="scan-row"><span class="glyph"><i></i></span><span class="nm" data-copy="sc-1">Wavetable synthesiser</span><span class="ver">VST3</span></div>
+              <div class="scan-row"><span class="glyph"><i></i></span><span class="nm" data-copy="sc-2">Analogue modelling synth</span><span class="ver">VST3</span></div>
+              <div class="scan-row"><span class="glyph"><i></i></span><span class="nm" data-copy="sc-3">Sampled piano library</span><span class="ver">VST3</span></div>
+              <div class="scan-row dim"><span class="glyph"><i></i></span><span class="nm" data-copy="sc-4">Drum machine</span><span class="ver">VST3</span></div>
+              <div class="scan-foot"><span>Scanning</span><span class="meter"><i></i></span><span>C:\Program Files\VST3</span></div>
+            </div>
+          </div>
+          <p class="frame-cap"><span data-copy="a1-fig">Fig. 2 — instrument browser concept</span><span><b data-copy="a1-soon">Not final</b></span></p>
+        </div>
+
+        <div class="fig">
+          <div class="frame">
+            <div class="roll">
+              <svg viewBox="0 0 520 214" role="img" aria-label="Illustration of the MIDI editor showing a recorded phrase on a piano roll">
+                <rect x="40" y="24" width="472" height="168" fill="var(--ground)"/>
+                <g fill="var(--surface-2)">
+                  <rect x="40" y="36"  width="472" height="12"/>
+                  <rect x="40" y="60"  width="472" height="12"/>
+                  <rect x="40" y="84"  width="472" height="12"/>
+                  <rect x="40" y="120" width="472" height="12"/>
+                  <rect x="40" y="144" width="472" height="12"/>
+                  <rect x="40" y="180" width="472" height="12"/>
+                </g>
+                <rect x="8" y="24" width="32" height="168" fill="var(--ground)" stroke="var(--rule)" stroke-width="1"/>
+                <g fill="var(--ink)" opacity=".8">
+                  <rect x="8" y="36"  width="19" height="12"/>
+                  <rect x="8" y="60"  width="19" height="12"/>
+                  <rect x="8" y="84"  width="19" height="12"/>
+                  <rect x="8" y="120" width="19" height="12"/>
+                  <rect x="8" y="144" width="19" height="12"/>
+                  <rect x="8" y="180" width="19" height="12"/>
+                </g>
+                <g stroke="var(--rule)" stroke-width="1">
+                  <line x1="8" y1="36"  x2="40" y2="36"/>
+                  <line x1="8" y1="48"  x2="40" y2="48"/>
+                  <line x1="8" y1="60"  x2="40" y2="60"/>
+                  <line x1="8" y1="72"  x2="40" y2="72"/>
+                  <line x1="8" y1="84"  x2="40" y2="84"/>
+                  <line x1="8" y1="96"  x2="40" y2="96"/>
+                  <line x1="8" y1="108" x2="40" y2="108"/>
+                  <line x1="8" y1="120" x2="40" y2="120"/>
+                  <line x1="8" y1="132" x2="40" y2="132"/>
+                  <line x1="8" y1="144" x2="40" y2="144"/>
+                  <line x1="8" y1="156" x2="40" y2="156"/>
+                  <line x1="8" y1="168" x2="40" y2="168"/>
+                  <line x1="8" y1="180" x2="40" y2="180"/>
+                </g>
+                <g stroke="var(--rule)" stroke-width="1">
+                  <line x1="40"  y1="24" x2="40"  y2="192"/>
+                  <line x1="158" y1="24" x2="158" y2="192"/>
+                  <line x1="276" y1="24" x2="276" y2="192"/>
+                  <line x1="394" y1="24" x2="394" y2="192"/>
+                  <line x1="512" y1="24" x2="512" y2="192"/>
+                </g>
+                <g stroke="var(--rule)" stroke-width="1" opacity=".45">
+                  <line x1="99"  y1="24" x2="99"  y2="192"/>
+                  <line x1="217" y1="24" x2="217" y2="192"/>
+                  <line x1="335" y1="24" x2="335" y2="192"/>
+                  <line x1="453" y1="24" x2="453" y2="192"/>
+                </g>
+                <g fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".8">
+                  <text x="44"  y="17">1</text>
+                  <text x="162" y="17">2</text>
+                  <text x="280" y="17">3</text>
+                  <text x="398" y="17">4</text>
+                </g>
+                <rect x="40" y="24" width="177" height="168" fill="var(--logo-red)" opacity=".055"/>
+                <line x1="217" y1="24" x2="217" y2="192" stroke="var(--hot)" stroke-width="1.5" stroke-dasharray="3 3"/>
+                <text x="46" y="205" fill="var(--hot)" font-family="IBM Plex Mono, monospace"
+                      font-size="8.5" font-weight="600" letter-spacing="1.2">RECOVERED TAKE</text>
+                <g fill="var(--accent)">
+                  <rect x="42"  y="110" width="54" height="10" rx="1.5"/>
+                  <rect x="60"  y="146" width="36" height="10" rx="1.5"/>
+                  <rect x="99"  y="62"  width="56" height="10" rx="1.5"/>
+                  <rect x="99"  y="122" width="56" height="10" rx="1.5"/>
+                  <rect x="158" y="86"  width="30" height="10" rx="1.5"/>
+                  <rect x="188" y="98"  width="28" height="10" rx="1.5"/>
+                </g>
+                <g fill="var(--accent)" opacity=".42">
+                  <rect x="222" y="74"  width="52" height="10" rx="1.5"/>
+                  <rect x="276" y="134" width="58" height="10" rx="1.5"/>
+                  <rect x="335" y="50"  width="34" height="10" rx="1.5"/>
+                  <rect x="369" y="110" width="24" height="10" rx="1.5"/>
+                  <rect x="394" y="158" width="62" height="10" rx="1.5"/>
+                  <rect x="456" y="86"  width="52" height="10" rx="1.5"/>
+                </g>
+                <rect x="188" y="98" width="28" height="10" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+                <rect x="8" y="24" width="504" height="168" fill="none" stroke="var(--rule)" stroke-width="1"/>
+              </svg>
+            </div>
+          </div>
+          <p class="frame-cap"><span data-copy="a2-fig">Fig. 3 — MIDI editor concept</span><span><b data-copy="a2-soon">Not final</b></span></p>
+        </div>
+      </div>
+
+      <table class="specs">
+        <caption data-copy="sp-caption">YBK Synth Player — specification</caption>
+        <tbody>
+          <tr><th scope="row" data-copy="sp-s1t">Type</th><td data-copy="sp-s1v">Standalone desktop application</td></tr>
+          <tr><th scope="row" data-copy="sp-s2t">Hosts</th><td data-copy="sp-s2v">VST instruments installed on your system</td></tr>
+          <tr><th scope="row" data-copy="sp-s3t">Plugin scan</th><td data-copy="sp-s3v">Automatic, on launch</td></tr>
+          <tr><th scope="row" data-copy="sp-s4t">MIDI capture</th><td data-copy="sp-s4v">Always on — recover and edit any take</td></tr>
+          <tr><th scope="row" data-copy="sp-s5t">Export</th><td data-copy="sp-s5v">Standard .mid file</td></tr>
+          <tr><th scope="row" data-copy="sp-s6t">Platform</th><td data-copy="sp-s6v">Windows 10 / 11</td></tr>
+          <tr><th scope="row" data-copy="sp-s7t">Licence</th><td data-copy="sp-s7v">Single-use — one code, one machine, expires on activation</td></tr>
+          <tr><th scope="row" data-copy="sp-s8t">Price</th><td data-copy="sp-s8v">$5.00 — one-time, no subscription</td></tr>
+        </tbody>
+      </table>
+
+      <!-- purchase -->
+      <div class="buy">
+        <div>
+          <h3 data-copy="sp-buy-h">Buy Synth Player</h3>
+          <ul class="gets">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g1">The Windows installer, downloadable straight after payment</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g2">One license code, emailed to the address you pay with</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g3">One activation, on the computer you install it on</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g4">Every update to version 1.x, at no extra cost</span></li>
+          </ul>
+        </div>
+        <div class="buy-side">
+          <div class="buy-total"><span data-copy="sp-total-l">Total today</span><b data-copy="sp-total">$5.00</b></div>
+          <button type="button" class="btn" data-buy="synth">
+            <span data-copy="sp-buy-btn">Purchase</span><span aria-hidden="true">→</span>
+          </button>
+          <p class="fineprint" data-copy="sp-fine">Payment is handled by our checkout provider — YBK Audio never sees your card details. Instant delivery by email.</p>
+        </div>
+
+        <p class="licnote" data-copy="sp-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $5 instead of $39.</p>
+
+        <div class="breaks">
+          <div class="keep">
+            <h4 data-copy="sp-keep-h">Your license keeps working after</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k1i">Resetting or reinstalling Windows on the same computer</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k2i">Windows updates, driver updates and app updates</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k4i">Changing your network, Wi-Fi adapter or VPN</span></li>
+            </ul>
+          </div>
+          <div class="end">
+            <h4 data-copy="sp-end-h">Your license ends if you</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="sp-e1i">Replace the motherboard</span></li>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="sp-e2i">Replace the CPU</span></li>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="sp-e3i">Move to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="sp-e4i">Run the app inside a new virtual machine</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="checkout" data-checkout="synth" hidden style="grid-column:1/-1">
+          <h4 data-copy="sp-co-h">Checkout is not open yet</h4>
+          <p data-copy="sp-co-p1">Synth Player is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
+          <p data-copy="sp-co-p2">Three things have to land before this button goes live:</p>
+          <ol>
+            <li data-copy="sp-co-1">The app reaches a releasable build, code-signed with a Windows installer.</li>
+            <li data-copy="sp-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
+            <li data-copy="sp-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
+          </ol>
+          <p><a href="mailto:producerybk@gmail.com?subject=Tell%20me%20when%20YBK%20Synth%20Player%20is%20for%20sale" data-copy="sp-co-cta">Email me when Synth Player goes on sale →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== MIDSIDE ==================== -->
+<div data-page="midside" hidden>
+  <section class="pagehead">
+    <div class="wrap">
+      <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="ms-back">All apps</span></a>
+      <div class="prod-title">
+        <div>
+          <span class="status" data-copy="ms-status">In development</span>
+          <h2 data-copy="ms-name">YBK MidSide</h2>
+          <p class="kicker" data-copy="ms-k">A mixing console for everything your PC plays.</p>
+        </div>
+        <div class="prod-price">
+          <span data-copy="ms-price">$5</span>
+          <small data-copy="ms-price-sub">One-time · One license · One device</small>
+        </div>
+      </div>
+
+      <div class="usage">
+        <div>
+          <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
+          <div class="lbl" data-copy="ms-usage">Photo coming soon</div>
+          <div class="sub" data-copy="ms-usage2">The capsule floating over a desktop</div>
+        </div>
+      </div>
+      <p class="usage-cap">
+        <span data-copy="ms-usage-cap">Fig. 1 — the app in use</span>
+        <span data-copy="ms-usage-cap2">Drop a 16:9 screenshot or clip here</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band" style="border-top:none">
+    <div class="wrap">
+      <div class="prose">
+        <p data-copy="ms-p1">MidSide is a floating capsule that sits above every other window and processes your system audio in real time. Mid/Side balance, stereo width and a sweepable band-pass filter — applied to anything playing on your machine, not just to a track in a project.</p>
+        <p data-copy="ms-p2">Check a reference mix in mono before you commit to yours. Solo the side channel of a finished record and hear exactly what a mastering engineer put out there. Sweep a band across whatever is playing.</p>
+        <p data-copy="ms-p3">Close the window and it keeps running from the system tray. There is no project, no session, and nothing to save.</p>
+      </div>
+
+      <div class="features">
+        <div class="feat">
+          <span class="n" data-copy="m1n">Width</span>
+          <h4 data-copy="m1h">Mono to extra wide</h4>
+          <p data-copy="m1p">Scales the side signal while the mid stays intact — 0 collapses to mono, 1 is untouched, 2 widens.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="m2n">Mid / Side</span>
+          <h4 data-copy="m2h">Solo either half of the image</h4>
+          <p data-copy="m2p">Crossfade between hearing only the centre content and only the stereo difference.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="m3n">Band sweep</span>
+          <h4 data-copy="m3h">20 Hz to 20 kHz, variable Q</h4>
+          <p data-copy="m3p">A band-pass you can drag across the spectrum, with its own concentric ring for resonance.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="m4n">Always available</span>
+          <h4 data-copy="m4h">Floats above everything</h4>
+          <p data-copy="m4p">Stays on top of other windows, drags anywhere on the desktop, and keeps processing from the tray.</p>
+        </div>
+      </div>
+
+      <div class="requires">
+        <h3 data-copy="ms-req-h">What you’ll need</h3>
+        <p data-copy="ms-req-p">To process system audio, MidSide needs a virtual audio device. If you don’t already use an audio interface, install the free VB-Audio Virtual Cable — the app walks you through the three-step setup on first launch.</p>
+      </div>
+
+      <div class="figs">
+        <div class="fig">
+          <div class="frame">
+            <svg viewBox="0 0 470 190" width="470" role="img" aria-label="Illustration of the MidSide capsule window with three rotary controls">
+              <defs>
+                <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+                  <feGaussianBlur stdDeviation="7" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <rect x="10" y="20" width="450" height="150" rx="75" ry="75"
+                    fill="var(--surface-2)" stroke="var(--rule)" stroke-width="1"/>
+
+              <g transform="translate(105,88)">
+                <circle cx="0" cy="0" r="30" fill="var(--ground)" opacity=".55"/>
+                <path d="M -18.38 18.38 A 26 26 0 1 1 18.38 18.38"
+                      fill="none" stroke="#34353B" stroke-width="4" stroke-linecap="round"/>
+                <path d="M -18.38 18.38 A 26 26 0 0 1 0 -26"
+                      fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+                <line x1="0" y1="-9.1" x2="0" y2="-20.8" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="-18.38" cy="18.38" r="1.6" fill="var(--muted)"/>
+                <circle cx="18.38" cy="18.38" r="1.6" fill="var(--muted)"/>
+                <text x="0" y="45" text-anchor="middle" fill="var(--muted)"
+                      font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">WIDTH</text>
+                <text x="0" y="59" text-anchor="middle" fill="var(--ink)"
+                      font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">1.00</text>
+              </g>
+
+              <g transform="translate(235,88)">
+                <circle cx="0" cy="0" r="30" fill="var(--ground)" opacity=".55"/>
+                <path d="M -18.38 18.38 A 26 26 0 1 1 18.38 18.38"
+                      fill="none" stroke="#34353B" stroke-width="4" stroke-linecap="round"/>
+                <path d="M -18.38 18.38 A 26 26 0 0 1 0 -26"
+                      fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+                <line x1="0" y1="-9.1" x2="0" y2="-20.8" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="-18.38" cy="18.38" r="1.6" fill="var(--muted)"/>
+                <circle cx="18.38" cy="18.38" r="1.6" fill="var(--muted)"/>
+                <text x="0" y="45" text-anchor="middle" fill="var(--muted)"
+                      font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">MID / SIDE</text>
+                <text x="0" y="59" text-anchor="middle" fill="var(--ink)"
+                      font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">0</text>
+              </g>
+
+              <g transform="translate(365,88)">
+                <circle cx="0" cy="0" r="34" fill="var(--ground)" opacity=".55"/>
+                <path d="M -22.63 22.63 A 32 32 0 1 1 22.63 22.63"
+                      fill="none" stroke="#34353B" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M -22.63 22.63 A 32 32 0 0 1 6.44 -31.35"
+                      fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" filter="url(#glow)"/>
+                <path d="M -15.56 15.56 A 22 22 0 1 1 15.56 15.56"
+                      fill="none" stroke="#34353B" stroke-width="3" stroke-linecap="round"/>
+                <path d="M -15.56 15.56 A 22 22 0 0 1 -17.38 -13.48"
+                      fill="none" stroke="var(--hot)" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="0" cy="0" r="15" fill="var(--ground)" stroke="var(--rule)" stroke-width="1"/>
+                <text x="0" y="-4.5" text-anchor="middle" fill="var(--muted)"
+                      font-family="IBM Plex Mono, monospace" font-size="6" letter-spacing=".5">BAND SWEEP</text>
+                <text x="0" y="5.5" text-anchor="middle" fill="var(--ink)"
+                      font-family="IBM Plex Mono, monospace" font-size="9.5" font-weight="600">850Hz</text>
+                <text x="0" y="13.5" text-anchor="middle" fill="var(--muted)"
+                      font-family="IBM Plex Mono, monospace" font-size="7">Q = 1.4</text>
+              </g>
+            </svg>
+          </div>
+          <p class="frame-cap"><span data-copy="ms-fig">Fig. 2 — capsule window, actual proportions</span><span><b data-copy="ms-soon">Not final</b></span></p>
+        </div>
+      </div>
+
+      <table class="specs">
+        <caption data-copy="ms-caption">YBK MidSide — specification</caption>
+        <tbody>
+          <tr><th scope="row" data-copy="ms-s1t">Type</th><td data-copy="ms-s1v">Standalone desktop application</td></tr>
+          <tr><th scope="row" data-copy="ms-s2t">Modules</th><td data-copy="ms-s2v">Width · Mid/Side · Band Sweep</td></tr>
+          <tr><th scope="row" data-copy="ms-s3t">Sweep range</th><td data-copy="ms-s3v">20 Hz – 20 kHz, variable Q</td></tr>
+          <tr><th scope="row" data-copy="ms-s4t">Drivers</th><td data-copy="ms-s4v">ASIO, WASAPI, DirectSound</td></tr>
+          <tr><th scope="row" data-copy="ms-s5t">Requires</th><td data-copy="ms-s5v">A virtual audio device, e.g. free VB-Audio Virtual Cable</td></tr>
+          <tr><th scope="row" data-copy="ms-s6t">Platform</th><td data-copy="ms-s6v">Windows 10 / 11</td></tr>
+          <tr><th scope="row" data-copy="ms-s7t">Licence</th><td data-copy="ms-s7v">Single-use — one code, one machine, expires on activation</td></tr>
+          <tr><th scope="row" data-copy="ms-s8t">Price</th><td data-copy="ms-s8v">$5.00 — one-time, no subscription</td></tr>
+        </tbody>
+      </table>
+
+      <!-- purchase -->
+      <div class="buy">
+        <div>
+          <h3 data-copy="ms-buy-h">Buy MidSide</h3>
+          <ul class="gets">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g1">The Windows installer, downloadable straight after payment</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g2">One license code, emailed to the address you pay with</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g3">One activation, on the computer you install it on</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g4">Every update to version 1.x, at no extra cost</span></li>
+          </ul>
+        </div>
+        <div class="buy-side">
+          <div class="buy-total"><span data-copy="ms-total-l">Total today</span><b data-copy="ms-total">$5.00</b></div>
+          <button type="button" class="btn" data-buy="midside">
+            <span data-copy="ms-buy-btn">Purchase</span><span aria-hidden="true">→</span>
+          </button>
+          <p class="fineprint" data-copy="ms-fine">Payment is handled by our checkout provider — YBK Audio never sees your card details. Instant delivery by email.</p>
+        </div>
+
+        <p class="licnote" data-copy="ms-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $5 instead of $39.</p>
+
+        <div class="breaks">
+          <div class="keep">
+            <h4 data-copy="ms-keep-h">Your license keeps working after</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k1i">Resetting or reinstalling Windows on the same computer</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k2i">Windows updates, driver updates and app updates</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k4i">Changing your audio interface, network or VPN</span></li>
+            </ul>
+          </div>
+          <div class="end">
+            <h4 data-copy="ms-end-h">Your license ends if you</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="ms-e1i">Replace the motherboard</span></li>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="ms-e2i">Replace the CPU</span></li>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="ms-e3i">Move to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="ms-e4i">Run the app inside a new virtual machine</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="checkout" data-checkout="midside" hidden style="grid-column:1/-1">
+          <h4 data-copy="ms-co-h">Checkout is not open yet</h4>
+          <p data-copy="ms-co-p1">MidSide is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
+          <p data-copy="ms-co-p2">Three things have to land before this button goes live:</p>
+          <ol>
+            <li data-copy="ms-co-1">The app reaches a releasable build, code-signed with a Windows installer.</li>
+            <li data-copy="ms-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
+            <li data-copy="ms-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
+          </ol>
+          <p><a href="mailto:producerybk@gmail.com?subject=Tell%20me%20when%20YBK%20MidSide%20is%20for%20sale" data-copy="ms-co-cta">Email me when MidSide goes on sale →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== ACCOUNT ==================== -->
+<div data-page="account" hidden>
+  <section class="acct">
+    <div class="wrap">
+      <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="ac-back">All apps</span></a>
+      <h2 style="margin-top:20px" data-copy="ac-h">Your account</h2>
+      <p class="kicker" data-copy="ac-k">One place for your installers and receipts.</p>
+
+      <div class="acct-grid" style="margin-top:clamp(30px,4vw,46px)">
+        <div>
+          <div class="prose">
+            <p data-copy="ac-p1">Your account is where the installers live. Sign in and you can download the latest build of anything you’ve bought, and see which apps and versions are yours — without emailing anyone.</p>
+            <p data-copy="ac-p2">Signing in with Google means there is no password for you to remember and none for us to store. We only ever see your name and email address.</p>
+          </div>
+          <ul class="acct-list">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l1b">Re-download anytime.</b> <span data-copy="ac-l1">Installers for everything you own, always the latest build.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l2b">See what you own.</b> <span data-copy="ac-l2">Your purchases, versions and activation status in one list.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l3b">Support that knows your order.</b> <span data-copy="ac-l3">Get help without digging out a receipt.</span></span></li>
+          </ul>
+          <p class="licnote" style="margin-top:20px" data-copy="ac-lic"><b>On license codes.</b> Codes are single-use: once one has activated a computer it is spent, and an account cannot reissue or transfer it. Your account keeps the installers and your purchase history, not a reusable key.</p>
+        </div>
+
+        <div class="signin">
+          <h3 style="font-size:19px;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:8px" data-copy="ac-si-h">Sign in</h3>
+          <p style="margin:0 0 18px;font-size:14px;color:var(--muted);line-height:1.5" data-copy="ac-si-p">Use the Google account you want your purchases tied to.</p>
+
+          <button type="button" class="gbtn" aria-disabled="true" disabled>
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.6h11.9c-.2 2-1.5 4.9-4.4 6.9l-.1.3 6.4 4.9.4.1c4.1-3.8 6.9-9.3 6.9-15.8z"/>
+              <path fill="#34A853" d="M24 46c5.8 0 10.7-1.9 14.2-5.2l-6.8-5.2c-1.8 1.3-4.3 2.2-7.4 2.2-5.7 0-10.5-3.7-12.2-8.9l-.3.02-6.6 5.1-.1.3C8.3 41 15.6 46 24 46z"/>
+              <path fill="#FBBC05" d="M11.8 28.9c-.5-1.3-.7-2.7-.7-4.2s.3-2.9.7-4.2l-.01-.3-6.7-5.2-.2.1C3.5 17.9 2.8 20.9 2.8 24s.7 6.1 2.1 8.9l6.9-4z"/>
+              <path fill="#EA4335" d="M24 11c4 0 6.7 1.7 8.3 3.2l6-5.9C34.7 4.9 29.8 2.8 24 2.8 15.6 2.8 8.3 7.8 4.9 15.1l6.9 5.4C13.5 14.7 18.3 11 24 11z"/>
+            </svg>
+            <span data-copy="ac-g">Continue with Google</span>
+          </button>
+
+          <div class="divider"><span data-copy="ac-or">or</span></div>
+
+          <!-- Fields are disabled on purpose: there is no server to receive them
+               yet, and a live-looking password box with nowhere to send the
+               password is worse than no box at all. -->
+          <div class="field">
+            <label for="ac-email" data-copy="ac-lab-e">Email</label>
+            <input id="ac-email" type="email" autocomplete="username" placeholder="you@example.com" disabled>
+          </div>
+          <div class="field">
+            <label for="ac-pw" data-copy="ac-lab-p">Password</label>
+            <input id="ac-pw" type="password" autocomplete="current-password" placeholder="••••••••" disabled>
+          </div>
+          <button type="button" class="btn" style="width:100%" aria-disabled="true" disabled>
+            <span data-copy="ac-signin-btn">Sign in</span>
+          </button>
+          <p class="forgot" data-copy="ac-forgot">Forgot your password? Password reset arrives with sign-in.</p>
+
+          <span class="pending"><span class="dot" aria-hidden="true"></span><span data-copy="ac-pending">Neither method is connected yet</span></span>
+
+          <p style="margin:16px 0 0;font-size:13px;color:var(--muted);line-height:1.55" data-copy="ac-si-note">Sign-in switches on with the first release, once ybkaudio.com is live — Google requires a registered domain to send you back to. Until then, your download link arrives with your purchase email.</p>
+
+          <p style="margin:14px 0 0;font-size:13px">
+            <a href="mailto:producerybk@gmail.com?subject=YBK%20Audio%20account%20help" data-copy="ac-mail">producerybk@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="foot-l">
+      <svg class="logo" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
+      <span data-copy="f1">Contact - producerybk@gmail.com</span>
+    </span>
+    <span data-copy="f2">Windows 10 / 11 · In development</span>
+  </div>
+</footer>
+
+<div id="ybk-bar" hidden>
+  <span id="ybk-status"></span>
+  <button type="button" id="ybk-edit">Edit text</button>
+  <button type="button" id="ybk-cancel" hidden>Discard</button>
+  <button type="button" id="ybk-save" class="primary" hidden>Save &amp; publish</button>
+</div>
+
+<script data-ybk>
+(function () {
+  /* ---------------- routing ---------------- */
+  var ROUTES = {
+    '': 'home', '/': 'home',
+    '/synth-player': 'synth',
+    '/midside': 'midside',
+    '/account': 'account'
+  };
+  var pages = Array.prototype.slice.call(document.querySelectorAll('[data-page]'));
+  var navs = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+
+  function route() {
+    var key = (location.hash || '').replace(/^#/, '');
+    var page = ROUTES[key] || 'home';
+    pages.forEach(function (p) { p.hidden = p.getAttribute('data-page') !== page; });
+    navs.forEach(function (a) {
+      if (a.getAttribute('data-nav') === page) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    // collapse any open checkout panel when leaving a product page
+    document.querySelectorAll('[data-checkout]').forEach(function (c) { c.hidden = true; });
+  }
+  window.addEventListener('hashchange', function () { route(); window.scrollTo(0, 0); });
+  route();
+
+  /* ---------------- purchase ---------------- */
+  document.querySelectorAll('[data-buy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var panel = document.querySelector('[data-checkout="' + btn.getAttribute('data-buy') + '"]');
+      if (!panel) return;
+      panel.hidden = false;
+      panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      panel.setAttribute('tabindex', '-1');
+      panel.focus({ preventScroll: true });
+    });
+  });
+
+  /* ---------------- copy editor ---------------- */
+  var bar = document.getElementById('ybk-bar');
+  var bEdit = document.getElementById('ybk-edit');
+  var bSave = document.getElementById('ybk-save');
+  var bCancel = document.getElementById('ybk-cancel');
+  var status = document.getElementById('ybk-status');
+
+  // Pristine copy of the published document, captured before any editing.
+  var pristine = document.documentElement.cloneNode(true);
+  Array.prototype.forEach.call(pristine.querySelectorAll('script'), function (s) {
+    if (!s.hasAttribute('data-ybk')) s.parentNode.removeChild(s);
+  });
+
+  var fields = Array.prototype.slice.call(document.querySelectorAll('[data-copy]'));
+  var saved = {};
+  fields.forEach(function (el) { saved[el.getAttribute('data-copy')] = el.textContent; });
+
+  var api = null;
+  var editing = false;
+
+  function say(msg, isErr) {
+    status.textContent = msg || '';
+    status.className = isErr ? 'err' : '';
+  }
+
+  function setEditing(on) {
+    editing = on;
+    document.body.classList.toggle('ybk-editing', on);
+    fields.forEach(function (el) {
+      if (on) {
+        el.setAttribute('contenteditable', 'plaintext-only');
+        el.setAttribute('spellcheck', 'true');
+      } else {
+        el.removeAttribute('contenteditable');
+        el.removeAttribute('spellcheck');
+      }
+    });
+    bEdit.hidden = on;
+    bSave.hidden = !on;
+    bCancel.hidden = !on;
+    say(on ? 'Click any text to rewrite it' : '');
+  }
+
+  function revert() {
+    fields.forEach(function (el) {
+      var k = el.getAttribute('data-copy');
+      if (saved[k] !== undefined) el.textContent = saved[k];
+    });
+  }
+
+  function buildDocument() {
+    var out = pristine.cloneNode(true);
+    fields.forEach(function (el) {
+      var k = el.getAttribute('data-copy');
+      var target = out.querySelector('[data-copy="' + k + '"]');
+      if (target) target.textContent = el.textContent;
+    });
+    return '<!doctype html>\n' + out.outerHTML;
+  }
+
+  bEdit.addEventListener('click', function () { setEditing(true); });
+  bCancel.addEventListener('click', function () { revert(); setEditing(false); });
+
+  bSave.addEventListener('click', function () {
+    if (!api) return;
+    bSave.disabled = true;
+    bCancel.disabled = true;
+    say('Publishing…');
+    api.publish(buildDocument()).then(function () {
+      fields.forEach(function (el) { saved[el.getAttribute('data-copy')] = el.textContent; });
+      say('Published — reloading');
+    })['catch'](function (err) {
+      bSave.disabled = false;
+      bCancel.disabled = false;
+      var code = err && err.code;
+      if (code === 'conflict') {
+        say('Someone else saved first — reload and redo', true);
+      } else if (code === 'not_granted' || code === 'not_writer') {
+        setEditing(false);
+        bar.hidden = true;
+        say('', false);
+      } else {
+        say('Could not publish — try again', true);
+      }
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (editing && e.key === 'Escape') { revert(); setEditing(false); }
+  });
+
+  window.addEventListener('beforeunload', function (e) {
+    if (!editing) return;
+    var dirty = fields.some(function (el) {
+      return el.textContent !== saved[el.getAttribute('data-copy')];
+    });
+    if (dirty) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  if (window.claude && typeof window.claude.use === 'function') {
+    window.claude.use('artifact').then(function (a) {
+      if (!a) return;             // read-only view: chrome stays hidden
+      api = a;
+      bar.hidden = false;
+    })['catch'](function () { /* read-only view */ });
+  }
+})();
+</script>
