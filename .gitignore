@@ -1,0 +1,7 @@
+# Local preview tooling - not part of the website
+server.js
+.claude/
+
+# Working files that should not be public
+*.pdf
+logo.jpg

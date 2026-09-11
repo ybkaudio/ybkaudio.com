@@ -1,3 +1,10 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="YBK Audio builds small standalone music apps for Windows: YBK Synth Player and YBK MidSide. Music software made simple.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='283 276 878 907'%3E%3Cpath fill='%231C60C4' d='M722 286L1057 1172L722 916L387 1173Z'/%3E%3Cpath fill='%23EE1B24' d='M860 548L1151 507L964 800Z'/%3E%3Cpath fill='%23EE1B24' d='M585 547L293 506L481 799Z'/%3E%3C/svg%3E">
 <title>YBK Audio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,6 +52,9 @@
 }
 
 *{box-sizing:border-box}
+/* The artifact host supplied this; outside it, `#ybk-bar{display:flex}` would
+   override the UA [hidden] rule and show the editor toolbar to every visitor. */
+[hidden]{display:none!important}
 body{
   margin:0;
   color:var(--ink);
@@ -535,7 +545,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
-
+</head>
+<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
     <g id="ybk-logo">
@@ -1359,3 +1370,5 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   }
 })();
 </script>
+</body>
+</html>
