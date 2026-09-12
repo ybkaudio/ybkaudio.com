@@ -1224,6 +1224,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <button type="button" id="ybk-save" class="primary" hidden>Save &amp; publish</button>
 </div>
 
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script data-ybk>
 (function () {
   /* ---------------- routing ---------------- */
@@ -1251,10 +1252,42 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   window.addEventListener('hashchange', function () { route(); window.scrollTo(0, 0); });
   route();
 
-  /* ---------------- purchase ---------------- */
+  /* ---------------- purchase ----------------
+     Paddle checkout. Fill in the four PADDLE values below from your Paddle
+     dashboard to go live  14 nothing else in this file needs to change.
+     Client-side tokens are safe to publish; never put a Paddle API KEY here. */
+  var PADDLE = {
+    environment: 'sandbox',          // 'sandbox' while testing, 'production' to go live
+    clientToken: '',                 // Paddle dashboard -> Developer tools -> Authentication
+    prices: {
+      synth:   '',                   // Paddle dashboard -> Catalog -> YBK Player -> Price ID (pri_...)
+      midside: ''                    // Paddle dashboard -> Catalog -> YBK MidSide -> Price ID (pri_...)
+    }
+  };
+
+  var paddleReady = false;
+  if (PADDLE.clientToken && window.Paddle) {
+    if (PADDLE.environment === 'sandbox') Paddle.Environment.set('sandbox');
+    Paddle.Initialize({ token: PADDLE.clientToken });
+    paddleReady = true;
+  }
+
   document.querySelectorAll('[data-buy]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var panel = document.querySelector('[data-checkout="' + btn.getAttribute('data-buy') + '"]');
+      var product = btn.getAttribute('data-buy');
+      var priceId = PADDLE.prices[product];
+
+      // Once a real price ID is filled in above, buttons open real checkout
+      // and the "checkout is not open yet" panel is never shown.
+      if (paddleReady && priceId) {
+        Paddle.Checkout.open({
+          items: [{ priceId: priceId, quantity: 1 }],
+          settings: { displayMode: 'overlay', theme: 'dark' }
+        });
+        return;
+      }
+
+      var panel = document.querySelector('[data-checkout="' + product + '"]');
       if (!panel) return;
       panel.hidden = false;
       panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
