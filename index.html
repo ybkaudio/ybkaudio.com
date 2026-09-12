@@ -1257,13 +1257,21 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
      dashboard to go live  14 nothing else in this file needs to change.
      Client-side tokens are safe to publish; never put a Paddle API KEY here. */
   var PADDLE = {
-    environment: 'production',       // LIVE. No webhook exists yet -- see the note below.
-    clientToken: 'live_c368a3e2c91fc58f6b40c7258dd',
+    environment: 'sandbox',          // Testing. Switch to 'production' + swap the values
+                                      // below once ybkaudio.com is approved in Paddle.
+    clientToken: 'test_613e1e64ceedb67e1c32b7a0b0b',
     prices: {
-      synth:   'pri_01m26a79x1e2751c91k981ra5v',  // YBK Player, $7
-      midside: 'pri_01m26a93tt0edase9x5agnpjf0'   // YBK MidSide, $5
+      synth:   'pri_01m2a544atvbsmdpa3j2yk6a8w',  // YBK Player, $7 (sandbox)
+      midside: 'pri_01m2a54rhcj2g9am6y4ygd7n2a'   // YBK MidSide, $5 (sandbox)
     }
   };
+  // LIVE values, saved here so going live later is a one-line swap of the
+  // block above -- not a search for these again:
+  //   environment: 'production'
+  //   clientToken: 'live_c368a3e2c91fc58f6b40c7258dd'
+  //   synth:   'pri_01m26a79x1e2751c91k981ra5v'
+  //   midside: 'pri_01m26a93tt0edase9x5agnpjf0'
+  //
   // NOTE (remove once the webhook + Keygen automation ships): every purchase
   // from here on needs a HUMAN to notice the payment in the Paddle dashboard
   // and email the installer + a license code by hand. Nothing does this
