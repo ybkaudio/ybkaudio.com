@@ -597,7 +597,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <dl class="hero-notes">
           <div class="note"><dt data-copy="n1t">Platform</dt><dd data-copy="n1d">Windows 10 &amp; 11. Native desktop applications, built in C++ with JUCE.</dd></div>
-          <div class="note"><dt data-copy="n2t">Price</dt><dd data-copy="n2d">$5 per app. One single-use code per purchase — it activates one machine, once.</dd></div>
+          <div class="note"><dt data-copy="n2t">Price</dt><dd data-copy="n2d">$5–$7 per app. One single-use code per purchase — it activates one machine, once.</dd></div>
           <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">Both apps are in active development. No release date announced yet.</dd></div>
         </dl>
       </div>
@@ -660,13 +660,13 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="wrap price-grid">
       <div>
         <span class="eyebrow" data-copy="pr-eye">Pricing</span>
-        <h3 class="big"><span data-copy="pr-h1">Five</span><br><span data-copy="pr-h2">dollars</span><em>.</em></h3>
-        <p class="blurb" data-copy="pr-p">Five dollars, one machine, once. Each purchase is a single-use code that activates one computer and expires the moment it does — no subscription, no seats, no transfers. That’s the whole reason it costs five dollars.</p>
+        <h3 class="big"><span data-copy="pr-h1">Pay once</span><br><span data-copy="pr-h2">keep it</span><em>.</em></h3>
+        <p class="blurb" data-copy="pr-p">One machine, once. Each purchase is a single-use code that activates one computer and expires the moment it does — no subscription, no seats, no transfers. That’s the whole reason these cost five to seven dollars instead of thirty-nine.</p>
       </div>
       <div class="tiers">
         <div class="tier">
           <span class="nm" data-copy="t1n">YBK Player</span>
-          <span class="amt" data-copy="t1a">$5</span>
+          <span class="amt" data-copy="t1a">$7</span>
           <span class="desc" data-copy="t1d">Standalone VST instrument host with always-on MIDI capture.</span>
           <a class="btn" href="#/player" data-copy="t1b">Get now</a>
         </div>
@@ -710,7 +710,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="kicker" data-copy="sp-k">Play, Recover, Edit, Export. Your VSTs, without the DAW.</p>
         </div>
         <div class="prod-price">
-          <span data-copy="sp-price">$5</span>
+          <span data-copy="sp-price">$7</span>
           <small data-copy="sp-price-sub">One-time · One license · One device</small>
         </div>
       </div>
@@ -870,7 +870,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <tr><th scope="row" data-copy="sp-s5t">Export</th><td data-copy="sp-s5v">Standard .mid file</td></tr>
           <tr><th scope="row" data-copy="sp-s6t">Platform</th><td data-copy="sp-s6v">Windows 10 / 11</td></tr>
           <tr><th scope="row" data-copy="sp-s7t">Licence</th><td data-copy="sp-s7v">Single-use — one code, one machine, expires on activation</td></tr>
-          <tr><th scope="row" data-copy="sp-s8t">Price</th><td data-copy="sp-s8v">$5.00 — one-time, no subscription</td></tr>
+          <tr><th scope="row" data-copy="sp-s8t">Price</th><td data-copy="sp-s8v">$7.00 — one-time, no subscription</td></tr>
         </tbody>
       </table>
 
@@ -886,14 +886,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           </ul>
         </div>
         <div class="buy-side">
-          <div class="buy-total"><span data-copy="sp-total-l">Total today</span><b data-copy="sp-total">$5.00</b></div>
+          <div class="buy-total"><span data-copy="sp-total-l">Total today</span><b data-copy="sp-total">$7.00</b></div>
           <button type="button" class="btn" data-buy="synth">
             <span data-copy="sp-buy-btn">Purchase</span><span aria-hidden="true">→</span>
           </button>
           <p class="fineprint" data-copy="sp-fine">Payment is handled by our checkout provider — YBK Audio never sees your card details. Instant delivery by email.</p>
         </div>
 
-        <p class="licnote" data-copy="sp-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $5 instead of $39.</p>
+        <p class="licnote" data-copy="sp-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $7 instead of $39.</p>
 
         <div class="breaks">
           <div class="keep">
@@ -1257,13 +1257,17 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
      dashboard to go live  14 nothing else in this file needs to change.
      Client-side tokens are safe to publish; never put a Paddle API KEY here. */
   var PADDLE = {
-    environment: 'sandbox',          // 'sandbox' while testing, 'production' to go live
-    clientToken: '',                 // Paddle dashboard -> Developer tools -> Authentication
+    environment: 'production',       // LIVE. No webhook exists yet -- see the note below.
+    clientToken: 'live_c368a3e2c91fc58f6b40c7258dd',
     prices: {
-      synth:   '',                   // Paddle dashboard -> Catalog -> YBK Player -> Price ID (pri_...)
-      midside: ''                    // Paddle dashboard -> Catalog -> YBK MidSide -> Price ID (pri_...)
+      synth:   'pri_01m26a79x1e2751c91k981ra5v',  // YBK Player, $7
+      midside: 'pri_01m26a93tt0edase9x5agnpjf0'   // YBK MidSide, $5
     }
   };
+  // NOTE (remove once the webhook + Keygen automation ships): every purchase
+  // from here on needs a HUMAN to notice the payment in the Paddle dashboard
+  // and email the installer + a license code by hand. Nothing does this
+  // automatically yet -- a paying customer currently gets nothing until you do.
 
   var paddleReady = false;
   if (PADDLE.clientToken && window.Paddle) {
