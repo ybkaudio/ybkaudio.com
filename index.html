@@ -515,6 +515,51 @@ footer{border-top:1px solid var(--rule);padding-block:26px 40px}
 }
 .foot .logo{width:20px}
 .foot-l{display:flex;align-items:center;gap:10px}
+.foot-links{display:flex;gap:4px 16px;flex-wrap:wrap}
+.foot-links a{color:var(--ink);text-decoration:none}
+.foot-links a:hover{color:var(--accent)}
+/* Seller disclosure required of Korean online sellers (전자상거래법) --
+   deliberately not uppercased: the address and name must read as written. */
+.biz{
+  margin:18px 0 0;padding-top:16px;border-top:1px solid var(--rule);
+  display:flex;flex-wrap:wrap;gap:4px 18px;
+  font-size:12px;line-height:1.6;color:var(--muted);
+}
+.biz b{font-weight:500;color:var(--ink)}
+.mor{margin:8px 0 0;font-size:12px;line-height:1.6;color:var(--muted)}
+.buy-links{margin:0;font-size:12.5px;color:var(--muted)}
+.buy-links a{color:var(--muted)}
+.buy-links a:hover{color:var(--ink)}
+
+/* ---------- legal pages ---------- */
+.legal{padding-block:clamp(28px,4vw,44px) clamp(44px,6vw,80px)}
+.legal-meta{
+  margin:14px 0 0;font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+.legal-body{max-width:72ch;margin-top:clamp(26px,3.6vw,40px)}
+.legal-body h3{
+  font-size:19px;font-weight:700;letter-spacing:-.01em;line-height:1.25;
+  margin:34px 0 10px;padding-top:22px;border-top:1px solid var(--rule);
+}
+.legal-body h3:first-child{margin-top:0;padding-top:0;border-top:none}
+.legal-body p,.legal-body li{font-size:15px;line-height:1.65}
+.legal-body p{margin:0 0 12px}
+.legal-body ul{margin:0 0 12px;padding-left:20px}
+.legal-body li{margin-bottom:6px}
+.legal-body li::marker{color:var(--accent)}
+.legal-body .callout{
+  padding:14px 16px;margin:0 0 16px;background:var(--surface);
+  border-left:3px solid var(--accent);
+}
+.legal-table{overflow-x:auto;margin:6px 0 16px;border:1px solid var(--rule)}
+.legal-table table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px}
+.legal-table th,.legal-table td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--rule)}
+.legal-table th{
+  font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);background:var(--surface);
+}
+.legal-table tr:last-child td{border-bottom:none}
 
 /* ---------- editor chrome ---------- */
 #ybk-bar{
@@ -688,11 +733,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p class="blurb" data-copy="su-p">Both apps are still being built. Leave a note and you’ll get one email when they’re ready to buy — nothing else, ever.</p>
       </div>
       <div>
-        <a class="btn" href="mailto:producerybk@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches">
+        <a class="btn" href="mailto:ybkaudio.com@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches">
           <span data-copy="su-cta">Email the launch list</span>
           <span aria-hidden="true">→</span>
         </a>
-        <p class="cta-note" data-copy="su-note">Opens your mail app. This becomes a proper signup form once the domain is registered.</p>
+        <p class="cta-note" data-copy="su-note">Opens your mail app with the message ready to send.</p>
       </div>
     </div>
   </section>
@@ -890,7 +935,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <button type="button" class="btn" data-buy="synth">
             <span data-copy="sp-buy-btn">Purchase</span><span aria-hidden="true">→</span>
           </button>
-          <p class="fineprint" data-copy="sp-fine">Payment is handled by our checkout provider — YBK Audio never sees your card details. Instant delivery by email.</p>
+          <p class="fineprint" data-copy="sp-fine">Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
+          <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
         </div>
 
         <p class="licnote" data-copy="sp-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $7 instead of $39.</p>
@@ -925,7 +971,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <li data-copy="sp-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
             <li data-copy="sp-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
           </ol>
-          <p><a href="mailto:producerybk@gmail.com?subject=Tell%20me%20when%20YBK%20Player%20is%20for%20sale" data-copy="sp-co-cta">Email me when YBK Player goes on sale →</a></p>
+          <p><a href="mailto:ybkaudio.com@gmail.com?subject=Tell%20me%20when%20YBK%20Player%20is%20for%20sale" data-copy="sp-co-cta">Email me when YBK Player goes on sale →</a></p>
         </div>
       </div>
     </div>
@@ -1096,7 +1142,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <button type="button" class="btn" data-buy="midside">
             <span data-copy="ms-buy-btn">Purchase</span><span aria-hidden="true">→</span>
           </button>
-          <p class="fineprint" data-copy="ms-fine">Payment is handled by our checkout provider — YBK Audio never sees your card details. Instant delivery by email.</p>
+          <p class="fineprint" data-copy="ms-fine">Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
+          <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
         </div>
 
         <p class="licnote" data-copy="ms-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $5 instead of $39.</p>
@@ -1131,7 +1178,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <li data-copy="ms-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
             <li data-copy="ms-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
           </ol>
-          <p><a href="mailto:producerybk@gmail.com?subject=Tell%20me%20when%20YBK%20MidSide%20is%20for%20sale" data-copy="ms-co-cta">Email me when MidSide goes on sale →</a></p>
+          <p><a href="mailto:ybkaudio.com@gmail.com?subject=Tell%20me%20when%20YBK%20MidSide%20is%20for%20sale" data-copy="ms-co-cta">Email me when MidSide goes on sale →</a></p>
         </div>
       </div>
     </div>
@@ -1144,20 +1191,20 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="wrap">
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="ac-back">All apps</span></a>
       <h2 style="margin-top:20px" data-copy="ac-h">Your account</h2>
-      <p class="kicker" data-copy="ac-k">One place for your installers and receipts.</p>
+      <p class="kicker" data-copy="ac-k">Until accounts arrive, everything you need comes by email.</p>
 
       <div class="acct-grid" style="margin-top:clamp(30px,4vw,46px)">
         <div>
           <div class="prose">
-            <p data-copy="ac-p1">Your account is where the installers live. Sign in and you can download the latest build of anything you’ve bought, and see which apps and versions are yours — without emailing anyone.</p>
-            <p data-copy="ac-p2">Signing in with Google means there is no password for you to remember and none for us to store. We only ever see your name and email address.</p>
+            <p data-copy="ac-p1">Accounts aren’t switched on yet. For now, your purchase email is your record: it holds your license code and the link to download the installer.</p>
+            <p data-copy="ac-p2">When sign-in arrives, it will use your Google account — no password for you to remember and none for us to store.</p>
           </div>
           <ul class="acct-list">
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l1b">Re-download anytime.</b> <span data-copy="ac-l1">Installers for everything you own, always the latest build.</span></span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l2b">See what you own.</b> <span data-copy="ac-l2">Your purchases, versions and activation status in one list.</span></span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l3b">Support that knows your order.</b> <span data-copy="ac-l3">Get help without digging out a receipt.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l1b">Download link in your email.</b> <span data-copy="ac-l1">Your purchase email carries the installer link and your license code — keep it to download again later.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l2b">Receipt from Paddle.</b> <span data-copy="ac-l2">Every purchase comes with a Paddle receipt showing your order number.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l3b">Help by email.</b> <span data-copy="ac-l3">Write to ybkaudio.com@gmail.com with your order number and we’ll sort it out.</span></span></li>
           </ul>
-          <p class="licnote" style="margin-top:20px" data-copy="ac-lic"><b>On license codes.</b> Codes are single-use: once one has activated a computer it is spent, and an account cannot reissue or transfer it. Your account keeps the installers and your purchase history, not a reusable key.</p>
+          <p class="licnote" style="margin-top:20px" data-copy="ac-lic"><b>On license codes.</b> Codes are single-use: once one has activated a computer it is spent, and it cannot be reissued or transferred. Keep your purchase email as the record of what you bought.</p>
         </div>
 
         <div class="signin">
@@ -1194,12 +1241,175 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
           <span class="pending"><span class="dot" aria-hidden="true"></span><span data-copy="ac-pending">Neither method is connected yet</span></span>
 
-          <p style="margin:16px 0 0;font-size:13px;color:var(--muted);line-height:1.55" data-copy="ac-si-note">Sign-in switches on with the first release, once ybkaudio.com is live — Google requires a registered domain to send you back to. Until then, your download link arrives with your purchase email.</p>
+          <p style="margin:16px 0 0;font-size:13px;color:var(--muted);line-height:1.55" data-copy="ac-si-note">Sign-in will switch on in a later update. Until then, your download link and license code arrive with your purchase email.</p>
 
           <p style="margin:14px 0 0;font-size:13px">
-            <a href="mailto:producerybk@gmail.com?subject=YBK%20Audio%20account%20help" data-copy="ac-mail">producerybk@gmail.com</a>
+            <a href="mailto:ybkaudio.com@gmail.com?subject=YBK%20Audio%20account%20help" data-copy="ac-mail">ybkaudio.com@gmail.com</a>
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== TERMS ====================
+     Legal pages carry no data-copy attributes on purpose: the inline copy
+     editor is for marketing text, and legal wording should only change as a
+     deliberate edit with a new "Last updated" date. -->
+<div data-page="terms" hidden>
+  <section class="legal">
+    <div class="wrap">
+      <a class="backlink" href="#/"><span aria-hidden="true">←</span><span>Home</span></a>
+      <h2 style="margin-top:20px">Terms &amp; Conditions</h2>
+      <p class="legal-meta">Last updated 14 September 2026</p>
+
+      <div class="legal-body">
+        <h3>1. Who we are</h3>
+        <p>These terms govern your purchase and use of software sold on ybkaudio.com. The seller is <b>YBK Audio</b>, a sole proprietorship registered in the Republic of Korea and owned by <b>Kim Yeonbum (김연범)</b> — business registration number 288-17-02789, 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea. You can reach us at <a href="mailto:ybkaudio.com@gmail.com">ybkaudio.com@gmail.com</a>.</p>
+        <p>By buying, installing or using YBK Player or YBK MidSide (“the Software”), you agree to these terms.</p>
+
+        <h3>2. Payment and our reseller, Paddle</h3>
+        <p>Our order process is conducted by our online reseller <b>Paddle.com</b>. Paddle.com is the Merchant of Record for all our orders: it processes your payment, charges and remits any sales tax or VAT, and issues your invoice. Your purchase is also subject to the <a href="https://www.paddle.com/legal/buyer-terms" target="_blank" rel="noopener">Paddle Buyer Terms</a>. YBK Audio never receives your card details.</p>
+        <p>Prices are shown in US dollars on each product page. Paddle may show the total in your local currency and add tax where required.</p>
+
+        <h3>3. Your license</h3>
+        <p>The Software is licensed, not sold. When your payment completes, you receive one license code by email. That code grants you a personal, non-exclusive, non-transferable right to install and use the Software on <b>one computer</b>.</p>
+        <ul>
+          <li><b>Single use.</b> The code is spent the moment it activates a computer online. It cannot be reissued, moved to another computer, or used a second time.</li>
+          <li><b>What keeps it working.</b> Reinstalling or resetting Windows, Windows and driver updates, app updates, and replacing the drive, RAM, graphics card, monitor or network hardware on the same computer.</li>
+          <li><b>What ends it.</b> Replacing the motherboard or CPU, moving to a different computer, or running the Software inside a new virtual machine. Using the Software after that requires a new purchase.</li>
+          <li><b>Activation.</b> Activating needs an internet connection once. See the <a href="#/privacy">Privacy Policy</a> for exactly what is sent.</li>
+        </ul>
+        <p>You may use the Software for personal and commercial work. Music, recordings and MIDI files you make with it belong to you.</p>
+
+        <h3>4. Updates</h3>
+        <p>Your license includes every update within major version 1 (1.x) at no extra cost. A future major version, if one is released, may be sold separately. We may change or remove features in updates, but will not remove a product’s core function within version 1.</p>
+
+        <h3>5. What you may not do</h3>
+        <ul>
+          <li>Share, sell, rent or publish your license code or the Software.</li>
+          <li>Circumvent, disable or tamper with license activation.</li>
+          <li>Reverse engineer, decompile or disassemble the Software, except where the law expressly allows it despite this restriction.</li>
+          <li>Use the Software to break the law or infringe anyone else’s rights.</li>
+        </ul>
+
+        <h3>6. Third-party plugins and audio</h3>
+        <p>YBK Player loads VST instruments made by other companies. Those plugins are governed by their own licenses, which you must hold separately; we are not responsible for how they behave. YBK MidSide processes audio already playing on your computer and does not record or transmit it.</p>
+
+        <h3>7. Problems with an order</h3>
+        <p>If something is wrong with your order, email <a href="mailto:ybkaudio.com@gmail.com">ybkaudio.com@gmail.com</a> with your order number and we will look into it. If a payment is reversed, the license code it paid for is deactivated.</p>
+
+        <h3>8. Warranty</h3>
+        <p>We build the Software carefully and will try to fix problems you report, but it is provided “as is”, without warranties of any kind beyond those that cannot be excluded by law. Check the system requirements on each product page before buying.</p>
+
+        <h3>9. Limitation of liability</h3>
+        <p>To the fullest extent permitted by law, YBK Audio is not liable for indirect or consequential losses — including lost data, lost work or lost profits — arising from use of the Software, and its total liability for any claim is limited to the amount you paid for the product concerned. Nothing in these terms limits liability that cannot legally be limited, such as for intentional misconduct or gross negligence.</p>
+
+        <h3>10. Termination</h3>
+        <p>Your license ends automatically if you break these terms. On termination you must stop using and uninstall the Software.</p>
+
+        <h3>11. Governing law</h3>
+        <p>These terms are governed by the laws of the Republic of Korea. If you buy as a consumer, you keep any mandatory protections given by the law of the country you live in, and nothing here removes your statutory rights.</p>
+
+        <h3>12. Changes</h3>
+        <p>We may update these terms. The version in force when you bought applies to that purchase; the date at the top of this page shows the latest revision.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== PRIVACY ==================== -->
+<div data-page="privacy" hidden>
+  <section class="legal">
+    <div class="wrap">
+      <a class="backlink" href="#/"><span aria-hidden="true">←</span><span>Home</span></a>
+      <h2 style="margin-top:20px">Privacy Policy</h2>
+      <p class="legal-meta">Last updated 14 September 2026</p>
+
+      <div class="legal-body">
+        <p class="callout">Short version: we collect only what it takes to sell you a license and make it work on one computer. No analytics, no advertising trackers, no selling of data — ever.</p>
+
+        <h3>1. Who is responsible</h3>
+        <p><b>YBK Audio</b> (sole proprietor Kim Yeonbum, 김연범), 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea — business registration number 288-17-02789. Contact: <a href="mailto:ybkaudio.com@gmail.com">ybkaudio.com@gmail.com</a>.</p>
+
+        <h3>2. What we collect and why</h3>
+        <ul>
+          <li><b>When you buy.</b> Paddle, our Merchant of Record, collects your name, email address, country, postal code where required, and payment details. Paddle keeps your card details; we never receive them. We receive your email address, the product bought, the order number and the amount, so we can deliver your license and keep sales records.</li>
+          <li><b>When your license is issued.</b> Your email address, license code and order number are stored with our license service and used once to email you the code.</li>
+          <li><b>When you activate the Software.</b> The app sends your license code, a machine fingerprint, the app version, the Windows version and the activation time. Your IP address is visible to the license service as part of the connection. The fingerprint is a one-way code derived from your motherboard and CPU identifiers: it cannot be turned back into those identifiers and contains nothing about you, your files or your music. It exists only so a single-use license stays on one computer.</li>
+          <li><b>When you email us.</b> Your email address and whatever you choose to write, used to answer you.</li>
+          <li><b>When you visit this website.</b> We run no analytics and no advertising cookies. Our hosting provider and Google Fonts receive your IP address to serve the page, and Paddle’s checkout script may set cookies it needs for payment and fraud prevention.</li>
+        </ul>
+        <p>The Software does not collect usage statistics, and YBK MidSide never records or transmits the audio it processes.</p>
+
+        <h3>3. Legal basis</h3>
+        <p>We process this data to perform our contract with you (selling and licensing the Software), to meet legal obligations (tax and consumer-protection record keeping), and in our legitimate interest in preventing license misuse. Where the law requires consent, we ask for it.</p>
+
+        <h3>4. How long we keep it</h3>
+        <ul>
+          <li>Records of contracts, payments and refunds: <b>5 years</b>, as required by the Korean Act on Consumer Protection in Electronic Commerce.</li>
+          <li>Records of complaints and disputes: <b>3 years</b>, under the same act.</li>
+          <li>License and activation records: for as long as the license exists, then up to 5 years alongside the sales record.</li>
+          <li>Launch-list emails: until the launch announcement is sent, then deleted.</li>
+        </ul>
+
+        <h3>5. Who processes it, and where</h3>
+        <p>We do not sell or rent personal data, and we do not share it for marketing. We use the following services to run the store. Because they are based outside Korea, your data is transferred abroad over the internet when you buy, receive a license, activate the Software or visit the site. You can refuse this by not purchasing; the Software cannot be sold or activated without it.</p>
+        <div class="legal-table">
+          <table>
+            <thead><tr><th>Service</th><th>Country</th><th>Purpose</th><th>Data</th></tr></thead>
+            <tbody>
+              <tr><td>Paddle.com Market Ltd</td><td>United Kingdom</td><td>Payment, tax, invoicing (Merchant of Record)</td><td>Name, email, country, payment details, order</td></tr>
+              <tr><td>Keygen</td><td>United States</td><td>Issuing and activating licenses</td><td>Email, license code, order number, machine fingerprint, app and Windows version, IP address</td></tr>
+              <tr><td>Resend</td><td>United States</td><td>Sending your license email</td><td>Email, license code</td></tr>
+              <tr><td>Cloudflare, Inc.</td><td>United States</td><td>Running the purchase-to-license automation</td><td>Order data in transit, email</td></tr>
+              <tr><td>GitHub, Inc.</td><td>United States</td><td>Hosting this website</td><td>IP address</td></tr>
+              <tr><td>Google LLC</td><td>United States</td><td>Serving website fonts</td><td>IP address</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Each service keeps data only as long as needed to provide its function to us, or as its own legal obligations require.</p>
+
+        <h3>6. Your rights</h3>
+        <p>You can ask us to show, correct, delete or stop processing your personal data, or to give you a copy of it. Email <a href="mailto:ybkaudio.com@gmail.com">ybkaudio.com@gmail.com</a> and we will reply within 10 days. Some records must be kept for the periods above even if you ask for deletion.</p>
+        <p>If you are unhappy with our answer, you can complain to the Personal Information Protection Commission of Korea (privacy.go.kr, call 118), or to the data-protection authority where you live.</p>
+
+        <h3>7. Security</h3>
+        <p>All data travels over encrypted connections. Access to the services above is restricted to YBK Audio and protected by secret keys that are never published.</p>
+
+        <h3>8. Children</h3>
+        <p>Our store is not directed at children under 14, and we do not knowingly collect their personal data.</p>
+
+        <h3>9. Privacy officer</h3>
+        <p>Kim Yeonbum (김연범), Representative — <a href="mailto:ybkaudio.com@gmail.com">ybkaudio.com@gmail.com</a></p>
+
+        <h3>10. Changes</h3>
+        <p>If this policy changes, we will update the date at the top of this page. Significant changes will be announced on this website before they take effect.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== REFUNDS ==================== -->
+<div data-page="refund" hidden>
+  <section class="legal">
+    <div class="wrap">
+      <a class="backlink" href="#/"><span aria-hidden="true">←</span><span>Home</span></a>
+      <h2 style="margin-top:20px">Refund Policy</h2>
+      <p class="legal-meta">Last updated 14 September 2026</p>
+
+      <!-- Deliberately commits to no refund window or entitlement: requests are
+           decided case by case over email. The page itself must stay -- Paddle's
+           domain review requires a Refund Policy reachable from navigation. -->
+      <div class="legal-body">
+        <h3>1. Problems with your order</h3>
+        <p>If something is wrong with your purchase, email <a href="mailto:ybkaudio.com@gmail.com?subject=Order%20help">ybkaudio.com@gmail.com</a> from the address you bought with. Include your order number from the Paddle receipt and tell us what happened. We read every message and reply within 3 business days.</p>
+
+        <h3>2. How payments are reversed</h3>
+        <p>Payments are handled by Paddle, our Merchant of Record, so any refund is issued by Paddle to your original payment method. When a payment is refunded, the license code it paid for is deactivated and the Software stops working on any computer where it was activated.</p>
+
+        <h3>3. Your statutory rights</h3>
+        <p>Nothing on this page limits any rights you have under consumer law — including the Korean Act on Consumer Protection in Electronic Commerce and, for buyers in the EU or UK, the statutory withdrawal right described in the <a href="https://www.paddle.com/legal/refund-policy" target="_blank" rel="noopener">Paddle Refund Policy</a>.</p>
       </div>
     </div>
   </section>
@@ -1211,9 +1421,24 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <div class="wrap foot">
     <span class="foot-l">
       <svg class="logo" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
-      <span data-copy="f1">Contact - producerybk@gmail.com</span>
+      <span data-copy="f1">Contact - ybkaudio.com@gmail.com</span>
     </span>
-    <span data-copy="f2">Windows 10 / 11 · In development</span>
+    <nav class="foot-links" aria-label="Legal">
+      <a href="#/terms">Terms</a>
+      <a href="#/privacy">Privacy</a>
+      <a href="#/refund">Refunds</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="biz">
+      <span><b>YBK Audio</b> (와이비케이 오디오)</span>
+      <span>Representative 김연범</span>
+      <span>Business Reg. No. 288-17-02789</span>
+      <span>Mail-order Sales Reg. No. pending</span>
+      <span>서울특별시 강남구 선릉로 221</span>
+      <span>ybkaudio.com@gmail.com</span>
+    </p>
+    <p class="mor">Orders are processed by Paddle.com, our Merchant of Record, which handles payment, tax and invoicing. Windows 10 / 11.</p>
   </div>
 </footer>
 
@@ -1233,7 +1458,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     '/player': 'synth',
     '/synth-player': 'synth',   // old URL, kept so shared links still work
     '/midside': 'midside',
-    '/account': 'account'
+    '/account': 'account',
+    '/terms': 'terms',
+    '/privacy': 'privacy',
+    '/refund': 'refund'
   };
   var pages = Array.prototype.slice.call(document.querySelectorAll('[data-page]'));
   var navs = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
