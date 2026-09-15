@@ -657,8 +657,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <p class="kicker" data-copy="h-sp-k">Play, Recover, Edit, Export.</p>
       <div class="summary">
         <div class="prose">
-          <p data-copy="h-sp-p1">Instrument Player scans the VST instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
-          <p data-copy="h-sp-p2">And it records the whole time, so the phrase you stumbled into before you were ready is still there when you want it.</p>
+          <p data-copy="h-sp-p1">Instrument Player scans the VST3 instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
+          <p data-copy="h-sp-p2">And MIDI Replay keeps the last few minutes of your playing without pressing Record, so the phrase you stumbled into is still there — ready to edit and export as .mid.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/player"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
@@ -739,7 +739,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div class="tier">
           <span class="nm" data-copy="t1n">Instrument Player</span>
           <span class="amt" data-copy="t1a">$7</span>
-          <span class="desc" data-copy="t1d">Standalone VST instrument host with always-on MIDI capture.</span>
+          <span class="desc" data-copy="t1d">Standalone VST3 instrument player with always-on MIDI Replay.</span>
           <a class="btn" href="#/player" data-copy="t1b">Get now</a>
         </div>
         <div class="tier">
@@ -785,7 +785,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div>
           <span class="status" data-copy="sp-status">In development</span>
           <h2 data-copy="sp-name">Instrument Player</h2>
-          <p class="kicker" data-copy="sp-k">Play, Recover, Edit, Export. Your VSTs, without the DAW.</p>
+          <p class="kicker" data-copy="sp-k">Open it, pick an instrument, play. Your VST3 instruments, without the DAW.</p>
         </div>
         <div class="prod-price">
           <span data-copy="sp-price">$7</span>
@@ -810,32 +810,57 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <section class="band" style="border-top:none">
     <div class="wrap">
       <div class="prose">
-        <p data-copy="sp-p1">Instrument Player is a standalone host for the VST instruments you already own. It scans your plugin folders on launch, lists what it finds, and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
-        <p data-copy="sp-p2">No empty project. No track to arm. No plugin window buried behind an arrangement view. Click the instrument, play the instrument. Don’t let DAW shenanigans get in the way of your creativity.</p>
-        <p data-copy="sp-p3">And because the best thing you play is almost always the thing you played before you were ready, it records continuously in the background. Every note, every bend, every held pedal, from the moment the instrument opens.</p>
+        <p data-copy="sp-p1">Instrument Player runs the virtual instruments you already own as their own app. A lot of great synths only ship as plugins — so trying a sound or playing for five minutes means booting a DAW and making a track. Instrument Player removes the timeline, the tracks and the mixer, and keeps only the part you wanted: one instrument, ready to play.</p>
+        <p data-copy="sp-p2">It finds the VST3 instruments on your PC, shows the plugin’s own interface at exactly its size, and takes input from every MIDI controller you plug in — or from your computer keyboard.</p>
+        <p data-copy="sp-p3">And it never misses the take. MIDI Replay keeps the last few minutes of your playing in memory without you pressing Record, so the phrase you stumbled into can be pulled back, tidied up in the piano roll and exported as a .mid file for your DAW.</p>
       </div>
 
       <div class="features">
         <div class="feat">
-          <span class="n" data-copy="f1n">Standalone hosting</span>
-          <h4 data-copy="f1h">Any instrument, on its own</h4>
-          <p data-copy="f1p">Opens VST instruments installed on your system with their full interface, no host project required.</p>
+          <span class="n" data-copy="f1n">Find</span>
+          <h4 data-copy="f1h">Every instrument, searchable</h4>
+          <p data-copy="f1p">Scans your VST3 instruments into a searchable list and filters out effect plugins. Star favourites to pin them to the top. Scan only what’s new, or rescan everything.</p>
         </div>
         <div class="feat">
-          <span class="n" data-copy="f2n">Automatic scan</span>
-          <h4 data-copy="f2h">Finds what you already own</h4>
-          <p data-copy="f2p">Scans your plugin folders on launch and lists every instrument it can load.</p>
+          <span class="n" data-copy="f2n">The plugin, as designed</span>
+          <h4 data-copy="f2h">Its own interface, its own size</h4>
+          <p data-copy="f2p">The window fits the plugin exactly. Go full screen with F11 and plugins that can scale grow to fit without stretching; the rest stay sharp and centred.</p>
         </div>
         <div class="feat">
-          <span class="n" data-copy="f3n">Always-on capture</span>
-          <h4 data-copy="f3h">Nothing to arm, nothing to press</h4>
-          <p data-copy="f3p">Recording runs the whole session, so an idea is saved before you decide you wanted it.</p>
+          <span class="n" data-copy="f3n">Play</span>
+          <h4 data-copy="f3h">Any controller, or your keyboard</h4>
+          <p data-copy="f3p">Every connected MIDI input works at once, including ones plugged in while the app runs. Press M to play from your computer keyboard; Stop Notes silences anything stuck.</p>
         </div>
         <div class="feat">
-          <span class="n" data-copy="f4n">Edit and export</span>
-          <h4 data-copy="f4h">Trim it, fix it, take it with you</h4>
-          <p data-copy="f4p">Scroll back, trim the take, nudge the notes that landed late, then export a standard .mid file for your DAW.</p>
+          <span class="n" data-copy="f4n">MIDI Replay</span>
+          <h4 data-copy="f4h">Nothing to arm, nothing to press</h4>
+          <p data-copy="f4p">The last few minutes of playing are always kept in memory, so an idea is saved before you decide you wanted it. Record is there too, for when you mean it.</p>
         </div>
+        <div class="feat">
+          <span class="n" data-copy="f5n">Edit and export</span>
+          <h4 data-copy="f5h">A proper piano roll</h4>
+          <p data-copy="f5p">Tempo grid, quantise, copy, paste, duplicate, box select and zoom, plus BPM and a metronome. Export a standard .mid file, or load one and loop it while you shape the sound.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="f6n">Picks up where you left off</span>
+          <h4 data-copy="f6h">Same instrument, same sound</h4>
+          <p data-copy="f6p">Your last instrument, its full patch state, your audio device and output volume come back exactly as they were next time you open the app.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="f7n">Stable by design</span>
+          <h4 data-copy="f7h">A bad plugin can’t take it down</h4>
+          <p data-copy="f7p">Scanning runs in a separate process, and an interrupted rescan keeps your existing list. Large sample libraries load in the background, so your PC stays usable.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="f8n">Low latency</span>
+          <h4 data-copy="f8h">Tight enough to perform</h4>
+          <p data-copy="f8p">WASAPI exclusive mode runs at roughly 5–10 ms, set from the gear menu. Nothing is written to disk until you choose to save.</p>
+        </div>
+      </div>
+
+      <div class="requires">
+        <h3 data-copy="sp-req-h">What you’ll need</h3>
+        <p data-copy="sp-req-p">Your own VST3 instruments — Instrument Player doesn’t include any sounds. Large sample libraries can take up to a minute to load the first time.</p>
       </div>
 
       <div class="figs two">
@@ -942,13 +967,16 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <caption data-copy="sp-caption">Instrument Player — specification</caption>
         <tbody>
           <tr><th scope="row" data-copy="sp-s1t">Type</th><td data-copy="sp-s1v">Standalone desktop application</td></tr>
-          <tr><th scope="row" data-copy="sp-s2t">Hosts</th><td data-copy="sp-s2v">VST instruments installed on your system</td></tr>
-          <tr><th scope="row" data-copy="sp-s3t">Plugin scan</th><td data-copy="sp-s3v">Automatic, on launch</td></tr>
-          <tr><th scope="row" data-copy="sp-s4t">MIDI capture</th><td data-copy="sp-s4v">Always on — recover and edit any take</td></tr>
-          <tr><th scope="row" data-copy="sp-s5t">Export</th><td data-copy="sp-s5v">Standard .mid file</td></tr>
-          <tr><th scope="row" data-copy="sp-s6t">Platform</th><td data-copy="sp-s6v">Windows 10 / 11</td></tr>
-          <tr><th scope="row" data-copy="sp-s7t">Licence</th><td data-copy="sp-s7v">Single-use — one code, one machine, expires on activation</td></tr>
-          <tr><th scope="row" data-copy="sp-s8t">Price</th><td data-copy="sp-s8v">$7.00 — one-time, no subscription</td></tr>
+          <tr><th scope="row" data-copy="sp-s2t">Hosts</th><td data-copy="sp-s2v">VST3 instruments installed on your system (effects are filtered out)</td></tr>
+          <tr><th scope="row" data-copy="sp-s3t">Plugin scan</th><td data-copy="sp-s3v">Separate process · scan new only or rescan all · favourites</td></tr>
+          <tr><th scope="row" data-copy="sp-s4t">Input</th><td data-copy="sp-s4v">All MIDI inputs, hot-plug · computer keyboard (M), Z/X for octaves</td></tr>
+          <tr><th scope="row" data-copy="sp-s5t">MIDI capture</th><td data-copy="sp-s5v">MIDI Replay, always on · Record · piano-roll editor</td></tr>
+          <tr><th scope="row" data-copy="sp-s6t">Files</th><td data-copy="sp-s6v">Export and import standard .mid</td></tr>
+          <tr><th scope="row" data-copy="sp-s7t">Audio</th><td data-copy="sp-s7v">WASAPI shared or exclusive · DirectSound</td></tr>
+          <tr><th scope="row" data-copy="sp-s8t">Remembers</th><td data-copy="sp-s8v">Last instrument and its patch, audio device, output volume</td></tr>
+          <tr><th scope="row" data-copy="sp-s9t">Platform</th><td data-copy="sp-s9v">Windows 10 / 11</td></tr>
+          <tr><th scope="row" data-copy="sp-s10t">Licence</th><td data-copy="sp-s10v">Single-use — one code, one machine, expires on activation</td></tr>
+          <tr><th scope="row" data-copy="sp-s11t">Price</th><td data-copy="sp-s11v">$7.00 — one-time, no subscription</td></tr>
         </tbody>
       </table>
 
@@ -1618,7 +1646,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </ul>
 
         <h3>6. Third-party plugins and audio</h3>
-        <p>Instrument Player loads VST instruments made by other companies. Those plugins are governed by their own licenses, which you must hold separately; we are not responsible for how they behave. Console processes audio already playing on your computer; it records only when you press Record, saving the file to your own computer, and never transmits audio. Beatmaker reads the audio and MIDI files you point it at; it never moves, changes or uploads them.</p>
+        <p>Instrument Player loads VST3 instruments made by other companies. Those plugins are governed by their own licenses, which you must hold separately; we are not responsible for how they behave. Console processes audio already playing on your computer; it records only when you press Record, saving the file to your own computer, and never transmits audio. Beatmaker reads the audio and MIDI files you point it at; it never moves, changes or uploads them.</p>
 
         <h3>7. Problems with an order</h3>
         <p>If something is wrong with your order, email <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a> with your order number and we will look into it. If a payment is reversed, the license code it paid for is deactivated.</p>
