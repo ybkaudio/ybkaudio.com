@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="YBK Audio builds small standalone music apps for Windows: YBK Player and YBK MidSide. Music software made simple.">
+<meta name="description" content="YBK Audio builds small standalone music apps for Windows: Instrument Player, Console and Beatmaker. Music software made simple.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='283 276 878 907'%3E%3Cpath fill='%231C60C4' d='M722 286L1057 1172L722 916L387 1173Z'/%3E%3Cpath fill='%23EE1B24' d='M860 548L1151 507L964 800Z'/%3E%3Cpath fill='%23EE1B24' d='M585 547L293 506L481 799Z'/%3E%3C/svg%3E">
 <title>YBK Audio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -485,7 +485,7 @@ h2{
 .price-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap)}
 @media(min-width:820px){.price-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
 .tiers{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
-@media(min-width:560px){.tiers{grid-template-columns:1fr 1fr}}
+@media(min-width:560px){.tiers{grid-template-columns:1fr 1fr}.tier:last-child:nth-child(odd){grid-column:1/-1}}
 .tier{
   background:var(--surface);padding:22px 20px;
   display:flex;flex-direction:column;gap:8px;border-top:2px solid var(--accent);
@@ -615,8 +615,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <span class="wordmark"><span data-copy="wm">YBK</span><i>.</i><span data-copy="wm2">Audio</span></span>
     </a>
     <nav class="nav">
-      <a class="navlink" href="#/player" data-nav="synth">YBK Player</a>
-      <a class="navlink" href="#/midside" data-nav="midside">YBK MidSide</a>
+      <a class="navlink" href="#/player" data-nav="synth">Instrument Player</a>
+      <a class="navlink" href="#/console" data-nav="midside">Console</a>
+      <a class="navlink" href="#/beatmaker" data-nav="beatmaker">Beatmaker</a>
       <a class="navlink nav-acct" href="#/account" data-nav="account">Account</a>
     </nav>
   </div>
@@ -631,7 +632,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="hero-top">
         <svg class="logo hero-mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
         <div>
-          <span class="hero-flag mono eyebrow"><span class="dot" aria-hidden="true"></span><span data-copy="flag">Two Windows apps · In development</span></span>
+          <span class="hero-flag mono eyebrow"><span class="dot" aria-hidden="true"></span><span data-copy="flag">Three Windows apps · In development</span></span>
           <h1><span data-copy="h1a">Music software</span><br><span data-copy="h1b">made simple</span><em>.</em></h1>
         </div>
       </div>
@@ -641,9 +642,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="lede strong" data-copy="lede2">YBK Audio builds the small standalone apps that should have existed all along — they run on the desktop, simple and necessary.</p>
         </div>
         <dl class="hero-notes">
-          <div class="note"><dt data-copy="n1t">Platform</dt><dd data-copy="n1d">Windows 10 &amp; 11. Native desktop applications, built in C++ with JUCE.</dd></div>
-          <div class="note"><dt data-copy="n2t">Price</dt><dd data-copy="n2d">$5–$7 per app. One single-use code per purchase — it activates one machine, once.</dd></div>
-          <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">Both apps are in active development. No release date announced yet.</dd></div>
+          <div class="note"><dt data-copy="n1t">Platform</dt><dd data-copy="n1d">Windows 10 &amp; 11. Desktop applications that run on their own — no DAW required.</dd></div>
+          <div class="note"><dt data-copy="n2t">Price</dt><dd data-copy="n2d">$5–$12 per app. One single-use code per purchase — it activates one machine, once.</dd></div>
+          <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">All three apps are in active development. No release date announced yet.</dd></div>
         </dl>
       </div>
     </div>
@@ -652,11 +653,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <section class="band">
     <div class="wrap">
       <span class="status" data-copy="h-sp-status">In development</span>
-      <h2 data-copy="h-sp-name">YBK Player</h2>
+      <h2 data-copy="h-sp-name">Instrument Player</h2>
       <p class="kicker" data-copy="h-sp-k">Play, Recover, Edit, Export.</p>
       <div class="summary">
         <div class="prose">
-          <p data-copy="h-sp-p1">YBK Player scans the VST instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
+          <p data-copy="h-sp-p1">Instrument Player scans the VST instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
           <p data-copy="h-sp-p2">And it records the whole time, so the phrase you stumbled into before you were ready is still there when you want it.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/player"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
@@ -667,7 +668,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <div>
               <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
               <div class="lbl" data-copy="h-sp-ph">Photo coming soon</div>
-              <div class="sub" data-copy="h-sp-ph2">YBK Player in use</div>
+              <div class="sub" data-copy="h-sp-ph2">Instrument Player in use</div>
             </div>
           </div>
         </div>
@@ -678,14 +679,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <section class="band">
     <div class="wrap">
       <span class="status" data-copy="h-ms-status">In development</span>
-      <h2 data-copy="h-ms-name">YBK MidSide</h2>
+      <h2 data-copy="h-ms-name">Console</h2>
       <p class="kicker" data-copy="h-ms-k">A mixing console for everything your PC plays.</p>
       <div class="summary">
         <div class="prose">
           <p data-copy="h-ms-p1">A floating capsule that sits above every other window and processes your system audio in real time — Mid/Side balance, stereo width and a sweepable band-pass filter, applied to anything.</p>
           <p data-copy="h-ms-p2">Check a reference mix in mono. Solo the side channel of a finished record. Then close the window — it keeps running in the tray.</p>
           <div class="sum-actions btnrow">
-            <a class="btn" href="#/midside"><span data-copy="h-ms-cta">Get now</span><span aria-hidden="true">→</span></a>
+            <a class="btn" href="#/console"><span data-copy="h-ms-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
         </div>
         <div>
@@ -693,7 +694,33 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <div>
               <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
               <div class="lbl" data-copy="h-ms-ph">Photo coming soon</div>
-              <div class="sub" data-copy="h-ms-ph2">MidSide in use</div>
+              <div class="sub" data-copy="h-ms-ph2">Console in use</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <span class="status" data-copy="h-bm-status">In development</span>
+      <h2 data-copy="h-bm-name">Beatmaker</h2>
+      <p class="kicker" data-copy="h-bm-k">Beat ideas from your own samples, in seconds.</p>
+      <div class="summary">
+        <div class="prose">
+          <p data-copy="h-bm-p1">Pick a genre, press Generate, and get drums, bass, chords and melody built from the samples already on your PC — sorted for you, never moved.</p>
+          <p data-copy="h-bm-p2">Then keep changing it: shuffle sounds, regroove, swap chords, lock what works. Export audio, stems or MIDI when the idea lands.</p>
+          <div class="sum-actions btnrow">
+            <a class="btn" href="#/beatmaker"><span data-copy="h-bm-cta">Get now</span><span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div>
+          <div class="usage" style="aspect-ratio:16/10">
+            <div>
+              <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
+              <div class="lbl" data-copy="h-bm-ph">Photo coming soon</div>
+              <div class="sub" data-copy="h-bm-ph2">Beatmaker in use</div>
             </div>
           </div>
         </div>
@@ -706,20 +733,26 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div>
         <span class="eyebrow" data-copy="pr-eye">Pricing</span>
         <h3 class="big"><span data-copy="pr-h1">Pay once</span><br><span data-copy="pr-h2">keep it</span><em>.</em></h3>
-        <p class="blurb" data-copy="pr-p">One machine, once. Each purchase is a single-use code that activates one computer and expires the moment it does — no subscription, no seats, no transfers. That’s the whole reason these cost five to seven dollars instead of thirty-nine.</p>
+        <p class="blurb" data-copy="pr-p">One machine, once. Each purchase is a single-use code that activates one computer and expires the moment it does — no subscription, no seats, no transfers. That’s the whole reason these cost five to twelve dollars instead of thirty-nine or more.</p>
       </div>
       <div class="tiers">
         <div class="tier">
-          <span class="nm" data-copy="t1n">YBK Player</span>
+          <span class="nm" data-copy="t1n">Instrument Player</span>
           <span class="amt" data-copy="t1a">$7</span>
           <span class="desc" data-copy="t1d">Standalone VST instrument host with always-on MIDI capture.</span>
           <a class="btn" href="#/player" data-copy="t1b">Get now</a>
         </div>
         <div class="tier">
-          <span class="nm" data-copy="t2n">YBK MidSide</span>
+          <span class="nm" data-copy="t2n">Console</span>
           <span class="amt" data-copy="t2a">$5</span>
           <span class="desc" data-copy="t2d">Real-time Mid/Side, width and band sweep on system audio.</span>
-          <a class="btn" href="#/midside" data-copy="t2b">Get now</a>
+          <a class="btn" href="#/console" data-copy="t2b">Get now</a>
+        </div>
+        <div class="tier">
+          <span class="nm" data-copy="t3n">Beatmaker</span>
+          <span class="amt" data-copy="t3a">$12</span>
+          <span class="desc" data-copy="t3d">Genre-aware beat ideas built from your own sample library.</span>
+          <a class="btn" href="#/beatmaker" data-copy="t3b">Get now</a>
         </div>
       </div>
     </div>
@@ -730,10 +763,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div>
         <span class="eyebrow" data-copy="su-eye">Launch list</span>
         <h3 class="big"><span data-copy="su-h">Hear it first</span><em>.</em></h3>
-        <p class="blurb" data-copy="su-p">Both apps are still being built. Leave a note and you’ll get one email when they’re ready to buy — nothing else, ever.</p>
+        <p class="blurb" data-copy="su-p">The apps are still being built. Leave a note and you’ll get one email when they’re ready to buy — nothing else, ever.</p>
       </div>
       <div>
-        <a class="btn" href="mailto:ybkaudio.com@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches">
+        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches">
           <span data-copy="su-cta">Email the launch list</span>
           <span aria-hidden="true">→</span>
         </a>
@@ -751,7 +784,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="prod-title">
         <div>
           <span class="status" data-copy="sp-status">In development</span>
-          <h2 data-copy="sp-name">YBK Player</h2>
+          <h2 data-copy="sp-name">Instrument Player</h2>
           <p class="kicker" data-copy="sp-k">Play, Recover, Edit, Export. Your VSTs, without the DAW.</p>
         </div>
         <div class="prod-price">
@@ -764,7 +797,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div>
           <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
           <div class="lbl" data-copy="sp-usage">Photo coming soon</div>
-          <div class="sub" data-copy="sp-usage2">YBK Player running an instrument</div>
+          <div class="sub" data-copy="sp-usage2">Instrument Player running an instrument</div>
         </div>
       </div>
       <p class="usage-cap">
@@ -777,7 +810,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <section class="band" style="border-top:none">
     <div class="wrap">
       <div class="prose">
-        <p data-copy="sp-p1">YBK Player is a standalone host for the VST instruments you already own. It scans your plugin folders on launch, lists what it finds, and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
+        <p data-copy="sp-p1">Instrument Player is a standalone host for the VST instruments you already own. It scans your plugin folders on launch, lists what it finds, and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
         <p data-copy="sp-p2">No empty project. No track to arm. No plugin window buried behind an arrangement view. Click the instrument, play the instrument. Don’t let DAW shenanigans get in the way of your creativity.</p>
         <p data-copy="sp-p3">And because the best thing you play is almost always the thing you played before you were ready, it records continuously in the background. Every note, every bend, every held pedal, from the moment the instrument opens.</p>
       </div>
@@ -808,7 +841,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="figs two">
         <div class="fig">
           <div class="frame">
-            <div class="scanner" role="img" aria-label="Illustration of the YBK Player instrument browser listing scanned instruments">
+            <div class="scanner" role="img" aria-label="Illustration of the Instrument Player instrument browser listing scanned instruments">
               <div class="scan-head"><span data-copy="sc-h">Instruments found</span><span>04</span></div>
               <div class="scan-row"><span class="glyph"><i></i></span><span class="nm" data-copy="sc-1">Wavetable synthesiser</span><span class="ver">VST3</span></div>
               <div class="scan-row"><span class="glyph"><i></i></span><span class="nm" data-copy="sc-2">Analogue modelling synth</span><span class="ver">VST3</span></div>
@@ -906,7 +939,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       </div>
 
       <table class="specs">
-        <caption data-copy="sp-caption">YBK Player — specification</caption>
+        <caption data-copy="sp-caption">Instrument Player — specification</caption>
         <tbody>
           <tr><th scope="row" data-copy="sp-s1t">Type</th><td data-copy="sp-s1v">Standalone desktop application</td></tr>
           <tr><th scope="row" data-copy="sp-s2t">Hosts</th><td data-copy="sp-s2v">VST instruments installed on your system</td></tr>
@@ -922,7 +955,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <!-- purchase -->
       <div class="buy">
         <div>
-          <h3 data-copy="sp-buy-h">Buy YBK Player</h3>
+          <h3 data-copy="sp-buy-h">Buy Instrument Player</h3>
           <ul class="gets">
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g1">The Windows installer, downloadable straight after payment</span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g2">One license code, emailed to the address you pay with</span></li>
@@ -964,14 +997,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
         <div class="checkout" data-checkout="synth" hidden style="grid-column:1/-1">
           <h4 data-copy="sp-co-h">Checkout is not open yet</h4>
-          <p data-copy="sp-co-p1">YBK Player is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
+          <p data-copy="sp-co-p1">Instrument Player is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
           <p data-copy="sp-co-p2">Three things have to land before this button goes live:</p>
           <ol>
             <li data-copy="sp-co-1">The app reaches a releasable build, code-signed with a Windows installer.</li>
             <li data-copy="sp-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
             <li data-copy="sp-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
           </ol>
-          <p><a href="mailto:ybkaudio.com@gmail.com?subject=Tell%20me%20when%20YBK%20Player%20is%20for%20sale" data-copy="sp-co-cta">Email me when YBK Player goes on sale →</a></p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Instrument%20Player%20is%20for%20sale" data-copy="sp-co-cta">Email me when Instrument Player goes on sale →</a></p>
         </div>
       </div>
     </div>
@@ -986,7 +1019,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="prod-title">
         <div>
           <span class="status" data-copy="ms-status">In development</span>
-          <h2 data-copy="ms-name">YBK MidSide</h2>
+          <h2 data-copy="ms-name">Console</h2>
           <p class="kicker" data-copy="ms-k">A mixing console for everything your PC plays.</p>
         </div>
         <div class="prod-price">
@@ -1012,7 +1045,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <section class="band" style="border-top:none">
     <div class="wrap">
       <div class="prose">
-        <p data-copy="ms-p1">MidSide is a floating capsule that sits above every other window and processes your system audio in real time. Mid/Side balance, stereo width and a sweepable band-pass filter — applied to anything playing on your machine, not just to a track in a project.</p>
+        <p data-copy="ms-p1">Console is a floating capsule that sits above every other window and processes your system audio in real time. Mid/Side balance, stereo width and a sweepable band-pass filter — applied to anything playing on your machine, not just to a track in a project.</p>
         <p data-copy="ms-p2">Check a reference mix in mono before you commit to yours. Solo the side channel of a finished record and hear exactly what a mastering engineer put out there. Sweep a band across whatever is playing.</p>
         <p data-copy="ms-p3">Close the window and it keeps running from the system tray. There is no project, no session, and nothing to save.</p>
       </div>
@@ -1042,13 +1075,13 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
       <div class="requires">
         <h3 data-copy="ms-req-h">What you’ll need</h3>
-        <p data-copy="ms-req-p">To process system audio, MidSide needs a virtual audio device. If you don’t already use an audio interface, install the free VB-Audio Virtual Cable — the app walks you through the three-step setup on first launch.</p>
+        <p data-copy="ms-req-p">To process system audio, Console needs a virtual audio device. If you don’t already use an audio interface, install the free VB-Audio Virtual Cable — the app walks you through the three-step setup on first launch.</p>
       </div>
 
       <div class="figs">
         <div class="fig">
           <div class="frame">
-            <svg viewBox="0 0 470 190" width="470" role="img" aria-label="Illustration of the MidSide capsule window with three rotary controls">
+            <svg viewBox="0 0 470 190" width="470" role="img" aria-label="Illustration of the Console capsule window with three rotary controls">
               <defs>
                 <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
                   <feGaussianBlur stdDeviation="7" result="b"/>
@@ -1113,7 +1146,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       </div>
 
       <table class="specs">
-        <caption data-copy="ms-caption">YBK MidSide — specification</caption>
+        <caption data-copy="ms-caption">Console — specification</caption>
         <tbody>
           <tr><th scope="row" data-copy="ms-s1t">Type</th><td data-copy="ms-s1v">Standalone desktop application</td></tr>
           <tr><th scope="row" data-copy="ms-s2t">Modules</th><td data-copy="ms-s2v">Width · Mid/Side · Band Sweep</td></tr>
@@ -1129,7 +1162,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <!-- purchase -->
       <div class="buy">
         <div>
-          <h3 data-copy="ms-buy-h">Buy MidSide</h3>
+          <h3 data-copy="ms-buy-h">Buy Console</h3>
           <ul class="gets">
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g1">The Windows installer, downloadable straight after payment</span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g2">One license code, emailed to the address you pay with</span></li>
@@ -1171,14 +1204,249 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
         <div class="checkout" data-checkout="midside" hidden style="grid-column:1/-1">
           <h4 data-copy="ms-co-h">Checkout is not open yet</h4>
-          <p data-copy="ms-co-p1">MidSide is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
+          <p data-copy="ms-co-p1">Console is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
           <p data-copy="ms-co-p2">Three things have to land before this button goes live:</p>
           <ol>
             <li data-copy="ms-co-1">The app reaches a releasable build, code-signed with a Windows installer.</li>
             <li data-copy="ms-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
             <li data-copy="ms-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
           </ol>
-          <p><a href="mailto:ybkaudio.com@gmail.com?subject=Tell%20me%20when%20YBK%20MidSide%20is%20for%20sale" data-copy="ms-co-cta">Email me when MidSide goes on sale →</a></p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Console%20is%20for%20sale" data-copy="ms-co-cta">Email me when Console goes on sale →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== BEATMAKER ==================== -->
+<div data-page="beatmaker" hidden>
+  <section class="pagehead">
+    <div class="wrap">
+      <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="bm-back">All apps</span></a>
+      <div class="prod-title">
+        <div>
+          <span class="status" data-copy="bm-status">In development</span>
+          <h2 data-copy="bm-name">Beatmaker</h2>
+          <p class="kicker" data-copy="bm-k">Beat ideas from your own samples, in seconds.</p>
+        </div>
+        <div class="prod-price">
+          <span data-copy="bm-price">$12</span>
+          <small data-copy="bm-price-sub">One-time · One license · One device</small>
+        </div>
+      </div>
+
+      <div class="usage">
+        <div>
+          <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
+          <div class="lbl" data-copy="bm-usage">Photo coming soon</div>
+          <div class="sub" data-copy="bm-usage2">A generated beat, ready to reshape</div>
+        </div>
+      </div>
+      <p class="usage-cap">
+        <span data-copy="bm-usage-cap">Fig. 1 — the app in use</span>
+        <span data-copy="bm-usage-cap2">Drop a 16:9 screenshot or clip here</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band" style="border-top:none">
+    <div class="wrap">
+      <div class="prose">
+        <p data-copy="bm-p1">Beatmaker is a sample-based idea DAW for beginners. Point it at the sample folders already on your PC, pick a genre and press Generate — drums, bass, chords and melody arrive together, ready to play.</p>
+        <p data-copy="bm-p2">It isn’t trying to be the program you finish a song in. It’s the one you start in. Shuffle the sounds, regroove the rhythm, swap the chords, add a fill, and keep pressing until something sticks. Lock the tracks you like and only the rest changes.</p>
+        <p data-copy="bm-p3">When the idea lands, export audio, stems or MIDI and carry on in the DAW you already use.</p>
+      </div>
+
+      <div class="features">
+        <div class="feat">
+          <span class="n" data-copy="b1n">Generate</span>
+          <h4 data-copy="b1h">29 genres, one click</h4>
+          <p data-copy="b1p">Boom bap to amapiano. Every genre has its own drum patterns, scales, named chord progressions, bass styles and fills.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="b2n">Keep changing</span>
+          <h4 data-copy="b2h">The menu stays open</h4>
+          <p data-copy="b2p">New beat, shuffle sounds, regroove, variation, humanize, fills, change chords — press them one after another until it’s right.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="b3n">Your samples, sorted</span>
+          <h4 data-copy="b3h">Every kick, found</h4>
+          <p data-copy="b3p">Finds the sample folders on your drives and sorts one-shots into drum types and sound families. Your files are never moved or changed.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="b4n">Learns your grooves</span>
+          <h4 data-copy="b4h">Patterns from your MIDI library</h4>
+          <p data-copy="b4p">Studies the drum grooves you own for shared patterns, accents, swing and pocket, then uses them when it generates. The result stays on your PC.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="b5n">Lock</span>
+          <h4 data-copy="b5h">Keep what already works</h4>
+          <p data-copy="b5p">Locked tracks are skipped by every generate tool, while mute, solo, volume and pan still work.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="b6n">Theory handled</span>
+          <h4 data-copy="b6h">Key, scale and chords</h4>
+          <p data-copy="b6p">Detects the key, keeps bass and melody in scale, and moves every track to a new key with a single drag.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="b7n">Built-in synth</span>
+          <h4 data-copy="b7h">78 presets to start from</h4>
+          <p data-copy="b7p">Three wavetable oscillators, filters, envelopes, LFOs and 808-style glide — bass, keys, leads, pads, plucks and more.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="b8n">Export</span>
+          <h4 data-copy="b8h">Audio, stems, MIDI, project</h4>
+          <p data-copy="b8p">WAV, AIFF, FLAC or MP3, as one mix or one file per track — plus project files that carry their samples to another PC.</p>
+        </div>
+      </div>
+
+      <div class="requires">
+        <h3 data-copy="bm-req-h">What you’ll need</h3>
+        <p data-copy="bm-req-p">Your own sounds. Beatmaker ships with no third-party samples — it builds beats from the one-shots, loops and MIDI grooves already on your computer. It opens in its own window using Microsoft Edge or Google Chrome, and MP3 export needs ffmpeg.</p>
+      </div>
+
+      <div class="figs">
+        <div class="fig">
+          <div class="frame">
+            <svg viewBox="0 0 520 214" width="640" role="img" aria-label="Illustration of a generated trap beat: drum step lanes, an 808 line and chords, with the chords track locked">
+              <rect x="96" y="40" width="416" height="164" fill="var(--ground)"/>
+              <!-- top bar -->
+              <g font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1.2">
+                <rect x="8" y="8" width="60" height="22" rx="2" fill="var(--surface-2)" stroke="var(--rule)"/>
+                <text x="38" y="23" text-anchor="middle" fill="var(--ink)" font-weight="600">TRAP</text>
+                <rect x="74" y="8" width="96" height="22" rx="2" fill="var(--surface-2)" stroke="var(--rule)"/>
+                <text x="82" y="23" fill="var(--muted)">KEY</text><text x="108" y="23" fill="var(--ink)" font-weight="600">F# MIN</text>
+                <rect x="400" y="8" width="112" height="22" rx="2" fill="var(--accent)"/>
+                <text x="456" y="23" text-anchor="middle" fill="#fff" font-weight="700">GENERATE ▾</text>
+              </g>
+              <!-- step grid -->
+              <g stroke="var(--rule)" stroke-width="1" opacity=".45">
+                <line x1="122" y1="40" x2="122" y2="204"/><line x1="148" y1="40" x2="148" y2="204"/><line x1="174" y1="40" x2="174" y2="204"/>
+                <line x1="226" y1="40" x2="226" y2="204"/><line x1="252" y1="40" x2="252" y2="204"/><line x1="278" y1="40" x2="278" y2="204"/>
+                <line x1="330" y1="40" x2="330" y2="204"/><line x1="356" y1="40" x2="356" y2="204"/><line x1="382" y1="40" x2="382" y2="204"/>
+                <line x1="434" y1="40" x2="434" y2="204"/><line x1="460" y1="40" x2="460" y2="204"/><line x1="486" y1="40" x2="486" y2="204"/>
+              </g>
+              <g stroke="var(--rule)" stroke-width="1">
+                <line x1="96" y1="40" x2="96" y2="204"/><line x1="200" y1="40" x2="200" y2="204"/><line x1="304" y1="40" x2="304" y2="204"/><line x1="408" y1="40" x2="408" y2="204"/>
+                <line x1="8" y1="66" x2="512" y2="66"/><line x1="8" y1="94" x2="512" y2="94"/><line x1="8" y1="122" x2="512" y2="122"/><line x1="8" y1="150" x2="512" y2="150"/>
+              </g>
+              <!-- track labels -->
+              <g font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1" fill="var(--muted)">
+                <text x="16" y="57">KICK</text><text x="16" y="84">SNARE</text><text x="16" y="112">HI-HAT</text><text x="16" y="140">808</text><text x="16" y="181">CHORDS</text>
+              </g>
+              <!-- lock on chords -->
+              <g transform="translate(76,170)" fill="none" stroke="var(--hot)" stroke-width="1.5">
+                <path d="M 2.5 5 V 3 A 3.5 3.5 0 0 1 9.5 3 V 5"/>
+                <rect x="0.5" y="5" width="11" height="8" rx="1.5" fill="var(--hot)" stroke="none"/>
+              </g>
+              <!-- drums -->
+              <g fill="var(--accent)">
+                <rect x="99" y="45" width="20" height="16" rx="1.5"/><rect x="255" y="45" width="20" height="16" rx="1.5"/><rect x="359" y="45" width="20" height="16" rx="1.5"/>
+                <rect x="203" y="72" width="20" height="16" rx="1.5"/><rect x="411" y="72" width="20" height="16" rx="1.5"/>
+                <rect x="99" y="100" width="20" height="16" rx="1.5"/><rect x="151" y="100" width="20" height="16" rx="1.5"/><rect x="203" y="100" width="20" height="16" rx="1.5"/><rect x="255" y="100" width="20" height="16" rx="1.5"/>
+                <rect x="307" y="100" width="20" height="16" rx="1.5"/><rect x="359" y="100" width="20" height="16" rx="1.5"/><rect x="411" y="100" width="20" height="16" rx="1.5"/><rect x="463" y="100" width="20" height="16" rx="1.5"/>
+              </g>
+              <g fill="var(--accent)" opacity=".45">
+                <rect x="489" y="100" width="9" height="16" rx="1.5"/><rect x="500" y="100" width="9" height="16" rx="1.5"/>
+              </g>
+              <!-- 808 -->
+              <g fill="var(--accent)">
+                <rect x="98" y="129" width="154" height="14" rx="1.5"/><rect x="254" y="129" width="102" height="14" rx="1.5"/><rect x="358" y="129" width="152" height="14" rx="1.5"/>
+              </g>
+              <!-- chords (locked) -->
+              <g fill="var(--muted)" opacity=".75">
+                <rect x="98" y="160" width="100" height="7" rx="1.5"/><rect x="98" y="172" width="100" height="7" rx="1.5"/><rect x="98" y="184" width="100" height="7" rx="1.5"/>
+                <rect x="202" y="164" width="100" height="7" rx="1.5"/><rect x="202" y="176" width="100" height="7" rx="1.5"/><rect x="202" y="188" width="100" height="7" rx="1.5"/>
+                <rect x="306" y="156" width="100" height="7" rx="1.5"/><rect x="306" y="168" width="100" height="7" rx="1.5"/><rect x="306" y="180" width="100" height="7" rx="1.5"/>
+                <rect x="410" y="162" width="100" height="7" rx="1.5"/><rect x="410" y="174" width="100" height="7" rx="1.5"/><rect x="410" y="186" width="100" height="7" rx="1.5"/>
+              </g>
+              <rect x="8" y="40" width="504" height="164" fill="none" stroke="var(--rule)" stroke-width="1"/>
+            </svg>
+          </div>
+          <p class="frame-cap"><span data-copy="bm-fig">Fig. 2 — a generated beat with the chords locked</span><span><b data-copy="bm-soon">Not final</b></span></p>
+        </div>
+      </div>
+
+      <table class="specs">
+        <caption data-copy="bm-gcaption">Genres — 29</caption>
+        <tbody>
+          <tr><th scope="row" data-copy="bm-g1t">Hip hop</th><td data-copy="bm-g1v">Boom Bap · Trap · Drill · Lo-fi · Phonk · Jersey Club</td></tr>
+          <tr><th scope="row" data-copy="bm-g2t">R&amp;B &amp; pop</th><td data-copy="bm-g2v">R&amp;B · Pop · K-Pop · Synthwave · Future Bass</td></tr>
+          <tr><th scope="row" data-copy="bm-g3t">Band</th><td data-copy="bm-g3v">Rock · Punk · Metal · Funk Break · Jazz · Blues &amp; Country</td></tr>
+          <tr><th scope="row" data-copy="bm-g4t">Dance</th><td data-copy="bm-g4v">House · Techno · UK Garage · Drum &amp; Bass · Dubstep · Disco</td></tr>
+          <tr><th scope="row" data-copy="bm-g5t">Latin, Caribbean &amp; African</th><td data-copy="bm-g5v">Reggaeton · Dancehall · Reggae · Afrobeats · Amapiano · Baile Funk</td></tr>
+        </tbody>
+      </table>
+
+      <table class="specs">
+        <caption data-copy="bm-caption">Beatmaker — specification</caption>
+        <tbody>
+          <tr><th scope="row" data-copy="bm-s1t">Type</th><td data-copy="bm-s1v">Standalone desktop application</td></tr>
+          <tr><th scope="row" data-copy="bm-s2t">Tracks</th><td data-copy="bm-s2v">Rhythm · MIDI synth · Sampler · Audio</td></tr>
+          <tr><th scope="row" data-copy="bm-s3t">Generates</th><td data-copy="bm-s3v">Drums, bass, chords, melody and fills</td></tr>
+          <tr><th scope="row" data-copy="bm-s4t">Patterns</th><td data-copy="bm-s4v">4/4, 1–8 bars</td></tr>
+          <tr><th scope="row" data-copy="bm-s5t">Export</th><td data-copy="bm-s5v">WAV · AIFF · FLAC · MP3 · MIDI · stems · project file</td></tr>
+          <tr><th scope="row" data-copy="bm-s6t">Play in</th><td data-copy="bm-s6v">Computer keyboard or MIDI keyboard</td></tr>
+          <tr><th scope="row" data-copy="bm-s7t">Requires</th><td data-copy="bm-s7v">Your own samples · Microsoft Edge or Google Chrome · ffmpeg for MP3</td></tr>
+          <tr><th scope="row" data-copy="bm-s8t">Platform</th><td data-copy="bm-s8v">Windows 10 / 11</td></tr>
+          <tr><th scope="row" data-copy="bm-s9t">Licence</th><td data-copy="bm-s9v">Single-use — one code, one machine, expires on activation</td></tr>
+          <tr><th scope="row" data-copy="bm-s10t">Price</th><td data-copy="bm-s10v">$12.00 — one-time, no subscription</td></tr>
+        </tbody>
+      </table>
+
+      <!-- purchase -->
+      <div class="buy">
+        <div>
+          <h3 data-copy="bm-buy-h">Buy Beatmaker</h3>
+          <ul class="gets">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g1">The Windows app, downloadable straight after payment</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g2">One license code, emailed to the address you pay with</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g3">One activation, on the computer you install it on</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g4">Every update to version 1.x, at no extra cost</span></li>
+          </ul>
+        </div>
+        <div class="buy-side">
+          <div class="buy-total"><span data-copy="bm-total-l">Total today</span><b data-copy="bm-total">$12.00</b></div>
+          <button type="button" class="btn" data-buy="beatmaker">
+            <span data-copy="bm-buy-btn">Purchase</span><span aria-hidden="true">→</span>
+          </button>
+          <p class="fineprint" data-copy="bm-fine">Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
+          <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
+        </div>
+
+        <p class="licnote" data-copy="bm-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $12 instead of $49.</p>
+
+        <div class="breaks">
+          <div class="keep">
+            <h4 data-copy="bm-keep-h">Your license keeps working after</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k1i">Resetting or reinstalling Windows on the same computer</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k2i">Windows updates, driver updates and app updates</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k4i">Changing your audio interface, MIDI keyboard or network</span></li>
+            </ul>
+          </div>
+          <div class="end">
+            <h4 data-copy="bm-end-h">Your license ends if you</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="bm-e1i">Replace the motherboard</span></li>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="bm-e2i">Replace the CPU</span></li>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="bm-e3i">Move to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="bm-e4i">Run the app inside a new virtual machine</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="checkout" data-checkout="beatmaker" hidden style="grid-column:1/-1">
+          <h4 data-copy="bm-co-h">Checkout is not open yet</h4>
+          <p data-copy="bm-co-p1">Beatmaker is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
+          <p data-copy="bm-co-p2">Three things have to land before this button goes live:</p>
+          <ol>
+            <li data-copy="bm-co-1">The app reaches a releasable build, code-signed for Windows.</li>
+            <li data-copy="bm-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
+            <li data-copy="bm-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
+          </ol>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20for%20sale" data-copy="bm-co-cta">Email me when Beatmaker goes on sale →</a></p>
         </div>
       </div>
     </div>
@@ -1202,7 +1470,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <ul class="acct-list">
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l1b">Download link in your email.</b> <span data-copy="ac-l1">Your purchase email carries the installer link and your license code — keep it to download again later.</span></span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l2b">Receipt from Paddle.</b> <span data-copy="ac-l2">Every purchase comes with a Paddle receipt showing your order number.</span></span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l3b">Help by email.</b> <span data-copy="ac-l3">Write to ybkaudio.com@gmail.com with your order number and we’ll sort it out.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l3b">Help by email.</b> <span data-copy="ac-l3">Write to ybkaudio@gmail.com with your order number and we’ll sort it out.</span></span></li>
           </ul>
           <p class="licnote" style="margin-top:20px" data-copy="ac-lic"><b>On license codes.</b> Codes are single-use: once one has activated a computer it is spent, and it cannot be reissued or transferred. Keep your purchase email as the record of what you bought.</p>
         </div>
@@ -1244,7 +1512,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p style="margin:16px 0 0;font-size:13px;color:var(--muted);line-height:1.55" data-copy="ac-si-note">Sign-in will switch on in a later update. Until then, your download link and license code arrive with your purchase email.</p>
 
           <p style="margin:14px 0 0;font-size:13px">
-            <a href="mailto:ybkaudio.com@gmail.com?subject=YBK%20Audio%20account%20help" data-copy="ac-mail">ybkaudio.com@gmail.com</a>
+            <a href="mailto:ybkaudio@gmail.com?subject=YBK%20Audio%20account%20help" data-copy="ac-mail">ybkaudio@gmail.com</a>
           </p>
         </div>
       </div>
@@ -1265,8 +1533,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
       <div class="legal-body">
         <h3>1. Who we are</h3>
-        <p>These terms govern your purchase and use of software sold on ybkaudio.com. The seller is <b>YBK Audio</b>, a sole proprietorship registered in the Republic of Korea and owned by <b>Kim Yeonbum (김연범)</b> — business registration number 288-17-02789, 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea. You can reach us at <a href="mailto:ybkaudio.com@gmail.com">ybkaudio.com@gmail.com</a>.</p>
-        <p>By buying, installing or using YBK Player or YBK MidSide (“the Software”), you agree to these terms.</p>
+        <p>These terms govern your purchase and use of software sold on ybkaudio.com. The seller is <b>YBK Audio</b>, a sole proprietorship registered in the Republic of Korea and owned by <b>Kim Yeonbum (김연범)</b> — business registration number 288-17-02789, 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea. You can reach us at <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a>.</p>
+        <p>By buying, installing or using Instrument Player, Console or Beatmaker (“the Software”), you agree to these terms.</p>
 
         <h3>2. Payment and our reseller, Paddle</h3>
         <p>Our order process is conducted by our online reseller <b>Paddle.com</b>. Paddle.com is the Merchant of Record for all our orders: it processes your payment, charges and remits any sales tax or VAT, and issues your invoice. Your purchase is also subject to the <a href="https://www.paddle.com/legal/buyer-terms" target="_blank" rel="noopener">Paddle Buyer Terms</a>. YBK Audio never receives your card details.</p>
@@ -1294,10 +1562,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </ul>
 
         <h3>6. Third-party plugins and audio</h3>
-        <p>YBK Player loads VST instruments made by other companies. Those plugins are governed by their own licenses, which you must hold separately; we are not responsible for how they behave. YBK MidSide processes audio already playing on your computer and does not record or transmit it.</p>
+        <p>Instrument Player loads VST instruments made by other companies. Those plugins are governed by their own licenses, which you must hold separately; we are not responsible for how they behave. Console processes audio already playing on your computer and does not record or transmit it. Beatmaker reads the audio and MIDI files you point it at; it never moves, changes or uploads them.</p>
 
         <h3>7. Problems with an order</h3>
-        <p>If something is wrong with your order, email <a href="mailto:ybkaudio.com@gmail.com">ybkaudio.com@gmail.com</a> with your order number and we will look into it. If a payment is reversed, the license code it paid for is deactivated.</p>
+        <p>If something is wrong with your order, email <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a> with your order number and we will look into it. If a payment is reversed, the license code it paid for is deactivated.</p>
 
         <h3>8. Warranty</h3>
         <p>We build the Software carefully and will try to fix problems you report, but it is provided “as is”, without warranties of any kind beyond those that cannot be excluded by law. Check the system requirements on each product page before buying.</p>
@@ -1330,7 +1598,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p class="callout">Short version: we collect only what it takes to sell you a license and make it work on one computer. No analytics, no advertising trackers, no selling of data — ever.</p>
 
         <h3>1. Who is responsible</h3>
-        <p><b>YBK Audio</b> (sole proprietor Kim Yeonbum, 김연범), 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea — business registration number 288-17-02789. Contact: <a href="mailto:ybkaudio.com@gmail.com">ybkaudio.com@gmail.com</a>.</p>
+        <p><b>YBK Audio</b> (sole proprietor Kim Yeonbum, 김연범), 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea — business registration number 288-17-02789. Contact: <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a>.</p>
 
         <h3>2. What we collect and why</h3>
         <ul>
@@ -1340,7 +1608,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <li><b>When you email us.</b> Your email address and whatever you choose to write, used to answer you.</li>
           <li><b>When you visit this website.</b> We run no analytics and no advertising cookies. Our hosting provider and Google Fonts receive your IP address to serve the page, and Paddle’s checkout script may set cookies it needs for payment and fraud prevention.</li>
         </ul>
-        <p>The Software does not collect usage statistics, and YBK MidSide never records or transmits the audio it processes.</p>
+        <p>The Software does not collect usage statistics, and Console never records or transmits the audio it processes.</p>
 
         <h3>3. Legal basis</h3>
         <p>We process this data to perform our contract with you (selling and licensing the Software), to meet legal obligations (tax and consumer-protection record keeping), and in our legitimate interest in preventing license misuse. Where the law requires consent, we ask for it.</p>
@@ -1371,7 +1639,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p>Each service keeps data only as long as needed to provide its function to us, or as its own legal obligations require.</p>
 
         <h3>6. Your rights</h3>
-        <p>You can ask us to show, correct, delete or stop processing your personal data, or to give you a copy of it. Email <a href="mailto:ybkaudio.com@gmail.com">ybkaudio.com@gmail.com</a> and we will reply within 10 days. Some records must be kept for the periods above even if you ask for deletion.</p>
+        <p>You can ask us to show, correct, delete or stop processing your personal data, or to give you a copy of it. Email <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a> and we will reply within 10 days. Some records must be kept for the periods above even if you ask for deletion.</p>
         <p>If you are unhappy with our answer, you can complain to the Personal Information Protection Commission of Korea (privacy.go.kr, call 118), or to the data-protection authority where you live.</p>
 
         <h3>7. Security</h3>
@@ -1381,7 +1649,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p>Our store is not directed at children under 14, and we do not knowingly collect their personal data.</p>
 
         <h3>9. Privacy officer</h3>
-        <p>Kim Yeonbum (김연범), Representative — <a href="mailto:ybkaudio.com@gmail.com">ybkaudio.com@gmail.com</a></p>
+        <p>Kim Yeonbum (김연범), Representative — <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a></p>
 
         <h3>10. Changes</h3>
         <p>If this policy changes, we will update the date at the top of this page. Significant changes will be announced on this website before they take effect.</p>
@@ -1403,7 +1671,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
            domain review requires a Refund Policy reachable from navigation. -->
       <div class="legal-body">
         <h3>1. Problems with your order</h3>
-        <p>If something is wrong with your purchase, email <a href="mailto:ybkaudio.com@gmail.com?subject=Order%20help">ybkaudio.com@gmail.com</a> from the address you bought with. Include your order number from the Paddle receipt and tell us what happened. We read every message and reply within 3 business days.</p>
+        <p>If something is wrong with your purchase, email <a href="mailto:ybkaudio@gmail.com?subject=Order%20help">ybkaudio@gmail.com</a> from the address you bought with. Include your order number from the Paddle receipt and tell us what happened. We read every message and reply within 3 business days.</p>
 
         <h3>2. How payments are reversed</h3>
         <p>Payments are handled by Paddle, our Merchant of Record, so any refund is issued by Paddle to your original payment method. When a payment is refunded, the license code it paid for is deactivated and the Software stops working on any computer where it was activated.</p>
@@ -1421,7 +1689,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <div class="wrap foot">
     <span class="foot-l">
       <svg class="logo" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
-      <span data-copy="f1">Contact - ybkaudio.com@gmail.com</span>
+      <span data-copy="f1">Contact - ybkaudio@gmail.com</span>
     </span>
     <nav class="foot-links" aria-label="Legal">
       <a href="#/terms">Terms</a>
@@ -1436,7 +1704,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <span>Business Reg. No. 288-17-02789</span>
       <span>Mail-order Sales Reg. No. pending</span>
       <span>서울특별시 강남구 선릉로 221</span>
-      <span>ybkaudio.com@gmail.com</span>
+      <span>ybkaudio@gmail.com</span>
     </p>
     <p class="mor">Orders are processed by Paddle.com, our Merchant of Record, which handles payment, tax and invoicing. Windows 10 / 11.</p>
   </div>
@@ -1457,7 +1725,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     '': 'home', '/': 'home',
     '/player': 'synth',
     '/synth-player': 'synth',   // old URL, kept so shared links still work
-    '/midside': 'midside',
+    '/console': 'midside',
+    '/midside': 'midside',      // old URL, kept so shared links still work
+    '/beatmaker': 'beatmaker',
     '/account': 'account',
     '/terms': 'terms',
     '/privacy': 'privacy',
@@ -1489,8 +1759,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
                                       // below once ybkaudio.com is approved in Paddle.
     clientToken: 'test_613e1e64ceedb67e1c32b7a0b0b',
     prices: {
-      synth:   'pri_01m2a544atvbsmdpa3j2yk6a8w',  // YBK Player, $7 (sandbox)
-      midside: 'pri_01m2a54rhcj2g9am6y4ygd7n2a'   // YBK MidSide, $5 (sandbox)
+      synth:   'pri_01m2a544atvbsmdpa3j2yk6a8w',  // Instrument Player, $7 (sandbox)
+      midside: 'pri_01m2a54rhcj2g9am6y4ygd7n2a'   // Console, $5 (sandbox)
+      // beatmaker: no Paddle price yet -- its button shows the "not open yet" panel
     }
   };
   // LIVE values, saved here so going live later is a one-line swap of the
