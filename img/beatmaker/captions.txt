@@ -1,0 +1,4 @@
+01-main.png | A full beat idea in one click | Beatmaker showing a generated Boom Bap beat in G# minor with kick, snare, hi-hat, 808 bass, a locked chords track open in its piano roll, and a melody track.
+02-generate-menu.png | Shuffle, regroove, humanize and change chords | The Generate menu open over a beat, listing Generate new, Recommend track, Shuffle sounds, Regroove, Variation, Humanize, fills, Change chords and learned groove patterns.
+03-library.png | Your samples, sorted into categories automatically | The sample library with the Kick category open, listing sixteen kick samples next to the beat that uses them.
+04-piano-roll.png | Built-in synth with a piano roll | A chord progression in the piano roll with piano keys, above the built-in YBK Synth panel with the Lo-fi Keys preset selected.

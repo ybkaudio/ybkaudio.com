@@ -268,6 +268,24 @@ h2{
   font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--muted);margin-top:8px;
 }
+/* real screenshots */
+.shot{
+  display:block;margin-top:clamp(26px,3.6vw,40px);
+  border:1px solid var(--rule);background:var(--surface);
+}
+.shot img{display:block;width:100%;height:auto}
+.shot:hover{border-color:var(--accent)}
+.shots{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(20px,3vw,28px);
+  margin-top:clamp(30px,4vw,46px);
+}
+@media(min-width:900px){.shots{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.shots figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.shots .shot{margin-top:0}
+.shots figcaption{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);line-height:1.5;
+}
 .usage-cap{
   display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   margin:10px 0 0;
@@ -716,13 +734,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           </div>
         </div>
         <div>
-          <div class="usage" style="aspect-ratio:16/10">
-            <div>
-              <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
-              <div class="lbl" data-copy="h-bm-ph">Photo coming soon</div>
-              <div class="sub" data-copy="h-bm-ph2">Beatmaker in use</div>
-            </div>
-          </div>
+          <a class="shot" href="#/beatmaker">
+            <img src="img/beatmaker/01-main.png" width="1920" height="1080" loading="lazy" alt="Beatmaker showing a generated Boom Bap beat with drums, 808 bass, chords and melody tracks.">
+          </a>
         </div>
       </div>
     </div>
@@ -1319,16 +1333,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
       </div>
 
-      <div class="usage">
-        <div>
-          <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
-          <div class="lbl" data-copy="bm-usage">Photo coming soon</div>
-          <div class="sub" data-copy="bm-usage2">A generated beat, ready to reshape</div>
-        </div>
-      </div>
+      <a class="shot" href="img/beatmaker/01-main.png" target="_blank" rel="noopener">
+        <img src="img/beatmaker/01-main.png" width="1920" height="1080" alt="Beatmaker showing a generated Boom Bap beat in G# minor with kick, snare, hi-hat, 808 bass, a locked chords track open in its piano roll, and a melody track.">
+      </a>
       <p class="usage-cap">
-        <span data-copy="bm-usage-cap">Fig. 1 — the app in use</span>
-        <span data-copy="bm-usage-cap2">Drop a 16:9 screenshot or clip here</span>
+        <span data-copy="bm-usage-cap">Fig. 1 — A full beat idea in one click</span>
+        <span data-copy="bm-usage-cap2">Click to enlarge</span>
       </p>
     </div>
   </section>
@@ -1389,66 +1399,25 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p data-copy="bm-req-p">Your own sounds. Beatmaker ships with no third-party samples — it builds beats from the one-shots, loops and MIDI grooves already on your computer. It opens in its own window using Microsoft Edge or Google Chrome, and MP3 export needs ffmpeg.</p>
       </div>
 
-      <div class="figs">
-        <div class="fig">
-          <div class="frame">
-            <svg viewBox="0 0 520 214" width="640" role="img" aria-label="Illustration of a generated trap beat: drum step lanes, an 808 line and chords, with the chords track locked">
-              <rect x="96" y="40" width="416" height="164" fill="var(--ground)"/>
-              <!-- top bar -->
-              <g font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1.2">
-                <rect x="8" y="8" width="60" height="22" rx="2" fill="var(--surface-2)" stroke="var(--rule)"/>
-                <text x="38" y="23" text-anchor="middle" fill="var(--ink)" font-weight="600">TRAP</text>
-                <rect x="74" y="8" width="96" height="22" rx="2" fill="var(--surface-2)" stroke="var(--rule)"/>
-                <text x="82" y="23" fill="var(--muted)">KEY</text><text x="108" y="23" fill="var(--ink)" font-weight="600">F# MIN</text>
-                <rect x="400" y="8" width="112" height="22" rx="2" fill="var(--accent)"/>
-                <text x="456" y="23" text-anchor="middle" fill="#fff" font-weight="700">GENERATE ▾</text>
-              </g>
-              <!-- step grid -->
-              <g stroke="var(--rule)" stroke-width="1" opacity=".45">
-                <line x1="122" y1="40" x2="122" y2="204"/><line x1="148" y1="40" x2="148" y2="204"/><line x1="174" y1="40" x2="174" y2="204"/>
-                <line x1="226" y1="40" x2="226" y2="204"/><line x1="252" y1="40" x2="252" y2="204"/><line x1="278" y1="40" x2="278" y2="204"/>
-                <line x1="330" y1="40" x2="330" y2="204"/><line x1="356" y1="40" x2="356" y2="204"/><line x1="382" y1="40" x2="382" y2="204"/>
-                <line x1="434" y1="40" x2="434" y2="204"/><line x1="460" y1="40" x2="460" y2="204"/><line x1="486" y1="40" x2="486" y2="204"/>
-              </g>
-              <g stroke="var(--rule)" stroke-width="1">
-                <line x1="96" y1="40" x2="96" y2="204"/><line x1="200" y1="40" x2="200" y2="204"/><line x1="304" y1="40" x2="304" y2="204"/><line x1="408" y1="40" x2="408" y2="204"/>
-                <line x1="8" y1="66" x2="512" y2="66"/><line x1="8" y1="94" x2="512" y2="94"/><line x1="8" y1="122" x2="512" y2="122"/><line x1="8" y1="150" x2="512" y2="150"/>
-              </g>
-              <!-- track labels -->
-              <g font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1" fill="var(--muted)">
-                <text x="16" y="57">KICK</text><text x="16" y="84">SNARE</text><text x="16" y="112">HI-HAT</text><text x="16" y="140">808</text><text x="16" y="181">CHORDS</text>
-              </g>
-              <!-- lock on chords -->
-              <g transform="translate(76,170)" fill="none" stroke="var(--hot)" stroke-width="1.5">
-                <path d="M 2.5 5 V 3 A 3.5 3.5 0 0 1 9.5 3 V 5"/>
-                <rect x="0.5" y="5" width="11" height="8" rx="1.5" fill="var(--hot)" stroke="none"/>
-              </g>
-              <!-- drums -->
-              <g fill="var(--accent)">
-                <rect x="99" y="45" width="20" height="16" rx="1.5"/><rect x="255" y="45" width="20" height="16" rx="1.5"/><rect x="359" y="45" width="20" height="16" rx="1.5"/>
-                <rect x="203" y="72" width="20" height="16" rx="1.5"/><rect x="411" y="72" width="20" height="16" rx="1.5"/>
-                <rect x="99" y="100" width="20" height="16" rx="1.5"/><rect x="151" y="100" width="20" height="16" rx="1.5"/><rect x="203" y="100" width="20" height="16" rx="1.5"/><rect x="255" y="100" width="20" height="16" rx="1.5"/>
-                <rect x="307" y="100" width="20" height="16" rx="1.5"/><rect x="359" y="100" width="20" height="16" rx="1.5"/><rect x="411" y="100" width="20" height="16" rx="1.5"/><rect x="463" y="100" width="20" height="16" rx="1.5"/>
-              </g>
-              <g fill="var(--accent)" opacity=".45">
-                <rect x="489" y="100" width="9" height="16" rx="1.5"/><rect x="500" y="100" width="9" height="16" rx="1.5"/>
-              </g>
-              <!-- 808 -->
-              <g fill="var(--accent)">
-                <rect x="98" y="129" width="154" height="14" rx="1.5"/><rect x="254" y="129" width="102" height="14" rx="1.5"/><rect x="358" y="129" width="152" height="14" rx="1.5"/>
-              </g>
-              <!-- chords (locked) -->
-              <g fill="var(--muted)" opacity=".75">
-                <rect x="98" y="160" width="100" height="7" rx="1.5"/><rect x="98" y="172" width="100" height="7" rx="1.5"/><rect x="98" y="184" width="100" height="7" rx="1.5"/>
-                <rect x="202" y="164" width="100" height="7" rx="1.5"/><rect x="202" y="176" width="100" height="7" rx="1.5"/><rect x="202" y="188" width="100" height="7" rx="1.5"/>
-                <rect x="306" y="156" width="100" height="7" rx="1.5"/><rect x="306" y="168" width="100" height="7" rx="1.5"/><rect x="306" y="180" width="100" height="7" rx="1.5"/>
-                <rect x="410" y="162" width="100" height="7" rx="1.5"/><rect x="410" y="174" width="100" height="7" rx="1.5"/><rect x="410" y="186" width="100" height="7" rx="1.5"/>
-              </g>
-              <rect x="8" y="40" width="504" height="164" fill="none" stroke="var(--rule)" stroke-width="1"/>
-            </svg>
-          </div>
-          <p class="frame-cap"><span data-copy="bm-fig">Fig. 2 — a generated beat with the chords locked</span><span><b data-copy="bm-soon">Not final</b></span></p>
-        </div>
+      <div class="shots">
+        <figure>
+          <a class="shot" href="img/beatmaker/02-generate-menu.png" target="_blank" rel="noopener">
+            <img src="img/beatmaker/02-generate-menu.png" width="1600" height="1000" loading="lazy" alt="The Generate menu open over a beat, listing Generate new, Recommend track, Shuffle sounds, Regroove, Variation, Humanize, fills, Change chords and learned groove patterns.">
+          </a>
+          <figcaption data-copy="bm-shot2">Fig. 2 — Shuffle, regroove, humanize and change chords</figcaption>
+        </figure>
+        <figure>
+          <a class="shot" href="img/beatmaker/03-library.png" target="_blank" rel="noopener">
+            <img src="img/beatmaker/03-library.png" width="1600" height="1000" loading="lazy" alt="The sample library with the Kick category open, listing sixteen kick samples next to the beat that uses them.">
+          </a>
+          <figcaption data-copy="bm-shot3">Fig. 3 — Your samples, sorted into categories automatically</figcaption>
+        </figure>
+        <figure>
+          <a class="shot" href="img/beatmaker/04-piano-roll.png" target="_blank" rel="noopener">
+            <img src="img/beatmaker/04-piano-roll.png" width="1600" height="1000" loading="lazy" alt="A chord progression in the piano roll with piano keys, above the built-in YBK Synth panel with the Lo-fi Keys preset selected.">
+          </a>
+          <figcaption data-copy="bm-shot4">Fig. 4 — Built-in synth with a piano roll</figcaption>
+        </figure>
       </div>
 
       <table class="specs">
