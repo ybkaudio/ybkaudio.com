@@ -683,8 +683,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <p class="kicker" data-copy="h-ms-k">A mixing console for everything your PC plays.</p>
       <div class="summary">
         <div class="prose">
-          <p data-copy="h-ms-p1">A floating capsule that sits above every other window and processes your system audio in real time — Mid/Side balance, stereo width and a sweepable band-pass filter, applied to anything.</p>
-          <p data-copy="h-ms-p2">Check a reference mix in mono. Solo the side channel of a finished record. Then close the window — it keeps running in the tray.</p>
+          <p data-copy="h-ms-p1">A floating capsule that runs everything your PC plays through eleven studio effects in real time — autotune, saturation, compression, band sweep, chorus, delay, reverb, limiter, Mid/Side, width and gain.</p>
+          <p data-copy="h-ms-p2">Solo the sides of a reference track, isolate one frequency band, or hard-autotune a video — one knob per effect, a live display inside each knob, and a Record button for the result.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/console"><span data-copy="h-ms-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
@@ -745,7 +745,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div class="tier">
           <span class="nm" data-copy="t2n">Console</span>
           <span class="amt" data-copy="t2a">$5</span>
-          <span class="desc" data-copy="t2d">Real-time Mid/Side, width and band sweep on system audio.</span>
+          <span class="desc" data-copy="t2d">Eleven real-time effects on all system audio, with recording.</span>
           <a class="btn" href="#/console" data-copy="t2b">Get now</a>
         </div>
         <div class="tier">
@@ -1020,7 +1020,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div>
           <span class="status" data-copy="ms-status">In development</span>
           <h2 data-copy="ms-name">Console</h2>
-          <p class="kicker" data-copy="ms-k">A mixing console for everything your PC plays.</p>
+          <p class="kicker" data-copy="ms-k">Studio effects on everything your PC plays, in real time.</p>
         </div>
         <div class="prod-price">
           <span data-copy="ms-price">$5</span>
@@ -1045,117 +1045,173 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <section class="band" style="border-top:none">
     <div class="wrap">
       <div class="prose">
-        <p data-copy="ms-p1">Console is a floating capsule that sits above every other window and processes your system audio in real time. Mid/Side balance, stereo width and a sweepable band-pass filter — applied to anything playing on your machine, not just to a track in a project.</p>
-        <p data-copy="ms-p2">Check a reference mix in mono before you commit to yours. Solo the side channel of a finished record and hear exactly what a mastering engineer put out there. Sweep a band across whatever is playing.</p>
-        <p data-copy="ms-p3">Close the window and it keeps running from the system tray. There is no project, no session, and nothing to save.</p>
+        <p data-copy="ms-p1">Console is a small capsule that floats above every other window and runs your computer’s entire audio output through a chain of studio effects — YouTube, Spotify, games, the browser, anything. Autotune, saturation, compression, a band isolator, chorus, delay, reverb, a limiter, Mid/Side, stereo width and gain, all live, before the sound reaches your speakers or headphones.</p>
+        <p data-copy="ms-p2">Use it to study a reference: listen to only the mid, only the sides, or one narrow frequency band of any song you can stream. Or use it for fun: hard autotune a video, drown a stream in reverb, then hit Record and keep the result.</p>
+        <p data-copy="ms-p3">No DAW, no plugin host, no parameter pages. Almost every module is one knob — or one dial with two rings — and the knob’s centre shows you what it is doing while you turn it.</p>
       </div>
 
       <div class="features">
         <div class="feat">
-          <span class="n" data-copy="m1n">Width</span>
-          <h4 data-copy="m1h">Mono to extra wide</h4>
-          <p data-copy="m1p">Scales the side signal while the mid stays intact — 0 collapses to mono, 1 is untouched, 2 widens.</p>
+          <span class="n" data-copy="m1n">Whole system</span>
+          <h4 data-copy="m1h">Every app, one place</h4>
+          <p data-copy="m1p">Whatever is playing on your PC passes through the same chain, so one setting works on a song, a video and a game alike.</p>
         </div>
         <div class="feat">
-          <span class="n" data-copy="m2n">Mid / Side</span>
-          <h4 data-copy="m2h">Solo either half of the image</h4>
-          <p data-copy="m2p">Crossfade between hearing only the centre content and only the stereo difference.</p>
+          <span class="n" data-copy="m2n">One-knob modules</span>
+          <h4 data-copy="m2h">The details move with the knob</h4>
+          <p data-copy="m2p">Turn up a compressor or a reverb and the ratio, make-up gain, room size and mix follow together. Every module starts neutral.</p>
         </div>
         <div class="feat">
-          <span class="n" data-copy="m3n">Band sweep</span>
-          <h4 data-copy="m3h">20 Hz to 20 kHz, variable Q</h4>
-          <p data-copy="m3p">A band-pass you can drag across the spectrum, with its own concentric ring for resonance.</p>
+          <span class="n" data-copy="m3n">See it working</span>
+          <h4 data-copy="m3h">A live display in every knob</h4>
+          <p data-copy="m3p">A spectrum, a stereo image, an echo timeline, a piano roll of corrected pitch — each knob’s dark centre shows its own effect as it happens.</p>
         </div>
         <div class="feat">
-          <span class="n" data-copy="m4n">Always available</span>
-          <h4 data-copy="m4h">Floats above everything</h4>
-          <p data-copy="m4p">Stays on top of other windows, drags anywhere on the desktop, and keeps processing from the tray.</p>
+          <span class="n" data-copy="m4n">Record</span>
+          <h4 data-copy="m4h">Keep what you hear</h4>
+          <p data-copy="m4p">One button records the final output to a 24-bit stereo WAV file on your computer, without dropouts.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="m5n">Always on top</span>
+          <h4 data-copy="m5h">Out of the way, never hidden</h4>
+          <p data-copy="m5p">A pill-shaped window with adjustable background transparency, horizontal or vertical, that hides to the system tray.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="m6n">Arrange on the capsule</span>
+          <h4 data-copy="m6h">Drag, remove, add back</h4>
+          <p data-copy="m6p">Reorder the effect chain by dragging knobs on the capsule itself. A switched-off knob stays visible in grey, so its setting is never lost.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="m7n">No clicks</span>
+          <h4 data-copy="m7h">Smooth bypass and changes</h4>
+          <p data-copy="m7p">Bypass the whole chain with a 20 ms crossfade and come straight back — every change ramps instead of popping.</p>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="m8n">Honest latency</span>
+          <h4 data-copy="m8h">The real delay, shown live</h4>
+          <p data-copy="m8p">Driver input and output, buffer and module delay are added up and displayed on the capsule. Settings save automatically.</p>
         </div>
       </div>
 
       <div class="requires">
         <h3 data-copy="ms-req-h">What you’ll need</h3>
-        <p data-copy="ms-req-p">To process system audio, Console needs a virtual audio device. If you don’t already use an audio interface, install the free VB-Audio Virtual Cable — the app walks you through the three-step setup on first launch.</p>
+        <p data-copy="ms-req-p">A way to route system audio into the app: the free VB-Audio Virtual Cable, or an audio interface with a loop-back feature. Set Windows to play into the cable, then pick the cable as Console’s input and your real speakers as its output — the settings panel walks you through it.</p>
       </div>
 
       <div class="figs">
         <div class="fig">
           <div class="frame">
-            <svg viewBox="0 0 470 190" width="470" role="img" aria-label="Illustration of the Console capsule window with three rotary controls">
+            <svg viewBox="0 0 760 190" width="700" role="img" aria-label="Illustration of the Console capsule with five dials — Autotune, Compressor, Band Sweep, Mid/Side and Width — and the control cap showing latency">
               <defs>
                 <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
                   <feGaussianBlur stdDeviation="7" result="b"/>
                   <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
                 </filter>
               </defs>
-              <rect x="10" y="20" width="450" height="150" rx="75" ry="75"
-                    fill="var(--surface-2)" stroke="var(--rule)" stroke-width="1"/>
+              <rect x="10" y="20" width="740" height="150" rx="75" ry="75" fill="var(--surface-2)" stroke="var(--rule)" stroke-width="1"/>
 
-              <g transform="translate(105,88)">
-                <circle cx="0" cy="0" r="30" fill="var(--ground)" opacity=".55"/>
-                <path d="M -18.38 18.38 A 26 26 0 1 1 18.38 18.38"
-                      fill="none" stroke="#34353B" stroke-width="4" stroke-linecap="round"/>
-                <path d="M -18.38 18.38 A 26 26 0 0 1 0 -26"
-                      fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
-                <line x1="0" y1="-9.1" x2="0" y2="-20.8" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="-18.38" cy="18.38" r="1.6" fill="var(--muted)"/>
-                <circle cx="18.38" cy="18.38" r="1.6" fill="var(--muted)"/>
-                <text x="0" y="45" text-anchor="middle" fill="var(--muted)"
-                      font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">WIDTH</text>
-                <text x="0" y="59" text-anchor="middle" fill="var(--ink)"
-                      font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">1.00</text>
+              <!-- Autotune: amount + key -->
+              <g transform="translate(95,88)">
+                <circle r="30" fill="var(--ground)" opacity=".55"/>
+                <path d="M -18.38 18.38 A 26 26 0 1 1 18.38 18.38" fill="none" stroke="#34353B" stroke-width="4" stroke-linecap="round"/>
+                <path d="M -18.38 18.38 A 26 26 0 1 1 21.03 -15.28" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+                <line x1="7.36" y1="-5.35" x2="16.83" y2="-12.23" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+                <text y="45" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">AUTOTUNE</text>
+                <text y="59" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">C MIN</text>
               </g>
 
-              <g transform="translate(235,88)">
-                <circle cx="0" cy="0" r="30" fill="var(--ground)" opacity=".55"/>
-                <path d="M -18.38 18.38 A 26 26 0 1 1 18.38 18.38"
-                      fill="none" stroke="#34353B" stroke-width="4" stroke-linecap="round"/>
-                <path d="M -18.38 18.38 A 26 26 0 0 1 0 -26"
-                      fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
-                <line x1="0" y1="-9.1" x2="0" y2="-20.8" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="-18.38" cy="18.38" r="1.6" fill="var(--muted)"/>
-                <circle cx="18.38" cy="18.38" r="1.6" fill="var(--muted)"/>
-                <text x="0" y="45" text-anchor="middle" fill="var(--muted)"
-                      font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">MID / SIDE</text>
-                <text x="0" y="59" text-anchor="middle" fill="var(--ink)"
-                      font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">0</text>
+              <!-- Compressor: threshold (outer) + amount (inner) -->
+              <g transform="translate(210,88)">
+                <circle r="34" fill="var(--ground)" opacity=".55"/>
+                <path d="M -22.63 22.63 A 32 32 0 1 1 22.63 22.63" fill="none" stroke="#34353B" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M -22.63 22.63 A 32 32 0 0 1 -7.47 -31.12" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" filter="url(#glow)"/>
+                <path d="M -15.56 15.56 A 22 22 0 1 1 15.56 15.56" fill="none" stroke="#34353B" stroke-width="3" stroke-linecap="round"/>
+                <path d="M -15.56 15.56 A 22 22 0 0 1 -17.80 -12.93" fill="none" stroke="var(--hot)" stroke-width="3" stroke-linecap="round"/>
+                <circle r="15" fill="var(--ground)" stroke="var(--rule)" stroke-width="1"/>
+                <text y="3.5" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="8.5" font-weight="600">-18dB</text>
+                <text y="49" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">COMP</text>
               </g>
 
-              <g transform="translate(365,88)">
-                <circle cx="0" cy="0" r="34" fill="var(--ground)" opacity=".55"/>
-                <path d="M -22.63 22.63 A 32 32 0 1 1 22.63 22.63"
-                      fill="none" stroke="#34353B" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M -22.63 22.63 A 32 32 0 0 1 6.44 -31.35"
-                      fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" filter="url(#glow)"/>
-                <path d="M -15.56 15.56 A 22 22 0 1 1 15.56 15.56"
-                      fill="none" stroke="#34353B" stroke-width="3" stroke-linecap="round"/>
-                <path d="M -15.56 15.56 A 22 22 0 0 1 -17.38 -13.48"
-                      fill="none" stroke="var(--hot)" stroke-width="3" stroke-linecap="round"/>
-                <circle cx="0" cy="0" r="15" fill="var(--ground)" stroke="var(--rule)" stroke-width="1"/>
-                <text x="0" y="-4.5" text-anchor="middle" fill="var(--muted)"
-                      font-family="IBM Plex Mono, monospace" font-size="6" letter-spacing=".5">BAND SWEEP</text>
-                <text x="0" y="5.5" text-anchor="middle" fill="var(--ink)"
-                      font-family="IBM Plex Mono, monospace" font-size="9.5" font-weight="600">850Hz</text>
-                <text x="0" y="13.5" text-anchor="middle" fill="var(--muted)"
-                      font-family="IBM Plex Mono, monospace" font-size="7">Q = 1.4</text>
+              <!-- Band sweep: frequency (outer) + Q (inner) -->
+              <g transform="translate(330,88)">
+                <circle r="34" fill="var(--ground)" opacity=".55"/>
+                <path d="M -22.63 22.63 A 32 32 0 1 1 22.63 22.63" fill="none" stroke="#34353B" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M -22.63 22.63 A 32 32 0 0 1 6.44 -31.35" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" filter="url(#glow)"/>
+                <path d="M -15.56 15.56 A 22 22 0 1 1 15.56 15.56" fill="none" stroke="#34353B" stroke-width="3" stroke-linecap="round"/>
+                <path d="M -15.56 15.56 A 22 22 0 0 1 0 -22" fill="none" stroke="var(--hot)" stroke-width="3" stroke-linecap="round"/>
+                <circle r="15" fill="var(--ground)" stroke="var(--rule)" stroke-width="1"/>
+                <text y="-1" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="8.5" font-weight="600">850Hz</text>
+                <text y="8" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="7">Q 1.0x</text>
+                <text y="49" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">BAND SWEEP</text>
+              </g>
+
+              <!-- Mid/Side -->
+              <g transform="translate(445,88)">
+                <circle r="30" fill="var(--ground)" opacity=".55"/>
+                <path d="M -18.38 18.38 A 26 26 0 1 1 18.38 18.38" fill="none" stroke="#34353B" stroke-width="4" stroke-linecap="round"/>
+                <path d="M -18.38 18.38 A 26 26 0 0 1 0 -26" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+                <line x1="0" y1="-9.1" x2="0" y2="-20.8" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+                <text y="45" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">MID / SIDE</text>
+                <text y="59" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">0</text>
+              </g>
+
+              <!-- Width -->
+              <g transform="translate(550,88)">
+                <circle r="30" fill="var(--ground)" opacity=".55"/>
+                <path d="M -18.38 18.38 A 26 26 0 1 1 18.38 18.38" fill="none" stroke="#34353B" stroke-width="4" stroke-linecap="round"/>
+                <path d="M -18.38 18.38 A 26 26 0 0 1 0 -26" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+                <line x1="0" y1="-9.1" x2="0" y2="-20.8" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+                <text y="45" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">WIDTH</text>
+                <text y="59" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">100%</text>
+              </g>
+
+              <!-- The Pit: control cap -->
+              <g transform="translate(672,95)">
+                <circle r="62" fill="var(--ground)" stroke="var(--rule)" stroke-width="1"/>
+                <g fill="var(--surface-2)" stroke="var(--rule)" stroke-width="1">
+                  <circle cx="-43.8" cy="-43.8" r="8"/><circle cx="-28.1" cy="-55.2" r="8"/><circle cx="-9.7" cy="-61.2" r="8"/>
+                  <circle cx="-43.8" cy="43.8" r="8"/><circle cx="-28.1" cy="55.2" r="8"/>
+                </g>
+                <circle cx="-9.7" cy="-61.2" r="3" fill="var(--hot)"/>
+                <text y="-2" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="8" letter-spacing="1.2">LATENCY</text>
+                <text y="13" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600">12 ms</text>
               </g>
             </svg>
           </div>
-          <p class="frame-cap"><span data-copy="ms-fig">Fig. 2 — capsule window, actual proportions</span><span><b data-copy="ms-soon">Not final</b></span></p>
+          <p class="frame-cap"><span data-copy="ms-fig">Fig. 2 — capsule with five of its eleven modules</span><span><b data-copy="ms-soon">Not final</b></span></p>
         </div>
       </div>
 
       <table class="specs">
+        <caption data-copy="ms-mcaption">Modules — default chain order</caption>
+        <tbody>
+          <tr><th scope="row" data-copy="ms-m1t">Autotune</th><td data-copy="ms-m1v">Hard, glide-free snap to the nearest note in your key — Chromatic or any of 24 major and minor keys. Works on vocals and on full mixes; breath and texture are left alone. About 85 ms latency while on.</td></tr>
+          <tr><th scope="row" data-copy="ms-m2t">Saturator</th><td data-copy="ms-m2v">Drive 0 to +24 dB with automatic level matching, so the texture changes and the volume doesn’t. 4× oversampled.</td></tr>
+          <tr><th scope="row" data-copy="ms-m3t">Compressor</th><td data-copy="ms-m3v">Outer ring sets threshold (0 to −60 dB); inner ring raises ratio (1:1 to 10:1) and make-up gain together. Over-threshold energy glows red on a live spectrum.</td></tr>
+          <tr><th scope="row" data-copy="ms-m4t">Band Sweep</th><td data-copy="ms-m4v">Hear only one band. Outer ring sweeps 20 Hz – 20 kHz, inner ring scales the width 0.25× – 4×. 48 dB/oct slopes on both sides, with automatic loudness make-up.</td></tr>
+          <tr><th scope="row" data-copy="ms-m5t">Chorus</th><td data-copy="ms-m5v">One knob raises depth, speed and mix together.</td></tr>
+          <tr><th scope="row" data-copy="ms-m6t">Delay</th><td data-copy="ms-m6v">Stereo echo. Outer ring sets echo level and repeats; inner ring sets the gap, 20 ms to 2 s. The centre flashes an echo timeline in time with the music.</td></tr>
+          <tr><th scope="row" data-copy="ms-m7t">Reverb</th><td data-copy="ms-m7v">One knob grows the room size and the reverb level together.</td></tr>
+          <tr><th scope="row" data-copy="ms-m8t">Limiter</th><td data-copy="ms-m8v">Brick-wall limiter. Turning up lowers the ceiling from 0 to −60 dB; it only reduces, never adds level back.</td></tr>
+          <tr><th scope="row" data-copy="ms-m9t">Mid/Side</th><td data-copy="ms-m9v">−100 is mid only, 0 is untouched, +100 is side only.</td></tr>
+          <tr><th scope="row" data-copy="ms-m10t">Width</th><td data-copy="ms-m10v">0% mono, 100% untouched, 200% twice as wide — shown as a live stereo-image cloud.</td></tr>
+          <tr><th scope="row" data-copy="ms-m11t">Gain</th><td data-copy="ms-m11v">−24 to +24 dB output fader.</td></tr>
+        </tbody>
+      </table>
+
+      <table class="specs">
         <caption data-copy="ms-caption">Console — specification</caption>
         <tbody>
-          <tr><th scope="row" data-copy="ms-s1t">Type</th><td data-copy="ms-s1v">Standalone desktop application</td></tr>
-          <tr><th scope="row" data-copy="ms-s2t">Modules</th><td data-copy="ms-s2v">Width · Mid/Side · Band Sweep</td></tr>
-          <tr><th scope="row" data-copy="ms-s3t">Sweep range</th><td data-copy="ms-s3v">20 Hz – 20 kHz, variable Q</td></tr>
-          <tr><th scope="row" data-copy="ms-s4t">Drivers</th><td data-copy="ms-s4v">ASIO, WASAPI, DirectSound</td></tr>
-          <tr><th scope="row" data-copy="ms-s5t">Requires</th><td data-copy="ms-s5v">A virtual audio device, e.g. free VB-Audio Virtual Cable</td></tr>
-          <tr><th scope="row" data-copy="ms-s6t">Platform</th><td data-copy="ms-s6v">Windows 10 / 11</td></tr>
-          <tr><th scope="row" data-copy="ms-s7t">Licence</th><td data-copy="ms-s7v">Single-use — one code, one machine, expires on activation</td></tr>
-          <tr><th scope="row" data-copy="ms-s8t">Price</th><td data-copy="ms-s8v">$5.00 — one-time, no subscription</td></tr>
+          <tr><th scope="row" data-copy="ms-s1t">Type</th><td data-copy="ms-s1v">Standalone desktop application — not a plugin</td></tr>
+          <tr><th scope="row" data-copy="ms-s2t">Processes</th><td data-copy="ms-s2v">All system audio, in real time</td></tr>
+          <tr><th scope="row" data-copy="ms-s3t">Modules</th><td data-copy="ms-s3v">11, reorderable, each with its own on/off</td></tr>
+          <tr><th scope="row" data-copy="ms-s4t">Recording</th><td data-copy="ms-s4v">24-bit stereo WAV of the final output</td></tr>
+          <tr><th scope="row" data-copy="ms-s5t">Latency</th><td data-copy="ms-s5v">Shown live; depends on your driver and which modules are on</td></tr>
+          <tr><th scope="row" data-copy="ms-s6t">Presets</th><td data-copy="ms-s6v">Save and load; current state saves automatically</td></tr>
+          <tr><th scope="row" data-copy="ms-s7t">Requires</th><td data-copy="ms-s7v">Free VB-Audio Virtual Cable, or an interface with loop-back</td></tr>
+          <tr><th scope="row" data-copy="ms-s8t">Platform</th><td data-copy="ms-s8v">Windows 10 / 11</td></tr>
+          <tr><th scope="row" data-copy="ms-s9t">Licence</th><td data-copy="ms-s9v">Single-use — one code, one machine, expires on activation</td></tr>
+          <tr><th scope="row" data-copy="ms-s10t">Price</th><td data-copy="ms-s10v">$5.00 — one-time, no subscription</td></tr>
         </tbody>
       </table>
 
@@ -1562,7 +1618,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </ul>
 
         <h3>6. Third-party plugins and audio</h3>
-        <p>Instrument Player loads VST instruments made by other companies. Those plugins are governed by their own licenses, which you must hold separately; we are not responsible for how they behave. Console processes audio already playing on your computer and does not record or transmit it. Beatmaker reads the audio and MIDI files you point it at; it never moves, changes or uploads them.</p>
+        <p>Instrument Player loads VST instruments made by other companies. Those plugins are governed by their own licenses, which you must hold separately; we are not responsible for how they behave. Console processes audio already playing on your computer; it records only when you press Record, saving the file to your own computer, and never transmits audio. Beatmaker reads the audio and MIDI files you point it at; it never moves, changes or uploads them.</p>
 
         <h3>7. Problems with an order</h3>
         <p>If something is wrong with your order, email <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a> with your order number and we will look into it. If a payment is reversed, the license code it paid for is deactivated.</p>
@@ -1608,7 +1664,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <li><b>When you email us.</b> Your email address and whatever you choose to write, used to answer you.</li>
           <li><b>When you visit this website.</b> We run no analytics and no advertising cookies. Our hosting provider and Google Fonts receive your IP address to serve the page, and Paddle’s checkout script may set cookies it needs for payment and fraud prevention.</li>
         </ul>
-        <p>The Software does not collect usage statistics, and Console never records or transmits the audio it processes.</p>
+        <p>The Software does not collect usage statistics, and Console never transmits the audio it processes — recordings you make are saved only on your own computer.</p>
 
         <h3>3. Legal basis</h3>
         <p>We process this data to perform our contract with you (selling and licensing the Software), to meet legal obligations (tax and consumer-protection record keeping), and in our legitimate interest in preventing license misuse. Where the law requires consent, we ask for it.</p>
