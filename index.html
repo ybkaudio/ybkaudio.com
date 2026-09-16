@@ -807,10 +807,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       </div>
 
       <a class="shot" href="img/player/01-main.png" target="_blank" rel="noopener">
-        <img src="img/player/01-main.png" width="1920" height="1080" alt="The Instrument Player window with a VST3 synth open, a slim toolbar along the top and the on-screen keyboard at the bottom showing four held notes lit in green.">
+        <img src="img/player/01-main.png" width="1920" height="1080" alt="The Instrument Player window just after launch, with an empty instrument slot reading “No instrument loaded”, the toolbar along the top and the 88-note on-screen keyboard at the bottom.">
       </a>
       <p class="usage-cap">
-        <span data-copy="sp-usage-cap">Fig. 1 — Play any VST3 instrument, no DAW</span>
+        <span data-copy="sp-usage-cap">Fig. 1 — Open it and pick an instrument</span>
         <span data-copy="sp-usage-cap2">Click to enlarge</span>
       </p>
     </div>
@@ -821,7 +821,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="prose">
         <p data-copy="sp-p1">Instrument Player runs the virtual instruments you already own as their own app. A lot of great synths only ship as plugins — so trying a sound or playing for five minutes means booting a DAW and making a track. Instrument Player removes the timeline, the tracks and the mixer, and keeps only the part you wanted: one instrument, ready to play.</p>
         <p data-copy="sp-p2">It finds the VST3 instruments on your PC, shows the plugin’s own interface at exactly its size, and takes input from every MIDI controller you plug in — or from your computer keyboard.</p>
-        <p data-copy="sp-p3">And it never misses the take. MIDI Replay keeps the last few minutes of your playing in memory without you pressing Record, so the phrase you stumbled into can be pulled back, tidied up in the piano roll and exported as a .mid file for your DAW.</p>
+        <p data-copy="sp-p3">And it never misses the take. MIDI Replay keeps the last few minutes of your playing in memory without you pressing Record, so the phrase you stumbled into can be pulled back, tidied up in the piano roll and exported as a .mid file for your DAW. What leaves the app is MIDI — the notes you played — not audio.</p>
       </div>
 
       <div class="features">
@@ -848,7 +848,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div class="feat">
           <span class="n" data-copy="f5n">Edit and export</span>
           <h4 data-copy="f5h">A proper piano roll</h4>
-          <p data-copy="f5p">Tempo grid, quantise, copy, paste, duplicate, box select and zoom, plus BPM and a metronome. Export a standard .mid file, or load one and loop it while you shape the sound.</p>
+          <p data-copy="f5p">Tempo grid, quantise, copy, paste, duplicate, box select and zoom, plus BPM and a metronome. Export a standard .mid file — MIDI only, not audio — or load one and loop it while you shape the sound.</p>
         </div>
         <div class="feat">
           <span class="n" data-copy="f6n">Picks up where you left off</span>
@@ -881,15 +881,15 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </figure>
         <figure>
           <a class="shot" href="img/player/03-midi-replay.png" target="_blank" rel="noopener">
-            <img src="img/player/03-midi-replay.png" width="1600" height="1000" loading="lazy" alt="The MIDI editor showing a four-bar phrase lifted out of the replay buffer onto the tempo grid at 100 BPM, with four notes selected.">
+            <img src="img/player/03-midi-replay.png" width="1600" height="1000" loading="lazy" alt="The MIDI editor showing a phrase lifted straight out of the replay buffer, its notes sitting slightly off the grid with uneven lengths, exactly as they were played.">
           </a>
-          <figcaption data-copy="sp-shot3">Fig. 3 — MIDI Replay recovers the take you forgot</figcaption>
+          <figcaption data-copy="sp-shot3">Fig. 3 — MIDI Replay keeps the take you forgot to record, exactly as you played it</figcaption>
         </figure>
         <figure>
-          <a class="shot" href="img/player/04-keyboard.png" target="_blank" rel="noopener">
-            <img src="img/player/04-keyboard.png" width="1600" height="1000" loading="lazy" alt="A synth loaded in Instrument Player with computer-keyboard mode on, the playable octave highlighted on the on-screen keyboard and four keys lit green.">
+          <a class="shot" href="img/player/04-export.png" target="_blank" rel="noopener">
+            <img src="img/player/04-export.png" width="1600" height="1000" loading="lazy" alt="The same take after quantising, its notes snapped neatly to the 1/16 grid, with the tooltip on the Save as MIDI button reading “Write the pattern out as a .mid file”.">
           </a>
-          <figcaption data-copy="sp-shot4">Fig. 4 — Play from your computer keyboard</figcaption>
+          <figcaption data-copy="sp-shot4">Fig. 4 — Edit, re-record and export as MIDI</figcaption>
         </figure>
       </div>
 
@@ -901,7 +901,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <tr><th scope="row" data-copy="sp-s3t">Plugin scan</th><td data-copy="sp-s3v">Separate process · scan new only or rescan all · favourites</td></tr>
           <tr><th scope="row" data-copy="sp-s4t">Input</th><td data-copy="sp-s4v">All MIDI inputs, hot-plug · computer keyboard (M), Z/X for octaves</td></tr>
           <tr><th scope="row" data-copy="sp-s5t">MIDI capture</th><td data-copy="sp-s5v">MIDI Replay, always on · Record · piano-roll editor</td></tr>
-          <tr><th scope="row" data-copy="sp-s6t">Files</th><td data-copy="sp-s6v">Export and import standard .mid</td></tr>
+          <tr><th scope="row" data-copy="sp-s6t">Files</th><td data-copy="sp-s6v">Export and import standard .mid — MIDI only, no audio recording or export</td></tr>
           <tr><th scope="row" data-copy="sp-s7t">Audio</th><td data-copy="sp-s7v">WASAPI shared or exclusive · DirectSound</td></tr>
           <tr><th scope="row" data-copy="sp-s8t">Remembers</th><td data-copy="sp-s8v">Last instrument and its patch, audio device, output volume</td></tr>
           <tr><th scope="row" data-copy="sp-s9t">Platform</th><td data-copy="sp-s9v">Windows 10 / 11</td></tr>
