@@ -220,6 +220,8 @@ h2{
 }
 .prose{display:flex;flex-direction:column;gap:14px}
 .prose p{margin:0;max-width:56ch;font-size:15.5px}
+.prose h3{margin:6px 0 -6px;font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.prose h3:first-child{margin-top:0}
 
 /* home product summary */
 .summary{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap);align-items:start;margin-top:clamp(28px,4vw,42px)}
@@ -675,18 +677,20 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="wrap">
       <span class="status" data-copy="h-ms-status">In development</span>
       <h2 data-copy="h-ms-name">Console</h2>
-      <p class="kicker" data-copy="h-ms-k">A mixing console for everything your PC plays.</p>
+      <p class="kicker" data-copy="h-ms-k">Live mixing console for your PC audio.</p>
       <div class="summary">
         <div class="prose">
-          <p data-copy="h-ms-p1">A floating capsule that runs everything your PC plays through eleven studio effects in real time — autotune, saturation, compression, band sweep, chorus, delay, reverb, limiter, Mid/Side, width and gain.</p>
-          <p data-copy="h-ms-p2">Solo the sides of a reference track, isolate one frequency band, or hard-autotune a video — one knob per effect, a live display inside each knob, and a Record button for the result.</p>
+          <h3 data-copy="h-ms-h1">Analyze and Experiment</h3>
+          <p data-copy="h-ms-p1">Use our 11 knobs to hear what your audio output would sound like with a little touch. Autotune, Saturator, Compressor, Band Sweep, Chorus, Delay, Reverb, Limiter, Mid/Side, Width and Gain knobs are all available.</p>
+          <h3 data-copy="h-ms-h2">Make Your Own Effect Chain</h3>
+          <p data-copy="h-ms-p2">Change the state and visibility of any knob and line them up the way you want. From live vocal mixing to sound analysis, Console awaits your touch.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/console"><span data-copy="h-ms-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
         </div>
         <div>
-          <a class="shot crop-wide" href="#/console">
-            <img src="img/console/01-main.png" width="1920" height="1080" loading="lazy" alt="The Console capsule with its eleven effect knobs, each display moving to the music.">
+          <a class="shot" href="#/console">
+            <img src="img/console/01-home.png" width="536" height="302" loading="lazy" alt="A close view of the Console capsule: the autotune, saturator and compressor knobs, each with a live display inside.">
           </a>
         </div>
       </div>
@@ -697,7 +701,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="wrap">
       <span class="status" data-copy="h-sp-status">In development</span>
       <h2 data-copy="h-sp-name">Instrument Player</h2>
-      <p class="kicker" data-copy="h-sp-k">Play, Recover, Edit, Export.</p>
+      <p class="kicker" data-copy="h-sp-k">Load, Play, Recover, Edit, Export.</p>
       <div class="summary">
         <div class="prose">
           <p data-copy="h-sp-p1">Instrument Player scans the VST3 instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
@@ -719,7 +723,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="wrap">
       <span class="status" data-copy="h-bm-status">In development</span>
       <h2 data-copy="h-bm-name">Beatmaker</h2>
-      <p class="kicker" data-copy="h-bm-k">Beat ideas from your own samples, in seconds.</p>
+      <p class="kicker" data-copy="h-bm-k">An easy-to-use DAW, just for beat design.</p>
       <div class="summary">
         <div class="prose">
           <p data-copy="h-bm-p1">Pick a genre, press Generate, and get drums, bass, chords and melody built from the samples already on your PC — sorted for you, never moved.</p>
@@ -742,7 +746,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div>
         <span class="eyebrow" data-copy="pr-eye">Pricing</span>
         <h3 class="big"><span data-copy="pr-h1">Pay once</span><br><span data-copy="pr-h2">keep it</span><em>.</em></h3>
-        <p class="blurb" data-copy="pr-p">One machine, once. Each purchase is a single-use code that activates one computer and expires the moment it does — no subscription, no seats, no transfers. That’s the whole reason these cost five to twelve dollars instead of thirty-nine or more.</p>
+        <p class="blurb" data-copy="pr-p">One machine, once. Each purchase is a single-use code that activates one computer and expires the moment it does — no subscription, no seats, no transfers.</p>
       </div>
       <div class="tiers">
         <div class="tier">
@@ -1170,7 +1174,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div>
           <span class="status" data-copy="bm-status">In development</span>
           <h2 data-copy="bm-name">Beatmaker</h2>
-          <p class="kicker" data-copy="bm-k">Beat ideas from your own samples, in seconds.</p>
+          <p class="kicker" data-copy="bm-k">An easy-to-use DAW, just for beat design.</p>
         </div>
         <div class="prod-price">
           <span data-copy="bm-price">$12</span>
@@ -1431,7 +1435,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
       <div class="legal-body">
         <h3>1. Who we are</h3>
-        <p>These terms govern your purchase and use of software sold on ybkaudio.com. The seller is <b>YBK Audio</b>, a sole proprietorship registered in the Republic of Korea and owned by <b>Kim Yeonbum (김연범)</b> — business registration number 288-17-02789, 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea. You can reach us at <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a>.</p>
+        <p>These terms govern your purchase and use of software sold on ybkaudio.com. The seller is <b>YBK Audio</b>, a sole proprietorship registered in the Republic of Korea and owned by <b>Kim Yeonbum</b> — business registration number 288-17-02789, 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea. You can reach us at <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a>.</p>
         <p>By buying, installing or using Instrument Player, Console or Beatmaker (“the Software”), you agree to these terms.</p>
 
         <h3>2. Payment and our reseller, Paddle</h3>
@@ -1496,7 +1500,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p class="callout">Short version: we collect only what it takes to sell you a license and make it work on one computer. No analytics, no advertising trackers, no selling of data — ever.</p>
 
         <h3>1. Who is responsible</h3>
-        <p><b>YBK Audio</b> (sole proprietor Kim Yeonbum, 김연범), 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea — business registration number 288-17-02789. Contact: <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a>.</p>
+        <p><b>YBK Audio</b> (sole proprietor Kim Yeonbum), 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea — business registration number 288-17-02789. Contact: <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a>.</p>
 
         <h3>2. What we collect and why</h3>
         <ul>
@@ -1547,7 +1551,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p>Our store is not directed at children under 14, and we do not knowingly collect their personal data.</p>
 
         <h3>9. Privacy officer</h3>
-        <p>Kim Yeonbum (김연범), Representative — <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a></p>
+        <p>Kim Yeonbum, Representative — <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a></p>
 
         <h3>10. Changes</h3>
         <p>If this policy changes, we will update the date at the top of this page. Significant changes will be announced on this website before they take effect.</p>
@@ -1597,11 +1601,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   </div>
   <div class="wrap">
     <p class="biz">
-      <span><b>YBK Audio</b> (와이비케이 오디오)</span>
-      <span>Representative 김연범</span>
+      <span><b>YBK Audio</b></span>
+      <span>Representative Kim Yeonbum</span>
       <span>Business Reg. No. 288-17-02789</span>
       <span>Mail-order Sales Reg. No. pending</span>
-      <span>서울특별시 강남구 선릉로 221</span>
+      <span>221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea</span>
       <span>ybkaudio@gmail.com</span>
     </p>
     <p class="mor">Orders are processed by Paddle.com, our Merchant of Record, which handles payment, tax and invoicing. Windows 10 / 11.</p>
