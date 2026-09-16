@@ -1,0 +1,4 @@
+01-main.png | Play any VST3 instrument, no DAW | The Instrument Player window with the Surge XT synth open, a slim toolbar along the top and the on-screen keyboard at the bottom showing four held notes lit in green.
+02-browser.png | Search, star and load your instruments | The instrument browser open over the app, with a search box being typed into, two starred favourites pinned at the top of the list and effect plugins filtered out.
+03-midi-replay.png | MIDI Replay recovers the take you forgot | The MIDI editor showing a four-bar phrase lifted out of the replay buffer onto the tempo grid at 100 BPM, with four notes selected.
+04-keyboard.png | Play from your computer keyboard | The Odin 2 synth loaded in Instrument Player with computer-keyboard mode on, the playable octave highlighted on the on-screen keyboard and four keys lit green.

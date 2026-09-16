@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="YBK Audio builds small standalone music apps for Windows: Instrument Player, Console and Beatmaker. Music software made simple.">
+<meta name="description" content="YBK Audio builds small standalone music apps for Windows: Console, Instrument Player and Beatmaker. Music software made simple.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='283 276 878 907'%3E%3Cpath fill='%231C60C4' d='M722 286L1057 1172L722 916L387 1173Z'/%3E%3Cpath fill='%23EE1B24' d='M860 548L1151 507L964 800Z'/%3E%3Cpath fill='%23EE1B24' d='M585 547L293 506L481 799Z'/%3E%3C/svg%3E">
 <title>YBK Audio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -274,6 +274,9 @@ h2{
   border:1px solid var(--rule);background:var(--surface);
 }
 .shot img{display:block;width:100%;height:auto}
+/* trim the empty desktop around the Console capsule; the full frame opens on click */
+.shot.crop img{aspect-ratio:16/9;object-fit:cover;object-position:center 50%}
+.shot.crop-wide img{aspect-ratio:16/6;object-fit:cover;object-position:center 49%}
 .shot:hover{border-color:var(--accent)}
 .shots{
   display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(20px,3vw,28px);
@@ -633,8 +636,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <span class="wordmark"><span data-copy="wm">YBK</span><i>.</i><span data-copy="wm2">Audio</span></span>
     </a>
     <nav class="nav">
-      <a class="navlink" href="#/player" data-nav="synth">Instrument Player</a>
       <a class="navlink" href="#/console" data-nav="midside">Console</a>
+      <a class="navlink" href="#/player" data-nav="synth">Instrument Player</a>
       <a class="navlink" href="#/beatmaker" data-nav="beatmaker">Beatmaker</a>
       <a class="navlink nav-acct" href="#/account" data-nav="account">Account</a>
     </nav>
@@ -670,32 +673,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="band">
     <div class="wrap">
-      <span class="status" data-copy="h-sp-status">In development</span>
-      <h2 data-copy="h-sp-name">Instrument Player</h2>
-      <p class="kicker" data-copy="h-sp-k">Play, Recover, Edit, Export.</p>
-      <div class="summary">
-        <div class="prose">
-          <p data-copy="h-sp-p1">Instrument Player scans the VST3 instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
-          <p data-copy="h-sp-p2">And MIDI Replay keeps the last few minutes of your playing without pressing Record, so the phrase you stumbled into is still there — ready to edit and export as .mid.</p>
-          <div class="sum-actions btnrow">
-            <a class="btn" href="#/player"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <div>
-          <div class="usage" style="aspect-ratio:16/10">
-            <div>
-              <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
-              <div class="lbl" data-copy="h-sp-ph">Photo coming soon</div>
-              <div class="sub" data-copy="h-sp-ph2">Instrument Player in use</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="wrap">
       <span class="status" data-copy="h-ms-status">In development</span>
       <h2 data-copy="h-ms-name">Console</h2>
       <p class="kicker" data-copy="h-ms-k">A mixing console for everything your PC plays.</p>
@@ -708,13 +685,31 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           </div>
         </div>
         <div>
-          <div class="usage" style="aspect-ratio:16/10">
-            <div>
-              <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
-              <div class="lbl" data-copy="h-ms-ph">Photo coming soon</div>
-              <div class="sub" data-copy="h-ms-ph2">Console in use</div>
-            </div>
+          <a class="shot crop-wide" href="#/console">
+            <img src="img/console/01-main.png" width="1920" height="1080" loading="lazy" alt="The Console capsule with its eleven effect knobs, each display moving to the music.">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <span class="status" data-copy="h-sp-status">In development</span>
+      <h2 data-copy="h-sp-name">Instrument Player</h2>
+      <p class="kicker" data-copy="h-sp-k">Play, Recover, Edit, Export.</p>
+      <div class="summary">
+        <div class="prose">
+          <p data-copy="h-sp-p1">Instrument Player scans the VST3 instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
+          <p data-copy="h-sp-p2">And MIDI Replay keeps the last few minutes of your playing without pressing Record, so the phrase you stumbled into is still there — ready to edit and export as .mid.</p>
+          <div class="sum-actions btnrow">
+            <a class="btn" href="#/player"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
+        </div>
+        <div>
+          <a class="shot" href="#/player">
+            <img src="img/player/01-main.png" width="1920" height="1080" loading="lazy" alt="The Instrument Player window with a VST3 synth open and the on-screen keyboard showing held notes.">
+          </a>
         </div>
       </div>
     </div>
@@ -751,16 +746,16 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       </div>
       <div class="tiers">
         <div class="tier">
-          <span class="nm" data-copy="t1n">Instrument Player</span>
-          <span class="amt" data-copy="t1a">$7</span>
-          <span class="desc" data-copy="t1d">Standalone VST3 instrument player with always-on MIDI Replay.</span>
-          <a class="btn" href="#/player" data-copy="t1b">Get now</a>
-        </div>
-        <div class="tier">
           <span class="nm" data-copy="t2n">Console</span>
           <span class="amt" data-copy="t2a">$5</span>
           <span class="desc" data-copy="t2d">Eleven real-time effects on all system audio, with recording.</span>
           <a class="btn" href="#/console" data-copy="t2b">Get now</a>
+        </div>
+        <div class="tier">
+          <span class="nm" data-copy="t1n">Instrument Player</span>
+          <span class="amt" data-copy="t1a">$7</span>
+          <span class="desc" data-copy="t1d">Standalone VST3 instrument player with always-on MIDI Replay.</span>
+          <a class="btn" href="#/player" data-copy="t1b">Get now</a>
         </div>
         <div class="tier">
           <span class="nm" data-copy="t3n">Beatmaker</span>
@@ -807,16 +802,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
       </div>
 
-      <div class="usage">
-        <div>
-          <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
-          <div class="lbl" data-copy="sp-usage">Photo coming soon</div>
-          <div class="sub" data-copy="sp-usage2">Instrument Player running an instrument</div>
-        </div>
-      </div>
+      <a class="shot" href="img/player/01-main.png" target="_blank" rel="noopener">
+        <img src="img/player/01-main.png" width="1920" height="1080" alt="The Instrument Player window with a VST3 synth open, a slim toolbar along the top and the on-screen keyboard at the bottom showing four held notes lit in green.">
+      </a>
       <p class="usage-cap">
-        <span data-copy="sp-usage-cap">Fig. 1 — the app in use</span>
-        <span data-copy="sp-usage-cap2">Drop a 16:9 screenshot or clip here</span>
+        <span data-copy="sp-usage-cap">Fig. 1 — Play any VST3 instrument, no DAW</span>
+        <span data-copy="sp-usage-cap2">Click to enlarge</span>
       </p>
     </div>
   </section>
@@ -877,104 +868,25 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p data-copy="sp-req-p">Your own VST3 instruments — Instrument Player doesn’t include any sounds. Large sample libraries can take up to a minute to load the first time.</p>
       </div>
 
-      <div class="figs two">
-        <div class="fig">
-          <div class="frame">
-            <div class="scanner" role="img" aria-label="Illustration of the Instrument Player instrument browser listing scanned instruments">
-              <div class="scan-head"><span data-copy="sc-h">Instruments found</span><span>04</span></div>
-              <div class="scan-row"><span class="glyph"><i></i></span><span class="nm" data-copy="sc-1">Wavetable synthesiser</span><span class="ver">VST3</span></div>
-              <div class="scan-row"><span class="glyph"><i></i></span><span class="nm" data-copy="sc-2">Analogue modelling synth</span><span class="ver">VST3</span></div>
-              <div class="scan-row"><span class="glyph"><i></i></span><span class="nm" data-copy="sc-3">Sampled piano library</span><span class="ver">VST3</span></div>
-              <div class="scan-row dim"><span class="glyph"><i></i></span><span class="nm" data-copy="sc-4">Drum machine</span><span class="ver">VST3</span></div>
-              <div class="scan-foot"><span>Scanning</span><span class="meter"><i></i></span><span>C:\Program Files\VST3</span></div>
-            </div>
-          </div>
-          <p class="frame-cap"><span data-copy="a1-fig">Fig. 2 — instrument browser concept</span><span><b data-copy="a1-soon">Not final</b></span></p>
-        </div>
-
-        <div class="fig">
-          <div class="frame">
-            <div class="roll">
-              <svg viewBox="0 0 520 214" role="img" aria-label="Illustration of the MIDI editor showing a recorded phrase on a piano roll">
-                <rect x="40" y="24" width="472" height="168" fill="var(--ground)"/>
-                <g fill="var(--surface-2)">
-                  <rect x="40" y="36"  width="472" height="12"/>
-                  <rect x="40" y="60"  width="472" height="12"/>
-                  <rect x="40" y="84"  width="472" height="12"/>
-                  <rect x="40" y="120" width="472" height="12"/>
-                  <rect x="40" y="144" width="472" height="12"/>
-                  <rect x="40" y="180" width="472" height="12"/>
-                </g>
-                <rect x="8" y="24" width="32" height="168" fill="var(--ground)" stroke="var(--rule)" stroke-width="1"/>
-                <g fill="var(--ink)" opacity=".8">
-                  <rect x="8" y="36"  width="19" height="12"/>
-                  <rect x="8" y="60"  width="19" height="12"/>
-                  <rect x="8" y="84"  width="19" height="12"/>
-                  <rect x="8" y="120" width="19" height="12"/>
-                  <rect x="8" y="144" width="19" height="12"/>
-                  <rect x="8" y="180" width="19" height="12"/>
-                </g>
-                <g stroke="var(--rule)" stroke-width="1">
-                  <line x1="8" y1="36"  x2="40" y2="36"/>
-                  <line x1="8" y1="48"  x2="40" y2="48"/>
-                  <line x1="8" y1="60"  x2="40" y2="60"/>
-                  <line x1="8" y1="72"  x2="40" y2="72"/>
-                  <line x1="8" y1="84"  x2="40" y2="84"/>
-                  <line x1="8" y1="96"  x2="40" y2="96"/>
-                  <line x1="8" y1="108" x2="40" y2="108"/>
-                  <line x1="8" y1="120" x2="40" y2="120"/>
-                  <line x1="8" y1="132" x2="40" y2="132"/>
-                  <line x1="8" y1="144" x2="40" y2="144"/>
-                  <line x1="8" y1="156" x2="40" y2="156"/>
-                  <line x1="8" y1="168" x2="40" y2="168"/>
-                  <line x1="8" y1="180" x2="40" y2="180"/>
-                </g>
-                <g stroke="var(--rule)" stroke-width="1">
-                  <line x1="40"  y1="24" x2="40"  y2="192"/>
-                  <line x1="158" y1="24" x2="158" y2="192"/>
-                  <line x1="276" y1="24" x2="276" y2="192"/>
-                  <line x1="394" y1="24" x2="394" y2="192"/>
-                  <line x1="512" y1="24" x2="512" y2="192"/>
-                </g>
-                <g stroke="var(--rule)" stroke-width="1" opacity=".45">
-                  <line x1="99"  y1="24" x2="99"  y2="192"/>
-                  <line x1="217" y1="24" x2="217" y2="192"/>
-                  <line x1="335" y1="24" x2="335" y2="192"/>
-                  <line x1="453" y1="24" x2="453" y2="192"/>
-                </g>
-                <g fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".8">
-                  <text x="44"  y="17">1</text>
-                  <text x="162" y="17">2</text>
-                  <text x="280" y="17">3</text>
-                  <text x="398" y="17">4</text>
-                </g>
-                <rect x="40" y="24" width="177" height="168" fill="var(--logo-red)" opacity=".055"/>
-                <line x1="217" y1="24" x2="217" y2="192" stroke="var(--hot)" stroke-width="1.5" stroke-dasharray="3 3"/>
-                <text x="46" y="205" fill="var(--hot)" font-family="IBM Plex Mono, monospace"
-                      font-size="8.5" font-weight="600" letter-spacing="1.2">RECOVERED TAKE</text>
-                <g fill="var(--accent)">
-                  <rect x="42"  y="110" width="54" height="10" rx="1.5"/>
-                  <rect x="60"  y="146" width="36" height="10" rx="1.5"/>
-                  <rect x="99"  y="62"  width="56" height="10" rx="1.5"/>
-                  <rect x="99"  y="122" width="56" height="10" rx="1.5"/>
-                  <rect x="158" y="86"  width="30" height="10" rx="1.5"/>
-                  <rect x="188" y="98"  width="28" height="10" rx="1.5"/>
-                </g>
-                <g fill="var(--accent)" opacity=".42">
-                  <rect x="222" y="74"  width="52" height="10" rx="1.5"/>
-                  <rect x="276" y="134" width="58" height="10" rx="1.5"/>
-                  <rect x="335" y="50"  width="34" height="10" rx="1.5"/>
-                  <rect x="369" y="110" width="24" height="10" rx="1.5"/>
-                  <rect x="394" y="158" width="62" height="10" rx="1.5"/>
-                  <rect x="456" y="86"  width="52" height="10" rx="1.5"/>
-                </g>
-                <rect x="188" y="98" width="28" height="10" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
-                <rect x="8" y="24" width="504" height="168" fill="none" stroke="var(--rule)" stroke-width="1"/>
-              </svg>
-            </div>
-          </div>
-          <p class="frame-cap"><span data-copy="a2-fig">Fig. 3 — MIDI editor concept</span><span><b data-copy="a2-soon">Not final</b></span></p>
-        </div>
+      <div class="shots">
+        <figure>
+          <a class="shot" href="img/player/02-browser.png" target="_blank" rel="noopener">
+            <img src="img/player/02-browser.png" width="1600" height="1000" loading="lazy" alt="The instrument browser open over the app, with a search box being typed into, two starred favourites pinned at the top of the list and effect plugins filtered out.">
+          </a>
+          <figcaption data-copy="sp-shot2">Fig. 2 — Search, star and load your instruments</figcaption>
+        </figure>
+        <figure>
+          <a class="shot" href="img/player/03-midi-replay.png" target="_blank" rel="noopener">
+            <img src="img/player/03-midi-replay.png" width="1600" height="1000" loading="lazy" alt="The MIDI editor showing a four-bar phrase lifted out of the replay buffer onto the tempo grid at 100 BPM, with four notes selected.">
+          </a>
+          <figcaption data-copy="sp-shot3">Fig. 3 — MIDI Replay recovers the take you forgot</figcaption>
+        </figure>
+        <figure>
+          <a class="shot" href="img/player/04-keyboard.png" target="_blank" rel="noopener">
+            <img src="img/player/04-keyboard.png" width="1600" height="1000" loading="lazy" alt="A synth loaded in Instrument Player with computer-keyboard mode on, the playable octave highlighted on the on-screen keyboard and four keys lit green.">
+          </a>
+          <figcaption data-copy="sp-shot4">Fig. 4 — Play from your computer keyboard</figcaption>
+        </figure>
       </div>
 
       <table class="specs">
@@ -1070,16 +982,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
       </div>
 
-      <div class="usage">
-        <div>
-          <svg class="logo mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
-          <div class="lbl" data-copy="ms-usage">Photo coming soon</div>
-          <div class="sub" data-copy="ms-usage2">The capsule floating over a desktop</div>
-        </div>
-      </div>
+      <a class="shot crop-wide" href="img/console/01-main.png" target="_blank" rel="noopener">
+        <img src="img/console/01-main.png" width="1920" height="1080" alt="The full Console capsule with autotune, saturator, compressor, band sweep, chorus, delay, reverb, limiter, mid/side, width and gain, every display moving to the music and the pit reading 115 ms latency.">
+      </a>
       <p class="usage-cap">
-        <span data-copy="ms-usage-cap">Fig. 1 — the app in use</span>
-        <span data-copy="ms-usage-cap2">Drop a 16:9 screenshot or clip here</span>
+        <span data-copy="ms-usage-cap">Fig. 1 — Eleven live modules on one capsule</span>
+        <span data-copy="ms-usage-cap2">Click to enlarge</span>
       </p>
     </div>
   </section>
@@ -1140,88 +1048,25 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p data-copy="ms-req-p">A way to route system audio into the app: the free VB-Audio Virtual Cable, or an audio interface with a loop-back feature. Set Windows to play into the cable, then pick the cable as Console’s input and your real speakers as its output — the settings panel walks you through it.</p>
       </div>
 
-      <div class="figs">
-        <div class="fig">
-          <div class="frame">
-            <svg viewBox="0 0 760 190" width="700" role="img" aria-label="Illustration of the Console capsule with five dials — Autotune, Compressor, Band Sweep, Mid/Side and Width — and the control cap showing latency">
-              <defs>
-                <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-                  <feGaussianBlur stdDeviation="7" result="b"/>
-                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
-              <rect x="10" y="20" width="740" height="150" rx="75" ry="75" fill="var(--surface-2)" stroke="var(--rule)" stroke-width="1"/>
-
-              <!-- Autotune: amount + key -->
-              <g transform="translate(95,88)">
-                <circle r="30" fill="var(--ground)" opacity=".55"/>
-                <path d="M -18.38 18.38 A 26 26 0 1 1 18.38 18.38" fill="none" stroke="#34353B" stroke-width="4" stroke-linecap="round"/>
-                <path d="M -18.38 18.38 A 26 26 0 1 1 21.03 -15.28" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
-                <line x1="7.36" y1="-5.35" x2="16.83" y2="-12.23" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-                <text y="45" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">AUTOTUNE</text>
-                <text y="59" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">C MIN</text>
-              </g>
-
-              <!-- Compressor: threshold (outer) + amount (inner) -->
-              <g transform="translate(210,88)">
-                <circle r="34" fill="var(--ground)" opacity=".55"/>
-                <path d="M -22.63 22.63 A 32 32 0 1 1 22.63 22.63" fill="none" stroke="#34353B" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M -22.63 22.63 A 32 32 0 0 1 -7.47 -31.12" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" filter="url(#glow)"/>
-                <path d="M -15.56 15.56 A 22 22 0 1 1 15.56 15.56" fill="none" stroke="#34353B" stroke-width="3" stroke-linecap="round"/>
-                <path d="M -15.56 15.56 A 22 22 0 0 1 -17.80 -12.93" fill="none" stroke="var(--hot)" stroke-width="3" stroke-linecap="round"/>
-                <circle r="15" fill="var(--ground)" stroke="var(--rule)" stroke-width="1"/>
-                <text y="3.5" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="8.5" font-weight="600">-18dB</text>
-                <text y="49" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">COMP</text>
-              </g>
-
-              <!-- Band sweep: frequency (outer) + Q (inner) -->
-              <g transform="translate(330,88)">
-                <circle r="34" fill="var(--ground)" opacity=".55"/>
-                <path d="M -22.63 22.63 A 32 32 0 1 1 22.63 22.63" fill="none" stroke="#34353B" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M -22.63 22.63 A 32 32 0 0 1 6.44 -31.35" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" filter="url(#glow)"/>
-                <path d="M -15.56 15.56 A 22 22 0 1 1 15.56 15.56" fill="none" stroke="#34353B" stroke-width="3" stroke-linecap="round"/>
-                <path d="M -15.56 15.56 A 22 22 0 0 1 0 -22" fill="none" stroke="var(--hot)" stroke-width="3" stroke-linecap="round"/>
-                <circle r="15" fill="var(--ground)" stroke="var(--rule)" stroke-width="1"/>
-                <text y="-1" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="8.5" font-weight="600">850Hz</text>
-                <text y="8" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="7">Q 1.0x</text>
-                <text y="49" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">BAND SWEEP</text>
-              </g>
-
-              <!-- Mid/Side -->
-              <g transform="translate(445,88)">
-                <circle r="30" fill="var(--ground)" opacity=".55"/>
-                <path d="M -18.38 18.38 A 26 26 0 1 1 18.38 18.38" fill="none" stroke="#34353B" stroke-width="4" stroke-linecap="round"/>
-                <path d="M -18.38 18.38 A 26 26 0 0 1 0 -26" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
-                <line x1="0" y1="-9.1" x2="0" y2="-20.8" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-                <text y="45" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">MID / SIDE</text>
-                <text y="59" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">0</text>
-              </g>
-
-              <!-- Width -->
-              <g transform="translate(550,88)">
-                <circle r="30" fill="var(--ground)" opacity=".55"/>
-                <path d="M -18.38 18.38 A 26 26 0 1 1 18.38 18.38" fill="none" stroke="#34353B" stroke-width="4" stroke-linecap="round"/>
-                <path d="M -18.38 18.38 A 26 26 0 0 1 0 -26" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
-                <line x1="0" y1="-9.1" x2="0" y2="-20.8" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-                <text y="45" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4">WIDTH</text>
-                <text y="59" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">100%</text>
-              </g>
-
-              <!-- The Pit: control cap -->
-              <g transform="translate(672,95)">
-                <circle r="62" fill="var(--ground)" stroke="var(--rule)" stroke-width="1"/>
-                <g fill="var(--surface-2)" stroke="var(--rule)" stroke-width="1">
-                  <circle cx="-43.8" cy="-43.8" r="8"/><circle cx="-28.1" cy="-55.2" r="8"/><circle cx="-9.7" cy="-61.2" r="8"/>
-                  <circle cx="-43.8" cy="43.8" r="8"/><circle cx="-28.1" cy="55.2" r="8"/>
-                </g>
-                <circle cx="-9.7" cy="-61.2" r="3" fill="var(--hot)"/>
-                <text y="-2" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="8" letter-spacing="1.2">LATENCY</text>
-                <text y="13" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600">12 ms</text>
-              </g>
-            </svg>
-          </div>
-          <p class="frame-cap"><span data-copy="ms-fig">Fig. 2 — capsule with five of its eleven modules</span><span><b data-copy="ms-soon">Not final</b></span></p>
-        </div>
+      <div class="shots">
+        <figure>
+          <a class="shot crop" href="img/console/02-analysis.png" target="_blank" rel="noopener">
+            <img src="img/console/02-analysis.png" width="1600" height="1000" loading="lazy" alt="A close view of the band sweep knob isolating 448 Hz at Q 4.5 over a live spectrum, next to the mid/side balance bar set to S 25 and the width knob drawing a stereo dot cloud at 140 percent.">
+          </a>
+          <figcaption data-copy="ms-shot2">Fig. 2 — Hear any band, see the stereo field</figcaption>
+        </figure>
+        <figure>
+          <a class="shot crop" href="img/console/03-autotune.png" target="_blank" rel="noopener">
+            <img src="img/console/03-autotune.png" width="1600" height="1000" loading="lazy" alt="A close view of the autotune knob at 85 percent with C min picked in the key box and its piano roll tracing the incoming pitch against the corrected pitch, beside the compressor knob whose spectrum pushes into the red above the threshold.">
+          </a>
+          <figcaption data-copy="ms-shot3">Fig. 3 — Chromatic tuning in your chosen key</figcaption>
+        </figure>
+        <figure>
+          <a class="shot crop" href="img/console/04-capsule-controls.png" target="_blank" rel="noopener">
+            <img src="img/console/04-capsule-controls.png" width="1600" height="1000" loading="lazy" alt="Console in arrange mode, where each knob carries a small x for removing it and a dashed ADD circle waits at the end for putting one back, beside the latency readout and record button.">
+          </a>
+          <figcaption data-copy="ms-shot4">Fig. 4 — Rearrange knobs right on the capsule</figcaption>
+        </figure>
       </div>
 
       <table class="specs">
