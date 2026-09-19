@@ -1,8 +1,8 @@
 {
-    "version":  "1.1.0",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup.exe?v=1.1.0",
-    "sha256":  "0dec17ae27c2bdb6d5ce4f297ef85a5f727a624b4c51fe180e947648a2287422",
-    "size":  7875893,
-    "notes":  "MIDI editor with capture and replay, FX rack for effect plugins, and a fix for audio interfaces clicking when used alongside a DAW at a different sample rate.",
-    "released":  "2026-09-19"
+    "version":  "1.2.0",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup.exe?v=1.2.0",
+    "sha256":  "5e651a213436b56fef3cdf5f74d169756e9449782af4f891e11f9e168f1524d4",
+    "size":  7905907,
+    "notes":  "Pencil mode and more MIDI editor keys, an Audio Effects button, a fullscreen MIDI editor, and Factory reset in settings. Your license and settings are unchanged.",
+    "released":  "2026-09-20"
 }

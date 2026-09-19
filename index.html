@@ -442,6 +442,18 @@ h2{
 .breaks .keep .sym{color:var(--ok)}
 .breaks .end .sym{color:var(--hot)}
 
+/* help page */
+.help-warn{
+  margin-top:clamp(26px,3.5vw,38px);padding:clamp(18px,2.6vw,26px);
+  border:1px solid var(--rule);border-left:3px solid var(--hot);border-radius:2px;
+  background:var(--surface);
+}
+.help-warn h3{font-weight:900;font-size:clamp(20px,2.6vw,26px);line-height:1.1;letter-spacing:-.02em;margin-bottom:12px}
+.help-warn p{margin:0 0 10px;font-size:15px;line-height:1.6;max-width:72ch}
+.help-warn p:last-child{margin-bottom:0}
+.help-h{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.acct-grid .help-h ~ .help-h{margin-top:28px}
+
 /* sign-in form */
 .field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
 .field label{
@@ -682,7 +694,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <a class="navlink" href="#/console" data-nav="midside">Console</a>
       <a class="navlink" href="#/player" data-nav="synth">Instrument Player</a>
       <a class="navlink" href="#/beatmaker" data-nav="beatmaker">Beatmaker</a>
-      <a class="navlink nav-acct" href="#/account" data-nav="account">Account</a>
+      <a class="navlink nav-acct" href="#/help" data-nav="account">Help</a>
     </nav>
   </div>
 </header>
@@ -754,7 +766,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <div>
           <a class="shot" href="#/player">
-            <img src="img/player/01-main.png" width="1920" height="1080" loading="lazy" alt="The Instrument Player window with a VST3 synth open and the on-screen keyboard showing held notes.">
+            <img src="img/player/02-starter-synth.png" width="1016" height="1025" loading="lazy" alt="Instrument Player with its built-in Starter Synth open, a C major chord lit on the on-screen keyboard.">
           </a>
         </div>
       </div>
@@ -799,7 +811,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <div class="tier">
           <span class="nm" data-copy="t1n">Instrument Player</span>
-          <span class="amt" data-copy="t1a" data-launch-hide="active upcoming">$7</span>
+          <span class="amt" data-copy="t1a" data-launch-hide="active upcoming">$10</span>
           <span class="amt" data-launch="active" hidden data-copy="t1a-free">Free</span>
           <span class="desc" data-copy="t1d">Standalone VST3 instrument player with always-on MIDI Replay.</span>
           <a class="btn" href="#/player" data-copy="t1b">Get now</a>
@@ -844,7 +856,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="kicker" data-copy="sp-k">Open it, pick an instrument, play. Your VST3 instruments, without the DAW.</p>
         </div>
         <div class="prod-price">
-          <span data-copy="sp-price" data-launch-hide="active upcoming">$7</span>
+          <span data-copy="sp-price" data-launch-hide="active upcoming">$10</span>
           <span data-launch="active" hidden data-copy="sp-price-free">Free</span>
           <small data-copy="sp-price-sub">One-time · One license · One device</small>
         </div>
@@ -864,7 +876,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="lx-eye">Free launch month</span></p>
           <h3 data-copy="lx-h">Get it free</h3>
           <p data-copy="lx-p">For its first month, Instrument Player is free. Claim a license now and it’s yours to keep: it never expires, and every future update is free.</p>
-          <p class="launch-clock"><span data-copy="lx-ends">Free for another</span> <b data-countdown></b><span data-copy="lx-then">, then $7</span></p>
+          <p class="launch-clock"><span data-copy="lx-ends">Free for another</span> <b data-countdown></b><span data-copy="lx-then">, then $10</span></p>
         </div>
         <form data-claim novalidate>
           <div class="field">
@@ -883,14 +895,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <label for="claim-website">Leave this empty</label>
             <input id="claim-website" name="website" tabindex="-1" autocomplete="off">
           </div>
-          <button type="submit" class="btn"><span data-copy="lx-btn">Email me my free license</span><span aria-hidden="true">→</span></button>
+          <button type="submit" class="btn"><span data-copy="lx-btn">Get my free license</span><span aria-hidden="true">→</span></button>
           <p class="claim-msg" role="status" aria-live="polite"></p>
-          <p class="fineprint"><span data-copy="lx-fine">We’ll email your license code and the download link, ask how it’s going about two weeks later, and send a few short reminders before the free month ends. Unsubscribe any time.</span> <a href="#/privacy">Privacy</a></p>
+          <p class="fineprint"><span data-copy="lx-fine">We’ll email you a link to confirm your address, then your license code and the download link. After that: one “how’s it going?” email about two weeks later, and a few short reminders before the free month ends. Unsubscribe any time.</span> <a href="#/privacy">Privacy</a></p>
         </form>
       </div>
 
       <a class="shot" href="img/player/01-main.png" target="_blank" rel="noopener">
-        <img src="img/player/01-main.png" width="1920" height="1080" alt="The Instrument Player window just after launch, with an empty instrument slot reading “No instrument loaded”, the toolbar along the top and the 88-note on-screen keyboard at the bottom.">
+        <img src="img/player/01-main.png" width="902" height="526" alt="The Instrument Player window just after launch: “Choose an instrument”, Audio Effects and MIDI editor along the top, an empty instrument slot reading “No instrument loaded”, and the 88-note on-screen keyboard at the bottom.">
       </a>
       <p class="usage-cap">
         <span data-copy="sp-usage-cap">Fig. 1 — Open it and pick an instrument</span>
@@ -957,22 +969,40 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
       <div class="shots">
         <figure>
-          <a class="shot" href="img/player/02-browser.png" target="_blank" rel="noopener">
-            <img src="img/player/02-browser.png" width="1600" height="1000" loading="lazy" alt="The instrument browser open over the app, with a search box being typed into, two starred favourites pinned at the top of the list and effect plugins filtered out.">
+          <a class="shot" href="img/player/02-starter-synth.png" target="_blank" rel="noopener">
+            <img src="img/player/02-starter-synth.png" width="1016" height="1025" loading="lazy" alt="Starter Synth, the instrument built into Instrument Player, open with its sound buttons along the bottom and a chord held on the on-screen keyboard.">
           </a>
-          <figcaption data-copy="sp-shot2">Fig. 2 — Search, star and load your instruments</figcaption>
+          <figcaption data-copy="sp-shot2">Fig. 2 — Starter Synth comes built in, so the first key already makes a sound</figcaption>
         </figure>
         <figure>
-          <a class="shot" href="img/player/03-midi-replay.png" target="_blank" rel="noopener">
-            <img src="img/player/03-midi-replay.png" width="1600" height="1000" loading="lazy" alt="The MIDI editor showing a phrase lifted straight out of the replay buffer, its notes sitting slightly off the grid with uneven lengths, exactly as they were played.">
+          <a class="shot" href="img/player/03-audio-effects.png" target="_blank" rel="noopener">
+            <img src="img/player/03-audio-effects.png" width="860" height="909" loading="lazy" alt="The Audio Effects rack with two effect plugins, a reverb and a multiband compressor, one under the other in the order the sound goes through them.">
           </a>
-          <figcaption data-copy="sp-shot3">Fig. 3 — MIDI Replay keeps the take you forgot to record, exactly as you played it</figcaption>
+          <figcaption data-copy="sp-shot3">Fig. 3 — Audio Effects: put your own VST3 effects after the instrument</figcaption>
         </figure>
         <figure>
-          <a class="shot" href="img/player/04-export.png" target="_blank" rel="noopener">
-            <img src="img/player/04-export.png" width="1600" height="1000" loading="lazy" alt="The same take after quantising, its notes snapped neatly to the 1/16 grid, with the tooltip on the Save as MIDI button reading “Write the pattern out as a .mid file”.">
+          <a class="shot" href="img/player/04-instruments.png" target="_blank" rel="noopener">
+            <img src="img/player/04-instruments.png" width="902" height="526" loading="lazy" alt="The instrument list open over the app, with Starter Synth starred and pinned to the top above the other instrument plugins found on the computer.">
           </a>
-          <figcaption data-copy="sp-shot4">Fig. 4 — Edit, re-record and export as MIDI</figcaption>
+          <figcaption data-copy="sp-shot4">Fig. 4 — Every instrument plugin on your PC in one list, favourites pinned on top</figcaption>
+        </figure>
+        <figure>
+          <a class="shot" href="img/player/05-effects-list.png" target="_blank" rel="noopener">
+            <img src="img/player/05-effects-list.png" width="1016" height="1025" loading="lazy" alt="The Add an effect list open over the app, showing the effect plugins found on the computer with their type and maker.">
+          </a>
+          <figcaption data-copy="sp-shot5">Fig. 5 — Every effect plugin, with what kind of effect it is</figcaption>
+        </figure>
+        <figure>
+          <a class="shot" href="img/player/06-midi-edit.png" target="_blank" rel="noopener">
+            <img src="img/player/06-midi-edit.png" width="1406" height="853" loading="lazy" alt="The MIDI editor with a phrase brought back by MIDI Replay: the first bar is selected and quantised onto the 1/16 grid while the rest stays exactly as played.">
+          </a>
+          <figcaption data-copy="sp-shot6">Fig. 6 — MIDI Replay brings back what you played; select it and quantise it</figcaption>
+        </figure>
+        <figure>
+          <a class="shot" href="img/player/07-midi-export.png" target="_blank" rel="noopener">
+            <img src="img/player/07-midi-export.png" width="1406" height="853" loading="lazy" alt="The same phrase fully quantised, with the Export MIDI button's tooltip reading “Write the pattern out as a .mid file” and the status line reading “Exported Phrase.mid”.">
+          </a>
+          <figcaption data-copy="sp-shot7">Fig. 7 — Export the finished phrase as a .mid file for your DAW</figcaption>
         </figure>
       </div>
 
@@ -989,7 +1019,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <tr><th scope="row" data-copy="sp-s8t">Remembers</th><td data-copy="sp-s8v">Last instrument and its patch, audio device, output volume</td></tr>
           <tr><th scope="row" data-copy="sp-s9t">Platform</th><td data-copy="sp-s9v">Windows 10 / 11</td></tr>
           <tr><th scope="row" data-copy="sp-s10t">Licence</th><td data-copy="sp-s10v">Single-use — one code, one machine, expires on activation</td></tr>
-          <tr><th scope="row" data-copy="sp-s11t">Price</th><td data-copy="sp-s11v">$7.00 — one-time, no subscription</td></tr>
+          <tr><th scope="row" data-copy="sp-s11t">Price</th><td data-copy="sp-s11v">$10.00 — one-time, no subscription</td></tr>
         </tbody>
       </table>
 
@@ -1012,7 +1042,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="fineprint" data-copy="sp-free-fine">Free during the launch month. No payment, no card.</p>
         </div>
         <div class="buy-side" data-launch="ended off" hidden>
-          <div class="buy-total"><span data-copy="sp-total-l">Total today</span><b data-copy="sp-total">$7.00</b></div>
+          <div class="buy-total"><span data-copy="sp-total-l">Total today</span><b data-copy="sp-total">$10.00</b></div>
           <button type="button" class="btn" data-buy="synth">
             <span data-copy="sp-buy-btn">Purchase</span><span aria-hidden="true">→</span>
           </button>
@@ -1020,7 +1050,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
         </div>
 
-        <p class="licnote" data-copy="sp-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $7 instead of $39.</p>
+        <p class="licnote" data-copy="sp-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $10 instead of $39.</p>
 
         <div class="breaks">
           <div class="keep">
@@ -1193,7 +1223,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <!-- purchase -->
       <div class="buy">
         <div>
-          <h3 data-copy="ms-buy-h">Buy Console</h3>
+          <h3 data-copy="ms-buy-h">Console pricing</h3>
           <ul class="gets">
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g1">The Windows installer, downloadable straight after payment</span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g2">One license code, emailed to the address you pay with</span></li>
@@ -1202,12 +1232,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           </ul>
         </div>
         <div class="buy-side">
-          <div class="buy-total"><span data-copy="ms-total-l">Total today</span><b data-copy="ms-total">$5.00</b></div>
-          <button type="button" class="btn" data-buy="midside">
-            <span data-copy="ms-buy-btn">Purchase</span><span aria-hidden="true">→</span>
-          </button>
-          <p class="fineprint" data-copy="ms-fine">Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
-          <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
+          <div class="buy-total"><span data-copy="ms-soon-l">Status</span><b data-copy="ms-soon">In development</b></div>
+          <p class="fineprint" data-copy="ms-soon-p">Console is still being built, so it isn't for sale yet. There is no way to pay for it until it's finished.</p>
+          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Console%20is%20out"><span data-copy="ms-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
         </div>
 
         <p class="licnote" data-copy="ms-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $5 instead of $39.</p>
@@ -1383,7 +1410,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <!-- purchase -->
       <div class="buy">
         <div>
-          <h3 data-copy="bm-buy-h">Buy Beatmaker</h3>
+          <h3 data-copy="bm-buy-h">Beatmaker pricing</h3>
           <ul class="gets">
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g1">The Windows app, downloadable straight after payment</span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g2">One license code, emailed to the address you pay with</span></li>
@@ -1392,12 +1419,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           </ul>
         </div>
         <div class="buy-side">
-          <div class="buy-total"><span data-copy="bm-total-l">Total today</span><b data-copy="bm-total">$12.00</b></div>
-          <button type="button" class="btn" data-buy="beatmaker">
-            <span data-copy="bm-buy-btn">Purchase</span><span aria-hidden="true">→</span>
-          </button>
-          <p class="fineprint" data-copy="bm-fine">Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
-          <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
+          <div class="buy-total"><span data-copy="bm-soon-l">Status</span><b data-copy="bm-soon">In development</b></div>
+          <p class="fineprint" data-copy="bm-soon-p">Beatmaker is still being built, so it isn't for sale yet. There is no way to pay for it until it's finished.</p>
+          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20out"><span data-copy="bm-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
         </div>
 
         <p class="licnote" data-copy="bm-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $12 instead of $49.</p>
@@ -1439,66 +1463,46 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   </section>
 </div>
 
-<!-- ==================== ACCOUNT ==================== -->
+<!-- ==================== HELP ====================
+     (the page id stays "account" so the router and nav keep working; the URL is #/help) -->
 <div data-page="account" hidden>
   <section class="acct">
     <div class="wrap">
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="ac-back">All apps</span></a>
-      <h2 style="margin-top:20px" data-copy="ac-h">Your account</h2>
-      <p class="kicker" data-copy="ac-k">Until accounts arrive, everything you need comes by email.</p>
+      <h2 style="margin-top:20px" data-copy="ac-h">Help</h2>
+      <p class="kicker" data-copy="ac-k">Installing, your license code, and how to reach us.</p>
+
+      <div class="help-warn" id="smartscreen">
+        <h3 data-copy="ac-ss-h">Seeing “Windows protected your PC”?</h3>
+        <p data-copy="ac-ss-p1">When you open the Instrument Player installer, Windows may show a blue box that says “Windows protected your PC” and “Unknown publisher”. That is Windows SmartScreen. It appears for new apps that aren’t signed with a code-signing certificate yet and haven’t built up a history with Microsoft. Instrument Player is new, and our certificate is still being issued, so for now Windows can’t tell who made it.</p>
+        <p data-copy="ac-ss-p2">To install it anyway, click “More info”, then “Run anyway”. Only do this with the installer you downloaded from ybkaudio.com or from the link in our email.</p>
+        <p data-copy="ac-ss-p3"><b>This has nothing to do with your license.</b> Your code only counts when you type it into the app. Seeing this warning, closing it, or downloading the installer again never uses up a license, so there is no need to ask for a new code.</p>
+      </div>
 
       <div class="acct-grid" style="margin-top:clamp(30px,4vw,46px)">
         <div>
+          <h3 class="help-h" data-copy="ac-lost-h">Lost your license code?</h3>
           <div class="prose">
-            <p data-copy="ac-p1">Accounts aren’t switched on yet. For now, your purchase email is your record: it holds your license code and the link to download the installer.</p>
-            <p data-copy="ac-p2">When sign-in arrives, it will use your Google account — no password for you to remember and none for us to store.</p>
+            <p data-copy="ac-lost-p1">Search your inbox for an email from license@ybkaudio.com. It has your code and the download link.</p>
+            <p data-copy="ac-lost-p2">Got it free during the launch month? Enter the same email on the Instrument Player page again and we’ll send the same code again.</p>
+            <p data-copy="ac-lost-p3">Bought it? Email us from the address you paid with and include the order number from your Paddle receipt.</p>
           </div>
+
+          <h3 class="help-h" data-copy="ac-lic-h">How licenses work</h3>
           <ul class="acct-list">
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l1b">Download link in your email.</b> <span data-copy="ac-l1">Your purchase email carries the installer link and your license code — keep it to download again later.</span></span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l2b">Receipt from Paddle.</b> <span data-copy="ac-l2">Every purchase comes with a Paddle receipt showing your order number.</span></span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l3b">Help by email.</b> <span data-copy="ac-l3">Write to ybkaudio@gmail.com with your order number and we’ll sort it out.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l1b">One-time purchase.</b> <span data-copy="ac-l1">You pay once. There is no subscription, and every update to the same version line is free.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l2b">One license, one computer.</b> <span data-copy="ac-l2">A code activates the computer it is first entered on, and only that one.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l3b">No transfers.</b> <span data-copy="ac-l3">A code can’t be moved to another computer, shared, resold or issued again. A new computer needs its own license.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l4b">What it survives.</b> <span data-copy="ac-l4">Reinstalling Windows on the same computer, app updates, and swapping the drive, memory or graphics card. Replacing the motherboard or CPU counts as a new computer.</span></span></li>
           </ul>
-          <p class="licnote" style="margin-top:20px" data-copy="ac-lic"><b>On license codes.</b> Codes are single-use: once one has activated a computer it is spent, and it cannot be reissued or transferred. Keep your purchase email as the record of what you bought.</p>
         </div>
 
         <div class="signin">
-          <h3 style="font-size:19px;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:8px" data-copy="ac-si-h">Sign in</h3>
-          <p style="margin:0 0 18px;font-size:14px;color:var(--muted);line-height:1.5" data-copy="ac-si-p">Use the Google account you want your purchases tied to.</p>
-
-          <button type="button" class="gbtn" aria-disabled="true" disabled>
-            <svg viewBox="0 0 48 48" aria-hidden="true">
-              <path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.6h11.9c-.2 2-1.5 4.9-4.4 6.9l-.1.3 6.4 4.9.4.1c4.1-3.8 6.9-9.3 6.9-15.8z"/>
-              <path fill="#34A853" d="M24 46c5.8 0 10.7-1.9 14.2-5.2l-6.8-5.2c-1.8 1.3-4.3 2.2-7.4 2.2-5.7 0-10.5-3.7-12.2-8.9l-.3.02-6.6 5.1-.1.3C8.3 41 15.6 46 24 46z"/>
-              <path fill="#FBBC05" d="M11.8 28.9c-.5-1.3-.7-2.7-.7-4.2s.3-2.9.7-4.2l-.01-.3-6.7-5.2-.2.1C3.5 17.9 2.8 20.9 2.8 24s.7 6.1 2.1 8.9l6.9-4z"/>
-              <path fill="#EA4335" d="M24 11c4 0 6.7 1.7 8.3 3.2l6-5.9C34.7 4.9 29.8 2.8 24 2.8 15.6 2.8 8.3 7.8 4.9 15.1l6.9 5.4C13.5 14.7 18.3 11 24 11z"/>
-            </svg>
-            <span data-copy="ac-g">Continue with Google</span>
-          </button>
-
-          <div class="divider"><span data-copy="ac-or">or</span></div>
-
-          <!-- Fields are disabled on purpose: there is no server to receive them
-               yet, and a live-looking password box with nowhere to send the
-               password is worse than no box at all. -->
-          <div class="field">
-            <label for="ac-email" data-copy="ac-lab-e">Email</label>
-            <input id="ac-email" type="email" autocomplete="username" placeholder="you@example.com" disabled>
-          </div>
-          <div class="field">
-            <label for="ac-pw" data-copy="ac-lab-p">Password</label>
-            <input id="ac-pw" type="password" autocomplete="current-password" placeholder="••••••••" disabled>
-          </div>
-          <button type="button" class="btn" style="width:100%" aria-disabled="true" disabled>
-            <span data-copy="ac-signin-btn">Sign in</span>
-          </button>
-          <p class="forgot" data-copy="ac-forgot">Forgot your password? Password reset arrives with sign-in.</p>
-
-          <span class="pending"><span class="dot" aria-hidden="true"></span><span data-copy="ac-pending">Neither method is connected yet</span></span>
-
-          <p style="margin:16px 0 0;font-size:13px;color:var(--muted);line-height:1.55" data-copy="ac-si-note">Sign-in will switch on in a later update. Until then, your download link and license code arrive with your purchase email.</p>
-
-          <p style="margin:14px 0 0;font-size:13px">
-            <a href="mailto:ybkaudio@gmail.com?subject=YBK%20Audio%20account%20help" data-copy="ac-mail">ybkaudio@gmail.com</a>
+          <h3 style="font-size:19px;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:8px" data-copy="ac-c-h">Contact</h3>
+          <p style="margin:0 0 14px;font-size:14px;color:var(--muted);line-height:1.55" data-copy="ac-c-p">Questions, problems or feedback: write to us and we’ll reply within 3 business days. For anything about a purchase, include your order number.</p>
+          <p style="margin:0 0 18px;font-size:15px"><a href="mailto:ybkaudio@gmail.com?subject=YBK%20Audio%20help">ybkaudio@gmail.com</a></p>
+          <p style="margin:0;font-size:13px;color:var(--muted);line-height:1.7">
+            <a href="#/refund">Refund policy</a> · <a href="#/terms">Terms</a> · <a href="#/privacy">Privacy</a>
           </p>
         </div>
       </div>
@@ -1589,7 +1593,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <h3>2. What we collect and why</h3>
         <ul>
           <li><b>When you buy.</b> Paddle, our Merchant of Record, collects your name, email address, country, postal code where required, and payment details. Paddle keeps your card details; we never receive them. We receive your email address, the product bought, the order number and the amount, so we can deliver your license and keep sales records.</li>
-          <li><b>When you claim a free launch license.</b> Your email address is stored with your license code at our license service and added to our email list. We use it to send you the code, one email about two weeks later asking how the Software is working for you, and a few short reminders before the free launch month ends. Every one of these emails has an unsubscribe link. If you choose to pay something through “name your price”, Paddle handles that payment as described above. Your IP address is kept for one hour to stop automated sign-ups.</li>
+          <li><b>When you claim a free launch license.</b> Your email address is stored with your license code at our license service and added to our email list. We use it to send you a link that confirms the address is yours, then the code, one email about two weeks later asking how the Software is working for you, and a few short reminders before the free launch month ends. Every one of these emails has an unsubscribe link. If you choose to pay something through “name your price”, Paddle handles that payment as described above. Your IP address is kept for one hour to stop automated sign-ups.</li>
           <li><b>When your license is issued.</b> Your email address, license code and order number are stored with our license service and used once to email you the code.</li>
           <li><b>When you activate the Software.</b> The app sends your license code, a machine fingerprint, the app version, the Windows version and the activation time. Your IP address is visible to the license service as part of the connection. The fingerprint is a one-way code derived from your motherboard and CPU identifiers: it cannot be turned back into those identifiers and contains nothing about you, your files or your music. It exists only so a single-use license stays on one computer.</li>
           <li><b>When you email us.</b> Your email address and whatever you choose to write, used to answer you.</li>
@@ -1715,7 +1719,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     '/console': 'midside',
     '/midside': 'midside',      // old URL, kept so shared links still work
     '/beatmaker': 'beatmaker',
-    '/account': 'account',
+    '/help': 'account',
+    '/account': 'account',     // old URL, kept so shared links still work
     '/terms': 'terms',
     '/privacy': 'privacy',
     '/refund': 'refund'
@@ -1746,7 +1751,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
                                       // below once ybkaudio.com is approved in Paddle.
     clientToken: 'test_613e1e64ceedb67e1c32b7a0b0b',
     prices: {
-      synth:   'pri_01m2a544atvbsmdpa3j2yk6a8w'   // Instrument Player, $7 (sandbox)
+      synth:   'pri_01m2a544atvbsmdpa3j2yk6a8w'   // Instrument Player, $10 (sandbox)
       // midside, beatmaker: still in development, so no price here -- their
       // buttons show the "not open yet" panel. Console's prices exist in
       // Paddle already: sandbox pri_01m2a54rhcj2g9am6y4ygd7n2a (live below).
@@ -1795,7 +1800,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
      upcoming, active or over, and its clock -- not the visitor's -- drives
      the countdown. data-launch="<states>" elements show only in one of the
      listed states (space-separated); data-launch-hide="<states>" ones hide in
-     them. The $7 Purchase box is published hidden and appears only once the
+     them. The $10 Purchase box is published hidden and appears only once the
      worker says the free month is over, so it never shows early.
      The local preview talks to a stand-in on :8787 instead, so testing the
      page can never issue a real license. */
@@ -1877,7 +1882,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           settings: { displayMode: 'overlay', theme: 'dark' }
         });
       })['catch'](function () {
-        tell('Your license is on its way to ' + email + ', but the payment window couldn’t open. Thank you for wanting to support us!', 'ok');
+        tell('We sent a confirmation link to ' + email + ', but the payment window couldn’t open. Thank you for wanting to support us!', 'ok');
       });
   }
 
@@ -1916,7 +1921,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           if (res.ok) {
             form.elements.email.disabled = true;
             if (tipsOn) form.elements.amount.disabled = true;
-            tell('Done. Your license is on its way to ' + email + '. If it isn’t in your inbox within 5 minutes, check your spam folder.', 'ok');
+            tell('Almost done: we sent a link to ' + email + '. Click it to confirm your email and get your license. Not there in 5 minutes? Check your spam folder.', 'ok');
             if (amount > 0) openTipCheckout(email, amount, tell);
           } else {
             btn.disabled = false;
