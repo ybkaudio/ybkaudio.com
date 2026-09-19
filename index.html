@@ -537,6 +537,10 @@ h2{
 .claim-msg:empty{display:none}
 .claim-msg.err{color:var(--hot)}
 .claim-msg.ok{color:var(--ok)}
+.tip-input{display:flex;align-items:center;border:1px solid var(--rule);border-radius:2px;background:var(--ground)}
+.tip-input span{padding:0 4px 0 13px;color:var(--muted);font-size:15px}
+.tip-input input{flex:1 1 auto;min-width:0;border:0 !important;padding-left:4px !important;background:transparent !important}
+.tip-note{margin:0 !important;font-size:12.5px !important;color:var(--muted)}
 /* honeypot: off-screen, so people never fill it in and bots do */
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
@@ -795,7 +799,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <div class="tier">
           <span class="nm" data-copy="t1n">Instrument Player</span>
-          <span class="amt" data-copy="t1a" data-launch-hide="active">$7</span>
+          <span class="amt" data-copy="t1a" data-launch-hide="active upcoming">$7</span>
           <span class="amt" data-launch="active" hidden data-copy="t1a-free">Free</span>
           <span class="desc" data-copy="t1d">Standalone VST3 instrument player with always-on MIDI Replay.</span>
           <a class="btn" href="#/player" data-copy="t1b">Get now</a>
@@ -840,7 +844,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="kicker" data-copy="sp-k">Open it, pick an instrument, play. Your VST3 instruments, without the DAW.</p>
         </div>
         <div class="prod-price">
-          <span data-copy="sp-price" data-launch-hide="active">$7</span>
+          <span data-copy="sp-price" data-launch-hide="active upcoming">$7</span>
           <span data-launch="active" hidden data-copy="sp-price-free">Free</span>
           <small data-copy="sp-price-sub">One-time · One license · One device</small>
         </div>
@@ -867,13 +871,21 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <label for="claim-email" data-copy="lx-label">Your email</label>
             <input id="claim-email" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
           </div>
+          <div class="field" data-tip hidden>
+            <label for="claim-amount" data-copy="lx-tip-label">Name your price (optional)</label>
+            <div class="tip-input">
+              <span aria-hidden="true">$</span>
+              <input id="claim-amount" name="amount" type="number" inputmode="decimal" min="0" max="200" step="0.01" placeholder="0" aria-describedby="claim-tip-note">
+            </div>
+            <p class="tip-note" id="claim-tip-note" data-copy="lx-tip-note">Leave it at 0 and it’s free. Anything you add helps build the next apps.</p>
+          </div>
           <div class="hp" aria-hidden="true">
             <label for="claim-website">Leave this empty</label>
             <input id="claim-website" name="website" tabindex="-1" autocomplete="off">
           </div>
           <button type="submit" class="btn"><span data-copy="lx-btn">Email me my free license</span><span aria-hidden="true">→</span></button>
           <p class="claim-msg" role="status" aria-live="polite"></p>
-          <p class="fineprint"><span data-copy="lx-fine">We’ll email your license code and the download link, then once more about two weeks later to ask how it’s going. No mailing list.</span> <a href="#/privacy">Privacy</a></p>
+          <p class="fineprint"><span data-copy="lx-fine">We’ll email your license code and the download link, ask how it’s going about two weeks later, and send a few short reminders before the free month ends. Unsubscribe any time.</span> <a href="#/privacy">Privacy</a></p>
         </form>
       </div>
 
@@ -999,7 +1011,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           </button>
           <p class="fineprint" data-copy="sp-free-fine">Free during the launch month. No payment, no card.</p>
         </div>
-        <div class="buy-side" data-launch-hide="active">
+        <div class="buy-side" data-launch="ended off" hidden>
           <div class="buy-total"><span data-copy="sp-total-l">Total today</span><b data-copy="sp-total">$7.00</b></div>
           <button type="button" class="btn" data-buy="synth">
             <span data-copy="sp-buy-btn">Purchase</span><span aria-hidden="true">→</span>
@@ -1577,7 +1589,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <h3>2. What we collect and why</h3>
         <ul>
           <li><b>When you buy.</b> Paddle, our Merchant of Record, collects your name, email address, country, postal code where required, and payment details. Paddle keeps your card details; we never receive them. We receive your email address, the product bought, the order number and the amount, so we can deliver your license and keep sales records.</li>
-          <li><b>When you claim a free launch license.</b> Your email address is stored with your license code at our license service. We use it to email you the code and, once, about two weeks later, to ask how the Software is working for you. We don’t add it to a mailing list. Your IP address is kept for one hour to stop automated sign-ups.</li>
+          <li><b>When you claim a free launch license.</b> Your email address is stored with your license code at our license service and added to our email list. We use it to send you the code, one email about two weeks later asking how the Software is working for you, and a few short reminders before the free launch month ends. Every one of these emails has an unsubscribe link. If you choose to pay something through “name your price”, Paddle handles that payment as described above. Your IP address is kept for one hour to stop automated sign-ups.</li>
           <li><b>When your license is issued.</b> Your email address, license code and order number are stored with our license service and used once to email you the code.</li>
           <li><b>When you activate the Software.</b> The app sends your license code, a machine fingerprint, the app version, the Windows version and the activation time. Your IP address is visible to the license service as part of the connection. The fingerprint is a one-way code derived from your motherboard and CPU identifiers: it cannot be turned back into those identifiers and contains nothing about you, your files or your music. It exists only so a single-use license stays on one computer.</li>
           <li><b>When you email us.</b> Your email address and whatever you choose to write, used to answer you.</li>
@@ -1593,7 +1605,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <li>Records of contracts, payments and refunds: <b>5 years</b>, as required by the Korean Act on Consumer Protection in Electronic Commerce.</li>
           <li>Records of complaints and disputes: <b>3 years</b>, under the same act.</li>
           <li>License and activation records: for as long as the license exists, then up to 5 years alongside the sales record.</li>
-          <li>Launch-list emails: until the launch announcement is sent, then deleted.</li>
+          <li>Email list: until you unsubscribe. After that we keep only the fact that you unsubscribed, so we never email you again by mistake.</li>
         </ul>
 
         <h3>5. Who processes it, and where</h3>
@@ -1781,9 +1793,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   /* ---------------- free launch month ----------------
      The license worker says whether Instrument Player's free month is
      upcoming, active or over, and its clock -- not the visitor's -- drives
-     the countdown. Elements marked data-launch="<state>" show only in that
-     state; data-launch-hide="<state>" ones hide in it. If the worker can't
-     be reached, the page stays exactly as published ($7).
+     the countdown. data-launch="<states>" elements show only in one of the
+     listed states (space-separated); data-launch-hide="<states>" ones hide in
+     them. The $7 Purchase box is published hidden and appears only once the
+     worker says the free month is over, so it never shows early.
      The local preview talks to a stand-in on :8787 instead, so testing the
      page can never issue a real license. */
   var LAUNCH_API = location.hostname === 'localhost'
@@ -1792,11 +1805,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   var launch = null, clockSkew = 0, tick = null;
 
   function showLaunch(state) {
+    function listed(el, attr) { return el.getAttribute(attr).split(' ').indexOf(state) !== -1; }
     document.querySelectorAll('[data-launch]').forEach(function (el) {
-      el.hidden = el.getAttribute('data-launch') !== state;
+      el.hidden = !listed(el, 'data-launch');
     });
     document.querySelectorAll('[data-launch-hide]').forEach(function (el) {
-      el.hidden = el.getAttribute('data-launch-hide') === state;
+      el.hidden = listed(el, 'data-launch-hide');
     });
   }
 
@@ -1830,7 +1844,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           updateClock();
           tick = setInterval(updateClock, 1000);
         }
-      })['catch'](function () { /* unreachable: stay at $7 */ });
+      })['catch'](function () { /* unreachable: the page stays as published */ });
   }
   loadLaunch();
 
@@ -1840,6 +1854,32 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       document.getElementById('claim-email').focus({ preventScroll: true });
     });
   });
+
+  /* "Name your price" goes through real Paddle checkout, so it only shows once
+     the site is on live Paddle -- or on the preview, or with ?tiptest in the
+     address to try it against sandbox on the real site. */
+  var tipsOn = PADDLE.environment === 'production' || location.hostname === 'localhost'
+               || location.search.indexOf('tiptest') !== -1;
+  if (tipsOn) document.querySelectorAll('[data-tip]').forEach(function (el) { el.hidden = false; });
+
+  function openTipCheckout(email, amount, tell) {
+    return fetch(LAUNCH_API + '/tip', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, amount: amount })
+    })
+      .then(function (r) { return r.json().then(function (body) { return { ok: r.ok, body: body }; }); })
+      .then(function (res) {
+        if (!res.ok || !res.body.transactionId || !paddleReady) throw new Error(res.body.message || 'no checkout');
+        Paddle.Checkout.open({
+          transactionId: res.body.transactionId,
+          customer: { email: email },
+          settings: { displayMode: 'overlay', theme: 'dark' }
+        });
+      })['catch'](function () {
+        tell('Your license is on its way to ' + email + ', but the payment window couldn’t open. Thank you for wanting to support us!', 'ok');
+      });
+  }
 
   document.querySelectorAll('[data-claim]').forEach(function (form) {
     var msg = form.querySelector('.claim-msg');
@@ -1857,6 +1897,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         form.elements.email.focus();
         return;
       }
+      var amount = tipsOn ? Number(form.elements.amount.value || 0) : 0;
+      if (!(amount === 0 || (amount >= 1 && amount <= 200))) {
+        tell('Name your price: leave it at 0, or choose between $1 and $200.', 'err');
+        form.elements.amount.focus();
+        return;
+      }
       btn.disabled = true;
       tell('Sending…');
 
@@ -1869,7 +1915,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         .then(function (res) {
           if (res.ok) {
             form.elements.email.disabled = true;
+            if (tipsOn) form.elements.amount.disabled = true;
             tell('Done. Your license is on its way to ' + email + '. If it isn’t in your inbox within 5 minutes, check your spam folder.', 'ok');
+            if (amount > 0) openTipCheckout(email, amount, tell);
           } else {
             btn.disabled = false;
             tell(res.body.message || 'Something went wrong. Please try again.', 'err');
