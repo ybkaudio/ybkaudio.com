@@ -503,6 +503,43 @@ h2{
 }
 .acct-list b{color:var(--ink);font-weight:600}
 
+/* ---------- free launch month ---------- */
+.status.ok{color:var(--ok);border-color:var(--ok)}
+/* shown/hidden by the launch script; beats the display values below */
+[data-launch][hidden],[data-launch-hide][hidden]{display:none !important}
+.launch{
+  margin-top:clamp(22px,3vw,30px);
+  border:1px solid var(--rule);border-top:2px solid var(--ok);
+  background:var(--surface);padding:clamp(20px,3vw,30px);
+  display:grid;grid-template-columns:minmax(0,1fr);gap:22px;align-items:start;
+}
+@media(min-width:820px){.launch.has-form{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
+.launch-eye{
+  display:flex;align-items:center;gap:9px;margin:0 0 12px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ok);
+}
+.launch-eye .dot{background:var(--ok)}
+.launch h3{
+  font-weight:900;font-size:clamp(24px,3.4vw,34px);line-height:.98;
+  letter-spacing:-.03em;text-transform:uppercase;margin-bottom:12px;
+}
+.launch p{margin:0;font-size:14.5px;line-height:1.5}
+.launch-clock{
+  margin-top:14px !important;font-family:var(--f-mono);font-size:12px !important;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+}
+.launch-clock b{color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.launch form{display:flex;flex-direction:column;gap:12px}
+.launch form .field{margin:0}
+.launch form .btn{width:100%}
+.launch .fineprint{font-size:12.5px;color:var(--muted)}
+.claim-msg:empty{display:none}
+.claim-msg.err{color:var(--hot)}
+.claim-msg.ok{color:var(--ok)}
+/* honeypot: off-screen, so people never fill it in and bots do */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
 /* ---------- price / signup / footer ---------- */
 .price-band{border-top:1px solid var(--rule);padding-block:clamp(40px,5vw,64px)}
 .price-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap)}
@@ -655,7 +692,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="hero-top">
         <svg class="logo hero-mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
         <div>
-          <span class="hero-flag mono eyebrow"><span class="dot" aria-hidden="true"></span><span data-copy="flag">Three Windows apps · In development</span></span>
+          <span class="hero-flag mono eyebrow"><span class="dot" aria-hidden="true"></span><span data-copy="flag">Instrument Player out now · Two more on the way</span></span>
           <h1><span data-copy="h1a">Music software</span><br><span data-copy="h1b">made simple</span><em>.</em></h1>
         </div>
       </div>
@@ -667,7 +704,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <dl class="hero-notes">
           <div class="note"><dt data-copy="n1t">Platform</dt><dd data-copy="n1d">Windows 10 &amp; 11. Desktop applications that run on their own — no DAW required.</dd></div>
           <div class="note"><dt data-copy="n2t">Price</dt><dd data-copy="n2d">$5–$12 per app. One single-use code per purchase — it activates one machine, once.</dd></div>
-          <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">All three apps are in active development. No release date announced yet.</dd></div>
+          <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">Instrument Player is out now. Console and Beatmaker are in active development.</dd></div>
         </dl>
       </div>
     </div>
@@ -685,7 +722,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h3 data-copy="h-ms-h2">Make Your Own Effect Chain</h3>
           <p data-copy="h-ms-p2">Change the state and visibility of any knob and line them up the way you want. From live vocal mixing to sound analysis, Console awaits your touch.</p>
           <div class="sum-actions btnrow">
-            <a class="btn" href="#/console"><span data-copy="h-ms-cta">Get now</span><span aria-hidden="true">→</span></a>
+            <a class="btn" href="#/console"><span data-copy="h-ms-cta">Learn more</span><span aria-hidden="true">→</span></a>
           </div>
         </div>
         <div>
@@ -699,7 +736,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="band">
     <div class="wrap">
-      <span class="status" data-copy="h-sp-status">In development</span>
+      <span class="status ok" data-copy="h-sp-status">Available now</span>
+      <span class="status ok" data-launch="active" hidden data-copy="h-sp-free">Free this month</span>
       <h2 data-copy="h-sp-name">Instrument Player</h2>
       <p class="kicker" data-copy="h-sp-k">Load, Play, Recover, Edit, Export.</p>
       <div class="summary">
@@ -729,7 +767,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p data-copy="h-bm-p1">Pick a genre, press Generate, and get drums, bass, chords and melody built from the samples already on your PC — sorted for you, never moved.</p>
           <p data-copy="h-bm-p2">Then keep changing it: shuffle sounds, regroove, swap chords, lock what works. Export audio, stems or MIDI when the idea lands.</p>
           <div class="sum-actions btnrow">
-            <a class="btn" href="#/beatmaker"><span data-copy="h-bm-cta">Get now</span><span aria-hidden="true">→</span></a>
+            <a class="btn" href="#/beatmaker"><span data-copy="h-bm-cta">Learn more</span><span aria-hidden="true">→</span></a>
           </div>
         </div>
         <div>
@@ -753,11 +791,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <span class="nm" data-copy="t2n">Console</span>
           <span class="amt" data-copy="t2a">$5</span>
           <span class="desc" data-copy="t2d">Eleven real-time effects on all system audio, with recording.</span>
-          <a class="btn" href="#/console" data-copy="t2b">Get now</a>
+          <a class="btn ghost" href="#/console" data-copy="t2b">Learn more</a>
         </div>
         <div class="tier">
           <span class="nm" data-copy="t1n">Instrument Player</span>
-          <span class="amt" data-copy="t1a">$7</span>
+          <span class="amt" data-copy="t1a" data-launch-hide="active">$7</span>
+          <span class="amt" data-launch="active" hidden data-copy="t1a-free">Free</span>
           <span class="desc" data-copy="t1d">Standalone VST3 instrument player with always-on MIDI Replay.</span>
           <a class="btn" href="#/player" data-copy="t1b">Get now</a>
         </div>
@@ -765,7 +804,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <span class="nm" data-copy="t3n">Beatmaker</span>
           <span class="amt" data-copy="t3a">$12</span>
           <span class="desc" data-copy="t3d">Genre-aware beat ideas built from your own sample library.</span>
-          <a class="btn" href="#/beatmaker" data-copy="t3b">Get now</a>
+          <a class="btn ghost" href="#/beatmaker" data-copy="t3b">Learn more</a>
         </div>
       </div>
     </div>
@@ -776,7 +815,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div>
         <span class="eyebrow" data-copy="su-eye">Launch list</span>
         <h3 class="big"><span data-copy="su-h">Hear it first</span><em>.</em></h3>
-        <p class="blurb" data-copy="su-p">The apps are still being built. Leave a note and you’ll get one email when they’re ready to buy — nothing else, ever.</p>
+        <p class="blurb" data-copy="su-p">Console and Beatmaker are still being built. Leave a note and you’ll get one email when they’re ready to buy — nothing else, ever.</p>
       </div>
       <div>
         <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches">
@@ -796,14 +835,46 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="sp-back">All apps</span></a>
       <div class="prod-title">
         <div>
-          <span class="status" data-copy="sp-status">In development</span>
+          <span class="status ok" data-copy="sp-status">Available now</span>
           <h2 data-copy="sp-name">Instrument Player</h2>
           <p class="kicker" data-copy="sp-k">Open it, pick an instrument, play. Your VST3 instruments, without the DAW.</p>
         </div>
         <div class="prod-price">
-          <span data-copy="sp-price">$7</span>
+          <span data-copy="sp-price" data-launch-hide="active">$7</span>
+          <span data-launch="active" hidden data-copy="sp-price-free">Free</span>
           <small data-copy="sp-price-sub">One-time · One license · One device</small>
         </div>
+      </div>
+
+      <!-- free launch month: the launch script shows one of these (or neither) -->
+      <div class="launch" data-launch="upcoming" hidden>
+        <div>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="lx-up-eye">Free launch month</span></p>
+          <p data-copy="lx-up-p">Instrument Player will be free for its first month, and anyone who claims it then keeps it for good.</p>
+          <p class="launch-clock"><span data-copy="lx-up-starts">Starts in</span> <b data-countdown></b></p>
+        </div>
+      </div>
+
+      <div class="launch has-form" id="free" data-launch="active" hidden>
+        <div>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="lx-eye">Free launch month</span></p>
+          <h3 data-copy="lx-h">Get it free</h3>
+          <p data-copy="lx-p">For its first month, Instrument Player is free. Claim a license now and it’s yours to keep: it never expires, and every future update is free.</p>
+          <p class="launch-clock"><span data-copy="lx-ends">Free for another</span> <b data-countdown></b><span data-copy="lx-then">, then $7</span></p>
+        </div>
+        <form data-claim novalidate>
+          <div class="field">
+            <label for="claim-email" data-copy="lx-label">Your email</label>
+            <input id="claim-email" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="claim-website">Leave this empty</label>
+            <input id="claim-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <button type="submit" class="btn"><span data-copy="lx-btn">Email me my free license</span><span aria-hidden="true">→</span></button>
+          <p class="claim-msg" role="status" aria-live="polite"></p>
+          <p class="fineprint"><span data-copy="lx-fine">We’ll email your license code and the download link, then once more about two weeks later to ask how it’s going. No mailing list.</span> <a href="#/privacy">Privacy</a></p>
+        </form>
       </div>
 
       <a class="shot" href="img/player/01-main.png" target="_blank" rel="noopener">
@@ -921,7 +992,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g4">Every update to version 1.x, at no extra cost</span></li>
           </ul>
         </div>
-        <div class="buy-side">
+        <div class="buy-side" data-launch="active" hidden>
+          <div class="buy-total"><span data-copy="sp-total-l-free">Total today</span><b data-copy="sp-total-free">$0.00</b></div>
+          <button type="button" class="btn" data-scroll-free>
+            <span data-copy="sp-free-btn">Claim it free</span><span aria-hidden="true">↑</span>
+          </button>
+          <p class="fineprint" data-copy="sp-free-fine">Free during the launch month. No payment, no card.</p>
+        </div>
+        <div class="buy-side" data-launch-hide="active">
           <div class="buy-total"><span data-copy="sp-total-l">Total today</span><b data-copy="sp-total">$7.00</b></div>
           <button type="button" class="btn" data-buy="synth">
             <span data-copy="sp-buy-btn">Purchase</span><span aria-hidden="true">→</span>
@@ -954,15 +1032,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
 
         <div class="checkout" data-checkout="synth" hidden style="grid-column:1/-1">
-          <h4 data-copy="sp-co-h">Checkout is not open yet</h4>
-          <p data-copy="sp-co-p1">Instrument Player is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
-          <p data-copy="sp-co-p2">Three things have to land before this button goes live:</p>
-          <ol>
-            <li data-copy="sp-co-1">The app reaches a releasable build, code-signed with a Windows installer.</li>
-            <li data-copy="sp-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
-            <li data-copy="sp-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
-          </ol>
-          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Instrument%20Player%20is%20for%20sale" data-copy="sp-co-cta">Email me when Instrument Player goes on sale →</a></p>
+          <h4 data-copy="sp-co-h">The payment window didn’t open</h4>
+          <p data-copy="sp-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Instrument%20Player" data-copy="sp-co-cta">Still not working? Email us →</a></p>
         </div>
       </div>
     </div>
@@ -1505,6 +1577,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <h3>2. What we collect and why</h3>
         <ul>
           <li><b>When you buy.</b> Paddle, our Merchant of Record, collects your name, email address, country, postal code where required, and payment details. Paddle keeps your card details; we never receive them. We receive your email address, the product bought, the order number and the amount, so we can deliver your license and keep sales records.</li>
+          <li><b>When you claim a free launch license.</b> Your email address is stored with your license code at our license service. We use it to email you the code and, once, about two weeks later, to ask how the Software is working for you. We don’t add it to a mailing list. Your IP address is kept for one hour to stop automated sign-ups.</li>
           <li><b>When your license is issued.</b> Your email address, license code and order number are stored with our license service and used once to email you the code.</li>
           <li><b>When you activate the Software.</b> The app sends your license code, a machine fingerprint, the app version, the Windows version and the activation time. Your IP address is visible to the license service as part of the connection. The fingerprint is a one-way code derived from your motherboard and CPU identifiers: it cannot be turned back into those identifiers and contains nothing about you, your files or your music. It exists only so a single-use license stays on one computer.</li>
           <li><b>When you email us.</b> Your email address and whatever you choose to write, used to answer you.</li>
@@ -1531,8 +1604,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <tbody>
               <tr><td>Paddle.com Market Ltd</td><td>United Kingdom</td><td>Payment, tax, invoicing (Merchant of Record)</td><td>Name, email, country, payment details, order</td></tr>
               <tr><td>Keygen</td><td>United States</td><td>Issuing and activating licenses</td><td>Email, license code, order number, machine fingerprint, app and Windows version, IP address</td></tr>
-              <tr><td>Resend</td><td>United States</td><td>Sending your license email</td><td>Email, license code</td></tr>
-              <tr><td>Cloudflare, Inc.</td><td>United States</td><td>Running the purchase-to-license automation</td><td>Order data in transit, email</td></tr>
+              <tr><td>Resend</td><td>United States</td><td>Sending your license email, and the one follow-up email after a free launch claim</td><td>Email, license code</td></tr>
+              <tr><td>Cloudflare, Inc.</td><td>United States</td><td>Running the purchase-to-license automation and free launch sign-ups</td><td>Order data in transit, email, IP address (one hour)</td></tr>
               <tr><td>GitHub, Inc.</td><td>United States</td><td>Hosting this website</td><td>IP address</td></tr>
               <tr><td>Google LLC</td><td>United States</td><td>Serving website fonts</td><td>IP address</td></tr>
             </tbody>
@@ -1661,9 +1734,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
                                       // below once ybkaudio.com is approved in Paddle.
     clientToken: 'test_613e1e64ceedb67e1c32b7a0b0b',
     prices: {
-      synth:   'pri_01m2a544atvbsmdpa3j2yk6a8w',  // Instrument Player, $7 (sandbox)
-      midside: 'pri_01m2a54rhcj2g9am6y4ygd7n2a'   // Console, $5 (sandbox)
-      // beatmaker: no Paddle price yet -- its button shows the "not open yet" panel
+      synth:   'pri_01m2a544atvbsmdpa3j2yk6a8w'   // Instrument Player, $7 (sandbox)
+      // midside, beatmaker: still in development, so no price here -- their
+      // buttons show the "not open yet" panel. Console's prices exist in
+      // Paddle already: sandbox pri_01m2a54rhcj2g9am6y4ygd7n2a (live below).
     }
   };
   // LIVE values, saved here so going live later is a one-line swap of the
@@ -1671,12 +1745,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   //   environment: 'production'
   //   clientToken: 'live_c368a3e2c91fc58f6b40c7258dd'
   //   synth:   'pri_01m26a79x1e2751c91k981ra5v'
-  //   midside: 'pri_01m26a93tt0edase9x5agnpjf0'
-  //
-  // NOTE (remove once the webhook + Keygen automation ships): every purchase
-  // from here on needs a HUMAN to notice the payment in the Paddle dashboard
-  // and email the installer + a license code by hand. Nothing does this
-  // automatically yet -- a paying customer currently gets nothing until you do.
+  //   midside: 'pri_01m26a93tt0edase9x5agnpjf0'   (only once Console ships)
 
   var paddleReady = false;
   if (PADDLE.clientToken && window.Paddle) {
@@ -1706,6 +1775,109 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       panel.setAttribute('tabindex', '-1');
       panel.focus({ preventScroll: true });
+    });
+  });
+
+  /* ---------------- free launch month ----------------
+     The license worker says whether Instrument Player's free month is
+     upcoming, active or over, and its clock -- not the visitor's -- drives
+     the countdown. Elements marked data-launch="<state>" show only in that
+     state; data-launch-hide="<state>" ones hide in it. If the worker can't
+     be reached, the page stays exactly as published ($7).
+     The local preview talks to a stand-in on :8787 instead, so testing the
+     page can never issue a real license. */
+  var LAUNCH_API = location.hostname === 'localhost'
+    ? 'http://localhost:8787'
+    : 'https://ybk-license-webhook.ybkaudio.workers.dev';
+  var launch = null, clockSkew = 0, tick = null;
+
+  function showLaunch(state) {
+    document.querySelectorAll('[data-launch]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-launch') !== state;
+    });
+    document.querySelectorAll('[data-launch-hide]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-launch-hide') === state;
+    });
+  }
+
+  function timeLeft(ms) {
+    var s = Math.max(0, Math.floor(ms / 1000));
+    var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600);
+    var m = Math.floor(s % 3600 / 60), sec = s % 60;
+    function two(n) { return (n < 10 ? '0' : '') + n; }
+    return (d ? d + 'd ' : '') + two(h) + 'h ' + two(m) + 'm ' + two(sec) + 's';
+  }
+
+  function updateClock() {
+    var target = Date.parse(launch.state === 'upcoming' ? launch.start : launch.end);
+    var left = target - (Date.now() + clockSkew);
+    document.querySelectorAll('[data-countdown]').forEach(function (el) { el.textContent = timeLeft(left); });
+    if (left <= 0) {                       // it just started or ended: ask the worker again
+      clearInterval(tick);
+      tick = null;
+      setTimeout(loadLaunch, 2000);
+    }
+  }
+
+  function loadLaunch() {
+    fetch(LAUNCH_API + '/launch', { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (l) {
+        launch = l;
+        clockSkew = Date.parse(l.now) - Date.now();
+        showLaunch(l.state);
+        if ((l.state === 'upcoming' || l.state === 'active') && !tick) {
+          updateClock();
+          tick = setInterval(updateClock, 1000);
+        }
+      })['catch'](function () { /* unreachable: stay at $7 */ });
+  }
+  loadLaunch();
+
+  document.querySelectorAll('[data-scroll-free]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.getElementById('free').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById('claim-email').focus({ preventScroll: true });
+    });
+  });
+
+  document.querySelectorAll('[data-claim]').forEach(function (form) {
+    var msg = form.querySelector('.claim-msg');
+    var btn = form.querySelector('button[type="submit"]');
+    function tell(text, kind) {
+      msg.textContent = text;
+      msg.className = 'claim-msg' + (kind ? ' ' + kind : '');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements.email.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        tell('That doesn’t look like an email address.', 'err');
+        form.elements.email.focus();
+        return;
+      }
+      btn.disabled = true;
+      tell('Sending…');
+
+      fetch(LAUNCH_API + '/claim', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, website: form.elements.website.value })
+      })
+        .then(function (r) { return r.json().then(function (body) { return { ok: r.ok, body: body }; }); })
+        .then(function (res) {
+          if (res.ok) {
+            form.elements.email.disabled = true;
+            tell('Done. Your license is on its way to ' + email + '. If it isn’t in your inbox within 5 minutes, check your spam folder.', 'ok');
+          } else {
+            btn.disabled = false;
+            tell(res.body.message || 'Something went wrong. Please try again.', 'err');
+          }
+        })['catch'](function () {
+          btn.disabled = false;
+          tell('Couldn’t reach our server. Check your connection and try again.', 'err');
+        });
     });
   });
 
