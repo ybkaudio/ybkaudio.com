@@ -897,7 +897,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           </div>
           <button type="submit" class="btn"><span data-copy="lx-btn">Get my free license</span><span aria-hidden="true">→</span></button>
           <p class="claim-msg" role="status" aria-live="polite"></p>
-          <p class="fineprint"><span data-copy="lx-fine">We’ll email you a link to confirm your address, then your license code and the download link. After that: one “how’s it going?” email about two weeks later, and a few short reminders before the free month ends. Unsubscribe any time.</span> <a href="#/privacy">Privacy</a></p>
+          <p class="fineprint"><span data-copy="lx-fine">One license per email address. We’ll email you a link to confirm your address, then your license code and the download link. After that: one “how’s it going?” email about two weeks later, and a few short reminders before the free month ends. Unsubscribe any time.</span> <a href="#/privacy">Privacy</a></p>
         </form>
       </div>
 
@@ -1747,22 +1747,20 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
      dashboard to go live  14 nothing else in this file needs to change.
      Client-side tokens are safe to publish; never put a Paddle API KEY here. */
   var PADDLE = {
-    environment: 'sandbox',          // Testing. Switch to 'production' + swap the values
-                                      // below once ybkaudio.com is approved in Paddle.
-    clientToken: 'test_613e1e64ceedb67e1c32b7a0b0b',
+    environment: 'production',       // LIVE since 2026-09-21: real cards, real money.
+    clientToken: 'live_c368a3e2c91fc58f6b40c7258dd',
     prices: {
-      synth:   'pri_01m2a544atvbsmdpa3j2yk6a8w'   // Instrument Player, $10 (sandbox)
+      synth:   'pri_01m26a79x1e2751c91k981ra5v'   // Instrument Player, $10 (live)
       // midside, beatmaker: still in development, so no price here -- their
-      // buttons show the "not open yet" panel. Console's prices exist in
-      // Paddle already: sandbox pri_01m2a54rhcj2g9am6y4ygd7n2a (live below).
+      // buttons show the "not open yet" panel. Console's live price exists in
+      // Paddle already (pri_01m26a93tt0edase9x5agnpjf0), deliberately unused.
     }
   };
-  // LIVE values, saved here so going live later is a one-line swap of the
-  // block above -- not a search for these again:
-  //   environment: 'production'
-  //   clientToken: 'live_c368a3e2c91fc58f6b40c7258dd'
-  //   synth:   'pri_01m26a79x1e2751c91k981ra5v'
-  //   midside: 'pri_01m26a93tt0edase9x5agnpjf0'   (only once Console ships)
+  // The SANDBOX values, if testing against sandbox is ever needed again:
+  //   environment: 'sandbox'
+  //   clientToken: 'test_613e1e64ceedb67e1c32b7a0b0b'
+  //   synth:   'pri_01m2a544atvbsmdpa3j2yk6a8w'
+  //   midside: 'pri_01m2a54rhcj2g9am6y4ygd7n2a'
 
   var paddleReady = false;
   if (PADDLE.clientToken && window.Paddle) {
