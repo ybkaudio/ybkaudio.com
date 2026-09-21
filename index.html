@@ -549,6 +549,17 @@ h2{
 .claim-msg:empty{display:none}
 .claim-msg.err{color:var(--hot)}
 .claim-msg.ok{color:var(--ok)}
+.tip-presets{display:flex;gap:8px}
+.tip-preset{
+  flex:1 1 0;padding:9px 0;border-radius:2px;border:1px solid var(--rule);
+  background:var(--ground);color:var(--muted);
+  font-family:var(--f-mono);font-size:13px;letter-spacing:.04em;
+  cursor:pointer;transition:border-color .15s,color .15s,background .15s;
+}
+.tip-preset:hover{border-color:var(--accent);color:var(--ink)}
+.tip-preset[aria-pressed="true"]{border-color:var(--accent);color:var(--ink);background:rgba(59,130,238,.12)}
+.tip-preset:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.tip-preset:disabled{opacity:.5;cursor:not-allowed}
 .tip-input{display:flex;align-items:center;border:1px solid var(--rule);border-radius:2px;background:var(--ground)}
 .tip-input span{padding:0 4px 0 13px;color:var(--muted);font-size:15px}
 .tip-input input{flex:1 1 auto;min-width:0;border:0 !important;padding-left:4px !important;background:transparent !important}
@@ -885,11 +896,16 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           </div>
           <div class="field" data-tip hidden>
             <label for="claim-amount" data-copy="lx-tip-label">Name your price (optional)</label>
+            <div class="tip-presets" role="group" aria-label="Suggested amounts">
+              <button type="button" class="tip-preset" data-amount="3">$3</button>
+              <button type="button" class="tip-preset" data-amount="5">$5</button>
+              <button type="button" class="tip-preset" data-amount="10">$10</button>
+            </div>
             <div class="tip-input">
               <span aria-hidden="true">$</span>
-              <input id="claim-amount" name="amount" type="number" inputmode="decimal" min="0" max="200" step="0.01" placeholder="0" aria-describedby="claim-tip-note">
+              <input id="claim-amount" name="amount" type="number" inputmode="numeric" min="0" max="200" step="1" placeholder="0" aria-describedby="claim-tip-note">
             </div>
-            <p class="tip-note" id="claim-tip-note" data-copy="lx-tip-note">Leave it at 0 and it’s free. Anything you add helps build the next apps.</p>
+            <p class="tip-note" id="claim-tip-note" data-copy="lx-tip-note">Leave it at 0 and it’s free. $3 minimum if you do — card fees eat anything smaller.</p>
           </div>
           <div class="hp" aria-hidden="true">
             <label for="claim-website">Leave this empty</label>
@@ -1865,6 +1881,46 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
                || location.search.indexOf('tiptest') !== -1;
   if (tipsOn) document.querySelectorAll('[data-tip]').forEach(function (el) { el.hidden = false; });
 
+  /* Keep in step with tip_min / tip_max in the worker's wrangler.toml. The
+     floor is 3 because Paddle charges 5% + 50 cents a transaction: on a $1
+     payment that leaves 36 cents, on $3 it leaves $2.08. */
+  var TIP_MIN = 3, TIP_MAX = 200;
+
+  /* The amount box steps by whole dollars, so the up/down arrows move in units
+     worth having -- but 0 has to stay reachable, because 0 is "free". A value
+     that lands between 0 and the minimum jumps to whichever end it was heading
+     for: down to empty, up to the minimum. */
+  document.querySelectorAll('[data-tip] input[name="amount"]').forEach(function (input) {
+    var presets = input.closest('[data-tip]').querySelectorAll('.tip-preset');
+    var last = 0;
+
+    function paint() {
+      var v = Number(input.value || 0);
+      presets.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(Number(b.dataset.amount) === v));
+      });
+    }
+
+    presets.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var v = Number(b.dataset.amount);
+        input.value = (v === Number(input.value || 0)) ? '' : String(v);   // click again to clear
+        last = Number(input.value || 0);
+        paint();
+      });
+    });
+
+    input.addEventListener('change', function () {
+      var v = Number(input.value || 0);
+      if (v > 0 && v < TIP_MIN) input.value = v < last ? '' : String(TIP_MIN);
+      else if (v > TIP_MAX) input.value = String(TIP_MAX);
+      last = Number(input.value || 0);
+      paint();
+    });
+
+    input.addEventListener('input', paint);
+  });
+
   function openTipCheckout(email, amount, tell) {
     return fetch(LAUNCH_API + '/tip', {
       method: 'POST',
@@ -1901,8 +1957,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         return;
       }
       var amount = tipsOn ? Number(form.elements.amount.value || 0) : 0;
-      if (!(amount === 0 || (amount >= 1 && amount <= 200))) {
-        tell('Name your price: leave it at 0, or choose between $1 and $200.', 'err');
+      if (!(amount === 0 || (amount >= TIP_MIN && amount <= TIP_MAX))) {
+        tell('Name your price: leave it empty for free, or choose between $' + TIP_MIN +
+             ' and $' + TIP_MAX + '.', 'err');
         form.elements.amount.focus();
         return;
       }
@@ -1918,7 +1975,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         .then(function (res) {
           if (res.ok) {
             form.elements.email.disabled = true;
-            if (tipsOn) form.elements.amount.disabled = true;
+            if (tipsOn) {
+              form.elements.amount.disabled = true;
+              form.querySelectorAll('.tip-preset').forEach(function (b) { b.disabled = true; });
+            }
             tell('Almost done: we sent a link to ' + email + '. Click it to confirm your email and get your license. Not there in 5 minutes? Check your spam folder.', 'ok');
             if (amount > 0) openTipCheckout(email, amount, tell);
           } else {
