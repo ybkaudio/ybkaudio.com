@@ -557,6 +557,12 @@ h2{
 .launch form .field{margin:0}
 .launch form .btn{width:100%}
 .launch .fineprint{font-size:12.5px;color:var(--muted)}
+.launch-note{
+  margin-top:14px !important;padding:12px 14px;
+  background:var(--surface);border-left:3px solid var(--hot);
+  font-size:13px !important;line-height:1.5 !important;
+}
+.launch-note b{color:var(--ink)}
 .claim-msg:empty{display:none}
 .claim-msg.err{color:var(--hot)}
 .claim-msg.ok{color:var(--ok)}
@@ -577,6 +583,9 @@ h2{
 .tip-note{margin:0 !important;font-size:12.5px !important;color:var(--muted)}
 /* honeypot: off-screen, so people never fill it in and bots do */
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+/* Cloudflare's anti-bot check; empty (and so hidden) until TURNSTILE_SITEKEY is set */
+.ts-box:empty{display:none}
+.ts-box{min-height:65px}
 
 /* ---------- price / signup / footer ---------- */
 .price-band{border-top:1px solid var(--rule);padding-block:clamp(40px,5vw,64px)}
@@ -781,7 +790,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="summary">
         <div class="prose">
           <p data-copy="h-sp-p1">Instrument Player scans the VST3 instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
-          <p data-copy="h-sp-p2">And MIDI Replay keeps the last few minutes of your playing without pressing Record, so the phrase you stumbled into is still there — ready to edit and export as .mid.</p>
+          <p data-copy="h-sp-p2">And MIDI Replay keeps the last 5 minutes of your playing without pressing Record, so the phrase you stumbled into is still there — ready to edit and export as .mid.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/player"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
@@ -897,7 +906,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div>
           <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="lx-eye">Free launch month</span></p>
           <h3 data-copy="lx-h">Get it free</h3>
-          <p data-copy="lx-p">For its first month, Instrument Player is free. Claim a license now and it’s yours to keep: it never expires, and every future update is free.</p>
+          <p data-copy="lx-p">For its first month, Instrument Player is free. Claim a license now and it’s yours to keep — the license never expires and keeps working for good.</p>
+          <p data-copy="lx-p2">Every update released during the free month is included, so fixes reach you too. From October 20, new versions come with the paid app — your free license keeps working, for good, on the last free-month version.</p>
+          <p class="launch-note" data-copy="lx-warn"><b>Windows will probably warn you.</b> Instrument Player isn’t code-signed yet, so the first time you run the installer Windows may show a blue “Windows protected your PC” box. Choose <b>More info</b>, then <b>Run anyway</b>. That warning is about a certificate we haven’t bought yet, not about the file — and dismissing it never uses up your license. <a href="#/help">More on this</a></p>
           <p class="launch-clock"><span data-copy="lx-ends">Free for another</span> <b data-countdown></b><span data-copy="lx-then">, then $10</span></p>
         </div>
         <form data-claim novalidate>
@@ -922,6 +933,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <label for="claim-website">Leave this empty</label>
             <input id="claim-website" name="website" tabindex="-1" autocomplete="off">
           </div>
+          <div class="ts-box" data-turnstile></div>
           <button type="submit" class="btn"><span data-copy="lx-btn">Get my free license</span><span aria-hidden="true">→</span></button>
           <p class="claim-msg" role="status" aria-live="polite"></p>
           <p class="fineprint"><span data-copy="lx-fine">One license per email address. We’ll email you a link to confirm your address, then your license code and the download link. After that: one “how’s it going?” email about two weeks later, and a few short reminders before the free month ends. Unsubscribe any time.</span> <a href="#/privacy">Privacy</a></p>
@@ -943,7 +955,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="prose">
         <p data-copy="sp-p1">Instrument Player runs the virtual instruments you already own as their own app. A lot of great synths only ship as plugins — so trying a sound or playing for five minutes means booting a DAW and making a track. Instrument Player removes the timeline, the tracks and the mixer, and keeps only the part you wanted: one instrument, ready to play.</p>
         <p data-copy="sp-p2">It finds the VST3 instruments on your PC, shows the plugin’s own interface at exactly its size, and takes input from every MIDI controller you plug in — or from your computer keyboard.</p>
-        <p data-copy="sp-p3">And it never misses the take. MIDI Replay keeps the last few minutes of your playing in memory without you pressing Record, so the phrase you stumbled into can be pulled back, tidied up in the piano roll and exported as a .mid file for your DAW. What leaves the app is MIDI — the notes you played — not audio.</p>
+        <p data-copy="sp-p3">And it never misses the take. MIDI Replay keeps the last 5 minutes of your playing in memory without you pressing Record, so the phrase you stumbled into can be pulled back, tidied up in the piano roll and exported as a .mid file for your DAW. What leaves the app is MIDI — the notes you played — not audio.</p>
       </div>
 
       <div class="features">
@@ -966,7 +978,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div class="feat">
           <span class="n" data-copy="f3n">MIDI Replay</span>
           <h4 data-copy="f3h">All MIDI input replayable</h4>
-          <p data-copy="f3p">The last few minutes of your playing are always in memory — nothing to arm, nothing to press. What you played while warming up is still there, exactly as you played it.</p>
+          <p data-copy="f3p">The last 5 minutes of your playing are always in memory — nothing to arm, nothing to press. What you played while warming up is still there, exactly as you played it.</p>
           <a class="feat-shot" href="img/player/06-midi-edit.png" target="_blank" rel="noopener">
             <img src="img/player/06-midi-edit.png" width="1406" height="853" loading="lazy" alt="The MIDI editor showing chords brought back by MIDI Replay, still sitting off the grid exactly as they were played by hand.">
           </a>
@@ -1002,7 +1014,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <a class="shot" href="img/player/02-starter-synth.png" target="_blank" rel="noopener">
             <img src="img/player/02-starter-synth.png" width="1016" height="1025" loading="lazy" alt="Starter Synth, the instrument built into Instrument Player, open with its sound buttons along the bottom and a chord held on the on-screen keyboard.">
           </a>
-          <figcaption data-copy="sp-shot2">Fig. 2 — Starter Synth comes built in, so the first key already makes a sound</figcaption>
+          <figcaption data-copy="sp-shot2">Fig. 2 — Starter Synth comes built in, so you can play something even before you install a plugin</figcaption>
         </figure>
         <figure>
           <a class="shot" href="img/player/03-audio-effects.png" target="_blank" rel="noopener">
@@ -1571,7 +1583,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p>You may use the Software for personal and commercial work. Music, recordings and MIDI files you make with it belong to you.</p>
 
         <h3>4. Updates</h3>
-        <p>Your license includes every update within major version 1 (1.x) at no extra cost. A future major version, if one is released, may be sold separately. We may change or remove features in updates, but will not remove a product’s core function within version 1.</p>
+        <p>A <b>purchased</b> license includes every update within major version 1 (1.x) at no extra cost. A future major version, if one is released, may be sold separately. We may change or remove features in updates, but will not remove a product’s core function within version 1.</p>
+        <p>A <b>free launch-month</b> license includes every update released up to and including 19 October 2026. Updates released after that are for purchased licenses; the free license keeps working, for good, on the last version it received. To receive later updates, buy the Software after its official release.</p>
 
         <h3>5. What you may not do</h3>
         <ul>
@@ -1612,7 +1625,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="wrap">
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span>Home</span></a>
       <h2 style="margin-top:20px">Privacy Policy</h2>
-      <p class="legal-meta">Last updated 14 September 2026</p>
+      <p class="legal-meta">Last updated 22 September 2026</p>
 
       <div class="legal-body">
         <p class="callout">Short version: we collect only what it takes to sell you a license and make it work on one computer. No analytics, no advertising trackers, no selling of data — ever.</p>
@@ -1651,7 +1664,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
               <tr><td>Paddle.com Market Ltd</td><td>United Kingdom</td><td>Payment, tax, invoicing (Merchant of Record)</td><td>Name, email, country, payment details, order</td></tr>
               <tr><td>Keygen</td><td>United States</td><td>Issuing and activating licenses</td><td>Email, license code, order number, machine fingerprint, app and Windows version, IP address</td></tr>
               <tr><td>Resend</td><td>United States</td><td>Sending your license email, and the one follow-up email after a free launch claim</td><td>Email, license code</td></tr>
-              <tr><td>Cloudflare, Inc.</td><td>United States</td><td>Running the purchase-to-license automation and free launch sign-ups</td><td>Order data in transit, email, IP address (one hour)</td></tr>
+              <tr><td>Cloudflare, Inc.</td><td>United States</td><td>Running the purchase-to-license automation and free launch sign-ups, and checking the sign-up form isn’t used by bots (Turnstile)</td><td>Order data in transit, email, IP address (one hour), browser signals for the bot check</td></tr>
               <tr><td>GitHub, Inc.</td><td>United States</td><td>Hosting this website</td><td>IP address</td></tr>
               <tr><td>Google LLC</td><td>United States</td><td>Serving website fonts</td><td>IP address</td></tr>
             </tbody>
@@ -1837,6 +1850,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     : 'https://ybk-license-webhook.ybkaudio.workers.dev';
   var launch = null, clockSkew = 0, tick = null;
 
+  /* Cloudflare Turnstile on the free-license form, so a bot can't use it to
+     send confirmation emails to strangers. Site key: Cloudflare dashboard ->
+     Turnstile -> the ybkaudio.com widget. Public by design (the secret half
+     lives only in the worker). Empty = no check shown or sent. The local
+     preview swaps in Cloudflare's always-pass test key. */
+  var TURNSTILE_SITEKEY = '0x4AAAAAAE_M6uct0FnykKVR';
+  if (location.hostname === 'localhost' && TURNSTILE_SITEKEY) TURNSTILE_SITEKEY = '1x00000000000000000000AA';
+
   function showLaunch(state) {
     function listed(el, attr) { return el.getAttribute(attr).split(' ').indexOf(state) !== -1; }
     document.querySelectorAll('[data-launch]').forEach(function (el) {
@@ -1954,7 +1975,34 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       });
   }
 
-  document.querySelectorAll('[data-claim]').forEach(function (form) {
+  var claimForms = document.querySelectorAll('[data-claim]');
+  if (TURNSTILE_SITEKEY && claimForms.length) {
+    // "managed": most people see a quick tick and never have to click; only
+    // traffic Cloudflare finds suspicious is asked to tick the box.
+    window.ybkTurnstileReady = function () {
+      claimForms.forEach(function (form) {
+        form.turnstileId = window.turnstile.render(form.querySelector('[data-turnstile]'), {
+          sitekey: TURNSTILE_SITEKEY, theme: 'dark', appearance: 'always'
+        });
+      });
+    };
+    var ts = document.createElement('script');
+    ts.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=ybkTurnstileReady';
+    ts.async = true;
+    document.head.appendChild(ts);
+  }
+  /** The check's answer, '' when the check is off; null while it isn't done yet. */
+  function turnstileToken(form) {
+    if (!TURNSTILE_SITEKEY) return '';
+    if (!window.turnstile || form.turnstileId === undefined) return null;
+    return window.turnstile.getResponse(form.turnstileId) || null;
+  }
+  function turnstileReset(form) {
+    // Each answer is good for one try, so a failed try needs a fresh one.
+    if (TURNSTILE_SITEKEY && window.turnstile && form.turnstileId !== undefined) window.turnstile.reset(form.turnstileId);
+  }
+
+  claimForms.forEach(function (form) {
     var msg = form.querySelector('.claim-msg');
     var btn = form.querySelector('button[type="submit"]');
     function tell(text, kind) {
@@ -1977,13 +2025,18 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         form.elements.amount.focus();
         return;
       }
+      var human = turnstileToken(form);
+      if (human === null) {
+        tell('One moment: please finish the “Verify you are human” check above the button, then try again.', 'err');
+        return;
+      }
       btn.disabled = true;
       tell('Sending…');
 
       fetch(LAUNCH_API + '/claim', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, website: form.elements.website.value })
+        body: JSON.stringify({ email: email, website: form.elements.website.value, turnstile: human })
       })
         .then(function (r) { return r.json().then(function (body) { return { ok: r.ok, body: body }; }); })
         .then(function (res) {
@@ -1997,10 +2050,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             if (amount > 0) openTipCheckout(email, amount, tell);
           } else {
             btn.disabled = false;
+            turnstileReset(form);
             tell(res.body.message || 'Something went wrong. Please try again.', 'err');
           }
         })['catch'](function () {
           btn.disabled = false;
+          turnstileReset(form);
           tell('Couldn’t reach our server. Check your connection and try again.', 'err');
         });
     });
