@@ -312,6 +312,17 @@ h2{
 }
 .feat h4{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
 .feat p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+/* the card's picture: margin-top:auto drops it to the bottom, so the images
+   line up across a row however long the text above them runs */
+.feat-shot{
+  display:block;margin-top:auto;padding-top:14px;
+}
+.feat-shot img{
+  display:block;width:100%;height:auto;
+  aspect-ratio:16/10;object-fit:cover;object-position:center top;
+  border:1px solid var(--rule);background:var(--surface);
+}
+.feat-shot:hover img{border-color:var(--accent)}
 
 /* spec table */
 .specs{
@@ -938,49 +949,52 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="features">
         <div class="feat">
           <span class="n" data-copy="f1n">Find</span>
-          <h4 data-copy="f1h">Every instrument, searchable</h4>
-          <p data-copy="f1p">Scans your VST3 instruments into a searchable list and filters out effect plugins. Star favourites to pin them to the top. Scan only what’s new, or rescan everything.</p>
+          <h4 data-copy="f1h">Find and play your VST instrument</h4>
+          <p data-copy="f1p">Every VST3 instrument on your PC in one searchable list, effects filtered out and favourites pinned to the top. Pick one and it opens at its own size, ready to play.</p>
+          <a class="feat-shot" href="img/player/04-instruments.png" target="_blank" rel="noopener">
+            <img src="img/player/04-instruments.png" width="902" height="526" loading="lazy" alt="The instrument list open over the app, with the VST3 instruments found on this computer and favourites pinned to the top.">
+          </a>
         </div>
         <div class="feat">
-          <span class="n" data-copy="f2n">The plugin, as designed</span>
-          <h4 data-copy="f2h">Its own interface, its own size</h4>
-          <p data-copy="f2p">The window fits the plugin exactly. Go full screen with F11 and plugins that can scale grow to fit without stretching; the rest stay sharp and centred.</p>
+          <span class="n" data-copy="f2n">Effects</span>
+          <h4 data-copy="f2h">Add any VST audio effect</h4>
+          <p data-copy="f2p">Chain your own VST3 effects after the instrument, in the order the sound runs through them. The list tells you what kind each effect is.</p>
+          <a class="feat-shot" href="img/player/05-effects-list.png" target="_blank" rel="noopener">
+            <img src="img/player/05-effects-list.png" width="1016" height="1025" loading="lazy" alt="The Add an effect list open over the app, showing the effect plugins found on the computer with their type and maker.">
+          </a>
         </div>
         <div class="feat">
-          <span class="n" data-copy="f3n">Play</span>
-          <h4 data-copy="f3h">Any controller, or your keyboard</h4>
-          <p data-copy="f3p">Every connected MIDI input works at once, including ones plugged in while the app runs. Press M to play from your computer keyboard; Stop Notes silences anything stuck.</p>
+          <span class="n" data-copy="f3n">MIDI Replay</span>
+          <h4 data-copy="f3h">All MIDI input replayable</h4>
+          <p data-copy="f3p">The last few minutes of your playing are always in memory — nothing to arm, nothing to press. What you played while warming up is still there, exactly as you played it.</p>
+          <a class="feat-shot" href="img/player/06-midi-edit.png" target="_blank" rel="noopener">
+            <img src="img/player/06-midi-edit.png" width="1406" height="853" loading="lazy" alt="The MIDI editor showing chords brought back by MIDI Replay, still sitting off the grid exactly as they were played by hand.">
+          </a>
         </div>
         <div class="feat">
-          <span class="n" data-copy="f4n">MIDI Replay</span>
-          <h4 data-copy="f4h">Nothing to arm, nothing to press</h4>
-          <p data-copy="f4p">The last few minutes of playing are always kept in memory, so an idea is saved before you decide you wanted it. Record is there too, for when you mean it.</p>
+          <span class="n" data-copy="f4n">Piano roll</span>
+          <h4 data-copy="f4h">Edit and export MIDI</h4>
+          <p data-copy="f4p">Quantise, copy, paste, duplicate, box select and zoom on a tempo grid, then export a standard .mid file for your DAW. MIDI — the notes you played — not audio.</p>
+          <a class="feat-shot" href="img/player/07-midi-export.png" target="_blank" rel="noopener">
+            <img src="img/player/07-midi-export.png" width="1406" height="853" loading="lazy" alt="The same phrase quantised onto the grid with a sustain pedal line underneath, and the Export MIDI button ready to write it out as a .mid file.">
+          </a>
         </div>
         <div class="feat">
-          <span class="n" data-copy="f5n">Edit and export</span>
-          <h4 data-copy="f5h">A proper piano roll</h4>
-          <p data-copy="f5p">Tempo grid, quantise, copy, paste, duplicate, box select and zoom, plus BPM and a metronome. Export a standard .mid file — MIDI only, not audio — or load one and loop it while you shape the sound.</p>
+          <span class="n" data-copy="f5n">No controller?</span>
+          <h4 data-copy="f5h">Use your computer keyboard as a MIDI controller</h4>
+          <p data-copy="f5p">Press M and your keyboard becomes a piano, with Z and X to change octave. Every real MIDI input still works at the same time, including ones plugged in while the app is running.</p>
+          <a class="feat-shot" href="img/player/08-keys.png" target="_blank" rel="noopener">
+            <img src="img/player/08-keys.png" width="900" height="563" loading="lazy" alt="Close-up of the toolbar button reading “Press M to activate Computer Keyboard”.">
+          </a>
         </div>
         <div class="feat">
-          <span class="n" data-copy="f6n">Picks up where you left off</span>
-          <h4 data-copy="f6h">Same instrument, same sound</h4>
-          <p data-copy="f6p">Your last instrument, its full patch state, your audio device and output volume come back exactly as they were next time you open the app.</p>
+          <span class="n" data-copy="f6n">Performance</span>
+          <h4 data-copy="f6h">Low CPU and latency</h4>
+          <p data-copy="f6p">CPU and latency sit in the toolbar while you play. WASAPI exclusive mode runs at roughly 5–10 ms, set under the gear icon.</p>
+          <a class="feat-shot" href="img/player/09-performance.png" target="_blank" rel="noopener">
+            <img src="img/player/09-performance.png" width="900" height="563" loading="lazy" alt="Close-up of the toolbar's performance meter reading CPU 1% and LATENCY 10.0 ms with an instrument loaded.">
+          </a>
         </div>
-        <div class="feat">
-          <span class="n" data-copy="f7n">Stable by design</span>
-          <h4 data-copy="f7h">A bad plugin can’t take it down</h4>
-          <p data-copy="f7p">Scanning runs in a separate process, and an interrupted rescan keeps your existing list. Large sample libraries load in the background, so your PC stays usable.</p>
-        </div>
-        <div class="feat">
-          <span class="n" data-copy="f8n">Low latency</span>
-          <h4 data-copy="f8h">Tight enough to perform</h4>
-          <p data-copy="f8p">WASAPI exclusive mode runs at roughly 5–10 ms, set from the gear menu. Nothing is written to disk until you choose to save.</p>
-        </div>
-      </div>
-
-      <div class="requires">
-        <h3 data-copy="sp-req-h">What you’ll need</h3>
-        <p data-copy="sp-req-p">Your own VST3 instruments — Instrument Player doesn’t include any sounds. Large sample libraries can take up to a minute to load the first time.</p>
       </div>
 
       <div class="shots">

@@ -8,3 +8,9 @@
 
 Taken 2026-09-20 from Instrument Player 1.2.0 with only free plugins installed (the screenshot
 profile: C:\YBK-Screenshots\VST3 + Surge XT), so no paid products appear in the pictures.
+
+08-keys.png            Card 5 — the toolbar button that turns the computer keyboard into a MIDI controller
+09-performance.png     Card 6 — CPU and latency, live in the toolbar (Odin2 loaded, WASAPI, 10.0 ms)
+
+Added 2026-09-21 for the six feature cards. Both are zoomed details of the toolbar, composed onto a
+16:10 canvas because the cards crop to 16:10 from the top. Taken with the screenshot profile.
