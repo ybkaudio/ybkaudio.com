@@ -291,6 +291,25 @@ h2{
   font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--muted);line-height:1.5;
 }
+/* demo video: a thumbnail until clicked, so YouTube loads nothing before the visitor asks */
+.demo-video{
+  position:relative;display:block;width:100%;aspect-ratio:16/9;
+  margin-top:clamp(26px,3.6vw,40px);padding:0;
+  border:1px solid var(--rule);background:#000;cursor:pointer;overflow:hidden;
+}
+.demo-video img{display:block;width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .2s}
+.demo-video:hover img,.demo-video:focus-visible img{opacity:1}
+.demo-video:hover{border-color:var(--accent)}
+.demo-video .play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:76px;height:76px;border-radius:50%;
+  background:rgba(0,0,0,.6);border:2px solid #fff;
+}
+.demo-video .play::after{
+  content:"";position:absolute;left:31px;top:23px;
+  border-style:solid;border-width:15px 0 15px 24px;border-color:transparent transparent transparent #fff;
+}
+.demo-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .usage-cap{
   display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
   margin:10px 0 0;
@@ -939,6 +958,15 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="fineprint"><span data-copy="lx-fine">One license per email address. We’ll email you a link to confirm your address, then your license code and the download link. After that: one “how’s it going?” email about two weeks later, and a few short reminders before the free month ends. Unsubscribe any time.</span> <a href="#/privacy">Privacy</a></p>
         </form>
       </div>
+
+      <button type="button" class="demo-video" data-youtube="HaD2k5t7o8U" aria-label="Play the Instrument Player demo video">
+        <img src="https://i.ytimg.com/vi/HaD2k5t7o8U/hqdefault.jpg" width="480" height="360" alt="">
+        <span class="play" aria-hidden="true"></span>
+      </button>
+      <p class="usage-cap">
+        <span data-copy="sp-video-cap">Demo — see it in action</span>
+        <a href="https://youtu.be/HaD2k5t7o8U" target="_blank" rel="noopener">Watch on YouTube</a>
+      </p>
 
       <a class="shot" href="img/player/01-main.png" target="_blank" rel="noopener">
         <img src="img/player/01-main.png" width="902" height="526" alt="The Instrument Player window just after launch: “Choose an instrument”, Audio Effects and MIDI editor along the top, an empty instrument slot reading “No instrument loaded”, and the 88-note on-screen keyboard at the bottom.">
@@ -2167,6 +2195,29 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       bar.hidden = false;
     })['catch'](function () { /* read-only view */ });
   }
+})();
+</script>
+<script>
+/* Demo video: swap the thumbnail for the YouTube player only when clicked,
+   and put the thumbnail back when the visitor leaves the page (a hidden
+   iframe would keep playing sound). */
+(function () {
+  document.querySelectorAll('[data-youtube]').forEach(function (box) {
+    var thumb = box.innerHTML;
+    box.addEventListener('click', function () {
+      if (box.querySelector('iframe')) return;
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-youtube') + '?autoplay=1&rel=0';
+      f.title = 'Instrument Player demo';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      box.innerHTML = '';
+      box.appendChild(f);
+    });
+    window.addEventListener('hashchange', function () {
+      if (box.querySelector('iframe')) box.innerHTML = thumb;
+    });
+  });
 })();
 </script>
 </body>
