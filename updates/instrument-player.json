@@ -1,11 +1,16 @@
 {
-    "version":  "1.3.4",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.4.exe",
-    "sha256":  "a8fe721938097db4e3abb9b810c13df1d655a9f1f76188048d9257686ce885eb",
-    "size":  7947119,
-    "notes":  "The version number in the toolbar is now a button: click it to see what changed in every release, and to update when a new version is out.",
+    "version":  "1.3.5",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.5.exe",
+    "sha256":  "964d182707e9985d735d48b0e15db0948f5214e707eb21facffeeb867fc0e418",
+    "size":  7948235,
+    "notes":  "Updating no longer gets stuck on \u0027Waiting for Instrument Player to finish closing\u0027, and quitting always fully closes the app, even if a plugin hangs while unloading.",
     "released":  "2026-09-25",
     "history":  [
+                    {
+                        "version":  "1.3.5",
+                        "released":  "2026-09-25",
+                        "notes":  "Updating no longer gets stuck on \u0027Waiting for Instrument Player to finish closing\u0027, and quitting always fully closes the app, even if a plugin hangs while unloading."
+                    },
                     {
                         "version":  "1.3.4",
                         "released":  "2026-09-25",
