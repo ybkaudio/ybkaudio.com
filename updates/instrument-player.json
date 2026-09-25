@@ -4,5 +4,42 @@
     "sha256":  "41273122fd13f981cf2f99a6a3f52cd08cce42d2ad4f3edf320cc4e9b72e06f8",
     "size":  7936014,
     "notes":  "Settings: Factory reset has moved to the bottom left, and a new OK button at the bottom right closes the window, so reaching for the usual OK corner no longer resets the app.",
-    "released":  "2026-09-25"
+    "released":  "2026-09-25",
+    "history":  [
+                    {
+                        "version":  "1.3.3",
+                        "released":  "2026-09-25",
+                        "notes":  "Settings: Factory reset has moved to the bottom left, and a new OK button at the bottom right closes the window, so reaching for the usual OK corner no longer resets the app."
+                    },
+                    {
+                        "version":  "1.3.2",
+                        "released":  "2026-09-25",
+                        "notes":  "Licence checks now go to YBK Audio\u0027s own server instead of a third-party service. Codes you already have keep working exactly as before, and nothing about using the app changes. Pasting a code is more forgiving too: capitals and stray spaces no longer matter."
+                    },
+                    {
+                        "version":  "1.3.1",
+                        "released":  "2026-09-24",
+                        "notes":  "Pattern and phrase plugins work now. The app tells instruments that the transport is rolling and at what tempo, so UJAM-style phrase players, arpeggiators and tempo-synced effects follow the BPM in the toolbar instead of stopping after one note. Take the instrument out with the new x beside its name. Every row in the plugin lists now has a = to drag it into your own order and an x to leave it out of the list (it stays installed, and a Hidden button brings it back), plus a List by menu: name, creator, recently added, recently used, or your own order - instruments and effects each keep their own choice. The Starter Synth no longer appears twice when a copy of it is also installed as a VST3."
+                    },
+                    {
+                        "version":  "1.3.0",
+                        "released":  "2026-09-22",
+                        "notes":  "Projects: save your whole sound (instrument, effects, tempo and volume) as one file with Ctrl+S, open it with Ctrl+O or by double-clicking it. Plugins installed just for you now show up, plugin scans are faster and can run in the background, and the toolbar is tidier. Your license and settings are unchanged."
+                    },
+                    {
+                        "version":  "1.2.0",
+                        "released":  "2026-09-20",
+                        "notes":  "Pencil mode and more MIDI editor keys, an Audio Effects button, a fullscreen MIDI editor, and Factory reset in settings. Your license and settings are unchanged."
+                    },
+                    {
+                        "version":  "1.1.0",
+                        "released":  "2026-09-19",
+                        "notes":  "MIDI editor with capture and replay, FX rack for effect plugins, and a fix for audio interfaces clicking when used alongside a DAW at a different sample rate."
+                    },
+                    {
+                        "version":  "1.0.0",
+                        "released":  "2026-09-17",
+                        "notes":  "First release"
+                    }
+                ]
 }
