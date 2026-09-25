@@ -1,11 +1,19 @@
 {
-    "version":  "1.3.6",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.6.exe",
-    "sha256":  "314ce98a6205f3feacfea92efd9a5b215b6191f46bf6d2f289779930cc5a4c41",
-    "size":  7950017,
-    "notes":  "Free launch licenses keep getting updates: once versions for paid licenses start coming out, the app offers the newest update your license includes instead of none.",
+    "version":  "1.4.0",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.4.0.exe",
+    "sha256":  "4c8b3f9227d145ccb652576dae1b9f33c2d4c768a95b4425bc228e7613505e73",
+    "size":  7967630,
+    "notes":  "Optional anonymous usage statistics: the app asks once, and you can change your answer any time in Settings (the gear button). Helps us see which plugins and features matter most and catch crashes.",
     "released":  "2026-09-26",
     "history":  [
+                    {
+                        "version":  "1.4.0",
+                        "released":  "2026-09-26",
+                        "notes":  "Optional anonymous usage statistics: the app asks once, and you can change your answer any time in Settings (the gear button). Helps us see which plugins and features matter most and catch crashes.",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.4.0.exe",
+                        "sha256":  "4c8b3f9227d145ccb652576dae1b9f33c2d4c768a95b4425bc228e7613505e73",
+                        "size":  7967630
+                    },
                     {
                         "version":  "1.3.6",
                         "released":  "2026-09-26",
