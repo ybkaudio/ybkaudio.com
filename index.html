@@ -496,6 +496,38 @@ h2{
   font-family:var(--f-body);font-size:15px;
 }
 .field input:disabled{opacity:.5;cursor:not-allowed}
+.field textarea{
+  padding:12px 13px;border-radius:2px;border:1px solid var(--rule);
+  background:var(--ground);color:var(--ink);
+  font-family:var(--f-body);font-size:15px;line-height:1.45;
+  resize:vertical;min-height:130px;
+}
+
+/* ---------- feedback ---------- */
+.fb-open{
+  position:fixed;left:16px;bottom:16px;z-index:9000;
+  font-family:var(--f-mono);font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:10px 14px;border-radius:2px;cursor:pointer;
+  border:1px solid var(--rule);background:var(--surface);color:var(--ink);
+  box-shadow:0 6px 26px var(--shadow);transition:border-color .15s;
+}
+.fb-open:hover{border-color:var(--accent)}
+.fb-open:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.fb-dialog{
+  width:min(460px,calc(100vw - 32px));padding:0;
+  border:1px solid var(--rule);border-top:2px solid var(--accent);border-radius:2px;
+  background:var(--surface);color:var(--ink);box-shadow:0 12px 40px var(--shadow);
+}
+.fb-dialog::backdrop{background:rgba(0,0,0,.6)}
+.fb-dialog form{display:flex;flex-direction:column;gap:12px;padding:clamp(20px,4vw,28px)}
+.fb-dialog h3{
+  margin:0;font-family:var(--f-display);font-weight:900;font-size:26px;
+  line-height:1;letter-spacing:-.03em;text-transform:uppercase;
+}
+.fb-dialog p{margin:0;font-size:14px;line-height:1.5;color:var(--muted)}
+.fb-dialog .field{margin:0}
+.fb-dialog .btnrow .btn{flex:1 1 auto;padding:12px 16px}
 .divider{
   display:flex;align-items:center;gap:12px;margin:20px 0;
   color:var(--muted);font-family:var(--f-mono);font-size:10px;
@@ -1653,10 +1685,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="wrap">
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span>Home</span></a>
       <h2 style="margin-top:20px">Privacy Policy</h2>
-      <p class="legal-meta">Last updated 22 September 2026</p>
+      <p class="legal-meta">Last updated 24 September 2026</p>
 
       <div class="legal-body">
-        <p class="callout">Short version: we collect only what it takes to sell you a license and make it work on one computer. No analytics, no advertising trackers, no selling of data — ever.</p>
+        <p class="callout">Short version: we collect only what it takes to sell you a license, make it work on one computer, and count — anonymously — how visitors use this website. No cookies of our own, no advertising trackers, no selling of data — ever.</p>
 
         <h3>1. Who is responsible</h3>
         <p><b>YBK Audio</b> (sole proprietor Kim Yeonbum), 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea — business registration number 288-17-02789. Contact: <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a>.</p>
@@ -1667,8 +1699,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <li><b>When you claim a free launch license.</b> Your email address is stored with your license code at our license service and added to our email list. We use it to send you a link that confirms the address is yours, then the code, one email about two weeks later asking how the Software is working for you, and a few short reminders before the free launch month ends. Every one of these emails has an unsubscribe link. If you choose to pay something through “name your price”, Paddle handles that payment as described above. Your IP address is kept for one hour to stop automated sign-ups.</li>
           <li><b>When your license is issued.</b> Your email address, license code and order number are stored with our license service and used once to email you the code.</li>
           <li><b>When you activate the Software.</b> The app sends your license code, a machine fingerprint, the app version, the Windows version and the activation time. Your IP address is visible to the license service as part of the connection. The fingerprint is a one-way code derived from your motherboard and CPU identifiers: it cannot be turned back into those identifiers and contains nothing about you, your files or your music. It exists only so a single-use license stays on one computer.</li>
-          <li><b>When you email us.</b> Your email address and whatever you choose to write, used to answer you.</li>
-          <li><b>When you visit this website.</b> We run no analytics and no advertising cookies. Our hosting provider and Google Fonts receive your IP address to serve the page, and Paddle’s checkout script may set cookies it needs for payment and fraud prevention.</li>
+          <li><b>When you email us or send feedback.</b> Your email address (optional in the feedback form), whatever you choose to write, and the page you sent it from, used to read and answer your message. Your IP address is kept for one hour to stop automated messages.</li>
+          <li><b>When you visit this website.</b> We count anonymous visit statistics to see how the site is used and where people get stuck: which pages were viewed, clicks on Buy and download buttons, how far a checkout or the free-license form got, the country (worked out by Cloudflare from the connection), whether the device is a phone or a computer, and the website or link that sent you here. A visit is tied together only by a random number that exists while the page is open; it is never stored on your device, and we do not keep your IP address, name or email with these statistics. We use no cookies of our own and no advertising trackers. Our hosting provider and Google Fonts receive your IP address to serve the page, and Paddle’s checkout script may set cookies it needs for payment and fraud prevention.</li>
         </ul>
         <p>The Software does not collect usage statistics, and Console never transmits the audio it processes — recordings you make are saved only on your own computer.</p>
 
@@ -1680,6 +1712,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <li>Records of contracts, payments and refunds: <b>5 years</b>, as required by the Korean Act on Consumer Protection in Electronic Commerce.</li>
           <li>Records of complaints and disputes: <b>3 years</b>, under the same act.</li>
           <li>License and activation records: for as long as the license exists, then up to 5 years alongside the sales record.</li>
+          <li>Anonymous visit statistics: about 3 months (deleted automatically by Cloudflare).</li>
           <li>Email list: until you unsubscribe. After that we keep only the fact that you unsubscribed, so we never email you again by mistake.</li>
         </ul>
 
@@ -1692,7 +1725,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
               <tr><td>Paddle.com Market Ltd</td><td>United Kingdom</td><td>Payment, tax, invoicing (Merchant of Record)</td><td>Name, email, country, payment details, order</td></tr>
               <tr><td>Keygen</td><td>United States</td><td>Issuing and activating licenses</td><td>Email, license code, order number, machine fingerprint, app and Windows version, IP address</td></tr>
               <tr><td>Resend</td><td>United States</td><td>Sending your license email, and the one follow-up email after a free launch claim</td><td>Email, license code</td></tr>
-              <tr><td>Cloudflare, Inc.</td><td>United States</td><td>Running the purchase-to-license automation and free launch sign-ups, and checking the sign-up form isn’t used by bots (Turnstile)</td><td>Order data in transit, email, IP address (one hour), browser signals for the bot check</td></tr>
+              <tr><td>Cloudflare, Inc.</td><td>United States</td><td>Running the purchase-to-license automation, free launch sign-ups and the feedback form, checking the sign-up form isn’t used by bots (Turnstile), and storing anonymous visit statistics</td><td>Order data in transit, email, feedback messages in transit, IP address (one hour), browser signals for the bot check, anonymous visit statistics</td></tr>
               <tr><td>GitHub, Inc.</td><td>United States</td><td>Hosting this website</td><td>IP address</td></tr>
               <tr><td>Google LLC</td><td>United States</td><td>Serving website fonts</td><td>IP address</td></tr>
             </tbody>
@@ -1757,6 +1790,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <a href="#/terms">Terms</a>
       <a href="#/privacy">Privacy</a>
       <a href="#/refund">Refunds</a>
+      <a href="#feedback" data-feedback>Feedback</a>
     </nav>
   </div>
   <div class="wrap">
@@ -1771,6 +1805,31 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <p class="mor">Orders are processed by Paddle.com, our Merchant of Record, which handles payment, tax and invoicing. Windows 10 / 11.</p>
   </div>
 </footer>
+
+<button type="button" class="fb-open" data-feedback data-copy="fb-open">Give us feedback</button>
+<dialog class="fb-dialog" id="fb-dialog" aria-labelledby="fb-title">
+  <form novalidate>
+    <h3 id="fb-title" data-copy="fb-title">Give us feedback</h3>
+    <p data-copy="fb-intro">We are actively waiting for customer feedback. Any suggestions or fixes are welcome. A bug, a feature you’d like, something confusing on this page — it goes straight to our inbox.</p>
+    <div class="field">
+      <label for="fb-message" data-copy="fb-msg-label">Your message</label>
+      <textarea id="fb-message" name="message" maxlength="5000" required></textarea>
+    </div>
+    <div class="field">
+      <label for="fb-email" data-copy="fb-email-label">Your email (optional, if you’d like a reply)</label>
+      <input id="fb-email" type="email" name="email" autocomplete="email" placeholder="you@example.com">
+    </div>
+    <div class="hp" aria-hidden="true">
+      <label for="fb-website">Leave this empty</label>
+      <input id="fb-website" name="website" tabindex="-1" autocomplete="off">
+    </div>
+    <p class="claim-msg" role="status" aria-live="polite"></p>
+    <div class="btnrow">
+      <button type="button" class="btn ghost" data-fb-close>Close</button>
+      <button type="submit" class="btn">Send</button>
+    </div>
+  </form>
+</dialog>
 
 <div id="ybk-bar" hidden>
   <span id="ybk-status"></span>
@@ -1796,12 +1855,65 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     '/privacy': 'privacy',
     '/refund': 'refund'
   };
+  /* ---------------- visit statistics ----------------
+     Anonymous funnel numbers for the owner's daily email: which pages were
+     seen, Buy clicks, how far checkout got, the free-license form. The
+     worker keeps the country Cloudflare sees, never the IP address. The
+     visit ID is random, lives only in this page's memory (no cookie, no
+     storage) and is gone when the tab closes. */
+  var EVENT_API = (location.hostname === 'localhost' ? 'http://localhost:8787'
+    : 'https://ybk-license-webhook.ybkaudio.workers.dev') + '/event';
+  var visitId = (function () {
+    var b = new Uint8Array(10);
+    (window.crypto || window.msCrypto).getRandomValues(b);
+    return Array.prototype.map.call(b, function (x) { return (x < 16 ? '0' : '') + x.toString(16); }).join('');
+  })();
+  var visitSource = (function () {
+    var q = new URLSearchParams(location.search);
+    var tag = q.get('utm_source') || q.get('ref') || q.get('source');
+    if (tag) return tag.toLowerCase().replace(/[^a-z0-9._-]/g, '').slice(0, 60);
+    try {
+      var host = new URL(document.referrer).hostname.replace(/^www\./, '');
+      return host === 'ybkaudio.com' ? '' : host;
+    } catch (e) { return ''; }
+  })();
+  var visitDevice = window.matchMedia && matchMedia('(pointer:coarse)').matches ? 'mobile' : 'desktop';
+  var PRODUCT_SLUG = { synth: 'player', midside: 'console', beatmaker: 'beatmaker' };
+  var PAGE_SLUG = { synth: 'player', midside: 'console', account: 'help' };
+  function track(step, extra) {
+    var e = { step: step, visit: visitId, device: visitDevice };
+    for (var k in extra) e[k] = extra[k];
+    if (step === 'view' && visitSource) { e.source = visitSource; visitSource = ''; }   // once per visit
+    try {
+      // A plain-text body: no CORS preflight, and keepalive lets it finish
+      // even if this click is what closes the page.
+      fetch(EVENT_API, { method: 'POST', body: JSON.stringify(e), keepalive: true })['catch'](function () {});
+    } catch (err) {}
+  }
+  /* Cloudflare Web Analytics (cookie-free): browsers, screen sizes, page
+     speed. Token: Cloudflare dashboard -> Analytics & Logs -> Web Analytics
+     -> Add a site -> ybkaudio.com -> the "token" in the snippet it shows.
+     Empty = not loaded. */
+  var CF_BEACON_TOKEN = '';
+  if (CF_BEACON_TOKEN && location.hostname !== 'localhost') {
+    var beacon = document.createElement('script');
+    beacon.defer = true;
+    beacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    beacon.setAttribute('data-cf-beacon', JSON.stringify({ token: CF_BEACON_TOKEN, spa: true }));
+    document.head.appendChild(beacon);
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="/downloads/"]');
+    if (a) track('download_click', { product: 'player' });
+  });
+
   var pages = Array.prototype.slice.call(document.querySelectorAll('[data-page]'));
   var navs = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
 
   function route() {
     var key = (location.hash || '').replace(/^#/, '');
     var page = ROUTES[key] || 'home';
+    track('view', { page: PAGE_SLUG[page] || page });
     pages.forEach(function (p) { p.hidden = p.getAttribute('data-page') !== page; });
     navs.forEach(function (a) {
       if (a.getAttribute('data-nav') === page) a.setAttribute('aria-current', 'page');
@@ -1836,14 +1948,39 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   var paddleReady = false;
   if (PADDLE.clientToken && window.Paddle) {
     if (PADDLE.environment === 'sandbox') Paddle.Environment.set('sandbox');
-    Paddle.Initialize({ token: PADDLE.clientToken });
+    Paddle.Initialize({ token: PADDLE.clientToken, eventCallback: checkoutStep });
     paddleReady = true;
+  }
+
+  // Paddle reports each checkout step here; they become funnel steps. A
+  // price that isn't in PADDLE.prices is a "name your price" checkout.
+  var CHECKOUT_STEPS = {
+    'checkout.loaded': 'checkout_open',
+    'checkout.customer.created': 'checkout_email',
+    'checkout.payment.initiated': 'checkout_pay',
+    'checkout.payment.failed': 'checkout_failed',
+    'checkout.completed': 'checkout_done',
+    'checkout.closed': 'checkout_closed'
+  };
+  var checkoutPaid = false;
+  function checkoutStep(ev) {
+    var step = ev && CHECKOUT_STEPS[ev.name];
+    if (!step) return;
+    if (step === 'checkout_open') checkoutPaid = false;
+    if (step === 'checkout_done') checkoutPaid = true;
+    if (step === 'checkout_closed' && checkoutPaid) return;   // closing the receipt isn't giving up
+    var item = ev.data && ev.data.items && ev.data.items[0];
+    var priceId = item && (item.price_id || (item.price && item.price.id));
+    var product = 'tip';
+    for (var k in PADDLE.prices) if (PADDLE.prices[k] === priceId) product = PRODUCT_SLUG[k];
+    track(step, { product: product });
   }
 
   document.querySelectorAll('[data-buy]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var product = btn.getAttribute('data-buy');
       var priceId = PADDLE.prices[product];
+      track('buy_click', { product: PRODUCT_SLUG[product] || '' });
 
       // Once a real price ID is filled in above, buttons open real checkout
       // and the "checkout is not open yet" panel is never shown.
@@ -2037,6 +2174,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       msg.textContent = text;
       msg.className = 'claim-msg' + (kind ? ' ' + kind : '');
     }
+    form.elements.email.addEventListener('input', function started() {
+      form.elements.email.removeEventListener('input', started);
+      track('claim_start', { product: 'player' });
+    });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -2074,6 +2215,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
               form.elements.amount.disabled = true;
               form.querySelectorAll('.tip-preset').forEach(function (b) { b.disabled = true; });
             }
+            track('claim_sent', { product: 'player' });
             tell('Almost done: we sent a link to ' + email + '. Click it to confirm your email and get your license. Not there in 5 minutes? Check your spam folder.', 'ok');
             if (amount > 0) openTipCheckout(email, amount, tell);
           } else {
@@ -2088,6 +2230,76 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         });
     });
   });
+
+  /* ---------------- feedback ----------------
+     The worker emails whatever is sent here to the owner; the visitor's
+     address, if they leave one, becomes the Reply-To. */
+  var fbDialog = document.getElementById('fb-dialog');
+  if (fbDialog && typeof fbDialog.showModal === 'function') {
+    var fbForm = fbDialog.querySelector('form');
+    var fbMsg = fbForm.querySelector('.claim-msg');
+    var fbSend = fbForm.querySelector('button[type="submit"]');
+    var fbTell = function (text, kind) { fbMsg.textContent = text; fbMsg.className = 'claim-msg' + (kind ? ' ' + kind : ''); };
+
+    document.querySelectorAll('[data-feedback]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (fbForm.dataset.sent) {
+          fbForm.reset();
+          delete fbForm.dataset.sent;
+          fbSend.disabled = false;
+          fbTell('');
+        }
+        fbDialog.showModal();
+        fbForm.elements.message.focus();
+      });
+    });
+    fbDialog.querySelector('[data-fb-close]').addEventListener('click', function () { fbDialog.close(); });
+    // A click on the dark backdrop lands on the <dialog> itself, not the form.
+    fbDialog.addEventListener('click', function (e) { if (e.target === fbDialog) fbDialog.close(); });
+
+    fbForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var message = fbForm.elements.message.value.trim();
+      var email = fbForm.elements.email.value.trim();
+      if (message.length < 2) {
+        fbTell('Please write a few words first.', 'err');
+        fbForm.elements.message.focus();
+        return;
+      }
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        fbTell('That doesn’t look like an email address. You can also leave it empty.', 'err');
+        fbForm.elements.email.focus();
+        return;
+      }
+      fbSend.disabled = true;
+      fbTell('Sending…');
+
+      fetch(LAUNCH_API + '/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: message, email: email, website: fbForm.elements.website.value,
+          page: location.hash || '#/'
+        })
+      })
+        .then(function (r) { return r.json().then(function (body) { return { ok: r.ok, body: body }; }); })
+        .then(function (res) {
+          if (res.ok) {
+            fbForm.dataset.sent = '1';
+            track('feedback_sent');
+            fbTell(email ? 'Thank you! We read every message, and we’ll reply to ' + email + ' if it needs an answer.'
+                         : 'Thank you! We read every message.', 'ok');
+          } else {
+            fbSend.disabled = false;
+            fbTell(res.body.message || 'Something went wrong. Please try again.', 'err');
+          }
+        })['catch'](function () {
+          fbSend.disabled = false;
+          fbTell('Couldn’t reach our server. Check your connection, or email ybkaudio@gmail.com.', 'err');
+        });
+    });
+  }
 
   /* ---------------- copy editor ---------------- */
   var bar = document.getElementById('ybk-bar');
