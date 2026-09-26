@@ -529,6 +529,7 @@ h2{
 .fb-dialog p{margin:0;font-size:14px;line-height:1.5;color:var(--muted)}
 .fb-dialog .field{margin:0}
 .fb-dialog .btnrow .btn{flex:1 1 auto;padding:12px 16px}
+.fb-dialog .fb-hint{margin-top:6px;font-size:12.5px}
 .divider{
   display:flex;align-items:center;gap:12px;margin:20px 0;
   color:var(--muted);font-family:var(--f-mono);font-size:10px;
@@ -615,6 +616,29 @@ h2{
   font-size:13px !important;line-height:1.5 !important;
 }
 .launch-note b{color:var(--ink)}
+.dl-line{margin:10px 0 0 !important;font-size:13.5px;color:var(--muted)}
+.dl-line a{color:var(--accent);font-weight:600}
+.dl-box{
+  margin-top:clamp(18px,2.4vw,24px);scroll-margin-top:24px;
+  border:1px solid var(--rule);border-top:2px solid var(--accent);
+  background:var(--surface);padding:clamp(20px,3vw,30px);
+  display:grid;grid-template-columns:minmax(0,1fr);gap:18px;align-items:center;
+}
+@media(min-width:820px){.dl-box{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
+.dl-box .launch-eye{color:var(--accent)}
+.dl-box .launch-eye .dot{background:var(--accent)}
+.dl-box h3{
+  font-weight:900;font-size:clamp(24px,3.4vw,34px);line-height:.98;
+  letter-spacing:-.03em;text-transform:uppercase;margin-bottom:12px;
+}
+.dl-box p{margin:0;font-size:14.5px;line-height:1.5}
+.dl-act{display:flex;flex-direction:column;gap:10px}
+.dl-act .btn{width:100%;justify-content:center;gap:10px}
+.dl-meta{
+  font-family:var(--f-mono);font-size:11.5px !important;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);text-align:center;
+}
+.navlink.nav-dl{color:var(--ink);border-color:var(--accent)}
 .claim-msg:empty{display:none}
 .claim-msg.err{color:var(--hot)}
 .claim-msg.ok{color:var(--ok)}
@@ -778,6 +802,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <a class="navlink" href="#/player" data-nav="synth">Instrument Player</a>
       <a class="navlink" href="#/beatmaker" data-nav="beatmaker">Beatmaker</a>
       <a class="navlink nav-acct" href="#/help" data-nav="account">Help</a>
+      <a class="navlink nav-dl" href="#/download" data-copy="nav-dl">Download</a>
     </nav>
   </div>
 </header>
@@ -845,6 +870,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p data-copy="h-sp-p2">And MIDI Replay keeps the last 5 minutes of your playing without pressing Record, so the phrase you stumbled into is still there — ready to edit and export as .mid.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/player"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
+            <a class="btn ghost" href="#/download"><span data-copy="h-sp-dl">Download</span></a>
           </div>
         </div>
         <div>
@@ -989,7 +1015,28 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <button type="submit" class="btn"><span data-copy="lx-btn">Get my free license</span><span aria-hidden="true">→</span></button>
           <p class="claim-msg" role="status" aria-live="polite"></p>
           <p class="fineprint"><span data-copy="lx-fine">One free license per person. We’ll email you a link to confirm your address, then your license code and the download link. After that: one “how’s it going?” email about two weeks later, and a few short reminders before the free month ends. Unsubscribe any time. To keep it to one license per person, we record your IP address with your sign-up.</span> <span data-copy="lx-agree">By claiming a license you agree to our</span> <a href="#/terms">Terms</a> <span data-copy="lx-and">and</span> <a href="#/privacy">Privacy Policy</a>.</p>
+          <!-- The installer link used to live only in the license email, so anyone whose
+               email was slow or filed as spam had nowhere to go (reported 2026-09-27). -->
+          <p class="dl-line"><a href="downloads/InstrumentPlayerSetup.exe" download><span data-copy="lx-dl">Download Instrument Player for Windows</span></a>
+             <span data-copy="lx-dl-note">— you can install it now and type your code in when the email arrives.</span></p>
         </form>
+      </div>
+
+      <!-- Always-visible download, reachable from the "Download" link in the top bar (#/download).
+           Version and size are filled in from updates/instrument-player.json. -->
+      <div class="dl-box" id="download">
+        <div>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="dl-eye">Download</span></p>
+          <h3 data-copy="dl-h">Get the app</h3>
+          <p data-copy="dl-p">Install Instrument Player, open it, and paste in the license code from our email. The code and the app are separate: the app always downloads from here.</p>
+        </div>
+        <div class="dl-act">
+          <a class="btn" href="downloads/InstrumentPlayerSetup.exe" download>
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-copy="dl-btn">Download for Windows</span>
+          </a>
+          <p class="dl-meta"><span data-dl-version></span>Windows 10 / 11, 64-bit<span data-dl-size></span></p>
+        </div>
       </div>
 
       <button type="button" class="demo-video" data-youtube="HaD2k5t7o8U" aria-label="Play the Instrument Player demo video">
@@ -1589,6 +1636,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <p data-copy="ac-lost-p1">Search your inbox for an email from license@ybkaudio.com. It has your code and the download link.</p>
             <p data-copy="ac-lost-p2">Got it free during the launch month? Enter the same email on the Instrument Player page again and we’ll send the same code again.</p>
             <p data-copy="ac-lost-p3">Bought it? Email us from the address you paid with and include the order number from your Paddle receipt.</p>
+            <p><a href="downloads/InstrumentPlayerSetup.exe" download><span data-copy="ac-lost-dl">Download Instrument Player for Windows</span></a>
+               <span data-copy="ac-lost-dl-note">— the app itself is always here; only the code comes by email.</span></p>
           </div>
 
           <h3 class="help-h" data-copy="ac-lic-h">How licenses work</h3>
@@ -1842,8 +1891,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <textarea id="fb-message" name="message" maxlength="5000" required></textarea>
     </div>
     <div class="field">
-      <label for="fb-email" data-copy="fb-email-label">Your email (optional, if you’d like a reply)</label>
+      <label for="fb-email" data-copy="fb-email-label">Your email, so we can reply</label>
       <input id="fb-email" type="email" name="email" autocomplete="email" placeholder="you@example.com">
+      <p class="fb-hint" data-copy="fb-email-hint">Having trouble? Leave your email and we’ll write back. Without it we can read your message but have no way to answer you.</p>
     </div>
     <div class="hp" aria-hidden="true">
       <label for="fb-website">Leave this empty</label>
@@ -1870,6 +1920,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   var ROUTES = {
     '': 'home', '/': 'home',
     '/player': 'synth',
+    '/download': 'synth',       // the player page, scrolled to its download box
     '/synth-player': 'synth',   // old URL, kept so shared links still work
     '/console': 'midside',
     '/midside': 'midside',      // old URL, kept so shared links still work
@@ -1957,8 +2008,24 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     // collapse any open checkout panel when leaving a product page
     document.querySelectorAll('[data-checkout]').forEach(function (c) { c.hidden = true; });
   }
-  window.addEventListener('hashchange', function () { route(); window.scrollTo(0, 0); });
+  function scrollForRoute() {
+    if (location.hash === '#/download') document.getElementById('download').scrollIntoView({ block: 'start' });
+    else window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', function () { route(); scrollForRoute(); });
   route();
+  if (location.hash === '#/download') scrollForRoute();
+
+  /* Version and size under the Download button, from the same file the app's
+     updater reads. If it can't be read, the line just says Windows 10 / 11. */
+  fetch('updates/instrument-player.json', { cache: 'no-cache' })
+    .then(function (r) { return r.json(); })
+    .then(function (m) {
+      var v = document.querySelector('[data-dl-version]');
+      var s = document.querySelector('[data-dl-size]');
+      if (v && m.version) v.textContent = 'Version ' + m.version + ' · ';
+      if (s && m.size) s.textContent = ' · ' + (m.size / 1048576).toFixed(1) + ' MB';
+    })['catch'](function () {});
 
   /* ---------------- purchase ----------------
      Paddle checkout. Fill in the four PADDLE values below from your Paddle
@@ -2275,7 +2342,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
               form.querySelectorAll('.tip-preset').forEach(function (b) { b.disabled = true; });
             }
             track('claim_sent', { product: 'player' });
-            tell('Almost done: we sent a link to ' + email + '. Click it to confirm your email and get your license. Not there in 5 minutes? Check your spam folder.', 'ok');
+            tell('Almost done: we sent a link to ' + email + '. Click it to confirm your email and get your license. Not there in 5 minutes? Check your spam folder. You can download the app straight away with the link just below.', 'ok');
             if (amount > 0) openTipCheckout(email, amount, tell);
           } else {
             btn.disabled = false;
@@ -2306,12 +2373,21 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         if (fbForm.dataset.sent) {
           fbForm.reset();
           delete fbForm.dataset.sent;
+          delete fbForm.dataset.noEmailOk;
+          fbSend.textContent = 'Send';
           fbSend.disabled = false;
           fbTell('');
         }
         fbDialog.showModal();
         fbForm.elements.message.focus();
       });
+    });
+    fbForm.elements.email.addEventListener('input', function () {
+      if (fbForm.dataset.noEmailOk && fbForm.elements.email.value.trim()) {
+        delete fbForm.dataset.noEmailOk;
+        fbSend.textContent = 'Send';
+        fbTell('');
+      }
     });
     fbDialog.querySelector('[data-fb-close]').addEventListener('click', function () { fbDialog.close(); });
     // A click on the dark backdrop lands on the <dialog> itself, not the form.
@@ -2328,6 +2404,15 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       }
       if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         fbTell('That doesn’t look like an email address. You can also leave it empty.', 'err');
+        fbForm.elements.email.focus();
+        return;
+      }
+      // An anonymous message can't be answered (a "where is the download?"
+      // one came in 2026-09-27 and we had no way to reply), so ask once.
+      if (!email && !fbForm.dataset.noEmailOk) {
+        fbForm.dataset.noEmailOk = '1';
+        fbSend.textContent = 'Send without email';
+        fbTell('Add your email so we can answer you? Without it we can’t reply. To send anyway, press “Send without email”.', 'err');
         fbForm.elements.email.focus();
         return;
       }
