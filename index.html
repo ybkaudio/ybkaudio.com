@@ -6,9 +6,9 @@
 <meta name="description" content="YBK Audio builds small standalone music apps for Windows: Console, Instrument Player and Beatmaker. Music software made simple.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='283 276 878 907'%3E%3Cpath fill='%231C60C4' d='M722 286L1057 1172L722 916L387 1173Z'/%3E%3Cpath fill='%23EE1B24' d='M860 548L1151 507L964 800Z'/%3E%3Cpath fill='%23EE1B24' d='M585 547L293 506L481 799Z'/%3E%3C/svg%3E">
 <title>YBK Audio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="preload" href="/fonts/ibmplexsans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/archivo-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 
 <style>
 /* ============================================================
@@ -1743,7 +1743,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
               <tr><td>Resend</td><td>United States</td><td>Sending our emails and reporting whether they were delivered</td><td>Email, license code, email contents</td></tr>
               <tr><td>Keygen</td><td>United States</td><td>Checking licenses issued before 25 September 2026</td><td>Email, license code, machine fingerprint, app and Windows version, IP address</td></tr>
               <tr><td>GitHub, Inc.</td><td>United States</td><td>Hosting this website and the app’s update files</td><td>IP address</td></tr>
-              <tr><td>Google LLC</td><td>United States</td><td>Website fonts; our email inbox (Gmail); our internal spreadsheets</td><td>IP address (fonts); your messages to us; customer records we keep</td></tr>
+              <tr><td>Google LLC</td><td>United States</td><td>Our email inbox (Gmail); our internal spreadsheets</td><td>Your messages to us; customer records we keep</td></tr>
             </tbody>
           </table>
         </div>
@@ -1864,7 +1864,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <button type="button" id="ybk-save" class="primary" hidden>Save &amp; publish</button>
 </div>
 
-<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script data-ybk>
 (function () {
   /* ---------------- routing ---------------- */
@@ -1981,11 +1980,28 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   //   synth:   'pri_01m2a544atvbsmdpa3j2yk6a8w'
   //   midside: 'pri_01m2a54rhcj2g9am6y4ygd7n2a'
 
-  var paddleReady = false;
-  if (PADDLE.clientToken && window.Paddle) {
-    if (PADDLE.environment === 'sandbox') Paddle.Environment.set('sandbox');
-    Paddle.Initialize({ token: PADDLE.clientToken, eventCallback: checkoutStep });
-    paddleReady = true;
+  /* Paddle's script is fetched only when someone presses a checkout button,
+     so visitors who just look around never connect to Paddle. The first
+     press waits for it to load (a moment); later presses reuse it. */
+  var paddleLoading = null;
+  function loadPaddle() {
+    if (!PADDLE.clientToken) return Promise.reject(new Error('no paddle'));
+    if (!paddleLoading) {
+      paddleLoading = new Promise(function (resolve, reject) {
+        var s = document.createElement('script');
+        s.src = 'https://cdn.paddle.com/paddle/v2/paddle.js';
+        s.onload = function () {
+          if (!window.Paddle) { reject(new Error('no paddle')); return; }
+          if (PADDLE.environment === 'sandbox') Paddle.Environment.set('sandbox');
+          Paddle.Initialize({ token: PADDLE.clientToken, eventCallback: checkoutStep });
+          resolve(window.Paddle);
+        };
+        s.onerror = function () { reject(new Error('paddle failed to load')); };
+        document.head.appendChild(s);
+      });
+      paddleLoading['catch'](function () { paddleLoading = null; });   // let a later press retry
+    }
+    return paddleLoading;
   }
 
   // Paddle reports each checkout step here; they become funnel steps. A
@@ -2020,11 +2036,16 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
       // Once a real price ID is filled in above, buttons open real checkout
       // and the "checkout is not open yet" panel is never shown.
-      if (paddleReady && priceId) {
-        Paddle.Checkout.open({
-          items: [{ priceId: priceId, quantity: 1 }],
-          settings: { displayMode: 'overlay', theme: 'dark' }
-        });
+      if (PADDLE.clientToken && priceId) {
+        btn.setAttribute('aria-busy', 'true');
+        loadPaddle().then(function (Paddle) {
+          Paddle.Checkout.open({
+            items: [{ priceId: priceId, quantity: 1 }],
+            settings: { displayMode: 'overlay', theme: 'dark' }
+          });
+        })['catch'](function () {
+          alert('The payment window couldn’t open. Please check your connection and try again.');
+        }).then(function () { btn.removeAttribute('aria-busy'); });
         return;
       }
 
@@ -2165,11 +2186,13 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     })
       .then(function (r) { return r.json().then(function (body) { return { ok: r.ok, body: body }; }); })
       .then(function (res) {
-        if (!res.ok || !res.body.transactionId || !paddleReady) throw new Error(res.body.message || 'no checkout');
-        Paddle.Checkout.open({
-          transactionId: res.body.transactionId,
-          customer: { email: email },
-          settings: { displayMode: 'overlay', theme: 'dark' }
+        if (!res.ok || !res.body.transactionId) throw new Error(res.body.message || 'no checkout');
+        return loadPaddle().then(function (Paddle) {
+          Paddle.Checkout.open({
+            transactionId: res.body.transactionId,
+            customer: { email: email },
+            settings: { displayMode: 'overlay', theme: 'dark' }
+          });
         });
       })['catch'](function () {
         tell('We sent a confirmation link to ' + email + ', but the payment window couldn’t open. Thank you for wanting to support us!', 'ok');
