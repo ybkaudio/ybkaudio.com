@@ -616,8 +616,6 @@ h2{
   font-size:13px !important;line-height:1.5 !important;
 }
 .launch-note b{color:var(--ink)}
-.dl-line{margin:10px 0 0 !important;font-size:13.5px;color:var(--muted)}
-.dl-line a{color:var(--accent);font-weight:600}
 .dl-box{
   margin-top:clamp(18px,2.4vw,24px);scroll-margin-top:24px;
   border:1px solid var(--rule);border-top:2px solid var(--accent);
@@ -1015,10 +1013,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <button type="submit" class="btn"><span data-copy="lx-btn">Get my free license</span><span aria-hidden="true">→</span></button>
           <p class="claim-msg" role="status" aria-live="polite"></p>
           <p class="fineprint"><span data-copy="lx-fine">One free license per person. We’ll email you a link to confirm your address, then your license code and the download link. After that: one “how’s it going?” email about two weeks later, and a few short reminders before the free month ends. Unsubscribe any time. To keep it to one license per person, we record your IP address with your sign-up.</span> <span data-copy="lx-agree">By claiming a license you agree to our</span> <a href="#/terms">Terms</a> <span data-copy="lx-and">and</span> <a href="#/privacy">Privacy Policy</a>.</p>
-          <!-- The installer link used to live only in the license email, so anyone whose
-               email was slow or filed as spam had nowhere to go (reported 2026-09-27). -->
-          <p class="dl-line"><a href="downloads/InstrumentPlayerSetup.exe" download><span data-copy="lx-dl">Download Instrument Player for Windows</span></a>
-             <span data-copy="lx-dl-note">— 7.6 MB. Install it now and type your code in when the email arrives. If the download stops early and the file is smaller than that, it was cut off — download it again.</span></p>
         </form>
       </div>
 
@@ -2343,7 +2337,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
               form.querySelectorAll('.tip-preset').forEach(function (b) { b.disabled = true; });
             }
             track('claim_sent', { product: 'player' });
-            tell('Almost done: we sent a link to ' + email + '. Click it to confirm your email and get your license. Not there in 5 minutes? Check your spam folder. You can download the app straight away with the link just below.', 'ok');
+            tell('Almost done: we sent a link to ' + email + '. Click it to confirm your email and get your license. Not there in 5 minutes? Check your spam folder. You can download the app straight away with the Download button below.', 'ok');
             if (amount > 0) openTipCheckout(email, amount, tell);
           } else {
             btn.disabled = false;
