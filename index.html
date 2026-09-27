@@ -530,6 +530,10 @@ h2{
 .fb-dialog .field{margin:0}
 .fb-dialog .btnrow .btn{flex:1 1 auto;padding:12px 16px}
 .fb-dialog .fb-hint{margin-top:6px;font-size:12.5px}
+.wl-apps{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px}
+.wl-apps legend{padding:0;margin-bottom:8px;font-size:13px;color:var(--muted)}
+.wl-apps label{display:flex;align-items:center;gap:8px;font-size:15px;cursor:pointer}
+.wl-apps input{width:18px;height:18px;accent-color:var(--accent)}
 .mail-hint{margin:6px 0 0 !important;font-size:13px !important;color:var(--muted)}
 .mail-hint button{
   background:none;border:0;padding:0;font:inherit;font-weight:600;
@@ -941,14 +945,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div>
         <span class="eyebrow" data-copy="su-eye">Launch list</span>
         <h3 class="big"><span data-copy="su-h">Hear it first</span><em>.</em></h3>
-        <p class="blurb" data-copy="su-p">Console and Beatmaker are still being built. Leave a note and you’ll get one email when they’re ready to buy — nothing else, ever.</p>
+        <p class="blurb" data-copy="su-p">Console and Beatmaker are still being built. Leave your email and you’ll get one email when they’re ready to buy — nothing else, ever.</p>
       </div>
       <div>
-        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches">
-          <span data-copy="su-cta">Email the launch list</span>
+        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches" data-waitlist="console beatmaker">
+          <span data-copy="su-cta">Join the launch list</span>
           <span aria-hidden="true">→</span>
         </a>
-        <p class="cta-note" data-copy="su-note">Opens your mail app with the message ready to send.</p>
+        <p class="cta-note" data-copy="su-note">One email when each app is ready. Nothing else.</p>
       </div>
     </div>
   </section>
@@ -1381,7 +1385,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div class="buy-side">
           <div class="buy-total"><span data-copy="ms-soon-l">Status</span><b data-copy="ms-soon">In development</b></div>
           <p class="fineprint" data-copy="ms-soon-p">Console is still being built, so it isn't for sale yet. There is no way to pay for it until it's finished.</p>
-          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Console%20is%20out"><span data-copy="ms-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
+          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Console%20is%20out" data-waitlist="console"><span data-copy="ms-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
         </div>
 
         <p class="licnote" data-copy="ms-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $7 instead of $39.</p>
@@ -1416,7 +1420,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <li data-copy="ms-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
             <li data-copy="ms-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
           </ol>
-          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Console%20is%20for%20sale" data-copy="ms-co-cta">Email me when Console goes on sale →</a></p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Console%20is%20for%20sale" data-waitlist="console" data-copy="ms-co-cta">Email me when Console goes on sale →</a></p>
         </div>
       </div>
     </div>
@@ -1568,7 +1572,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div class="buy-side">
           <div class="buy-total"><span data-copy="bm-soon-l">Status</span><b data-copy="bm-soon">In development</b></div>
           <p class="fineprint" data-copy="bm-soon-p">Beatmaker is still being built, so it isn't for sale yet. There is no way to pay for it until it's finished.</p>
-          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20out"><span data-copy="bm-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
+          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20out" data-waitlist="beatmaker"><span data-copy="bm-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
         </div>
 
         <p class="licnote" data-copy="bm-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $12 instead of $49.</p>
@@ -1603,7 +1607,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <li data-copy="bm-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
             <li data-copy="bm-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
           </ol>
-          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20for%20sale" data-copy="bm-co-cta">Email me when Beatmaker goes on sale →</a></p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20for%20sale" data-waitlist="beatmaker" data-copy="bm-co-cta">Email me when Beatmaker goes on sale →</a></p>
         </div>
       </div>
     </div>
@@ -1899,6 +1903,33 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="btnrow">
       <button type="button" class="btn ghost" data-fb-close>Close</button>
       <button type="submit" class="btn">Send</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- "Email me when it's out": sends the address to the worker's /waitlist,
+     which keeps it and emails a confirmation. Buttons carry data-waitlist. -->
+<dialog class="fb-dialog" id="wl-dialog" aria-labelledby="wl-title">
+  <form novalidate>
+    <h3 id="wl-title" data-copy="wl-title">Get one email when it’s out</h3>
+    <p data-copy="wl-intro">We’ll write once, when the app is ready to buy. Nothing else, and never shared.</p>
+    <fieldset class="wl-apps">
+      <legend data-copy="wl-apps">Which apps?</legend>
+      <label><input type="checkbox" name="products" value="console"> Console</label>
+      <label><input type="checkbox" name="products" value="beatmaker"> Beatmaker</label>
+    </fieldset>
+    <div class="field">
+      <label for="wl-email" data-copy="wl-email-label">Your email</label>
+      <input id="wl-email" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
+    </div>
+    <div class="hp" aria-hidden="true">
+      <label for="wl-website">Leave this empty</label>
+      <input id="wl-website" name="website" tabindex="-1" autocomplete="off">
+    </div>
+    <p class="claim-msg" role="status" aria-live="polite"></p>
+    <div class="btnrow">
+      <button type="button" class="btn ghost" data-wl-close>Close</button>
+      <button type="submit" class="btn">Notify me</button>
     </div>
   </form>
 </dialog>
@@ -2424,6 +2455,71 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   }
   addTypoHint(document.getElementById('claim-email'));
   addTypoHint(document.getElementById('fb-email'));
+  addTypoHint(document.getElementById('wl-email'));
+
+  /* ---------------- waitlist ----------------
+     "Email me when it's out" used to open the visitor's mail app. Now it opens
+     this box; the worker keeps the address and sends a confirmation email.
+     The mailto: stays in the link as the fallback if this script never runs. */
+  var wlDialog = document.getElementById('wl-dialog');
+  if (wlDialog && typeof wlDialog.showModal === 'function') {
+    var wlForm = wlDialog.querySelector('form');
+    var wlMsg = wlForm.querySelector('.claim-msg');
+    var wlSend = wlForm.querySelector('button[type="submit"]');
+    var wlTell = function (text, kind) { wlMsg.textContent = text; wlMsg.className = 'claim-msg' + (kind ? ' ' + kind : ''); };
+    var wlBoxes = Array.prototype.slice.call(wlForm.querySelectorAll('input[name="products"]'));
+
+    document.querySelectorAll('[data-waitlist]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        var want = el.getAttribute('data-waitlist').split(' ');
+        var keepEmail = wlForm.elements.email.value;
+        wlForm.reset();
+        wlForm.elements.email.value = keepEmail;
+        wlBoxes.forEach(function (b) { b.checked = want.indexOf(b.value) >= 0; });
+        wlSend.disabled = false;
+        wlTell('');
+        wlDialog.showModal();
+        wlForm.elements.email.focus();
+      });
+    });
+    wlDialog.querySelector('[data-wl-close]').addEventListener('click', function () { wlDialog.close(); });
+    wlDialog.addEventListener('click', function (e) { if (e.target === wlDialog) wlDialog.close(); });
+
+    wlForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = wlForm.elements.email.value.trim();
+      var products = wlBoxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; });
+      if (!products.length) { wlTell('Pick at least one app.', 'err'); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        wlTell('Please enter your email address.', 'err');
+        wlForm.elements.email.focus();
+        return;
+      }
+      wlSend.disabled = true;
+      wlTell('Sending…');
+      fetch(LAUNCH_API + '/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, products: products, website: wlForm.elements.website.value,
+                               page: (location.hash || '#/').slice(2) || 'home' })
+      })
+        .then(function (r) { return r.json().then(function (body) { return { ok: r.ok, body: body }; }); })
+        .then(function (res) {
+          if (res.ok) {
+            wlTell(res.body.already
+              ? 'You’re already on the list. We’ll email ' + email + ' when it’s ready.'
+              : 'You’re on the list! We’ve sent a confirmation to ' + email + '.', 'ok');
+          } else {
+            wlSend.disabled = false;
+            wlTell(res.body.message || 'Something went wrong. Please try again.', 'err');
+          }
+        })['catch'](function () {
+          wlSend.disabled = false;
+          wlTell('Couldn’t reach our server. Check your connection, or email ybkaudio@gmail.com.', 'err');
+        });
+    });
+  }
 
   /* ---------------- feedback ----------------
      The worker emails whatever is sent here to the owner; the visitor's
