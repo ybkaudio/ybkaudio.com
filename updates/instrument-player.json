@@ -1,15 +1,23 @@
 {
-    "version":  "1.5.0",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.5.0.exe",
-    "sha256":  "967f06242c187e3daf1a785ab8537588901036195502d4743dfde230ecc8eca5",
-    "size":  8038849,
-    "notes":  "Record what you play: the new red button in the toolbar records the instrument and its effects until you press it again, then asks where to save the WAV. Export audio (under the save button) turns the MIDI editor\u0027s pattern into a WAV, MP3 or FLAC file. Saved projects now keep the MIDI editor\u0027s pattern too.",
-    "released":  "2026-09-27",
+    "version":  "1.6.0",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.6.0.exe",
+    "sha256":  "3852b1a5df590bdc4e5b548f35a6712c2129c98e645a9907cc0d0e25faf70b29",
+    "size":  8143842,
+    "notes":  "Moving to a new computer? Press Release license in Settings, then enter your code on the new one. Everything you make and set up is now kept in one folder (Documents\\YBK AUDIO\\Instrument Player) that you can copy along. Play more than two octaves from the computer keyboard: right-click the keyboard button to pick a layout (Ableton, FL Studio, Logic, Cubase, Studio One, Bitwig, REAPER) or set up your own keys. Add your own plugin folders with the Folders button in the plugin list. MIDI editor: record over a looping pattern (turn on Replace to overwrite), keep just the bars you type in with the scissors, MIDI Replay adds a new take after the pattern, and a reminder if you close with MIDI you haven\u0027t saved. Knobs on your MIDI controller now move plugin controls set with MIDI Learn (e.g. Serum 2), pattern plugins stop when you press Stop, and tooltips no longer show twice.",
+    "released":  "2026-09-29",
     "history":  [
+                    {
+                        "version":  "1.6.0",
+                        "released":  "2026-09-29",
+                        "notes":  "Moving to a new computer? Press Release license in Settings, then enter your code on the new one. Everything you make and set up is now kept in one folder (Documents\\YBK AUDIO\\Instrument Player) that you can copy along. Play more than two octaves from the computer keyboard: right-click the keyboard button to pick a layout (Ableton, FL Studio, Logic, Cubase, Studio One, Bitwig, REAPER) or set up your own keys. Add your own plugin folders with the Folders button in the plugin list. MIDI editor: record over a looping pattern (turn on Replace to overwrite), keep just the bars you type in with the scissors, MIDI Replay adds a new take after the pattern, and a reminder if you close with MIDI you haven\u0027t saved. Knobs on your MIDI controller now move plugin controls set with MIDI Learn (e.g. Serum 2), pattern plugins stop when you press Stop, and tooltips no longer show twice.",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.6.0.exe",
+                        "sha256":  "3852b1a5df590bdc4e5b548f35a6712c2129c98e645a9907cc0d0e25faf70b29",
+                        "size":  8143842
+                    },
                     {
                         "version":  "1.5.0",
                         "released":  "2026-09-27",
-                        "notes":  "Record what you play: the new red button in the toolbar records the instrument and its effects until you press it again, then asks where to save the WAV. Export audio (under the save button) turns the MIDI editor\u0027s pattern into a WAV, MP3 or FLAC file. Saved projects now keep the MIDI editor\u0027s pattern too.",
+                        "notes":  "Saved projects now keep the MIDI editor\u0027s pattern too.",
                         "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.5.0.exe",
                         "sha256":  "967f06242c187e3daf1a785ab8537588901036195502d4743dfde230ecc8eca5",
                         "size":  8038849
@@ -17,7 +25,7 @@
                     {
                         "version":  "1.4.0",
                         "released":  "2026-09-26",
-                        "notes":  "Optional anonymous usage statistics: the app asks once, and you can change your answer any time in Settings (the gear button). Helps us see which plugins and features matter most and catch crashes.",
+                        "notes":  "",
                         "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.4.0.exe",
                         "sha256":  "4c8b3f9227d145ccb652576dae1b9f33c2d4c768a95b4425bc228e7613505e73",
                         "size":  7967630
@@ -25,7 +33,7 @@
                     {
                         "version":  "1.3.6",
                         "released":  "2026-09-26",
-                        "notes":  "Free launch licenses keep getting updates: once versions for paid licenses start coming out, the app offers the newest update your license includes instead of none.",
+                        "notes":  "",
                         "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.6.exe",
                         "sha256":  "314ce98a6205f3feacfea92efd9a5b215b6191f46bf6d2f289779930cc5a4c41",
                         "size":  7950017
@@ -57,7 +65,7 @@
                     {
                         "version":  "1.3.2",
                         "released":  "2026-09-25",
-                        "notes":  "Licence checks now go to YBK Audio\u0027s own server instead of a third-party service. Codes you already have keep working exactly as before, and nothing about using the app changes. Pasting a code is more forgiving too: capitals and stray spaces no longer matter.",
+                        "notes":  "",
                         "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.2.exe",
                         "sha256":  "e8945f8ad8017f4c0bc94cbb702e51e5b7a2ec76bbe3cbbef500c9f3d790c274",
                         "size":  7935489

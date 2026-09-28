@@ -471,6 +471,7 @@ h2{
 .breaks .sym{font-family:var(--f-mono);font-weight:600}
 .breaks .keep .sym{color:var(--ok)}
 .breaks .end .sym{color:var(--hot)}
+.breaks .move h4,.breaks .move .sym{color:var(--accent)}
 
 /* help page */
 .help-warn{
@@ -832,7 +833,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <dl class="hero-notes">
           <div class="note"><dt data-copy="n1t">Platform</dt><dd data-copy="n1d">Windows 10 &amp; 11. Desktop applications that run on their own — no DAW required.</dd></div>
-          <div class="note"><dt data-copy="n2t">Price</dt><dd data-copy="n2d">$7–$12 per app. One single-use code per purchase — it activates one machine, once.</dd></div>
+          <div class="note"><dt data-copy="n2t">Price</dt><dd data-copy="n2d">$7–$12 per app. One code per purchase — it runs on one computer at a time and moves with you when you change computers.</dd></div>
           <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">Instrument Player is out now. Console and Beatmaker are in active development.</dd></div>
         </dl>
       </div>
@@ -914,7 +915,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div>
         <span class="eyebrow" data-copy="pr-eye">Pricing</span>
         <h3 class="big"><span data-copy="pr-h1">Pay once</span><br><span data-copy="pr-h2">keep it</span><em>.</em></h3>
-        <p class="blurb" data-copy="pr-p">One machine, once. Each purchase is a single-use code that activates one computer and expires the moment it does — no subscription, no seats, no transfers.</p>
+        <p class="blurb" data-copy="pr-p">One computer at a time. Each purchase is one code that runs on one computer — move it to a new one whenever you switch. No subscription, no seats.</p>
       </div>
       <div class="tiers">
         <div class="tier">
@@ -972,7 +973,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div class="prod-price">
           <span data-copy="sp-price" data-launch-hide="active upcoming">$10</span>
           <span data-launch="active" hidden data-copy="sp-price-free">Free</span>
-          <small data-copy="sp-price-sub">One-time · One license · One device</small>
+          <small data-copy="sp-price-sub">One-time · One license · One computer at a time</small>
         </div>
       </div>
 
@@ -1169,7 +1170,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <tr><th scope="row" data-copy="sp-s7t">Audio</th><td data-copy="sp-s7v">WASAPI shared or exclusive · DirectSound</td></tr>
           <tr><th scope="row" data-copy="sp-s8t">Remembers</th><td data-copy="sp-s8v">Last instrument and its patch, audio device, output volume</td></tr>
           <tr><th scope="row" data-copy="sp-s9t">Platform</th><td data-copy="sp-s9v">Windows 10 / 11</td></tr>
-          <tr><th scope="row" data-copy="sp-s10t">Licence</th><td data-copy="sp-s10v">Single-use — one code, one machine, expires on activation</td></tr>
+          <tr><th scope="row" data-copy="sp-s10t">Licence</th><td data-copy="sp-s10v">One computer at a time — move it to a new one from Settings, once every 30 days</td></tr>
           <tr><th scope="row" data-copy="sp-s11t">Price</th><td data-copy="sp-s11v">$10.00 — one-time, no subscription</td></tr>
         </tbody>
       </table>
@@ -1201,7 +1202,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
         </div>
 
-        <p class="licnote" data-copy="sp-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $10 instead of $39.</p>
+        <p class="licnote" data-copy="sp-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
 
         <div class="breaks">
           <div class="keep">
@@ -1213,13 +1214,13 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
               <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k4i">Changing your network, Wi-Fi adapter or VPN</span></li>
             </ul>
           </div>
-          <div class="end">
-            <h4 data-copy="sp-end-h">Your license ends if you</h4>
+          <div class="move">
+            <h4 data-copy="sp-end-h">Move your license (Settings &gt; Release license) when you</h4>
             <ul>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="sp-e1i">Replace the motherboard</span></li>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="sp-e2i">Replace the CPU</span></li>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="sp-e3i">Move to a different computer</span></li>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="sp-e4i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e1i">Replace the motherboard or CPU</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e2i">Change to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e3i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e4i">Old computer broken? Write to us and we’ll release it</span></li>
             </ul>
           </div>
         </div>
@@ -1247,7 +1248,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <div class="prod-price">
           <span data-copy="ms-price">$7</span>
-          <small data-copy="ms-price-sub">One-time · One license · One device</small>
+          <small data-copy="ms-price-sub">One-time · One license · One computer at a time</small>
         </div>
       </div>
 
@@ -1366,7 +1367,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <tr><th scope="row" data-copy="ms-s6t">Presets</th><td data-copy="ms-s6v">Save and load; current state saves automatically</td></tr>
           <tr><th scope="row" data-copy="ms-s7t">Requires</th><td data-copy="ms-s7v">Free VB-Audio Virtual Cable, or an interface with loop-back</td></tr>
           <tr><th scope="row" data-copy="ms-s8t">Platform</th><td data-copy="ms-s8v">Windows 10 / 11</td></tr>
-          <tr><th scope="row" data-copy="ms-s9t">Licence</th><td data-copy="ms-s9v">Single-use — one code, one machine, expires on activation</td></tr>
+          <tr><th scope="row" data-copy="ms-s9t">Licence</th><td data-copy="ms-s9v">One computer at a time — move it to a new one from Settings, once every 30 days</td></tr>
           <tr><th scope="row" data-copy="ms-s10t">Price</th><td data-copy="ms-s10v">$7.00 — one-time, no subscription</td></tr>
         </tbody>
       </table>
@@ -1388,7 +1389,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Console%20is%20out" data-waitlist="console"><span data-copy="ms-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
         </div>
 
-        <p class="licnote" data-copy="ms-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $7 instead of $39.</p>
+        <p class="licnote" data-copy="ms-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
 
         <div class="breaks">
           <div class="keep">
@@ -1400,13 +1401,13 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
               <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k4i">Changing your audio interface, network or VPN</span></li>
             </ul>
           </div>
-          <div class="end">
-            <h4 data-copy="ms-end-h">Your license ends if you</h4>
+          <div class="move">
+            <h4 data-copy="ms-end-h">Move your license (Settings &gt; Release license) when you</h4>
             <ul>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="ms-e1i">Replace the motherboard</span></li>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="ms-e2i">Replace the CPU</span></li>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="ms-e3i">Move to a different computer</span></li>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="ms-e4i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e1i">Replace the motherboard or CPU</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e2i">Change to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e3i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e4i">Old computer broken? Write to us and we’ll release it</span></li>
             </ul>
           </div>
         </div>
@@ -1418,7 +1419,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <ol>
             <li data-copy="ms-co-1">The app reaches a releasable build, code-signed with a Windows installer.</li>
             <li data-copy="ms-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
-            <li data-copy="ms-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
+            <li data-copy="ms-co-3">Licensing is switched on, so a purchase issues a code that runs on one computer at a time and moves with you.</li>
           </ol>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Console%20is%20for%20sale" data-waitlist="console" data-copy="ms-co-cta">Email me when Console goes on sale →</a></p>
         </div>
@@ -1440,7 +1441,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <div class="prod-price">
           <span data-copy="bm-price">$12</span>
-          <small data-copy="bm-price-sub">One-time · One license · One device</small>
+          <small data-copy="bm-price-sub">One-time · One license · One computer at a time</small>
         </div>
       </div>
 
@@ -1553,7 +1554,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <tr><th scope="row" data-copy="bm-s6t">Play in</th><td data-copy="bm-s6v">Computer keyboard or MIDI keyboard</td></tr>
           <tr><th scope="row" data-copy="bm-s7t">Requires</th><td data-copy="bm-s7v">Your own samples · Microsoft Edge or Google Chrome · ffmpeg for MP3</td></tr>
           <tr><th scope="row" data-copy="bm-s8t">Platform</th><td data-copy="bm-s8v">Windows 10 / 11</td></tr>
-          <tr><th scope="row" data-copy="bm-s9t">Licence</th><td data-copy="bm-s9v">Single-use — one code, one machine, expires on activation</td></tr>
+          <tr><th scope="row" data-copy="bm-s9t">Licence</th><td data-copy="bm-s9v">One computer at a time — move it to a new one from Settings, once every 30 days</td></tr>
           <tr><th scope="row" data-copy="bm-s10t">Price</th><td data-copy="bm-s10v">$12.00 — one-time, no subscription</td></tr>
         </tbody>
       </table>
@@ -1575,7 +1576,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20out" data-waitlist="beatmaker"><span data-copy="bm-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
         </div>
 
-        <p class="licnote" data-copy="bm-lic"><b>Single-use license — please read.</b> Your code authorises one computer and is spent the moment it activates online. It cannot be moved, reissued or used a second time, so moving to another machine means buying again. This is the trade that keeps it at $12 instead of $49.</p>
+        <p class="licnote" data-copy="bm-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
 
         <div class="breaks">
           <div class="keep">
@@ -1587,13 +1588,13 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
               <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k4i">Changing your audio interface, MIDI keyboard or network</span></li>
             </ul>
           </div>
-          <div class="end">
-            <h4 data-copy="bm-end-h">Your license ends if you</h4>
+          <div class="move">
+            <h4 data-copy="bm-end-h">Move your license (Settings &gt; Release license) when you</h4>
             <ul>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="bm-e1i">Replace the motherboard</span></li>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="bm-e2i">Replace the CPU</span></li>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="bm-e3i">Move to a different computer</span></li>
-              <li><span class="sym" aria-hidden="true">✕</span><span data-copy="bm-e4i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e1i">Replace the motherboard or CPU</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e2i">Change to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e3i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e4i">Old computer broken? Write to us and we’ll release it</span></li>
             </ul>
           </div>
         </div>
@@ -1605,7 +1606,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <ol>
             <li data-copy="bm-co-1">The app reaches a releasable build, code-signed for Windows.</li>
             <li data-copy="bm-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
-            <li data-copy="bm-co-3">Licensing is switched on, so a purchase issues a single-use code that expires on activation.</li>
+            <li data-copy="bm-co-3">Licensing is switched on, so a purchase issues a code that runs on one computer at a time and moves with you.</li>
           </ol>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20for%20sale" data-waitlist="beatmaker" data-copy="bm-co-cta">Email me when Beatmaker goes on sale →</a></p>
         </div>
@@ -1643,9 +1644,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h3 class="help-h" data-copy="ac-lic-h">How licenses work</h3>
           <ul class="acct-list">
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l1b">One-time purchase.</b> <span data-copy="ac-l1">You pay once. There is no subscription, and every update to the same version line is free.</span></span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l2b">One license, one computer.</b> <span data-copy="ac-l2">A code activates the computer it is first entered on, and only that one.</span></span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l3b">No transfers.</b> <span data-copy="ac-l3">A code can’t be moved to another computer, shared, resold or issued again. A new computer needs its own license.</span></span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l4b">What it survives.</b> <span data-copy="ac-l4">Reinstalling Windows on the same computer, app updates, and swapping the drive, memory or graphics card. Replacing the motherboard or CPU counts as a new computer.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l2b">One computer at a time.</b> <span data-copy="ac-l2">A code runs on one computer at a time. It can go onto another computer once it has been released from the first.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l3b">Moving to a new computer.</b> <span data-copy="ac-l3">On the old computer, open Settings in the app and press Release license. Then enter your code on the new computer. If the old computer has broken down or is gone, write to us and we’ll release the license for you. A license can be moved once every 30 days.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l4b">What doesn’t need a move.</b> <span data-copy="ac-l4">Reinstalling Windows on the same computer, app updates, and swapping the drive, memory or graphics card. A new motherboard or CPU counts as a new computer: move the license to it as above.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l5b">Your projects and settings come too.</b> <span data-copy="ac-l5">Instrument Player keeps everything you make and set up in one folder: Documents\YBK AUDIO\Instrument Player. Copy that folder to the new computer before you start the app there, and it’s all waiting for you.</span></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b data-copy="ac-l6b">Free launch licenses.</b> <span data-copy="ac-l6">They move like any other license, and on any computer they run the versions released during the free month, up to 19 October 2026.</span> <a href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/player-launch?src=help">Download the last of them →</a></span></li>
           </ul>
         </div>
 
@@ -1671,7 +1674,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="wrap">
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span>Home</span></a>
       <h2 style="margin-top:20px">Terms &amp; Conditions</h2>
-      <p class="legal-meta">Last updated 26 September 2026</p>
+      <p class="legal-meta">Last updated 29 September 2026</p>
 
       <div class="legal-body">
         <h3>1. Who we are</h3>
@@ -1683,19 +1686,20 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p>Prices are shown in US dollars on each product page. Paddle may show the total in your local currency and add tax where required.</p>
 
         <h3>3. Your license</h3>
-        <p>The Software is licensed, not sold. When your payment completes, you receive one license code by email. That code grants you a personal, non-exclusive, non-transferable right to install and use the Software on <b>one computer</b>.</p>
+        <p>The Software is licensed, not sold. When your payment completes, you receive one license code by email. That code grants you a personal, non-exclusive, non-transferable right to install and use the Software on <b>one computer at a time</b>.</p>
         <ul>
-          <li><b>Single use.</b> The code is spent the moment it activates a computer online. It cannot be reissued, moved to another computer, or used a second time.</li>
-          <li><b>What keeps it working.</b> Reinstalling or resetting Windows, Windows and driver updates, app updates, and replacing the drive, RAM, graphics card, monitor or network hardware on the same computer.</li>
-          <li><b>What ends it.</b> Replacing the motherboard or CPU, moving to a different computer, or running the Software inside a new virtual machine. Using the Software after that requires a new purchase.</li>
-          <li><b>Activation.</b> Activating needs an internet connection once. See the <a href="#/privacy">Privacy Policy</a> for exactly what is sent.</li>
+          <li><b>One computer at a time.</b> The code activates the Software on one computer. To use it on another computer, you move it: release it from the first computer (in the Software’s Settings, “Release license”) and activate it on the second. The Software stops running on the first computer when the license leaves it.</li>
+          <li><b>Moves.</b> A license can be moved once every 30 days. Only the computer the license is on can release it. If that computer can no longer do so — for example because it broke down — write to us and we will release it after checking that the license is yours. We may also help with further moves when there is a good reason.</li>
+          <li><b>Your computers only.</b> Moving a license is for moving between your own computers. A license may not be shared with, lent to, or used in turn by other people.</li>
+          <li><b>What doesn’t need a move.</b> Reinstalling or resetting Windows, Windows and driver updates, app updates, and replacing the drive, RAM, graphics card, monitor or network hardware on the same computer. A new motherboard or CPU, a different computer or a new virtual machine counts as a new computer and needs a move.</li>
+          <li><b>Activation.</b> Activating needs an internet connection, and so does moving a license. See the <a href="#/privacy">Privacy Policy</a> for exactly what is sent.</li>
         </ul>
-        <p><b>Free launch-month licenses</b> (claimed free of charge between 19 September and 19 October 2026) follow the same rules, with these additions. There is <b>one free license per person</b>, not per email address, and it is for your own use. It may not be sold, traded or given away, and it is not a purchased license. To enforce this we compare the email addresses and IP addresses used to claim licenses (see the <a href="#/privacy">Privacy Policy</a>). If one person collects several free licenses — for example under different email addresses — or offers a free license for sale, we may refuse further claims and deactivate the extra licenses. A person, not an automatic rule, makes that decision, and you can write to us if you think we got it wrong. This paragraph applies to licenses claimed from 26 September 2026.</p>
+        <p><b>Free launch-month licenses</b> (claimed free of charge between 19 September and 19 October 2026) follow the same rules, including moves, with these additions. There is <b>one free license per person</b>, not per email address, and it is for your own use. It may not be sold, traded or given away, and it is not a purchased license. To enforce this we compare the email addresses and IP addresses used to claim licenses (see the <a href="#/privacy">Privacy Policy</a>). If one person collects several free licenses — for example under different email addresses — or offers a free license for sale, we may refuse further claims and deactivate the extra licenses. A person, not an automatic rule, makes that decision, and you can write to us if you think we got it wrong. This paragraph applies to licenses claimed from 26 September 2026.</p>
         <p>You may use the Software for personal and commercial work. Music, recordings and MIDI files you make with it belong to you.</p>
 
         <h3>4. Updates</h3>
         <p>A <b>purchased</b> license includes every update within major version 1 (1.x) at no extra cost. A future major version, if one is released, may be sold separately. We may change or remove features in updates, but will not remove a product’s core function within version 1.</p>
-        <p>A <b>free launch-month</b> license includes every update released up to and including 19 October 2026. Updates released after that are for purchased licenses; the free license keeps working, for good, on the last version it received. To receive later updates, buy the Software after its official release.</p>
+        <p>A <b>free launch-month</b> license includes every update released up to and including 19 October 2026. Updates released after that are for purchased licenses. The free license keeps working, for good, with the last version released on or before 19 October 2026 — on any computer you move it to. Later versions do not run with it; to use them, buy the Software.</p>
 
         <h3>5. What you may not do</h3>
         <ul>
@@ -1736,7 +1740,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="wrap">
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span>Home</span></a>
       <h2 style="margin-top:20px">Privacy Policy</h2>
-      <p class="legal-meta">Last updated 26 September 2026</p>
+      <p class="legal-meta">Last updated 29 September 2026</p>
 
       <div class="legal-body">
         <p class="callout">Short version: we collect what it takes to sell and license the Software, to keep the free launch to one license per person, and to see whether our emails arrive and how many people use the app. Detailed app usage statistics are sent only if you say yes in the app. We never sell personal data, use no advertising trackers and no cookies of our own, and never receive your audio, MIDI or files.</p>
@@ -1749,7 +1753,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <li><b>When you buy.</b> Paddle, our Merchant of Record, collects your name, email address, country, postal code where required, and payment details. Paddle keeps your card details; we never receive them. We receive your email address, the product, the order number, the amount paid out to us, and any later refund or chargeback, so we can deliver your license, keep sales records and handle problems.</li>
           <li><b>When you claim a free launch license.</b> Your email address; the website or link that sent you to us and its campaign tag, if any; the first page you saw; your browser language; whether you use a phone or a computer; your country and time zone (worked out by Cloudflare from the connection); and your <b>IP address</b>. We also record the IP address that opens the confirmation link (often your email provider’s link scanner rather than you). The email address receives the confirmation link, the code, one email about two weeks later asking how the Software works for you, and a few short reminders before the free month ends — each with an unsubscribe link. The IP addresses let us keep the free launch to <b>one license per person</b>: without them, one person could collect many licenses under different email addresses and sell them. If you choose to pay through “name your price”, Paddle handles that payment as described above.</li>
           <li><b>When we email you.</b> Our email provider, Resend, tells us whether each email was delivered, delayed, bounced or marked as spam, so we notice when a license code doesn’t arrive. We do not track whether you open emails or click links in them.</li>
-          <li><b>When you activate the Software.</b> The app sends your license code, a machine fingerprint, the computer’s name and platform as Windows reports them, and the time. We also record the IP address and country of the activation. The fingerprint is a one-way code derived from your motherboard and CPU identifiers; it cannot be turned back into them and exists only so a single-use license stays on one computer. The computer name is whatever you or the manufacturer called your PC, which sometimes includes a person’s name; we use it only to answer support questions about that activation.</li>
+          <li><b>When you activate the Software.</b> The app sends your license code, a machine fingerprint, the computer’s name and platform as Windows reports them, and the time. We also record the IP address and country of the activation. The fingerprint is a one-way code derived from your motherboard and CPU identifiers; it cannot be turned back into them and exists only so a license runs on one computer at a time. The computer name is whatever you or the manufacturer called your PC, which sometimes includes a person’s name; we use it only to answer support questions about that activation. When you release or move a license, we record when that happened, and the name of the computer it left, so that the once-every-30-days limit can be applied.</li>
           <li><b>Every time the app starts.</b> The app checks its license with our license service; the license cannot work without this. With that check we record the time, the IP address and country, and count how many times and on how many days each license has been used. These counts tell us how many people really use the app.</li>
           <li><b>Optional usage statistics (Instrument Player 1.4.0 and later) — only if you say yes.</b> The app asks the first time it starts, and you can change your answer in Settings at any time. If you agree, it sends, about once per session: a random install ID that is <b>not linked</b> to your license, email address or computer; the app version; Windows version; processor model and number of cores; amount of memory; screen size; language; audio driver type, sample rate and buffer size; the number of audio and MIDI devices; the names, makers and versions of the plugins found on your computer and which of them you loaded; which features you used and how often; how long the app was open; whether it closed unexpectedly last time and which plugin was loaded then; and how many plugins failed to load during a scan. It never sends audio, the notes you play, MIDI or audio files, project or file names, or anything else from your computer.</li>
           <li><b>When you email us or send feedback.</b> Your email address (optional in the feedback form), whatever you choose to write, and the page you sent it from, used to read and answer your message.</li>
