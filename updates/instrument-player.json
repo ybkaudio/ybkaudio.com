@@ -1,11 +1,19 @@
 {
-    "version":  "1.6.2",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.6.2.exe",
-    "sha256":  "a2c4c87f839251d25ebdb1dd7708abd29362a426f6540b5caa530d5422c95ea1",
-    "size":  8158643,
-    "notes":  "MIDI editor: with Loop on, a grey bar on the ruler shows what repeats - drag its ends or the whole bar to change it (it follows the grid; hold Alt for anywhere). Beside the Loop button you can see where the loop starts and ends: drag a number up or down, or double-click to type it. While recording into a pattern, notes appear the moment you play them. With Replace on, each pass replaces the last one - including what you played on earlier passes - without old notes blipping as they go. Without Replace, a note played over an old one keeps its own length and the old one keeps the rest. A key you hold is no longer cut off by a pattern note on the same key.",
-    "released":  "2026-09-29",
+    "version":  "1.7.0",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.7.0.exe",
+    "sha256":  "e17602aff6ebbcd1e6bc4bb9a91fa4660628dcbaff3d120af638022977f11a17",
+    "size":  8175849,
+    "notes":  "MIDI editor: drag a loop number up or down to move the whole position a sixteenth at a time (hold Shift for fine steps). The loop now stays exactly where you put it; with Loop off it shows as an outline you can still drag, and double-clicking its bar turns Loop on or off. The scissors keep just the loop: press once to see what will go (in red), again to cut, or X to cancel. Record starts playback by itself and works with an empty editor, and a note held all the way round the loop no longer merges into one long note. Click anywhere on the grid or ruler to move the playhead, even outside the loop - playback carries on from there. MIDI Replay keeps your view where it was. New Keyboard shortcuts tab in Settings: see every shortcut and change any of them, with new keys for Stop (Shift+Space), Record (Ctrl+R), Loop (Ctrl+L), MIDI Replay (Ctrl+Shift+C) and more.",
+    "released":  "2026-09-30",
     "history":  [
+                    {
+                        "version":  "1.7.0",
+                        "released":  "2026-09-30",
+                        "notes":  "MIDI editor: drag a loop number up or down to move the whole position a sixteenth at a time (hold Shift for fine steps). The loop now stays exactly where you put it; with Loop off it shows as an outline you can still drag, and double-clicking its bar turns Loop on or off. The scissors keep just the loop: press once to see what will go (in red), again to cut, or X to cancel. Record starts playback by itself and works with an empty editor, and a note held all the way round the loop no longer merges into one long note. Click anywhere on the grid or ruler to move the playhead, even outside the loop - playback carries on from there. MIDI Replay keeps your view where it was. New Keyboard shortcuts tab in Settings: see every shortcut and change any of them, with new keys for Stop (Shift+Space), Record (Ctrl+R), Loop (Ctrl+L), MIDI Replay (Ctrl+Shift+C) and more.",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.7.0.exe",
+                        "sha256":  "e17602aff6ebbcd1e6bc4bb9a91fa4660628dcbaff3d120af638022977f11a17",
+                        "size":  8175849
+                    },
                     {
                         "version":  "1.6.2",
                         "released":  "2026-09-29",
