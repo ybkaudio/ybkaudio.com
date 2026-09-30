@@ -1,129 +1,81 @@
 {
-    "version":  "1.7.0",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.7.0.exe",
-    "sha256":  "e17602aff6ebbcd1e6bc4bb9a91fa4660628dcbaff3d120af638022977f11a17",
-    "size":  8175849,
-    "notes":  "MIDI editor: drag a loop number up or down to move the whole position a sixteenth at a time (hold Shift for fine steps). The loop now stays exactly where you put it; with Loop off it shows as an outline you can still drag, and double-clicking its bar turns Loop on or off. The scissors keep just the loop: press once to see what will go (in red), again to cut, or X to cancel. Record starts playback by itself and works with an empty editor, and a note held all the way round the loop no longer merges into one long note. Click anywhere on the grid or ruler to move the playhead, even outside the loop - playback carries on from there. MIDI Replay keeps your view where it was. New Keyboard shortcuts tab in Settings: see every shortcut and change any of them, with new keys for Stop (Shift+Space), Record (Ctrl+R), Loop (Ctrl+L), MIDI Replay (Ctrl+Shift+C) and more.",
-    "released":  "2026-09-30",
-    "history":  [
-                    {
-                        "version":  "1.7.0",
-                        "released":  "2026-09-30",
-                        "notes":  "MIDI editor: drag a loop number up or down to move the whole position a sixteenth at a time (hold Shift for fine steps). The loop now stays exactly where you put it; with Loop off it shows as an outline you can still drag, and double-clicking its bar turns Loop on or off. The scissors keep just the loop: press once to see what will go (in red), again to cut, or X to cancel. Record starts playback by itself and works with an empty editor, and a note held all the way round the loop no longer merges into one long note. Click anywhere on the grid or ruler to move the playhead, even outside the loop - playback carries on from there. MIDI Replay keeps your view where it was. New Keyboard shortcuts tab in Settings: see every shortcut and change any of them, with new keys for Stop (Shift+Space), Record (Ctrl+R), Loop (Ctrl+L), MIDI Replay (Ctrl+Shift+C) and more.",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.7.0.exe",
-                        "sha256":  "e17602aff6ebbcd1e6bc4bb9a91fa4660628dcbaff3d120af638022977f11a17",
-                        "size":  8175849
-                    },
-                    {
-                        "version":  "1.6.2",
-                        "released":  "2026-09-29",
-                        "notes":  "MIDI editor: with Loop on, a grey bar on the ruler shows what repeats - drag its ends or the whole bar to change it (it follows the grid; hold Alt for anywhere). Beside the Loop button you can see where the loop starts and ends: drag a number up or down, or double-click to type it. While recording into a pattern, notes appear the moment you play them. With Replace on, each pass replaces the last one - including what you played on earlier passes - without old notes blipping as they go. Without Replace, a note played over an old one keeps its own length and the old one keeps the rest. A key you hold is no longer cut off by a pattern note on the same key.",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.6.2.exe",
-                        "sha256":  "a2c4c87f839251d25ebdb1dd7708abd29362a426f6540b5caa530d5422c95ea1",
-                        "size":  8158643
-                    },
-                    {
-                        "version":  "1.6.1",
-                        "released":  "2026-09-29",
-                        "notes":  "Computer keyboard settings have their own tab in Settings (right-click the keyboard button to open it): choose how the keys play notes - one row or two rows - and which keys change the octave.",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.6.1.exe",
-                        "sha256":  "5d188a01d1b2c408be705182dbab44a8eb505d8364fb99e9c50823723572edc5",
-                        "size":  8145285
-                    },
-                    {
-                        "version":  "1.6.0",
-                        "released":  "2026-09-29",
-                        "notes":  "Moving to a new computer? Press Release license in Settings, then enter your code on the new one. Everything you make and set up is now kept in one folder (Documents\\YBK AUDIO\\Instrument Player) that you can copy along. Play more than two octaves from the computer keyboard, or set up your own keys. Add your own plugin folders with the Folders button in the plugin list. MIDI editor: record over a looping pattern (turn on Replace to overwrite), keep just the bars you type in with the scissors, MIDI Replay adds a new take after the pattern, and a reminder if you close with MIDI you haven\u0027t saved. Knobs on your MIDI controller now move plugin controls set with MIDI Learn (e.g. Serum 2), pattern plugins stop when you press Stop, and tooltips no longer show twice.",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.6.0.exe",
-                        "sha256":  "3852b1a5df590bdc4e5b548f35a6712c2129c98e645a9907cc0d0e25faf70b29",
-                        "size":  8143842
-                    },
-                    {
-                        "version":  "1.5.0",
-                        "released":  "2026-09-27",
-                        "notes":  "Saved projects now keep the MIDI editor\u0027s pattern too.",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.5.0.exe",
-                        "sha256":  "967f06242c187e3daf1a785ab8537588901036195502d4743dfde230ecc8eca5",
-                        "size":  8038849
-                    },
-                    {
-                        "version":  "1.4.0",
-                        "released":  "2026-09-26",
-                        "notes":  "",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.4.0.exe",
-                        "sha256":  "4c8b3f9227d145ccb652576dae1b9f33c2d4c768a95b4425bc228e7613505e73",
-                        "size":  7967630
-                    },
-                    {
-                        "version":  "1.3.6",
-                        "released":  "2026-09-26",
-                        "notes":  "",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.6.exe",
-                        "sha256":  "314ce98a6205f3feacfea92efd9a5b215b6191f46bf6d2f289779930cc5a4c41",
-                        "size":  7950017
-                    },
-                    {
-                        "version":  "1.3.5",
-                        "released":  "2026-09-25",
-                        "notes":  "Updating no longer gets stuck on \u0027Waiting for Instrument Player to finish closing\u0027, and quitting always fully closes the app, even if a plugin hangs while unloading.",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.5.exe",
-                        "sha256":  "964d182707e9985d735d48b0e15db0948f5214e707eb21facffeeb867fc0e418",
-                        "size":  7948235
-                    },
-                    {
-                        "version":  "1.3.4",
-                        "released":  "2026-09-25",
-                        "notes":  "The version number in the toolbar is now a button: click it to see what changed in every release, and to update when a new version is out.",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.4.exe",
-                        "sha256":  "a8fe721938097db4e3abb9b810c13df1d655a9f1f76188048d9257686ce885eb",
-                        "size":  7947119
-                    },
-                    {
-                        "version":  "1.3.3",
-                        "released":  "2026-09-25",
-                        "notes":  "Settings: Factory reset has moved to the bottom left, and a new OK button at the bottom right closes the window, so reaching for the usual OK corner no longer resets the app.",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.3.exe",
-                        "sha256":  "41273122fd13f981cf2f99a6a3f52cd08cce42d2ad4f3edf320cc4e9b72e06f8",
-                        "size":  7936014
-                    },
-                    {
-                        "version":  "1.3.2",
-                        "released":  "2026-09-25",
-                        "notes":  "",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.2.exe",
-                        "sha256":  "e8945f8ad8017f4c0bc94cbb702e51e5b7a2ec76bbe3cbbef500c9f3d790c274",
-                        "size":  7935489
-                    },
-                    {
-                        "version":  "1.3.1",
-                        "released":  "2026-09-24",
-                        "notes":  "Pattern and phrase plugins work now. The app tells instruments that the transport is rolling and at what tempo, so UJAM-style phrase players, arpeggiators and tempo-synced effects follow the BPM in the toolbar instead of stopping after one note. Take the instrument out with the new x beside its name. Every row in the plugin lists now has a = to drag it into your own order and an x to leave it out of the list (it stays installed, and a Hidden button brings it back), plus a List by menu: name, creator, recently added, recently used, or your own order - instruments and effects each keep their own choice. The Starter Synth no longer appears twice when a copy of it is also installed as a VST3.",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.1.exe",
-                        "sha256":  "4622a004dcbe5a31f7ba152af510cffa2c2b6aa4c440883a451d391d781b3c89",
-                        "size":  7935125
-                    },
-                    {
-                        "version":  "1.3.0",
-                        "released":  "2026-09-22",
-                        "notes":  "Projects: save your whole sound (instrument, effects, tempo and volume) as one file with Ctrl+S, open it with Ctrl+O or by double-clicking it. Plugins installed just for you now show up, plugin scans are faster and can run in the background, and the toolbar is tidier. Your license and settings are unchanged.",
-                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.0.exe",
-                        "sha256":  "2645d799028fc008f202cf41bac41d5d7972ac5754ff22b649291dfcd1cd1ad0",
-                        "size":  7926730
-                    },
-                    {
-                        "version":  "1.2.0",
-                        "released":  "2026-09-20",
-                        "notes":  "Pencil mode and more MIDI editor keys, an Audio Effects button, a fullscreen MIDI editor, and Factory reset in settings. Your license and settings are unchanged."
-                    },
-                    {
-                        "version":  "1.1.0",
-                        "released":  "2026-09-19",
-                        "notes":  "MIDI editor with capture and replay, FX rack for effect plugins, and a fix for audio interfaces clicking when used alongside a DAW at a different sample rate."
-                    },
-                    {
-                        "version":  "1.0.0",
-                        "released":  "2026-09-17",
-                        "notes":  "First release"
-                    }
-                ]
+    "version": "1.7.1",
+    "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.7.1.exe",
+    "sha256": "f5f0024747b5232fb69c097ddba3440f47798258649287f8555080d80236bfc1",
+    "size": 8219073,
+    "notes": "Issue fixes\r\n- MIDI editor: the metronome now clicks on the editor's bars and beats while it plays or records.\r\n- Imported MIDI files land exactly on their beats, and the app switches to the file's tempo.\r\n- Changing the tempo keeps every note on its beat.\r\n- With notes selected, ← / → move them to the next grid line.\r\n- Simpler default shortcuts: MIDI Replay is Ctrl+P and Cut is Ctrl+X.\r\n- Fixed: the app could keep running after being closed; custom keyboard layouts' octave keys changed after a restart; Export and Import MIDI didn't remember your last folder.\r\n\r\nNew features\r\n- Audio input: play a microphone, guitar or any other input through the effects, with or without an instrument. Turn it on with the power button beside Input in Settings > Audio & MIDI.\r\n- Settings has a new look, matching the toolbar.\r\n- Choose how saved files are named in Settings > License & data.",
+    "released": "2026-09-30",
+    "history": [
+        {
+            "version": "1.7.1",
+            "released": "2026-09-30",
+            "notes": "Issue fixes\n- MIDI editor: the metronome now clicks on the editor's bars and beats while it plays or records.\n- Imported MIDI files land exactly on their beats, and the app switches to the file's tempo.\n- Changing the tempo keeps every note on its beat.\n- With notes selected, ← / → move them to the next grid line.\n- Simpler default shortcuts: MIDI Replay is Ctrl+P and Cut is Ctrl+X.\n- Fixed: the app could keep running after being closed; custom keyboard layouts' octave keys changed after a restart; Export and Import MIDI didn't remember your last folder.\n- The loop stays where you put it; with Loop off it shows as an outline you can still drag.\n- Record starts playback by itself\n- A note held all the way round the loop no longer merges into one long note.\n- Pressing MIDI Replay keeps your view where it was.\n\nNew features\n- Audio input: play a microphone, guitar or any other input through the effects, with or without an instrument. Turn it on with the power button beside Input in Settings > Audio & MIDI.\n- Settings has a new look, matching the toolbar.\n- Choose how saved files are named in Settings > License & data.\n- Keyboard shortcuts tab in Settings: see every shortcut and change any of them.\n- Drag a loop number up or down to move it a sixteenth at a time (hold Shift for fine steps); double-click the loop bar to turn Loop on or off.\n- The scissors now keep just the loop: press once to see what goes, again to cut, or X to cancel.\n- Click anywhere on the grid or ruler to move the playhead, even outside the loop.",
+            "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.7.1.exe",
+            "sha256": "f5f0024747b5232fb69c097ddba3440f47798258649287f8555080d80236bfc1",
+            "size": 8219073
+        },
+        {
+            "version": "1.6.2",
+            "released": "2026-09-29",
+            "notes": "Issue fixes\n- While recording, notes appear the moment you play them.\n- With Replace on, each pass replaces the last one cleanly.\n- A key you hold is no longer cut off by a pattern note on the same key.\n- Pattern plugins stop when you press Stop.\n- Tooltips no longer show twice.\n\nNew features\n- A loop bar on the ruler: drag its ends or the whole bar.\n- The loop's start and end beside the Loop button: drag a number or double-click to type it.\n- Computer keyboard tab in Settings: one row or two rows, and which keys change the octave.\n- Moving computers: Release license in Settings, then enter your code on the new one.\n- Everything you make is kept in one folder (Documents\\YBK AUDIO\\Instrument Player).\n- More than two octaves from the computer keyboard, or your own keys.\n- Add your own plugin folders.\n- MIDI editor: record over a looping pattern, MIDI Replay adds a new take after the pattern, and a reminder when closing with unsaved MIDI.\n- Knobs on your MIDI controller move controls set with MIDI Learn (e.g. Serum 2).",
+            "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.6.2.exe",
+            "sha256": "a2c4c87f839251d25ebdb1dd7708abd29362a426f6540b5caa530d5422c95ea1",
+            "size": 8158643
+        },
+        {
+            "version": "1.5.0",
+            "released": "2026-09-27",
+            "notes": "New features\n- Saved projects keep the MIDI editor's pattern too.",
+            "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.5.0.exe",
+            "sha256": "967f06242c187e3daf1a785ab8537588901036195502d4743dfde230ecc8eca5",
+            "size": 8038849
+        },
+        {
+            "version": "1.4.0",
+            "released": "2026-09-26",
+            "notes": "",
+            "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.4.0.exe",
+            "sha256": "4c8b3f9227d145ccb652576dae1b9f33c2d4c768a95b4425bc228e7613505e73",
+            "size": 7967630
+        },
+        {
+            "version": "1.3.5",
+            "released": "2026-09-25",
+            "notes": "Issue fixes\n- Updating no longer gets stuck on \"Waiting for Instrument Player to finish closing\", and quitting always fully closes the app.\n- Settings: Factory reset moved to the bottom left, with OK at the bottom right, so the usual OK corner no longer resets the app.\n\nNew features\n- Click the version number in the toolbar to see what changed and to update.",
+            "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.5.exe",
+            "sha256": "964d182707e9985d735d48b0e15db0948f5214e707eb21facffeeb867fc0e418",
+            "size": 7948235
+        },
+        {
+            "version": "1.3.1",
+            "released": "2026-09-24",
+            "notes": "Issue fixes\n- Phrase players, arpeggiators and tempo-synced effects follow the toolbar's BPM instead of stopping after one note.\n\nNew features\n- Take the instrument out with the x beside its name.\n- Sort, reorder and hide plugins in the lists.",
+            "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.1.exe",
+            "sha256": "4622a004dcbe5a31f7ba152af510cffa2c2b6aa4c440883a451d391d781b3c89",
+            "size": 7935125
+        },
+        {
+            "version": "1.3.0",
+            "released": "2026-09-22",
+            "notes": "New features\n- Projects: save the instrument, effects, tempo and volume as one file (Ctrl+S, Ctrl+O, or double-click it).\n- Faster plugin scans that run in the background.",
+            "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.3.0.exe",
+            "sha256": "2645d799028fc008f202cf41bac41d5d7972ac5754ff22b649291dfcd1cd1ad0",
+            "size": 7926730
+        },
+        {
+            "version": "1.2.0",
+            "released": "2026-09-20",
+            "notes": "New features\n- Pencil mode and more MIDI editor keys, an Audio Effects button, a fullscreen MIDI editor, and Factory reset in Settings."
+        },
+        {
+            "version": "1.1.0",
+            "released": "2026-09-19",
+            "notes": "Issue fixes\n- Audio interfaces no longer click when used alongside a DAW at a different sample rate.\n\nNew features\n- MIDI editor with capture and replay.\n- Effects rack for effect plugins."
+        },
+        {
+            "version": "1.0.0",
+            "released": "2026-09-17",
+            "notes": "First release."
+        }
+    ]
 }
