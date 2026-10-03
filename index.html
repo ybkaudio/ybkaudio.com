@@ -343,6 +343,8 @@ h2{
   border:1px solid var(--rule);background:var(--surface);
 }
 .feat-shot:hover img{border-color:var(--accent)}
+/* tall screenshots (432hz compact window): show all of it, letterboxed */
+.feat-shot.fit img{object-fit:contain;object-position:center}
 
 /* spec table */
 .specs{
@@ -806,6 +808,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <span class="wordmark"><span data-copy="wm">YBK</span><i>.</i><span data-copy="wm2">Audio</span></span>
     </a>
     <nav class="nav">
+      <a class="navlink" href="#/432hz" data-nav="hz432">432hz</a>
       <a class="navlink" href="#/multiconsole" data-nav="midside">MultiConsole</a>
       <a class="navlink" href="#/player" data-nav="synth">Instrument Player</a>
       <a class="navlink" href="#/beatmaker" data-nav="beatmaker">Beatmaker</a>
@@ -838,6 +841,28 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <div class="note"><dt data-copy="n2t">Price</dt><dd data-copy="n2d">About $10 an app. One code per purchase — it runs on one computer at a time and moves with you when you change computers.</dd></div>
           <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">Instrument Player is out now. MultiConsole and Beatmaker are in active development.</dd></div>
         </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <span class="status ok" data-copy="h-hz-status">Free</span>
+      <h2 data-copy="h-hz-name">432hz</h2>
+      <p class="kicker" data-copy="h-hz-k">Your whole PC, retuned to A4 = 432 Hz.</p>
+      <div class="summary">
+        <div class="prose">
+          <p data-copy="h-hz-p1">432hz retunes everything your PC plays from A4 = 440 Hz to 432 Hz, live, without changing the tempo — every app at once, inside Windows’ own audio.</p>
+          <p data-copy="h-hz-p2">One button switches between 432 and 440 so you can hear the difference, and a live spectrum shows where every A sits.</p>
+          <div class="sum-actions btnrow">
+            <a class="btn" href="#/432hz"><span data-copy="h-hz-cta">Get it free</span><span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div>
+          <a class="shot" href="#/432hz">
+            <img src="img/432/432-main.png" width="957" height="419" loading="lazy" alt="The 432hz window: a gold button reading “432 Hz, ON” and a live spectrum with every A marked.">
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -920,6 +945,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <p class="blurb" data-copy="pr-p">One computer at a time. Each purchase is one code that runs on one computer — move it to a new one whenever you switch. No subscription, no seats.</p>
       </div>
       <div class="tiers">
+        <div class="tier">
+          <span class="nm" data-copy="t0n">432hz</span>
+          <span class="amt" data-copy="t0a">Free</span>
+          <span class="desc" data-copy="t0d">Everything your PC plays, retuned to A4 = 432 Hz.</span>
+          <a class="btn" href="#/432hz" data-copy="t0b">Get it free</a>
+        </div>
         <div class="tier">
           <span class="nm" data-copy="t2n">MultiConsole</span>
           <span class="amt" data-copy="t2a">$10</span>
@@ -1232,6 +1263,154 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Instrument%20Player" data-copy="sp-co-cta">Still not working? Email us →</a></p>
         </div>
       </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== 432hz ==================== -->
+<div data-page="hz432" hidden>
+  <section class="pagehead">
+    <div class="wrap">
+      <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="hz-back">All apps</span></a>
+      <div class="prod-title">
+        <div>
+          <span class="status ok" data-copy="hz-status">Free</span>
+          <h2 data-copy="hz-name">432hz</h2>
+          <p class="kicker" data-copy="hz-k">Everything your PC plays, retuned from A4 = 440 Hz to 432 Hz. Live, without changing the tempo.</p>
+        </div>
+        <div class="prod-price">
+          <span data-copy="hz-price">Free</span>
+          <small data-copy="hz-price-sub">No license code</small>
+        </div>
+      </div>
+
+      <!-- The sign-up form appears only once the worker says it handles 432hz
+           sign-ups (GET /launch answers with "hz432": true). Until then this
+           box shows instead, so pushing the page early can't misfire. -->
+      <div class="launch" data-hz-closed>
+        <div>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="hz-soon-eye">Almost ready</span></p>
+          <p data-copy="hz-soon-p">The free download opens here very soon. Check back in a day or two.</p>
+        </div>
+      </div>
+
+      <div class="launch has-form" id="hz-free" data-hz-open hidden>
+        <div>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="hz-eye">Free</span></p>
+          <h3 data-copy="hz-h">Get 432hz free</h3>
+          <p data-copy="hz-lp">432hz is free. Type your email, click the link we send you, and the download link arrives in the next email. No license code, nothing to activate.</p>
+          <p data-copy="hz-lp2">If you’d like to support it, name a price. Anything you add helps build the next apps — the app is exactly the same either way.</p>
+          <p class="launch-note" data-copy="hz-warn"><b>Windows will probably warn you.</b> 432hz isn’t code-signed yet, so the first time you run the installer Windows may show a blue “Windows protected your PC” box. Choose <b>More info</b>, then <b>Run anyway</b>. That warning is about a certificate we haven’t bought yet, not about the file. <a href="#/help">More on this</a></p>
+        </div>
+        <form data-claim data-product="432" novalidate>
+          <div class="field">
+            <label for="hz-email" data-copy="hz-label">Your email</label>
+            <input id="hz-email" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
+          </div>
+          <div class="field" data-tip hidden>
+            <label for="hz-amount" data-copy="hz-tip-label">Name your price (optional)</label>
+            <div class="tip-presets" role="group" aria-label="Suggested amounts">
+              <button type="button" class="tip-preset" data-amount="3">$3</button>
+              <button type="button" class="tip-preset" data-amount="5">$5</button>
+              <button type="button" class="tip-preset" data-amount="10">$10</button>
+            </div>
+            <div class="tip-input">
+              <span aria-hidden="true">$</span>
+              <input id="hz-amount" name="amount" type="number" inputmode="numeric" min="0" max="200" step="1" placeholder="0" aria-describedby="hz-tip-note">
+            </div>
+            <p class="tip-note" id="hz-tip-note" data-copy="hz-tip-note">Leave it at 0 and it’s free. Anything you add helps build the next apps.</p>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="hz-website">Leave this empty</label>
+            <input id="hz-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="ts-box" data-turnstile></div>
+          <button type="submit" class="btn"><span data-copy="hz-btn">Email me the download</span><span aria-hidden="true">→</span></button>
+          <p class="claim-msg" role="status" aria-live="polite"></p>
+          <p class="fineprint"><span data-copy="hz-fine">We’ll email you a link to confirm your address, then the download link. To stop automated sign-ups, we record your IP address with your sign-up.</span> <span data-copy="hz-agree">By signing up you agree to our</span> <a href="#/terms">Terms</a> <span data-copy="hz-and">and</span> <a href="#/privacy">Privacy Policy</a>.</p>
+        </form>
+      </div>
+
+      <a class="shot" href="img/432/432-main.png" target="_blank" rel="noopener">
+        <img src="img/432/432-main.png" width="957" height="419" alt="The 432hz window: a large gold button reading “432 Hz, ON”, the line “A4 = 432 Hz” with minus and plus buttons and “−31.77 cents (tempo unchanged)”, and a live spectrum on the right with every A from A0 to A8 marked.">
+      </a>
+      <p class="usage-cap">
+        <span data-copy="hz-usage-cap">Fig. 1 — The big button switches 432 on and off; the spectrum marks every A</span>
+        <span data-copy="hz-usage-cap2">Click to enlarge</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band" style="border-top:none">
+    <div class="wrap">
+      <div class="prose">
+        <p data-copy="hz-p1">Almost all music today is tuned to A4 = 440 Hz. Some musicians and listeners prefer A4 = 432 Hz, a little lower. 432hz lets you hear everything that way — every app on your PC, live, at once.</p>
+        <p data-copy="hz-p2">It lowers the pitch by exactly 432/440 (−31.77 cents) without changing the tempo. It runs inside Windows’ own audio engine as an audio effect, so there’s no virtual cable to set up and the delay is only about 10–20 ms.</p>
+        <p data-copy="hz-p3">Every frequency moves by exactly the same amount, bass included: from 41 Hz to 4 kHz, every note lands within 0.2 cents of where it should. It uses about 2% of the CPU.</p>
+      </div>
+
+      <div class="features">
+        <div class="feat">
+          <span class="n" data-copy="hz-f1n">Whole PC</span>
+          <h4 data-copy="hz-f1h">Every app, at once</h4>
+          <p data-copy="hz-f1p">Your browser, music player, games, video calls, your DAW — whatever plays through Windows to your speakers or headphones is retuned. It works inside Windows’ own audio, so there’s nothing to set up in each app.</p>
+          <a class="feat-shot" href="img/432/432-installer.png" target="_blank" rel="noopener">
+            <img src="img/432/432-installer.png" width="636" height="419" loading="lazy" alt="The installer’s welcome screen: “Install 432hz”, explaining that it retunes everything the PC plays from A4 = 440 Hz to 432 Hz, live, without changing the tempo.">
+          </a>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="hz-f2n">Compare</span>
+          <h4 data-copy="hz-f2h">432 or 440, one click</h4>
+          <p data-copy="hz-f2p">The big button switches between 432 and the original 440 while the music keeps playing — no click, no gap. Left-click the gold ring by the clock to do the same from the tray.</p>
+          <a class="feat-shot fit" href="img/432/432-compact-off.png" target="_blank" rel="noopener">
+            <img src="img/432/432-compact-off.png" width="376" height="419" loading="lazy" alt="The compact window switched off: the big button is grey and reads “432 Hz, OFF”, so the sound plays at its original 440 tuning.">
+          </a>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="hz-f3n">Any tuning</span>
+          <h4 data-copy="hz-f3h">Not only 432</h4>
+          <p data-copy="hz-f3p">Set A4 with − and + (hold to repeat), or double-click the number and type any value. Prefer to think in C? Tune by C4 instead.</p>
+          <a class="feat-shot fit" href="img/432/432-compact-on.png" target="_blank" rel="noopener">
+            <img src="img/432/432-compact-on.png" width="376" height="419" loading="lazy" alt="The compact window switched on: a gold button reading “432 Hz, ON” with a small spectrum inside it, and “A4 = 432 Hz” between the minus and plus buttons.">
+          </a>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="hz-f4n">Spectrum</span>
+          <h4 data-copy="hz-f4h">See where 432 sits</h4>
+          <p data-copy="hz-f4p">Open the spectrum and every A (or C) of your tuning is marked, from the lowest octave to the highest. Maximise the window and it fills the screen.</p>
+          <a class="feat-shot fit" href="img/432/432-main.png" target="_blank" rel="noopener">
+            <img src="img/432/432-main.png" width="957" height="419" loading="lazy" alt="The spectrum next to the main controls, with lines marking A0 at 27 Hz up to A8 at 6912 Hz for A4 = 432 Hz.">
+          </a>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="hz-f5n">In real time</span>
+          <h4 data-copy="hz-f5h">Right on pitch</h4>
+          <p data-copy="hz-f5p">Every speaker’s clock runs a little fast or slow. 432hz measures yours and corrects for it, so a 440 Hz tone really comes out at 432 Hz.</p>
+          <a class="feat-shot fit" href="img/432/432-settings.png" target="_blank" rel="noopener">
+            <img src="img/432/432-settings.png" width="957" height="419" loading="lazy" alt="The settings view: output device, “Delay about 20 ms”, “Speaker clock −79.9 ppm, corrected: A4 = 432.00 Hz in real time”, Start with Windows, and Tune by A4 or C4.">
+          </a>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="hz-f6n">Out of the way</span>
+          <h4 data-copy="hz-f6h">Lives by the clock</h4>
+          <p data-copy="hz-f6p">Close the window and 432hz keeps going from the tray. Turn on Start with Windows and every session starts at 432. Uninstall it and every speaker goes back exactly as it was.</p>
+        </div>
+      </div>
+
+      <table class="specs">
+        <caption data-copy="hz-caption">432hz — specification</caption>
+        <tbody>
+          <tr><th scope="row" data-copy="hz-s1t">Type</th><td data-copy="hz-s1v">Desktop app with a tray icon · tunes all Windows audio</td></tr>
+          <tr><th scope="row" data-copy="hz-s2t">Pitch</th><td data-copy="hz-s2v">A4 = 432 Hz by default (−31.77 cents) · any A4 or C4 you choose · tempo unchanged</td></tr>
+          <tr><th scope="row" data-copy="hz-s3t">Accuracy</th><td data-copy="hz-s3v">Within 0.2 cents from 41 Hz to 4 kHz · speaker clock drift corrected</td></tr>
+          <tr><th scope="row" data-copy="hz-s4t">Delay</th><td data-copy="hz-s4v">About 10–20 ms · CPU about 1.5–2%</td></tr>
+          <tr><th scope="row" data-copy="hz-s5t">Works with</th><td data-copy="hz-s5v">Apps that play through Windows’ normal (shared) audio. ASIO and exclusive-mode audio bypass Windows’ audio engine and are not tuned.</td></tr>
+          <tr><th scope="row" data-copy="hz-s6t">Install</th><td data-copy="hz-s6v">One administrator prompt for the Windows audio step · the sound drops for a few seconds while it installs · speakers added later (new USB or Bluetooth) get 432 after running the installer again</td></tr>
+          <tr><th scope="row" data-copy="hz-s7t">Uninstall</th><td data-copy="hz-s7v">Settings &gt; Apps — your speakers go back to how they were</td></tr>
+          <tr><th scope="row" data-copy="hz-s8t">Platform</th><td data-copy="hz-s8v">Windows 10 / 11, 64-bit · no Mac version</td></tr>
+          <tr><th scope="row" data-copy="hz-s9t">Price</th><td data-copy="hz-s9v">Free · pay what you want, if you like</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 </div>
@@ -1949,6 +2128,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   /* ---------------- routing ---------------- */
   var ROUTES = {
     '': 'home', '/': 'home',
+    '/432hz': 'hz432',
+    '/432': 'hz432',
     '/player': 'synth',
     '/download': 'synth',       // the player page, scrolled to its download box
     '/synth-player': 'synth',   // old URL, kept so shared links still work
@@ -1995,8 +2176,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     lang: (navigator.language || '').slice(0, 12),
     device: visitDevice
   };
-  var PRODUCT_SLUG = { synth: 'player', midside: 'console', beatmaker: 'beatmaker' };
-  var PAGE_SLUG = { synth: 'player', midside: 'console', account: 'help' };
+  var PRODUCT_SLUG = { synth: 'player', midside: 'console', beatmaker: 'beatmaker', hz432: '432hz' };
+  var PAGE_SLUG = { synth: 'player', midside: 'console', account: 'help', hz432: '432hz' };
   function track(step, extra) {
     var e = { step: step, visit: visitId, device: visitDevice };
     for (var k in extra) e[k] = extra[k];
@@ -2021,7 +2202,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   }
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href*="/downloads/"]');
-    if (a) track('download_click', { product: 'player' });
+    if (a) track('download_click', { product: /432/.test(a.getAttribute('href')) ? '432hz' : 'player' });
   });
 
   var pages = Array.prototype.slice.call(document.querySelectorAll('[data-page]'));
@@ -2214,6 +2395,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         launch = l;
         clockSkew = Date.parse(l.now) - Date.now();
         showLaunch(l.state);
+        // 432hz is free, so its form ignores the launch month and
+        // opens only once the worker says it handles 432hz sign-ups.
+        document.querySelectorAll('[data-hz-open]').forEach(function (el) { el.hidden = !l.hz432; });
+        document.querySelectorAll('[data-hz-closed]').forEach(function (el) { el.hidden = !!l.hz432; });
         if ((l.state === 'upcoming' || l.state === 'active') && !tick) {
           updateClock();
           tick = setInterval(updateClock, 1000);
@@ -2276,11 +2461,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     input.addEventListener('input', paint);
   });
 
-  function openTipCheckout(email, amount, tell) {
+  function openTipCheckout(email, amount, tell, product) {
     return fetch(LAUNCH_API + '/tip', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, amount: amount })
+      body: JSON.stringify({ email: email, amount: amount, product: product })
     })
       .then(function (r) { return r.json().then(function (body) { return { ok: r.ok, body: body }; }); })
       .then(function (res) {
@@ -2325,6 +2510,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   }
 
   claimForms.forEach(function (form) {
+    var product = form.getAttribute('data-product') || 'player';   // 'player' or '432'
     var msg = form.querySelector('.claim-msg');
     var btn = form.querySelector('button[type="submit"]');
     function tell(text, kind) {
@@ -2333,7 +2519,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     }
     form.elements.email.addEventListener('input', function started() {
       form.elements.email.removeEventListener('input', started);
-      track('claim_start', { product: 'player' });
+      track('claim_start', { product: product === '432' ? '432hz' : 'player' });
     });
 
     form.addEventListener('submit', function (e) {
@@ -2362,7 +2548,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       fetch(LAUNCH_API + '/claim', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, website: form.elements.website.value, turnstile: human, attr: signupAttr })
+        body: JSON.stringify({ email: email, product: product, website: form.elements.website.value, turnstile: human, attr: signupAttr })
       })
         .then(function (r) { return r.json().then(function (body) { return { ok: r.ok, body: body }; }); })
         .then(function (res) {
@@ -2372,9 +2558,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
               form.elements.amount.disabled = true;
               form.querySelectorAll('.tip-preset').forEach(function (b) { b.disabled = true; });
             }
-            track('claim_sent', { product: 'player' });
-            tell('Almost done: we sent a link to ' + email + '. Click it to confirm your email and get your license. Not there in 5 minutes? Check your spam folder. You can download the app straight away with the Download button below.', 'ok');
-            if (amount > 0) openTipCheckout(email, amount, tell);
+            track('claim_sent', { product: product === '432' ? '432hz' : 'player' });
+            tell(product === '432'
+              ? 'Almost done: we sent a link to ' + email + '. Click it to confirm your email, and the download link comes in the next email. Not there in 5 minutes? Check your spam folder.'
+              : 'Almost done: we sent a link to ' + email + '. Click it to confirm your email and get your license. Not there in 5 minutes? Check your spam folder. You can download the app straight away with the Download button below.', 'ok');
+            if (amount > 0) openTipCheckout(email, amount, tell, product);
           } else {
             btn.disabled = false;
             turnstileReset(form);
@@ -2458,6 +2646,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     input.addEventListener('input', function () { if (!hint.hidden) check(); });
   }
   addTypoHint(document.getElementById('claim-email'));
+  addTypoHint(document.getElementById('hz-email'));
   addTypoHint(document.getElementById('fb-email'));
   addTypoHint(document.getElementById('wl-email'));
 
