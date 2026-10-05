@@ -1298,9 +1298,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div>
           <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="hz-eye">Free</span></p>
           <h3 data-copy="hz-h">Get 432hz free</h3>
-          <p data-copy="hz-lp">432hz is free. Type your email, click the link we send you, and the download link arrives in the next email. No license code, nothing to activate.</p>
+          <p data-copy="hz-lp">432hz is free, for Windows and Mac. Type your email, click the link we send you, and the download links arrive in the next email. No license code, nothing to activate.</p>
           <p data-copy="hz-lp2">If you’d like to support it, name a price. Anything you add helps build the next apps — the app is exactly the same either way.</p>
-          <p class="launch-note" data-copy="hz-warn"><b>Windows will probably warn you.</b> 432hz isn’t code-signed yet, so the first time you run the installer Windows may show a blue “Windows protected your PC” box. Choose <b>More info</b>, then <b>Run anyway</b>. That warning is about a certificate we haven’t bought yet, not about the file. <a href="#/help">More on this</a></p>
+          <p class="launch-note" data-copy="hz-warn"><b>On Windows, Windows will probably warn you.</b> 432hz isn’t code-signed yet, so the first time you run the installer Windows may show a blue “Windows protected your PC” box. Choose <b>More info</b>, then <b>Run anyway</b>. That warning is about a certificate we haven’t bought yet, not about the file. <a href="#/help">More on this</a></p>
+          <p class="launch-note" data-copy="hz-warn-mac"><b>On a Mac, macOS will warn you too.</b> Open the .dmg and drag 432hz into Applications. 432hz isn’t signed by Apple yet, so the first time you open it macOS says it can’t verify the app: go to <b>System Settings &gt; Privacy &amp; Security</b> and click <b>Open Anyway</b>. Then allow <b>System Audio Recording</b> when macOS asks — without it, 432hz can’t hear anything to retune.</p>
         </div>
         <form data-claim data-product="432" novalidate>
           <div class="field">
@@ -1346,14 +1347,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="prose">
         <p data-copy="hz-p1">432hz changes the pitch of everything your PC plays, live, to whatever you choose — without changing the tempo. Set A4 to any frequency and every app follows: your browser, music player, games, video calls, your DAW.</p>
         <p data-copy="hz-p2">The most common reason to do this is A4 = 432 Hz, and that’s where the app gets its name. Almost all music is tuned to A4 = 440 Hz; some musicians and listeners prefer 432 Hz, a little lower. But 432 is just one setting: tune up or down, match an instrument tuned to a different pitch, or try any tuning you’re curious about.</p>
-        <p data-copy="hz-p3">It runs inside Windows’ own audio engine as an audio effect, so there’s no virtual cable to set up. Changes within two semitones of 440 — 432 included — use an exact engine: about 10–20 ms of delay, and every note from 41 Hz to 4 kHz lands within 0.2 cents. Bigger changes switch to a second engine on their own, with about 120 ms of delay.</p>
+        <p data-copy="hz-p3">On Windows it runs inside Windows’ own audio engine as an audio effect; on a Mac it uses macOS’s own system-audio tap. Either way there’s no driver or virtual cable to set up. Changes within two semitones of 440 — 432 included — use an exact engine: every note from 41 Hz to 4 kHz lands within 0.2 cents, with about 10–20 ms of delay on Windows. Bigger changes switch to a second engine on their own, which adds delay (about 120 ms on Windows).</p>
       </div>
 
       <div class="features">
         <div class="feat">
           <span class="n" data-copy="hz-f1n">Whole PC</span>
           <h4 data-copy="hz-f1h">Every app, at once</h4>
-          <p data-copy="hz-f1p">Your browser, music player, games, video calls, your DAW — whatever plays through Windows to your speakers or headphones is retuned. It works inside Windows’ own audio, so there’s nothing to set up in each app.</p>
+          <p data-copy="hz-f1p">Your browser, music player, games, video calls, your DAW — whatever your computer plays to your speakers or headphones is retuned. It works inside the system’s own audio, so there’s nothing to set up in each app.</p>
           <a class="feat-shot" href="img/432/432-installer.png" target="_blank" rel="noopener">
             <img src="img/432/432-installer.png" width="636" height="419" loading="lazy" alt="The installer’s welcome screen: “Install 432hz”, explaining that it retunes everything the PC plays from A4 = 440 Hz to 432 Hz, live, without changing the tempo.">
           </a>
@@ -1392,22 +1393,22 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <div class="feat">
           <span class="n" data-copy="hz-f6n">Out of the way</span>
-          <h4 data-copy="hz-f6h">Lives by the clock</h4>
-          <p data-copy="hz-f6p">Close the window and 432hz keeps going from the tray. Turn on Start with Windows and every session starts at your pitch. Uninstall it and every speaker goes back exactly as it was.</p>
+          <h4 data-copy="hz-f6h">Out of sight</h4>
+          <p data-copy="hz-f6p">Close the window and 432hz keeps going from the tray (the menu bar on a Mac). Turn on Start with Windows (Open at login on a Mac) and every session starts at your pitch. Uninstall it and your sound is back exactly as it was.</p>
         </div>
       </div>
 
       <table class="specs">
         <caption data-copy="hz-caption">432hz — specification</caption>
         <tbody>
-          <tr><th scope="row" data-copy="hz-s1t">Type</th><td data-copy="hz-s1v">Desktop app with a tray icon · changes the pitch of all Windows audio</td></tr>
+          <tr><th scope="row" data-copy="hz-s1t">Type</th><td data-copy="hz-s1v">Desktop app with a tray / menu-bar icon · changes the pitch of all system audio</td></tr>
           <tr><th scope="row" data-copy="hz-s2t">Pitch</th><td data-copy="hz-s2v">Any A4 from 1 to 20,000 Hz, or set by C4 · tempo unchanged · starts at A4 = 432 Hz (−31.77 cents)</td></tr>
           <tr><th scope="row" data-copy="hz-s3t">Accuracy</th><td data-copy="hz-s3v">Within two semitones of 440 (432 included): within 0.2 cents from 41 Hz to 4 kHz · bigger shifts: within about 4 cents, though far downward shifts can leave the lowest notes up to 35 cents off · speaker clock drift corrected</td></tr>
-          <tr><th scope="row" data-copy="hz-s4t">Delay</th><td data-copy="hz-s4v">About 10–20 ms within two semitones of 440 · about 120 ms for bigger shifts · CPU about 1.5–2%</td></tr>
-          <tr><th scope="row" data-copy="hz-s5t">Works with</th><td data-copy="hz-s5v">Apps that play through Windows’ normal (shared) audio. ASIO and exclusive-mode audio bypass Windows’ audio engine and are not tuned.</td></tr>
-          <tr><th scope="row" data-copy="hz-s6t">Install</th><td data-copy="hz-s6v">One administrator prompt for the Windows audio step · the sound drops for a few seconds while it installs · speakers added later (new USB or Bluetooth) are retuned after running the installer again</td></tr>
-          <tr><th scope="row" data-copy="hz-s7t">Uninstall</th><td data-copy="hz-s7v">Settings &gt; Apps — your speakers go back to how they were</td></tr>
-          <tr><th scope="row" data-copy="hz-s8t">Platform</th><td data-copy="hz-s8v">Windows 10 / 11, 64-bit · no Mac version</td></tr>
+          <tr><th scope="row" data-copy="hz-s4t">Delay</th><td data-copy="hz-s4v">On Windows: about 10–20 ms within two semitones of 440, about 120 ms for bigger shifts · CPU about 1.5–2%</td></tr>
+          <tr><th scope="row" data-copy="hz-s5t">Works with</th><td data-copy="hz-s5v">Windows: apps that play through Windows’ normal (shared) audio — ASIO and exclusive-mode audio bypass Windows’ audio engine and are not tuned. Mac: what macOS plays, through its system-audio tap.</td></tr>
+          <tr><th scope="row" data-copy="hz-s6t">Install</th><td data-copy="hz-s6v">Windows: one administrator prompt for the Windows audio step · the sound drops for a few seconds while it installs · speakers added later (new USB or Bluetooth) are retuned after running the installer again. Mac: drag 432hz into Applications · allow System Audio Recording when asked</td></tr>
+          <tr><th scope="row" data-copy="hz-s7t">Uninstall</th><td data-copy="hz-s7v">Windows: Settings &gt; Apps — your speakers go back to how they were. Mac: quit it from the menu bar and drag it to the Trash; it changes nothing in the system</td></tr>
+          <tr><th scope="row" data-copy="hz-s8t">Platform</th><td data-copy="hz-s8v">Windows 10 / 11, 64-bit · macOS 14.2 (Sonoma) or later, Apple Silicon and Intel</td></tr>
           <tr><th scope="row" data-copy="hz-s9t">Price</th><td data-copy="hz-s9v">Free · pay what you want, if you like</td></tr>
         </tbody>
       </table>
