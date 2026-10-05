@@ -1,0 +1,18 @@
+{
+    "version":  "1.1.0",
+    "url":  "https://ybkaudio.com/downloads/432hzSetup-1.1.0.exe",
+    "sha256":  "14a84c6a9330cb719182d77c0a35c8974b8ba8582fcc27d29c083de36336b10c",
+    "size":  9339170,
+    "notes":  "New features\n- Theme: put your own picture behind the controls (Settings \u003e Theme). Crop it separately for the window, the column next to the spectrum and the full-screen tab, and darken it so the numbers stay readable.\n- With a theme, the middle of the big button is see-through next to the spectrum and in full screen.\n- 432hz now tells you when a new version is available.",
+    "released":  "2026-10-05",
+    "history":  [
+                    {
+                        "version":  "1.1.0",
+                        "released":  "2026-10-05",
+                        "notes":  "New features\n- Theme: put your own picture behind the controls (Settings \u003e Theme). Crop it separately for the window, the column next to the spectrum and the full-screen tab, and darken it so the numbers stay readable.\n- With a theme, the middle of the big button is see-through next to the spectrum and in full screen.\n- 432hz now tells you when a new version is available.",
+                        "url":  "https://ybkaudio.com/downloads/432hzSetup-1.1.0.exe",
+                        "sha256":  "14a84c6a9330cb719182d77c0a35c8974b8ba8582fcc27d29c083de36336b10c",
+                        "size":  9339170
+                    }
+                ]
+}
