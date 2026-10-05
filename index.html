@@ -808,10 +808,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <span class="wordmark"><span data-copy="wm">YBK</span><i>.</i><span data-copy="wm2">Audio</span></span>
     </a>
     <nav class="nav">
-      <a class="navlink" href="#/432hz" data-nav="hz432">432hz</a>
-      <a class="navlink" href="#/multiconsole" data-nav="midside">MultiConsole</a>
       <a class="navlink" href="#/player" data-nav="synth">Instrument Player</a>
+      <a class="navlink" href="#/432hz" data-nav="hz432">432hz</a>
       <a class="navlink" href="#/beatmaker" data-nav="beatmaker">Beatmaker</a>
+      <a class="navlink" href="#/multiconsole" data-nav="midside">MultiConsole</a>
       <a class="navlink nav-acct" href="#/help" data-nav="account">Help</a>
     </nav>
   </div>
@@ -847,6 +847,30 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="band">
     <div class="wrap">
+      <span class="status ok" data-copy="h-sp-status">Available now</span>
+      <span class="status ok" data-launch="active" hidden data-copy="h-sp-free">Free until 10/19</span>
+      <h2 data-copy="h-sp-name">Instrument Player</h2>
+      <p class="kicker" data-copy="h-sp-k">Load, Play, Recover, Edit, Export.</p>
+      <div class="summary">
+        <div class="prose">
+          <p data-copy="h-sp-p1">Instrument Player scans the VST3 instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
+          <p data-copy="h-sp-p2">And MIDI Replay keeps the last 5 minutes of your playing without pressing Record, so the phrase you stumbled into is still there — ready to edit and export as .mid.</p>
+          <div class="sum-actions btnrow">
+            <a class="btn" href="#/player"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
+            <a class="btn ghost" href="#/download"><span data-copy="h-sp-dl">Download</span></a>
+          </div>
+        </div>
+        <div>
+          <a class="shot" href="#/player">
+            <img src="img/player/01-main.png" width="902" height="526" loading="lazy" alt="The Instrument Player window: Choose an instrument, Audio Effects and MIDI editor along the top, and the 88-note on-screen keyboard at the bottom.">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
       <span class="status ok" data-copy="h-hz-status">Free</span>
       <h2 data-copy="h-hz-name">432hz</h2>
       <p class="kicker" data-copy="h-hz-k">Your whole computer sound, retuned</p>
@@ -861,6 +885,28 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div>
           <a class="shot" href="#/432hz">
             <img src="img/432/432-main.png" width="957" height="419" loading="lazy" alt="The 432hz window: a gold button reading “432 Hz, ON” and a live spectrum with every A marked.">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <span class="status" data-copy="h-bm-status">In development</span>
+      <h2 data-copy="h-bm-name">Beatmaker</h2>
+      <p class="kicker" data-copy="h-bm-k">An easy-to-use DAW, just for beat design.</p>
+      <div class="summary">
+        <div class="prose">
+          <p data-copy="h-bm-p1">Pick a genre, press Generate, and get drums, bass, chords and melody built from the samples already on your PC — sorted for you, never moved.</p>
+          <p data-copy="h-bm-p2">Then keep changing it: shuffle sounds, regroove, swap chords, lock what works. Export audio, stems or MIDI when the idea lands.</p>
+          <div class="sum-actions btnrow">
+            <a class="btn" href="#/beatmaker"><span data-copy="h-bm-cta">Learn more</span><span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div>
+          <a class="shot" href="#/beatmaker">
+            <img src="img/beatmaker/01-main.png" width="1920" height="1080" loading="lazy" alt="Beatmaker showing a generated Boom Bap beat with drums, 808 bass, chords and melody tracks.">
           </a>
         </div>
       </div>
@@ -891,52 +937,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     </div>
   </section>
 
-  <section class="band">
-    <div class="wrap">
-      <span class="status ok" data-copy="h-sp-status">Available now</span>
-      <span class="status ok" data-launch="active" hidden data-copy="h-sp-free">Free until 10/19</span>
-      <h2 data-copy="h-sp-name">Instrument Player</h2>
-      <p class="kicker" data-copy="h-sp-k">Load, Play, Recover, Edit, Export.</p>
-      <div class="summary">
-        <div class="prose">
-          <p data-copy="h-sp-p1">Instrument Player scans the VST3 instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
-          <p data-copy="h-sp-p2">And MIDI Replay keeps the last 5 minutes of your playing without pressing Record, so the phrase you stumbled into is still there — ready to edit and export as .mid.</p>
-          <div class="sum-actions btnrow">
-            <a class="btn" href="#/player"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
-            <a class="btn ghost" href="#/download"><span data-copy="h-sp-dl">Download</span></a>
-          </div>
-        </div>
-        <div>
-          <a class="shot" href="#/player">
-            <img src="img/player/01-main.png" width="902" height="526" loading="lazy" alt="The Instrument Player window: Choose an instrument, Audio Effects and MIDI editor along the top, and the 88-note on-screen keyboard at the bottom.">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="wrap">
-      <span class="status" data-copy="h-bm-status">In development</span>
-      <h2 data-copy="h-bm-name">Beatmaker</h2>
-      <p class="kicker" data-copy="h-bm-k">An easy-to-use DAW, just for beat design.</p>
-      <div class="summary">
-        <div class="prose">
-          <p data-copy="h-bm-p1">Pick a genre, press Generate, and get drums, bass, chords and melody built from the samples already on your PC — sorted for you, never moved.</p>
-          <p data-copy="h-bm-p2">Then keep changing it: shuffle sounds, regroove, swap chords, lock what works. Export audio, stems or MIDI when the idea lands.</p>
-          <div class="sum-actions btnrow">
-            <a class="btn" href="#/beatmaker"><span data-copy="h-bm-cta">Learn more</span><span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <div>
-          <a class="shot" href="#/beatmaker">
-            <img src="img/beatmaker/01-main.png" width="1920" height="1080" loading="lazy" alt="Beatmaker showing a generated Boom Bap beat with drums, 808 bass, chords and melody tracks.">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="price-band">
     <div class="wrap price-grid">
       <div>
@@ -945,18 +945,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       </div>
       <div class="tiers">
         <div class="tier">
-          <span class="nm" data-copy="t0n">432hz</span>
-          <span class="amt" data-copy="t0a">Free</span>
-          <span class="desc" data-copy="t0d">Change the pitch of everything your PC plays, live. 432 Hz or any tuning you like.</span>
-          <a class="btn" href="#/432hz" data-copy="t0b">Get it free</a>
-        </div>
-        <div class="tier">
-          <span class="nm" data-copy="t2n">MultiConsole</span>
-          <span class="amt" data-copy="t2a">$10</span>
-          <span class="desc" data-copy="t2d">Eleven real-time effects on all system audio, with recording.</span>
-          <a class="btn ghost" href="#/multiconsole" data-copy="t2b">Learn more</a>
-        </div>
-        <div class="tier">
           <span class="nm" data-copy="t1n">Instrument Player</span>
           <span class="amt" data-copy="t1a" data-launch-hide="active upcoming">$10</span>
           <span class="amt" data-launch="active" hidden data-copy="t1a-free">Free</span>
@@ -964,10 +952,22 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <a class="btn" href="#/player" data-copy="t1b">Get now</a>
         </div>
         <div class="tier">
+          <span class="nm" data-copy="t0n">432hz</span>
+          <span class="amt" data-copy="t0a">Free</span>
+          <span class="desc" data-copy="t0d">Change the pitch of everything your PC plays, live. 432 Hz or any tuning you like.</span>
+          <a class="btn" href="#/432hz" data-copy="t0b">Get it free</a>
+        </div>
+        <div class="tier">
           <span class="nm" data-copy="t3n">Beatmaker</span>
           <span class="amt" data-copy="t3a">$20</span>
           <span class="desc" data-copy="t3d">Genre-aware beat ideas built from your own sample library.</span>
           <a class="btn ghost" href="#/beatmaker" data-copy="t3b">Learn more</a>
+        </div>
+        <div class="tier">
+          <span class="nm" data-copy="t2n">MultiConsole</span>
+          <span class="amt" data-copy="t2a">$10</span>
+          <span class="desc" data-copy="t2d">Eleven real-time effects on all system audio, with recording.</span>
+          <a class="btn ghost" href="#/multiconsole" data-copy="t2b">Learn more</a>
         </div>
       </div>
     </div>
