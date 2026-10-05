@@ -1,0 +1,18 @@
+{
+    "version":  "1.0.0",
+    "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.0.exe",
+    "sha256":  "0271abd79c9f08e96baf3868658102be096a0e16480ce13688b428a4c9f5e0e7",
+    "size":  9298185,
+    "notes":  "",
+    "released":  "2026-10-06",
+    "history":  [
+                    {
+                        "version":  "1.0.0",
+                        "released":  "2026-10-06",
+                        "notes":  "",
+                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.0.exe",
+                        "sha256":  "0271abd79c9f08e96baf3868658102be096a0e16480ce13688b428a4c9f5e0e7",
+                        "size":  9298185
+                    }
+                ]
+}
