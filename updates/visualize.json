@@ -1,11 +1,19 @@
 {
-    "version":  "1.0.0",
-    "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.0.exe",
-    "sha256":  "0271abd79c9f08e96baf3868658102be096a0e16480ce13688b428a4c9f5e0e7",
-    "size":  9298185,
-    "notes":  "",
-    "released":  "2026-10-06",
+    "version":  "1.0.1",
+    "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.1.exe",
+    "sha256":  "92f6caa4d939342bb581e254878d0f37bd6d2ad577df8fcad29618b48a5a5ef7",
+    "size":  9388363,
+    "notes":  "VOCAL / INST: see (left click) or hear (right click) only the voice or only the instruments, separated by AI - the AI files download once, the first time you use it. STEMS colours: every graph in the colour of its instrument. New width pictures IMAGE and HEAT. COLOR choices and a CPU meter at the top. Lighter, smoother drawing.",
+    "released":  "2026-10-07",
     "history":  [
+                    {
+                        "version":  "1.0.1",
+                        "released":  "2026-10-07",
+                        "notes":  "VOCAL / INST: see (left click) or hear (right click) only the voice or only the instruments, separated by AI - the AI files download once, the first time you use it. STEMS colours: every graph in the colour of its instrument. New width pictures IMAGE and HEAT. COLOR choices and a CPU meter at the top. Lighter, smoother drawing.",
+                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.1.exe",
+                        "sha256":  "92f6caa4d939342bb581e254878d0f37bd6d2ad577df8fcad29618b48a5a5ef7",
+                        "size":  9388363
+                    },
                     {
                         "version":  "1.0.0",
                         "released":  "2026-10-06",
