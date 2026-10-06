@@ -1099,18 +1099,18 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <!-- Two buttons, Windows and Mac (owner 2026-10-06): each click is counted as
              download_click with page "win" or "mac". Windows goes through the worker's
-             counting redirect /dl/player; Mac links straight to the file until the worker's
-             /dl/player-mac route is live. Version and size come from the two updates/*.json. -->
+             counting redirects /dl/player-win and /dl/player-mac. Version and size come from
+             the two updates/*.json. -->
         <div class="dl-act">
           <div class="dl-choice">
-            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/player?src=site" data-dl="player" data-os="win">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/player-win?src=site" data-dl="player" data-os="win">
               <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <span data-copy="dl-btn">Download for Windows</span>
             </a>
             <p class="dl-meta"><span data-dl-version></span>Windows 10 / 11, 64-bit<span data-dl-size></span></p>
           </div>
           <div class="dl-choice">
-            <a class="btn" href="downloads/InstrumentPlayer.dmg" data-dl="player" data-os="mac" download>
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/player-mac?src=site" data-dl="player" data-os="mac">
               <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <span data-copy="dl-btn-mac">Download for Mac (beta)</span>
             </a>
