@@ -245,6 +245,17 @@ h2{
   font-family:var(--f-display);font-weight:900;
   font-size:clamp(38px,6vw,64px);line-height:.9;letter-spacing:-.04em;
 }
+@media(min-width:700px){.prod-price{margin-left:auto;text-align:right}}
+/* home product blocks: name on the left, price tag on the right (owner 2026-10-07) */
+.band-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}
+.band-price{
+  font-family:var(--f-display);font-weight:900;font-size:clamp(34px,5vw,56px);
+  line-height:.9;letter-spacing:-.04em;white-space:nowrap;
+}
+@media(min-width:700px){.band-price{margin-left:auto;text-align:right}}
+.band-price s,.prod-price s{font-size:.45em;font-weight:700;color:var(--muted);margin-left:.3em;text-decoration-thickness:2px}
+/* the page's main picture now sits right under the title, above the boxes */
+.pagehead .shot.lead{margin-top:clamp(22px,3vw,30px)}
 .prod-price small{
   display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;
   letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
@@ -852,17 +863,20 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="band">
     <div class="wrap">
-      <span class="status ok" data-copy="h-sp-status">Available now</span>
       <span class="status ok" data-launch="active" hidden data-copy="h-sp-free">Free until 10/19</span>
-      <h2 data-copy="h-sp-name">Instrument Player</h2>
-      <p class="kicker" data-copy="h-sp-k">Load, Play, Recover, Edit, Export.</p>
+      <div class="band-head">
+        <div>
+          <h2 data-copy="h-sp-name">Instrument Player</h2>
+          <p class="kicker" data-copy="h-sp-k">Load, Play, Recover, Edit, Export.</p>
+        </div>
+        <div class="band-price"><span data-launch="active" hidden>Free <s>$10</s></span><span data-launch-hide="active upcoming">$10</span></div>
+      </div>
       <div class="summary">
         <div class="prose">
           <p data-copy="h-sp-p1">Instrument Player scans the VST3 instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
           <p data-copy="h-sp-p2">And MIDI Replay keeps the last 5 minutes of your playing without pressing Record, so the phrase you stumbled into is still there — ready to edit and export as .mid.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/player"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
-            <a class="btn ghost" href="#/download"><span data-copy="h-sp-dl">Download</span></a>
           </div>
         </div>
         <div>
@@ -877,14 +891,19 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <section class="band">
     <div class="wrap">
       <span class="status ok" data-copy="h-hz-status">Free</span>
-      <h2 data-copy="h-hz-name">432hz</h2>
-      <p class="kicker" data-copy="h-hz-k">Your whole computer sound, retuned</p>
+      <div class="band-head">
+        <div>
+          <h2 data-copy="h-hz-name">432hz</h2>
+          <p class="kicker" data-copy="h-hz-k">Your whole computer sound, retuned</p>
+        </div>
+        <div class="band-price">Free</div>
+      </div>
       <div class="summary">
         <div class="prose">
           <p data-copy="h-hz-p1">432hz retunes everything your PC plays, live. Choose any pitch you like — A4 = 432 Hz, the most popular choice, is where it starts.</p>
           <p data-copy="h-hz-p2">One button switches between original and new, so you can hear the difference.</p>
           <div class="sum-actions btnrow">
-            <a class="btn" href="#/432hz"><span data-copy="h-hz-cta">Get it free</span><span aria-hidden="true">→</span></a>
+            <a class="btn" href="#/432hz"><span data-copy="h-hz-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
         </div>
         <div>
@@ -898,9 +917,13 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="band">
     <div class="wrap">
-      <span class="status ok" data-copy="h-vz-status">Available now</span>
-      <h2 data-copy="h-vz-name">Visualize</h2>
-      <p class="kicker" data-copy="h-vz-k">Everything your PC plays, seen at a glance.</p>
+      <div class="band-head">
+        <div>
+          <h2 data-copy="h-vz-name">Visualize</h2>
+          <p class="kicker" data-copy="h-vz-k">Everything your PC plays, seen at a glance.</p>
+        </div>
+        <div class="band-price">$19 <s>$29</s></div>
+      </div>
       <div class="summary">
         <div class="prose">
           <p data-copy="h-vz-p1">A giant full-screen audio analyser for everything your PC plays: spectrum, loudness, stereo width, notes, key and chords on one screen.</p>
@@ -921,8 +944,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <section class="band">
     <div class="wrap">
       <span class="status" data-copy="h-bm-status">In development</span>
-      <h2 data-copy="h-bm-name">Beatmaker</h2>
-      <p class="kicker" data-copy="h-bm-k">An easy-to-use DAW, just for beat design.</p>
+      <div class="band-head">
+        <div>
+          <h2 data-copy="h-bm-name">Beatmaker</h2>
+          <p class="kicker" data-copy="h-bm-k">An easy-to-use DAW, just for beat design.</p>
+        </div>
+      </div>
       <div class="summary">
         <div class="prose">
           <p data-copy="h-bm-p1">Pick a genre, press Generate, and get drums, bass, chords and melody built from the samples already on your PC — sorted for you, never moved.</p>
@@ -943,8 +970,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <section class="band">
     <div class="wrap">
       <span class="status" data-copy="h-ms-status">In development</span>
-      <h2 data-copy="h-ms-name">MultiConsole</h2>
-      <p class="kicker" data-copy="h-ms-k">Live mixing console for your PC audio.</p>
+      <div class="band-head">
+        <div>
+          <h2 data-copy="h-ms-name">MultiConsole</h2>
+          <p class="kicker" data-copy="h-ms-k">Live mixing console for your PC audio.</p>
+        </div>
+      </div>
       <div class="summary">
         <div class="prose">
           <h3 data-copy="h-ms-h1">Analyze and Experiment</h3>
@@ -1031,7 +1062,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="sp-back">All apps</span></a>
       <div class="prod-title">
         <div>
-          <span class="status ok" data-copy="sp-status">Available now</span>
           <h2 data-copy="sp-name">Instrument Player</h2>
           <p class="kicker" data-copy="sp-k">Open it, pick an instrument, play. Your VST3 instruments, without the DAW.</p>
         </div>
@@ -1041,6 +1071,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <small data-copy="sp-price-sub">One-time · One license · One computer at a time</small>
         </div>
       </div>
+
+      <a class="shot lead" href="img/player/01-main.png" target="_blank" rel="noopener">
+        <img src="img/player/01-main.png" width="902" height="526" alt="The Instrument Player window just after launch: “Choose an instrument”, Audio Effects and MIDI editor along the top, an empty instrument slot reading “No instrument loaded”, and the 88-note on-screen keyboard at the bottom.">
+      </a>
+      <p class="usage-cap">
+        <span data-copy="sp-usage-cap">Fig. 1 — Open it and pick an instrument</span>
+        <span data-copy="sp-usage-cap2">Click to enlarge</span>
+      </p>
 
       <!-- free launch month: the launch script shows one of these (or neither) -->
       <div class="launch" data-launch="upcoming" hidden>
@@ -1054,11 +1092,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="launch has-form" id="free" data-launch="active" hidden>
         <div>
           <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="lx-eye">Free launch month</span></p>
-          <h3 data-copy="lx-h">Get it free</h3>
+          <h3 data-copy="lx-h">Purchase License</h3>
           <p data-copy="lx-p">For its first month, Instrument Player is free. Claim a license now and it’s yours to keep — the license never expires and keeps working for good.</p>
           <p data-copy="lx-p2">Every update released during the free month is included, so fixes reach you too. From October 20, new versions come with the paid app — your free license keeps working, for good, on the last free-month version.</p>
           <p class="launch-note" data-copy="lx-warn"><b>Windows will probably warn you.</b> Instrument Player isn’t code-signed yet, so the first time you run the installer Windows may show a blue “Windows protected your PC” box. Choose <b>More info</b>, then <b>Run anyway</b>. That warning is about a certificate we haven’t bought yet, not about the file — and dismissing it never uses up your license. <a href="#/help">More on this</a></p>
           <p class="launch-clock"><span data-copy="lx-ends">Free for another</span> <b data-countdown></b><span data-copy="lx-then">, then $10</span></p>
+          <div class="ts-box" data-turnstile></div>
         </div>
         <form data-claim novalidate>
           <div class="field">
@@ -1082,19 +1121,74 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <label for="claim-website">Leave this empty</label>
             <input id="claim-website" name="website" tabindex="-1" autocomplete="off">
           </div>
-          <div class="ts-box" data-turnstile></div>
           <button type="submit" class="btn"><span data-copy="lx-btn">Get my free license</span><span aria-hidden="true">→</span></button>
           <p class="claim-msg" role="status" aria-live="polite"></p>
           <p class="fineprint"><span data-copy="lx-fine">One free license per person. We’ll email you a link to confirm your address, then your license code and the download link. After that: one “how’s it going?” email about two weeks later, and a few short reminders before the free month ends. Unsubscribe any time. To keep it to one license per person, we record your IP address with your sign-up.</span> <span data-copy="lx-agree">By claiming a license you agree to our</span> <a href="#/terms">Terms</a> <span data-copy="lx-and">and</span> <a href="#/privacy">Privacy Policy</a>.</p>
         </form>
       </div>
 
+      <!-- purchase: the paid box takes the free-claim box's place once the free month is over -->
+      <div class="buy" data-launch-hide="active upcoming">
+        <div>
+          <h3 data-copy="sp-buy-h">Purchase License</h3>
+          <ul class="gets">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g1">The Windows installer, downloadable straight after payment</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g2">One license code, emailed to the address you pay with</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g3">Runs on one computer at a time — move it when you change computers</span></li>
+          </ul>
+        </div>
+        <div class="buy-side" data-launch="active" hidden>
+          <div class="buy-total"><span data-copy="sp-total-l-free">Total today</span><b data-copy="sp-total-free">$0.00</b></div>
+          <button type="button" class="btn" data-scroll-free>
+            <span data-copy="sp-free-btn">Claim it free</span><span aria-hidden="true">↑</span>
+          </button>
+          <p class="fineprint" data-copy="sp-free-fine">Free during the launch month. No payment, no card.</p>
+        </div>
+        <div class="buy-side" data-launch="ended off" hidden>
+          <div class="buy-total"><span data-copy="sp-total-l">Total today</span><b data-copy="sp-total">$10.00</b></div>
+          <button type="button" class="btn" data-buy="synth">
+            <span data-copy="sp-buy-btn">Purchase</span><span aria-hidden="true">→</span>
+          </button>
+          <p class="fineprint" data-copy="sp-fine">Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
+          <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
+        </div>
+
+        <p class="licnote" data-copy="sp-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
+
+        <div class="breaks">
+          <div class="keep">
+            <h4 data-copy="sp-keep-h">Your license keeps working after</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k1i">Resetting or reinstalling Windows on the same computer</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k2i">Windows updates, driver updates and app updates</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k4i">Changing your network, Wi-Fi adapter or VPN</span></li>
+            </ul>
+          </div>
+          <div class="move">
+            <h4 data-copy="sp-end-h">Move your license (Settings &gt; Release license) when you</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e1i">Replace the motherboard or CPU</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e2i">Change to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e3i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e4i">Old computer broken? Write to us and we’ll release it</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="checkout" data-checkout="synth" hidden style="grid-column:1/-1">
+          <h4 data-copy="sp-co-h">The payment window didn’t open</h4>
+          <p data-copy="sp-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Instrument%20Player" data-copy="sp-co-cta">Still not working? Email us →</a></p>
+        </div>
+      </div>
+
       <!-- Always-visible download, reachable from the "Download" link in the top bar (#/download).
            Version and size are filled in from updates/instrument-player.json. -->
       <div class="dl-box" id="download">
         <div>
-          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="dl-eye">Download</span></p>
-          <h3 data-copy="dl-h">Get the app</h3>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="dl-eye">Windows &amp; Mac</span></p>
+          <h3 data-copy="dl-h">Download the App</h3>
           <p data-copy="dl-p">Install Instrument Player, open it, and paste in the license code from our email. The code and the app are separate: the app always downloads from here.</p>
         </div>
         <!-- Two buttons, Windows and Mac (owner 2026-10-06): each click is counted as
@@ -1129,13 +1223,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <a href="https://youtu.be/HaD2k5t7o8U" target="_blank" rel="noopener">Watch on YouTube</a>
       </p>
 
-      <a class="shot" href="img/player/01-main.png" target="_blank" rel="noopener">
-        <img src="img/player/01-main.png" width="902" height="526" alt="The Instrument Player window just after launch: “Choose an instrument”, Audio Effects and MIDI editor along the top, an empty instrument slot reading “No instrument loaded”, and the 88-note on-screen keyboard at the bottom.">
-      </a>
-      <p class="usage-cap">
-        <span data-copy="sp-usage-cap">Fig. 1 — Open it and pick an instrument</span>
-        <span data-copy="sp-usage-cap2">Click to enlarge</span>
-      </p>
     </div>
   </section>
 
@@ -1254,61 +1341,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </tbody>
       </table>
 
-      <!-- purchase -->
-      <div class="buy">
-        <div>
-          <h3 data-copy="sp-buy-h">Buy Instrument Player</h3>
-          <ul class="gets">
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g1">The Windows installer, downloadable straight after payment</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g2">One license code, emailed to the address you pay with</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g3">Runs on one computer at a time — move it when you change computers</span></li>
-          </ul>
-        </div>
-        <div class="buy-side" data-launch="active" hidden>
-          <div class="buy-total"><span data-copy="sp-total-l-free">Total today</span><b data-copy="sp-total-free">$0.00</b></div>
-          <button type="button" class="btn" data-scroll-free>
-            <span data-copy="sp-free-btn">Claim it free</span><span aria-hidden="true">↑</span>
-          </button>
-          <p class="fineprint" data-copy="sp-free-fine">Free during the launch month. No payment, no card.</p>
-        </div>
-        <div class="buy-side" data-launch="ended off" hidden>
-          <div class="buy-total"><span data-copy="sp-total-l">Total today</span><b data-copy="sp-total">$10.00</b></div>
-          <button type="button" class="btn" data-buy="synth">
-            <span data-copy="sp-buy-btn">Purchase</span><span aria-hidden="true">→</span>
-          </button>
-          <p class="fineprint" data-copy="sp-fine">Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
-          <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
-        </div>
-
-        <p class="licnote" data-copy="sp-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
-
-        <div class="breaks">
-          <div class="keep">
-            <h4 data-copy="sp-keep-h">Your license keeps working after</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k1i">Resetting or reinstalling Windows on the same computer</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k2i">Windows updates, driver updates and app updates</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k4i">Changing your network, Wi-Fi adapter or VPN</span></li>
-            </ul>
-          </div>
-          <div class="move">
-            <h4 data-copy="sp-end-h">Move your license (Settings &gt; Release license) when you</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e1i">Replace the motherboard or CPU</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e2i">Change to a different computer</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e3i">Run the app inside a new virtual machine</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e4i">Old computer broken? Write to us and we’ll release it</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="checkout" data-checkout="synth" hidden style="grid-column:1/-1">
-          <h4 data-copy="sp-co-h">The payment window didn’t open</h4>
-          <p data-copy="sp-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
-          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Instrument%20Player" data-copy="sp-co-cta">Still not working? Email us →</a></p>
-        </div>
-      </div>
     </div>
   </section>
 </div>
@@ -1330,6 +1362,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
       </div>
 
+      <a class="shot lead" href="img/432/432-fullscreen.png" target="_blank" rel="noopener">
+        <img src="img/432/432-fullscreen-1920.png" width="1920" height="782" alt="432hz maximised: the live spectrum fills the screen with every A marked from A0 at 27 Hz to A9, and a small panel on the left shows the gold button reading “432 Hz, ON” with “A4 = 432 Hz” between the minus and plus buttons.">
+      </a>
+      <p class="usage-cap">
+        <span data-copy="hz-usage-cap">Fig. 1 — Maximised, the spectrum fills the screen: here at A4 = 432 Hz, with every A marked</span>
+        <span data-copy="hz-usage-cap2">Click to enlarge</span>
+      </p>
+
       <!-- The sign-up form appears only once the worker says it handles 432hz
            sign-ups (GET /launch answers with "hz432": true). Until then this
            box shows instead, so pushing the page early can't misfire. -->
@@ -1342,12 +1382,13 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
       <div class="launch has-form" id="hz-free" data-hz-open hidden>
         <div>
-          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="hz-eye">Free</span></p>
-          <h3 data-copy="hz-h">Get 432hz free</h3>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="hz-eye">Windows &amp; Mac</span></p>
+          <h3 data-copy="hz-h">Download the App</h3>
           <p data-copy="hz-lp">432hz is free, for Windows and Mac. Type your email, click the link we send you, and the download links arrive in the next email. No license code, nothing to activate.</p>
           <p data-copy="hz-lp2">If you’d like to support it, name a price. Anything you add helps us make your experience better — the app is exactly the same either way.</p>
           <p class="launch-note" data-copy="hz-warn"><b>On Windows, Windows will probably warn you.</b> 432hz isn’t code-signed yet, so the first time you run the installer Windows may show a blue “Windows protected your PC” box. Choose <b>More info</b>, then <b>Run anyway</b>. That warning is about a certificate we haven’t bought yet, not about the file. <a href="#/help">More on this</a></p>
           <p class="launch-note" data-copy="hz-warn-mac"><b>On a Mac, macOS will warn you too.</b> Open the .dmg and drag 432hz into Applications. 432hz isn’t signed by Apple yet, so the first time you open it macOS says it can’t verify the app: go to <b>System Settings &gt; Privacy &amp; Security</b> and click <b>Open Anyway</b>. Then allow <b>System Audio Recording</b> when macOS asks — without it, 432hz can’t hear anything to retune.</p>
+          <div class="ts-box" data-turnstile></div>
         </div>
         <form data-claim data-product="432" novalidate>
           <div class="field">
@@ -1371,20 +1412,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <label for="hz-website">Leave this empty</label>
             <input id="hz-website" name="website" tabindex="-1" autocomplete="off">
           </div>
-          <div class="ts-box" data-turnstile></div>
           <button type="submit" class="btn"><span data-copy="hz-btn">Email me the download</span><span aria-hidden="true">→</span></button>
           <p class="claim-msg" role="status" aria-live="polite"></p>
           <p class="fineprint"><span data-copy="hz-fine">We’ll email you a link to confirm your address, then the download link. To stop automated sign-ups, we record your IP address with your sign-up.</span> <span data-copy="hz-agree">By signing up you agree to our</span> <a href="#/terms">Terms</a> <span data-copy="hz-and">and</span> <a href="#/privacy">Privacy Policy</a>.</p>
         </form>
       </div>
 
-      <a class="shot" href="img/432/432-fullscreen.png" target="_blank" rel="noopener">
-        <img src="img/432/432-fullscreen-1920.png" width="1920" height="782" alt="432hz maximised: the live spectrum fills the screen with every A marked from A0 at 27 Hz to A9, and a small panel on the left shows the gold button reading “432 Hz, ON” with “A4 = 432 Hz” between the minus and plus buttons.">
-      </a>
-      <p class="usage-cap">
-        <span data-copy="hz-usage-cap">Fig. 1 — Maximised, the spectrum fills the screen: here at A4 = 432 Hz, with every A marked</span>
-        <span data-copy="hz-usage-cap2">Click to enlarge</span>
-      </p>
     </div>
   </section>
 
@@ -1462,6 +1495,19 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   </section>
 </div>
 
+<!-- ==================== APP PAGE PRESET (owner, 2026-10-07) ====================
+     Every app page follows the Instrument Player page:
+       1. back link, then the title row: name + one-line kicker on the left, the price
+          right-aligned on the right (with its small line under it). No "Available now" badge.
+       2. the main picture (Fig. 1, class "shot lead") right under the title.
+       3. the purchase box, heading "Purchase License" (a free app: its email sign-up box).
+       4. the download box: eyebrow "Windows & Mac", heading "Download the App", two buttons
+          "Download for Windows" / "Download for Mac (beta)" (data-dl, data-os), version lines.
+       5. demo video if there is one, then the explanation, features, pictures, spec table.
+     Apps still in development: title (no price) and picture only; no purchase/download box.
+     Home page product blocks: name + kicker left, price tag right ("Free <s>$10</s>",
+     "$19 <s>$29</s>"; none while in development), one "Get now" button.
+     ================================================================================= -->
 <!-- ==================== MIDSIDE ==================== -->
 <div data-page="midside" hidden>
   <section class="pagehead">
@@ -1472,10 +1518,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <span class="status" data-copy="ms-status">In development</span>
           <h2 data-copy="ms-name">MultiConsole</h2>
           <p class="kicker" data-copy="ms-k">Studio effects on everything your PC plays, in real time.</p>
-        </div>
-        <div class="prod-price">
-          <span data-copy="ms-price">$10</span>
-          <small data-copy="ms-price-sub">One-time · One license · One computer at a time</small>
         </div>
       </div>
 
@@ -1661,7 +1703,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="vz-back">All apps</span></a>
       <div class="prod-title">
         <div>
-          <span class="status ok" data-copy="vz-status">Available now</span>
           <h2 data-copy="vz-name">Visualize</h2>
           <p class="kicker" data-copy="vz-k">Everything your PC plays, seen at a glance.</p>
         </div>
@@ -1671,13 +1712,47 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
       </div>
 
+
+      <a class="shot lead" href="img/visualize/visualize-hero.png" target="_blank" rel="noopener">
+        <img src="img/visualize/visualize-hero.png" width="1280" height="759" alt="Visualize: a spectrum with peak and whole-song average curves over a waterfall, the 3D stereo-width cylinder in the middle, and loudness, true-peak, correlation, polar and balance meters on the right.">
+      </a>
+      <p class="usage-cap">
+        <span data-copy="vz-usage-cap">Fig. 1 — Spectrum, waterfall, stereo width in 3D and loudness on one screen</span>
+        <span data-copy="vz-usage-cap2">Click to enlarge</span>
+      </p>
+
+      <div class="buy">
+        <div>
+          <h3 data-copy="vz-buy-h">Purchase License</h3>
+          <ul class="gets">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="vz-g1">One license code, emailed to the address you pay with</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="vz-g2">The app for Windows and Mac (beta), always downloadable from this page</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="vz-g3">Runs on one computer at a time — move it when you change computers</span></li>
+          </ul>
+        </div>
+        <div class="buy-side">
+          <div class="buy-total"><span data-copy="vz-total-l">Total today</span><b data-copy="vz-total">$19.00</b></div>
+          <button type="button" class="btn" data-buy="visualize">
+            <span data-copy="vz-buy-btn">Purchase</span><span aria-hidden="true">→</span>
+          </button>
+          <p class="fineprint" data-copy="vz-fine">Launch price until Nov 6, 2026, then $29. Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
+          <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
+        </div>
+
+        <div class="checkout" data-checkout="visualize" hidden style="grid-column:1/-1">
+          <h4 data-copy="vz-co-h">The payment window didn’t open</h4>
+          <p data-copy="vz-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Visualize" data-copy="vz-co-cta">Still not working? Email us →</a></p>
+        </div>
+      </div>
+
       <!-- Download = the 7-day trial (no code needed to start it). Version and size come from
            updates/visualize.json and updates/visualize-mac.json. Both buttons go through the
            worker's counted links and are tracked as download_click (product visualize, page win/mac). -->
       <div class="dl-box" id="vz-download">
         <div>
-          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="vz-dl-eye">Free trial</span></p>
-          <h3 data-copy="vz-dl-h">Try it free for 7 days</h3>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="vz-dl-eye">Windows &amp; Mac</span></p>
+          <h3 data-copy="vz-dl-h">Download the App</h3>
           <p data-copy="vz-dl-p">Download Visualize and open it: the 7-day free trial starts on its own, no code needed. Buy a license any time and paste in the code from our email to keep it after the trial.</p>
         </div>
         <div class="dl-act">
@@ -1698,14 +1773,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           </div>
         </div>
       </div>
-
-      <a class="shot" href="img/visualize/visualize-hero.png" target="_blank" rel="noopener">
-        <img src="img/visualize/visualize-hero.png" width="1280" height="759" alt="Visualize: a spectrum with peak and whole-song average curves over a waterfall, the 3D stereo-width cylinder in the middle, and loudness, true-peak, correlation, polar and balance meters on the right.">
-      </a>
-      <p class="usage-cap">
-        <span data-copy="vz-usage-cap">Fig. 1 — Spectrum, waterfall, stereo width in 3D and loudness on one screen</span>
-        <span data-copy="vz-usage-cap2">Click to enlarge</span>
-      </p>
     </div>
   </section>
 
@@ -1781,31 +1848,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </tbody>
       </table>
 
-      <div class="buy">
-        <div>
-          <h3 data-copy="vz-buy-h">Buy Visualize</h3>
-          <ul class="gets">
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="vz-g1">One license code, emailed to the address you pay with</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="vz-g2">The app for Windows and Mac (beta), always downloadable from this page</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="vz-g3">Runs on one computer at a time — move it when you change computers</span></li>
-          </ul>
-        </div>
-        <div class="buy-side">
-          <div class="buy-total"><span data-copy="vz-total-l">Total today</span><b data-copy="vz-total">$19.00</b></div>
-          <button type="button" class="btn" data-buy="visualize">
-            <span data-copy="vz-buy-btn">Purchase</span><span aria-hidden="true">→</span>
-          </button>
-          <p class="fineprint" data-copy="vz-fine">Launch price until Nov 6, 2026, then $29. Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
-          <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
-        </div>
-
-        <div class="checkout" data-checkout="visualize" hidden style="grid-column:1/-1">
-          <h4 data-copy="vz-co-h">The payment window didn’t open</h4>
-          <p data-copy="vz-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
-          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Visualize" data-copy="vz-co-cta">Still not working? Email us →</a></p>
-        </div>
-      </div>
-    </div>
+          </div>
   </section>
 </div>
 
@@ -1819,10 +1862,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <span class="status" data-copy="bm-status">In development</span>
           <h2 data-copy="bm-name">Beatmaker</h2>
           <p class="kicker" data-copy="bm-k">An easy-to-use DAW, just for beat design.</p>
-        </div>
-        <div class="prod-price">
-          <span data-copy="bm-price">$20</span>
-          <small data-copy="bm-price-sub">One-time · One license · One computer at a time</small>
         </div>
       </div>
 
@@ -2724,7 +2763,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     // traffic Cloudflare finds suspicious is asked to tick the box.
     window.ybkTurnstileReady = function () {
       claimForms.forEach(function (form) {
-        form.turnstileId = window.turnstile.render(form.querySelector('[data-turnstile]'), {
+        form.turnstileId = window.turnstile.render((form.closest('.launch') || form).querySelector('[data-turnstile]'), {
           sitekey: TURNSTILE_SITEKEY, theme: 'dark', appearance: 'always'
         });
       });
