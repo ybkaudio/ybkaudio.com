@@ -1,11 +1,19 @@
 {
-    "version":  "1.0.1",
-    "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.1.exe",
-    "sha256":  "92f6caa4d939342bb581e254878d0f37bd6d2ad577df8fcad29618b48a5a5ef7",
-    "size":  9388363,
-    "notes":  "VOCAL / INST: see (left click) or hear (right click) only the voice or only the instruments, separated by AI - the AI files download once, the first time you use it. STEMS colours: every graph in the colour of its instrument. New width pictures IMAGE and HEAT. COLOR choices and a CPU meter at the top. Lighter, smoother drawing.",
+    "version":  "1.0.2",
+    "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.2.exe",
+    "sha256":  "9827d4f588bc96aa33aa68cef6fae41bb512ca0508748b4b75993dd7eefc223d",
+    "size":  9411271,
+    "notes":  "New MONITOR picture: what is lost when the mix is played in mono, a target shape and a score - IN TARGET / OUTSIDE to see (left click) or hear (right click) only those parts. IMAGE redrawn: each sound a cloud - loud sounds in front, echo and reverb trail behind, wide sounds spread out. CYLINDER is now called VECTOR. A short tour on first start (the ? in Settings shows it again) and RETURN ALL TO DEFAULT in Settings. Loudness: the big number is the whole song. 3D pictures turn freely by dragging, the mouse wheel or the arrow keys. Smaller buttons, faster drawing and less delay.",
     "released":  "2026-10-07",
     "history":  [
+                    {
+                        "version":  "1.0.2",
+                        "released":  "2026-10-07",
+                        "notes":  "New MONITOR picture: what is lost when the mix is played in mono, a target shape and a score - IN TARGET / OUTSIDE to see (left click) or hear (right click) only those parts. IMAGE redrawn: each sound a cloud - loud sounds in front, echo and reverb trail behind, wide sounds spread out. CYLINDER is now called VECTOR. A short tour on first start (the ? in Settings shows it again) and RETURN ALL TO DEFAULT in Settings. Loudness: the big number is the whole song. 3D pictures turn freely by dragging, the mouse wheel or the arrow keys. Smaller buttons, faster drawing and less delay.",
+                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.2.exe",
+                        "sha256":  "9827d4f588bc96aa33aa68cef6fae41bb512ca0508748b4b75993dd7eefc223d",
+                        "size":  9411271
+                    },
                     {
                         "version":  "1.0.1",
                         "released":  "2026-10-07",
