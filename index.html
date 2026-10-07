@@ -844,7 +844,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <dl class="hero-notes">
           <div class="note"><dt data-copy="n1t">Platform</dt><dd data-copy="n1d">Windows 10 &amp; 11, and macOS (beta). Desktop applications that run on their own — no DAW.</dd></div>
           <div class="note"><dt data-copy="n2t">Price</dt><dd data-copy="n2d">About $10 an app. One code per purchase — it runs on one computer at a time and moves with you when you change computers.</dd></div>
-          <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">Instrument Player and 432hz are out now. Visualize, Beatmaker and MultiConsole are in active development.</dd></div>
+          <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">Instrument Player, 432hz and Visualize are out now. Beatmaker and MultiConsole are in active development.</dd></div>
         </dl>
       </div>
     </div>
@@ -898,15 +898,15 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="band">
     <div class="wrap">
-      <span class="status" data-copy="h-vz-status">Coming soon</span>
+      <span class="status ok" data-copy="h-vz-status">Available now</span>
       <h2 data-copy="h-vz-name">Visualize</h2>
       <p class="kicker" data-copy="h-vz-k">Everything your PC plays, seen at a glance.</p>
       <div class="summary">
         <div class="prose">
           <p data-copy="h-vz-p1">A giant full-screen audio analyser for everything your PC plays: spectrum, loudness, stereo width, notes, key and chords on one screen.</p>
-          <p data-copy="h-vz-p2">It listens to whatever Windows is playing, so there’s no plugin and nothing to set up in each app. $19 for the first month after launch, then $29, with a 7-day free trial.</p>
+          <p data-copy="h-vz-p2">It listens to whatever your computer is playing, so there’s no plugin and nothing to set up in each app. $19 launch price until Nov 6, then $29 · 7-day free trial.</p>
           <div class="sum-actions btnrow">
-            <a class="btn" href="#/visualize"><span data-copy="h-vz-cta">Learn more</span><span aria-hidden="true">→</span></a>
+            <a class="btn" href="#/visualize"><span data-copy="h-vz-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
         </div>
         <div>
@@ -987,8 +987,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div class="tier">
           <span class="nm" data-copy="t4n">Visualize</span>
           <span class="amt" data-copy="t4a">$19</span>
-          <span class="desc" data-copy="t4d">A full-screen analyser for everything your PC plays. Launch price for the first month, then $29. Coming soon, with a 7-day free trial.</span>
-          <a class="btn ghost" href="#/visualize" data-copy="t4b">Learn more</a>
+          <span class="desc" data-copy="t4d">Full-screen audio analyser for everything your PC plays. $19 launch price until Nov 6, then $29 · 7-day free trial.</span>
+          <a class="btn" href="#/visualize" data-copy="t4b">Get now</a>
         </div>
         <div class="tier">
           <span class="nm" data-copy="t3n">Beatmaker</span>
@@ -1011,10 +1011,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div>
         <span class="eyebrow" data-copy="su-eye">Launch list</span>
         <h3 class="big"><span data-copy="su-h">Hear it first</span><em>.</em></h3>
-        <p class="blurb" data-copy="su-p">Visualize, Beatmaker and MultiConsole are still being built. Leave your email and you’ll get one email when they’re ready to buy.</p>
+        <p class="blurb" data-copy="su-p">Beatmaker and MultiConsole are still being built. Leave your email and you’ll get one email when they’re ready to buy.</p>
       </div>
       <div>
-        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches" data-waitlist="visualize beatmaker console">
+        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches" data-waitlist="beatmaker console">
           <span data-copy="su-cta">Join the launch list</span>
           <span aria-hidden="true">→</span>
         </a>
@@ -1661,13 +1661,41 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="vz-back">All apps</span></a>
       <div class="prod-title">
         <div>
-          <span class="status" data-copy="vz-status">Coming soon</span>
+          <span class="status ok" data-copy="vz-status">Available now</span>
           <h2 data-copy="vz-name">Visualize</h2>
           <p class="kicker" data-copy="vz-k">Everything your PC plays, seen at a glance.</p>
         </div>
         <div class="prod-price">
           <span data-copy="vz-price">$19</span>
-          <small data-copy="vz-price-sub">Launch price, first month · then $29 · 7-day free trial · Coming soon</small>
+          <small data-copy="vz-price-sub">Launch price until Nov 6 · then $29 · 7-day free trial</small>
+        </div>
+      </div>
+
+      <!-- Download = the 7-day trial (no code needed to start it). Version and size come from
+           updates/visualize.json and updates/visualize-mac.json. Both buttons go through the
+           worker's counted links and are tracked as download_click (product visualize, page win/mac). -->
+      <div class="dl-box" id="vz-download">
+        <div>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="vz-dl-eye">Free trial</span></p>
+          <h3 data-copy="vz-dl-h">Try it free for 7 days</h3>
+          <p data-copy="vz-dl-p">Download Visualize and open it: the 7-day free trial starts on its own, no code needed. Buy a license any time and paste in the code from our email to keep it after the trial.</p>
+        </div>
+        <div class="dl-act">
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/visualize-win?src=site" data-dl="visualize" data-os="win">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="vz-dl-btn">Download for Windows</span>
+            </a>
+            <p class="dl-meta"><span data-vz-version></span>Windows 10 / 11, 64-bit<span data-vz-size></span></p>
+          </div>
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/visualize-mac?src=site" data-dl="visualize" data-os="mac">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="vz-dl-btn-mac">Download for Mac (beta)</span>
+            </a>
+            <p class="dl-meta"><span data-vz-version-mac></span>macOS 14.2 or later<span data-vz-size-mac></span></p>
+            <p class="dl-note" data-copy="vz-dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>, then allow <b>System Audio Recording</b> once.</p>
+          </div>
         </div>
       </div>
 
@@ -1684,7 +1712,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   <section class="band" style="border-top:none">
     <div class="wrap">
       <div class="prose">
-        <p data-copy="vz-p1">Visualize is a giant full-screen audio analyser for everything your PC plays. It listens to whatever Windows is playing — your browser, music player, games, your DAW — with no plugin and nothing to set up in each app.</p>
+        <p data-copy="vz-p1">Visualize is a giant full-screen audio analyser for everything your PC plays. It listens to whatever your computer is playing — your browser, music player, games, your DAW — with no plugin and nothing to set up in each app.</p>
         <p data-copy="vz-p2">Put it on a second screen while you mix, or full screen while you listen: the spectrum, loudness, stereo width, notes, key and chords are all there at a glance, and the buttons fade away when you stop moving the mouse.</p>
         <p data-copy="vz-p3">Optional listen tools let you hear the mix in mono, only the parts that cancel in mono, or everything except them. They need VB-CABLE, a free virtual audio driver from another company; the analyser itself works without it.</p>
       </div>
@@ -1743,24 +1771,38 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <table class="specs">
         <caption data-copy="vz-caption">Visualize — specification</caption>
         <tbody>
-          <tr><th scope="row" data-copy="vz-s1t">Type</th><td data-copy="vz-s1v">Full-screen desktop app · listens to all Windows audio</td></tr>
+          <tr><th scope="row" data-copy="vz-s1t">Type</th><td data-copy="vz-s1v">Full-screen desktop app · listens to everything your computer plays</td></tr>
           <tr><th scope="row" data-copy="vz-s2t">Shows</th><td data-copy="vz-s2v">Spectrum and waterfall · note labels · key and chord (estimates) · peak, average and snapshot curves</td></tr>
           <tr><th scope="row" data-copy="vz-s3t">Loudness</th><td data-copy="vz-s3v">Momentary, short-term and integrated LUFS · LRA · PLR · true peak in dBTP · measured the EBU R128 / ITU-R BS.1770 way</td></tr>
           <tr><th scope="row" data-copy="vz-s4t">Stereo</th><td data-copy="vz-s4v">Width per frequency (line, dots, 3D) · goniometer · polar · width per band · correlation · balance per range</td></tr>
           <tr><th scope="row" data-copy="vz-s5t">Listen tools</th><td data-copy="vz-s5v">Optional: mono, cancelling parts only, or everything but them · need VB-CABLE, a free separate download not made by us</td></tr>
-          <tr><th scope="row" data-copy="vz-s6t">Platform</th><td data-copy="vz-s6v">Windows 10 / 11, 64-bit</td></tr>
-          <tr><th scope="row" data-copy="vz-s7t">Status</th><td data-copy="vz-s7v">$19 for the first month after launch, then $29 · 7-day free trial · in development · release date to be announced</td></tr>
+          <tr><th scope="row" data-copy="vz-s6t">Platform</th><td data-copy="vz-s6v">Windows 10 / 11, 64-bit · Mac (beta): macOS 14.2 or later</td></tr>
+          <tr><th scope="row" data-copy="vz-s7t">Price</th><td data-copy="vz-s7v">$19 launch price until Nov 6, 2026, then $29 · one-time · 7-day free trial</td></tr>
         </tbody>
       </table>
 
       <div class="buy">
         <div>
-          <h3 data-copy="vz-buy-h">Visualize is coming soon</h3>
-          <p data-copy="vz-buy-p">It isn’t for sale or download yet. When it launches it will be $19 for the first month, then $29, with a 7-day free trial. Leave your email and we’ll send you one email when it’s ready.</p>
+          <h3 data-copy="vz-buy-h">Buy Visualize</h3>
+          <ul class="gets">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="vz-g1">One license code, emailed to the address you pay with</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="vz-g2">The app for Windows and Mac (beta), always downloadable from this page</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="vz-g3">Runs on one computer at a time — move it when you change computers</span></li>
+          </ul>
         </div>
         <div class="buy-side">
-          <div class="buy-total"><span data-copy="vz-soon-l">Status</span><b data-copy="vz-soon">Coming soon</b></div>
-          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Visualize%20is%20out" data-waitlist="visualize"><span data-copy="vz-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
+          <div class="buy-total"><span data-copy="vz-total-l">Total today</span><b data-copy="vz-total">$19.00</b></div>
+          <button type="button" class="btn" data-buy="visualize">
+            <span data-copy="vz-buy-btn">Purchase</span><span aria-hidden="true">→</span>
+          </button>
+          <p class="fineprint" data-copy="vz-fine">Launch price until Nov 6, 2026, then $29. Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
+          <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
+        </div>
+
+        <div class="checkout" data-checkout="visualize" hidden style="grid-column:1/-1">
+          <h4 data-copy="vz-co-h">The payment window didn’t open</h4>
+          <p data-copy="vz-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Visualize" data-copy="vz-co-cta">Still not working? Email us →</a></p>
         </div>
       </div>
     </div>
@@ -2257,7 +2299,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <p data-copy="wl-intro">We’ll write once, when the app is ready to buy. Nothing else, and never shared.</p>
     <fieldset class="wl-apps">
       <legend data-copy="wl-apps">Which apps?</legend>
-      <label><input type="checkbox" name="products" value="visualize"> Visualize</label>
       <label><input type="checkbox" name="products" value="beatmaker"> Beatmaker</label>
       <label><input type="checkbox" name="products" value="console"> MultiConsole</label>
     </fieldset>
@@ -2347,7 +2388,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     lang: (navigator.language || '').slice(0, 12),
     device: visitDevice
   };
-  var PRODUCT_SLUG = { synth: 'player', midside: 'console', beatmaker: 'beatmaker', hz432: '432hz' };
+  var PRODUCT_SLUG = { synth: 'player', midside: 'console', beatmaker: 'beatmaker', hz432: '432hz', visualize: 'visualize' };
   var PAGE_SLUG = { synth: 'player', midside: 'console', account: 'help', hz432: '432hz' };
   function track(step, extra) {
     var e = { step: step, visit: visitId, device: visitDevice };
@@ -2412,6 +2453,16 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       if (v && m.version) v.textContent = 'Version ' + m.version + ' · ';
       if (s && m.size) s.textContent = ' · ' + (m.size / 1048576).toFixed(1) + ' MB';
     })['catch'](function () {});
+  [['updates/visualize.json', ''], ['updates/visualize-mac.json', '-mac']].forEach(function (f) {
+    fetch(f[0], { cache: 'no-cache' })
+      .then(function (r) { return r.json(); })
+      .then(function (m) {
+        var v = document.querySelector('[data-vz-version' + f[1] + ']');
+        var s = document.querySelector('[data-vz-size' + f[1] + ']');
+        if (v && m.version) v.textContent = 'Version ' + m.version + ' · ';
+        if (s && m.size) s.textContent = ' · ' + (m.size / 1048576).toFixed(1) + ' MB';
+      })['catch'](function () {});
+  });
   fetch('updates/instrument-player-mac.json', { cache: 'no-cache' })
     .then(function (r) { return r.json(); })
     .then(function (m) {
@@ -2429,7 +2480,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     environment: 'production',       // LIVE since 2026-09-21: real cards, real money.
     clientToken: 'live_c368a3e2c91fc58f6b40c7258dd',
     prices: {
-      synth:   'pri_01m26a79x1e2751c91k981ra5v'   // Instrument Player, $10 (live)
+      synth:   'pri_01m26a79x1e2751c91k981ra5v',  // Instrument Player, $10 (live)
+      // Visualize, $19 launch price (live, 2026-10-07). After Nov 6, 2026 switch this to
+      // the $29 price id (not created in Paddle yet) and update the page's $19 / $19.00.
+      visualize: 'pri_01m468vyx8yx6x8yf79yjcz7ba'
       // midside, beatmaker: still in development, so no price here -- their
       // buttons show the "not open yet" panel. Console's live price exists in
       // Paddle already (pri_01m26a93tt0edase9x5agnpjf0), deliberately unused.
