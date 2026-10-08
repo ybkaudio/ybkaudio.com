@@ -259,9 +259,20 @@ h2{
   display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;line-height:1.5;
   letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px;white-space:normal;
 }
-.band-price s,.prod-price s{font-size:.45em;font-weight:700;color:var(--muted);margin-left:.3em;text-decoration-thickness:2px}
+.band-price s,.prod-price s{font-size:.45em;font-weight:700;color:var(--logo-red);margin-left:.3em;text-decoration-thickness:2px}
 /* the page's main picture now sits right under the title, above the boxes */
 .pagehead .shot.lead{margin-top:clamp(22px,3vw,30px)}
+/* the licence note and the "keeps working / move it" lists, right under the pricing box */
+.lic-box{margin-top:clamp(14px,2vw,18px);display:grid;gap:14px}
+/* explanation: the home page text on the left, why get it on the right (owner 2026-10-08) */
+.explain{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap);align-items:start}
+@media(min-width:820px){.explain{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
+.why{background:var(--surface);border:1px solid var(--rule);border-top:2px solid var(--accent);padding:clamp(18px,2.6vw,26px)}
+.why h3{font-size:20px;font-weight:900;letter-spacing:-.02em;text-transform:uppercase;margin:0 0 14px}
+.why ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.why li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:14.5px;line-height:1.5}
+.why li svg{width:16px;height:16px;margin-top:4px}
+.why li b{color:var(--ink)}
 .prod-price small{
   display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;
   letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
@@ -988,9 +999,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       </div>
       <div class="summary">
         <div class="prose">
-          <p data-copy="h-bm-p1"><b>Simplistic beat programming.</b></p>
-          <p data-copy="h-bm-p2"><b>Generate MIDI patterns and chords.</b></p>
-          <p data-copy="h-bm-p3"><b>No samples? Don’t worry, we provide a 5000+ sounds bank you can use without further purchase.</b></p>
+          <p data-copy="h-bm-p1"><b>Simplistic beat programming</b> – a DAW made just for the casual beat programmer. We minimized the hassle of setting up tracks, routing and menus before you hear a single beat, and made a DAW that is incredibly easy to use.</p>
+          <p data-copy="h-bm-p2"><b>Need some ideas?</b> Auto-generate drum patterns according to the BPM and genre you choose. Learned from 5000+ grooves, the Generate button can be the perfect songstarter, even for professionals.</p>
+          <p data-copy="h-bm-p3"><b>Got no samples? Don’t worry.</b> With the purchase comes 5000+ drum samples and our own synthesizer presets that you can grab after the first purchase.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/beatmaker"><span data-copy="h-bm-cta">Learn more</span><span aria-hidden="true">→</span></a>
           </div>
@@ -1010,7 +1021,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="band-head">
         <div>
           <h2 data-copy="h-ms-name">MultiConsole</h2>
-          <p class="kicker" data-copy="h-ms-k">Live mixing console for your PC audio.</p>
+          <p class="kicker" data-copy="h-ms-k">A live mixing console for your PC audio</p>
         </div>
         <div class="band-price">$10</div>
       </div>
@@ -1028,54 +1039,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <a class="shot" href="#/multiconsole">
             <img src="img/console/01-home.png" width="536" height="302" loading="lazy" alt="A close view of the MultiConsole capsule: the autotune, saturator and compressor knobs, each with a live display inside.">
           </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="price-band">
-    <div class="wrap price-grid">
-      <div>
-        <h3 class="big"><span data-copy="pr-h1">Pricing</span><em>.</em></h3>
-        <p class="blurb" data-copy="pr-p">One computer at a time. Each purchase is one code that runs on one computer — move it to a new one whenever you switch. No subscription, no seats.</p>
-      </div>
-      <div class="tiers">
-        <div class="tier">
-          <span class="nm" data-copy="t1n">Instrument Player</span>
-          <span class="amt" data-copy="t1a" data-launch-hide="active upcoming">$10</span>
-          <span class="amt" data-launch="active" hidden data-copy="t1a-free">Free</span>
-          <span class="desc" data-copy="t1d">Standalone VST3 instrument player with always-on MIDI Replay.</span>
-          <a class="btn" href="#/player" data-copy="t1b">Get now</a>
-        </div>
-        <div class="tier">
-          <span class="nm" data-copy="t0n">432hz</span>
-          <span class="amt" data-copy="t0a">Free</span>
-          <span class="desc" data-copy="t0d">Change the pitch of everything your PC plays, live. 432 Hz or any tuning you like.</span>
-          <a class="btn" href="#/432hz" data-copy="t0b">Get it free</a>
-        </div>
-        <div class="tier">
-          <span class="nm" data-copy="t4n">Visualize</span>
-          <span class="amt" data-copy="t4a">$19</span>
-          <span class="desc" data-copy="t4d">Full-screen audio analyser for everything your PC plays. $19 launch price until Nov 6, then $29 · 7-day free trial.</span>
-          <a class="btn" href="#/visualize" data-copy="t4b">Get now</a>
-        </div>
-        <div class="tier">
-          <span class="nm" data-copy="t5n">MixAlign</span>
-          <span class="amt" data-copy="t5a">$19</span>
-          <span class="desc" data-copy="t5d">Every mix and master lined up to the sample. $19 launch price until Nov 30, then $25 · 7-day free trial.</span>
-          <a class="btn" href="#/mixalign" data-copy="t5b">Get now</a>
-        </div>
-        <div class="tier">
-          <span class="nm" data-copy="t3n">Beatmaker</span>
-          <span class="amt" data-copy="t3a">$20</span>
-          <span class="desc" data-copy="t3d">Genre-aware beat ideas built from your own sample library.</span>
-          <a class="btn ghost" href="#/beatmaker" data-copy="t3b">Learn more</a>
-        </div>
-        <div class="tier">
-          <span class="nm" data-copy="t2n">MultiConsole</span>
-          <span class="amt" data-copy="t2a">$10</span>
-          <span class="desc" data-copy="t2d">Eleven real-time effects on all system audio, with recording.</span>
-          <a class="btn ghost" href="#/multiconsole" data-copy="t2b">Learn more</a>
         </div>
       </div>
     </div>
@@ -1107,12 +1070,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="prod-title">
         <div>
           <h2 data-copy="sp-name">Instrument Player</h2>
-          <p class="kicker" data-copy="sp-k">Open it, pick an instrument, play. Your VST3 instruments, without the DAW.</p>
+          <p class="kicker" data-copy="sp-k">Why open a DAW to play an instrument?</p>
         </div>
         <div class="prod-price">
-          <span data-copy="sp-price" data-launch-hide="active upcoming">$10</span>
-          <span data-launch="active" hidden data-copy="sp-price-free">Free <s>$10</s></span>
-          <small data-copy="sp-price-sub">One computer at a time</small>
+          <span data-launch="active" hidden>Free <s>$10</s>
+          <small data-copy="sp-home-pricenote">Free launch: until 10/19</small></span><span data-launch-hide="active upcoming">$10</span>
         </div>
       </div>
 
@@ -1197,8 +1159,17 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
         </div>
 
-        <p class="licnote" data-copy="sp-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
 
+
+        <div class="checkout" data-checkout="synth" hidden style="grid-column:1/-1">
+          <h4 data-copy="sp-co-h">The payment window didn’t open</h4>
+          <p data-copy="sp-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Instrument%20Player" data-copy="sp-co-cta">Still not working? Email us →</a></p>
+        </div>
+      </div>
+
+      <div class="lic-box">
+        <p class="licnote" data-copy="sp-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
         <div class="breaks">
           <div class="keep">
             <h4 data-copy="sp-keep-h">Your license keeps working after</h4>
@@ -1218,12 +1189,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
               <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e4i">Old computer broken? Write to us and we’ll release it</span></li>
             </ul>
           </div>
-        </div>
-
-        <div class="checkout" data-checkout="synth" hidden style="grid-column:1/-1">
-          <h4 data-copy="sp-co-h">The payment window didn’t open</h4>
-          <p data-copy="sp-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
-          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Instrument%20Player" data-copy="sp-co-cta">Still not working? Email us →</a></p>
         </div>
       </div>
 
@@ -1272,10 +1237,22 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="band" style="border-top:none">
     <div class="wrap">
-      <div class="prose">
-        <p data-copy="sp-p1">Instrument Player runs the virtual instruments you already own as their own app. A lot of great synths only ship as plugins — so trying a sound or playing for five minutes means booting a DAW and making a track. Instrument Player removes the timeline, the tracks and the mixer, and keeps only the part you wanted: one instrument, ready to play.</p>
-        <p data-copy="sp-p2">It finds the VST3 instruments on your PC, shows the plugin’s own interface at exactly its size, and takes input from every MIDI controller you plug in — or from your computer keyboard.</p>
-        <p data-copy="sp-p3">And it never misses the take. MIDI Replay keeps the last 5 minutes of your playing in memory without you pressing Record, so the phrase you stumbled into can be pulled back, tidied up in the piano roll and exported as a .mid file for your DAW. What leaves the app is MIDI — the notes you played — not audio.</p>
+      <div class="explain">
+        <div class="prose">
+          <p data-copy="sp-home-p1"><b>Play your VSTs without opening the DAW.</b> Switch between massive instrument banks with little latency.</p>
+          <p data-copy="sp-home-p2"><b>No one said idea generation had to start in a heavy DAW.</b> Instrument Player helps you get closer to your instruments without having to enter work mode all the time.</p>
+          <p data-copy="sp-home-p3"><b>It remembers what you play.</b> The app provides MIDI replay, which brings back the last 5 minutes of your playing. Load up your sudden ideas and make small edits via the MIDI editor, and export the .mid file for later use.</p>
+        </div>
+        <aside class="why">
+          <h3 data-copy="sp-why-h">Why get it</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Any VST3 instrument, on its own</b> — no DAW, no project, no track to set up.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Nothing you play is lost</b> — MIDI Replay keeps the last 5 minutes, without pressing Record.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>From idea to .mid</b> — tidy it in the piano roll and export it for your DAW.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>No controller needed</b> — press M and your computer keyboard plays like a piano.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Light and quick</b> — low CPU, and roughly 5–10 ms in WASAPI exclusive mode.</span></li>
+          </ul>
+        </aside>
       </div>
 
       <div class="features">
@@ -1398,11 +1375,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div>
           <span class="status ok" data-copy="hz-status">Free</span>
           <h2 data-copy="hz-name">432hz</h2>
-          <p class="kicker" data-copy="hz-k">Your whole computer sound, retuned live</p>
+          <p class="kicker" data-copy="hz-k">Your whole computer sound, retuned</p>
         </div>
         <div class="prod-price">
-          <span data-copy="hz-price">Free</span>
-          <small data-copy="hz-price-sub">No license code</small>
+          Free
         </div>
       </div>
 
@@ -1467,10 +1443,22 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="band" style="border-top:none">
     <div class="wrap">
-      <div class="prose">
-        <p data-copy="hz-p1">432hz changes the pitch of everything your PC plays, live, to whatever you choose — without changing the tempo. Set A4 to any frequency and every app follows: your browser, music player, games, video calls, your DAW.</p>
-        <p data-copy="hz-p2">The most common reason to do this is A4 = 432 Hz, and that’s where the app gets its name. Almost all music is tuned to A4 = 440 Hz; some musicians and listeners prefer 432 Hz, a little lower. But 432 is just one setting: tune up or down, match an instrument tuned to a different pitch, or try any tuning you’re curious about.</p>
-        <p data-copy="hz-p3">On Windows it runs inside Windows’ own audio engine as an audio effect; on a Mac it uses macOS’s own system-audio tap. Either way there’s no driver or virtual cable to set up. Changes within two semitones of 440 — 432 included — use an exact engine: every note from 41 Hz to 4 kHz lands within 0.2 cents, with about 10–20 ms of delay on Windows. Bigger changes switch to a second engine on their own, which adds delay (about 120 ms on Windows).</p>
+      <div class="explain">
+        <div class="prose">
+          <p data-copy="hz-home-p1">An idea from the 432Hz trend – what if you could retune your computer’s entire audio output to your liking? YBK AUDIO’s light app <b>432Hz</b> does that in a very simple and easy way.</p>
+          <p data-copy="hz-home-p2">Open the spectrum graphs to see the frequency change as the numbers go down and up. This app is great both for visual analysis, teaching and everyday listening.</p>
+          <p data-copy="hz-home-p3">Who knows, maybe hearing everything in 432Hz really is good for you.</p>
+        </div>
+        <aside class="why">
+          <h3 data-copy="hz-why-h">Why get it</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Every app at once</b> — browser, music player, games and your DAW are retuned live.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Exact pitch</b> — every note from 41 Hz to 4 kHz within 0.2 cents, tempo unchanged.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Not only 432</b> — set A4 (or C4) to any pitch you like.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Hear the difference</b> — one button switches between original and new, with no gap.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Free</b> — for Windows, and Mac (beta).</span></li>
+          </ul>
+        </aside>
       </div>
 
       <div class="features">
@@ -1548,6 +1536,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
        4. the download box: eyebrow "Windows & Mac", heading "Download the App", two buttons
           "Download for Windows" / "Download for Mac (beta)" (data-dl, data-os), version lines.
        5. demo video if there is one, then the explanation, features, pictures, spec table.
+     Owner 2026-10-08: the subtitle and the price tag (with its small line) are always the home
+     page's; a struck original price is red; the licence note + "keeps working / move it" lists
+     sit in their own box (.lic-box) right after the pricing box on every app with a licence;
+     the explanation is the home text on the left and "Why get it" on the right (.explain).
+     In-development apps: price shown, "Pricing" box (Email me when it's out) under the picture.
      Apps still in development: title (no price) and picture only; no purchase/download box.
      Home page product blocks: name + kicker left, price tag right ("Free <s>$10</s>",
      "$19 <s>$29</s>"; apps in development show their set price, e.g. "$20"), one button.
@@ -1562,7 +1555,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div>
           <span class="status" data-copy="ms-status">In development</span>
           <h2 data-copy="ms-name">MultiConsole</h2>
-          <p class="kicker" data-copy="ms-k">Studio effects on everything your PC plays, in real time.</p>
+          <p class="kicker" data-copy="ms-k">A live mixing console for your PC audio</p>
+        </div>
+        <div class="prod-price">
+          $10
         </div>
       </div>
 
@@ -1573,15 +1569,83 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <span data-copy="ms-usage-cap">Fig. 1 — Eleven live modules on one capsule</span>
         <span data-copy="ms-usage-cap2">Click to enlarge</span>
       </p>
+
+      <!-- purchase -->
+      <div class="buy">
+        <div>
+          <h3 data-copy="ms-buy-h">Pricing</h3>
+          <ul class="gets">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g1">The Windows installer, downloadable straight after payment</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g2">One license code, emailed to the address you pay with</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g3">One activation, on the computer you install it on</span></li>
+          </ul>
+        </div>
+        <div class="buy-side">
+          <div class="buy-total"><span data-copy="ms-soon-l">Status</span><b data-copy="ms-soon">In development</b></div>
+          <p class="fineprint" data-copy="ms-soon-p">MultiConsole is still being built, so it isn't for sale yet. There is no way to pay for it until it's finished.</p>
+          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MultiConsole%20is%20out" data-waitlist="console"><span data-copy="ms-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
+        </div>
+
+
+
+        <div class="checkout" data-checkout="midside" hidden style="grid-column:1/-1">
+          <h4 data-copy="ms-co-h">Checkout is not open yet</h4>
+          <p data-copy="ms-co-p1">MultiConsole is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
+          <p data-copy="ms-co-p2">Three things have to land before this button goes live:</p>
+          <ol>
+            <li data-copy="ms-co-1">The app reaches a releasable build, code-signed with a Windows installer.</li>
+            <li data-copy="ms-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
+            <li data-copy="ms-co-3">Licensing is switched on, so a purchase issues a code that runs on one computer at a time and moves with you.</li>
+          </ol>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MultiConsole%20is%20for%20sale" data-waitlist="console" data-copy="ms-co-cta">Email me when MultiConsole goes on sale →</a></p>
+        </div>
+      </div>
+
+      <div class="lic-box">
+        <p class="licnote" data-copy="ms-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
+        <div class="breaks">
+          <div class="keep">
+            <h4 data-copy="ms-keep-h">Your license keeps working after</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k1i">Resetting or reinstalling Windows on the same computer</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k2i">Windows updates, driver updates and app updates</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k4i">Changing your audio interface, network or VPN</span></li>
+            </ul>
+          </div>
+          <div class="move">
+            <h4 data-copy="ms-end-h">Move your license (Settings &gt; Release license) when you</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e1i">Replace the motherboard or CPU</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e2i">Change to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e3i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e4i">Old computer broken? Write to us and we’ll release it</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="band" style="border-top:none">
     <div class="wrap">
-      <div class="prose">
-        <p data-copy="ms-p1">MultiConsole is a small capsule that floats above every other window and runs your computer’s entire audio output through a chain of studio effects — YouTube, Spotify, games, the browser, anything. Autotune, saturation, compression, a band isolator, chorus, delay, reverb, a limiter, Mid/Side, stereo width and gain, all live, before the sound reaches your speakers or headphones.</p>
-        <p data-copy="ms-p2">Use it to study a reference: listen to only the mid, only the sides, or one narrow frequency band of any song you can stream. Or use it for fun: hard autotune a video, drown a stream in reverb, then hit Record and keep the result.</p>
-        <p data-copy="ms-p3">No DAW, no plugin host, no parameter pages. Almost every module is one knob — or one dial with two rings — and the knob’s centre shows you what it is doing while you turn it.</p>
+      <div class="explain">
+        <div class="prose">
+          <h3 data-copy="ms-home-h1">Analyze and Experiment</h3>
+          <p data-copy="ms-home-p1">Use our 11 knobs to hear what your audio output would sound like with a little touch. Autotune, Saturator, Compressor, Band Sweep, Chorus, Delay, Reverb, Limiter, Mid/Side, Width and Gain knobs are all available.</p>
+          <h3 data-copy="ms-home-h2">Make Your Own Effect Chain</h3>
+          <p data-copy="ms-home-p2">Change the state and visibility of any knob and line them up the way you want. From live vocal mixing to sound analysis, MultiConsole awaits your touch.</p>
+        </div>
+        <aside class="why">
+          <h3 data-copy="ms-why-h">Why get it</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Eleven effects on all PC audio</b> — autotune to reverb, live, on everything you play.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>See every change</b> — each knob shows its own effect as it happens.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Your own chain</b> — drag knobs to reorder, hide what you don’t use.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Keep the result</b> — record the final output to a WAV file.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Honest latency</b> — the real delay is shown on the capsule.</span></li>
+          </ul>
+        </aside>
       </div>
 
       <div class="features">
@@ -1627,10 +1691,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
       </div>
 
-      <div class="requires">
-        <h3 data-copy="ms-req-h">What you’ll need</h3>
-        <p data-copy="ms-req-p">A way to route system audio into the app: the free VB-Audio Virtual Cable, or an audio interface with a loop-back feature. Set Windows to play into the cable, then pick the cable as MultiConsole’s input and your real speakers as its output — the settings panel walks you through it.</p>
-      </div>
 
       <div class="shots">
         <figure>
@@ -1686,57 +1746,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </tbody>
       </table>
 
-      <!-- purchase -->
-      <div class="buy">
-        <div>
-          <h3 data-copy="ms-buy-h">MultiConsole pricing</h3>
-          <ul class="gets">
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g1">The Windows installer, downloadable straight after payment</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g2">One license code, emailed to the address you pay with</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g3">One activation, on the computer you install it on</span></li>
-          </ul>
-        </div>
-        <div class="buy-side">
-          <div class="buy-total"><span data-copy="ms-soon-l">Status</span><b data-copy="ms-soon">In development</b></div>
-          <p class="fineprint" data-copy="ms-soon-p">MultiConsole is still being built, so it isn't for sale yet. There is no way to pay for it until it's finished.</p>
-          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MultiConsole%20is%20out" data-waitlist="console"><span data-copy="ms-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
-        </div>
-
-        <p class="licnote" data-copy="ms-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
-
-        <div class="breaks">
-          <div class="keep">
-            <h4 data-copy="ms-keep-h">Your license keeps working after</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k1i">Resetting or reinstalling Windows on the same computer</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k2i">Windows updates, driver updates and app updates</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="ms-k4i">Changing your audio interface, network or VPN</span></li>
-            </ul>
-          </div>
-          <div class="move">
-            <h4 data-copy="ms-end-h">Move your license (Settings &gt; Release license) when you</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e1i">Replace the motherboard or CPU</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e2i">Change to a different computer</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e3i">Run the app inside a new virtual machine</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="ms-e4i">Old computer broken? Write to us and we’ll release it</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="checkout" data-checkout="midside" hidden style="grid-column:1/-1">
-          <h4 data-copy="ms-co-h">Checkout is not open yet</h4>
-          <p data-copy="ms-co-p1">MultiConsole is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
-          <p data-copy="ms-co-p2">Three things have to land before this button goes live:</p>
-          <ol>
-            <li data-copy="ms-co-1">The app reaches a releasable build, code-signed with a Windows installer.</li>
-            <li data-copy="ms-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
-            <li data-copy="ms-co-3">Licensing is switched on, so a purchase issues a code that runs on one computer at a time and moves with you.</li>
-          </ol>
-          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MultiConsole%20is%20for%20sale" data-waitlist="console" data-copy="ms-co-cta">Email me when MultiConsole goes on sale →</a></p>
-        </div>
-      </div>
     </div>
   </section>
 </div>
@@ -1749,11 +1758,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="prod-title">
         <div>
           <h2 data-copy="vz-name">Visualize</h2>
-          <p class="kicker" data-copy="vz-k">Everything your PC plays, seen at a glance.</p>
+          <p class="kicker" data-copy="vz-k">The ultimate 3D Stereo Imaging tool.</p>
         </div>
         <div class="prod-price">
-          <span data-copy="vz-price">$19</span>
-          <small data-copy="vz-price-sub">Launch price until Nov 6 · then $29 · 7-day free trial</small>
+          $19 <s>$29</s>
+          <small data-copy="vz-home-pricenote">Includes 7-day free trial</small>
         </div>
       </div>
 
@@ -1791,6 +1800,30 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
       </div>
 
+      <div class="lic-box">
+        <p class="licnote" data-copy="vz-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Release the license in the app on the old one, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
+        <div class="breaks">
+          <div class="keep">
+            <h4 data-copy="vz-keep-h">Your license keeps working after</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k1i">Resetting or reinstalling the operating system on the same computer</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k2i">System updates, driver updates and app updates</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k4i">Changing your audio interface, network or VPN</span></li>
+            </ul>
+          </div>
+          <div class="move">
+            <h4 data-copy="vz-end-h">Move your license (Release license in the app) when you</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e1i">Replace the motherboard or CPU</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e2i">Change to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e3i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e4i">Old computer broken? Write to us and we’ll release it</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <!-- Download = the 7-day trial (no code needed to start it). Version and size come from
            updates/visualize.json and updates/visualize-mac.json. Both buttons go through the
            worker's counted links and are tracked as download_click (product visualize, page win/mac). -->
@@ -1823,10 +1856,22 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="band" style="border-top:none">
     <div class="wrap">
-      <div class="prose">
-        <p data-copy="vz-p1">Visualize is a giant full-screen audio analyser for everything your PC plays. It listens to whatever your computer is playing — your browser, music player, games, your DAW — with no plugin and nothing to set up in each app.</p>
-        <p data-copy="vz-p2">Put it on a second screen while you mix, or full screen while you listen: the spectrum, loudness, stereo width, notes, key and chords are all there at a glance, and the buttons fade away when you stop moving the mouse.</p>
-        <p data-copy="vz-p3">Optional listen tools let you hear the mix in mono, only the parts that cancel in mono, or everything except them. They need VB-CABLE, a free virtual audio driver from another company; the analyser itself works without it.</p>
+      <div class="explain">
+        <div class="prose">
+          <p data-copy="vz-home-p1">The idea came from a mixing course – what if we could <i>Visualize</i> <b>the locations of each sound in a mix?</b> The pad at the back, the bass and kicks at the bottom, mono and stereo instruments kicking in right and left, the vocals. We were working on that idea when we came up with an idea to extend a stereometer by frequency.</p>
+          <p data-copy="vz-home-p2"><b>You can find stereo imaging anywhere. But not in 3D.</b></p>
+          <p data-copy="vz-home-p3">Visualize proposes a new way of stereo image analysis. From a cylinder-shaped Vectorscope stacked up every frequency, to a monitoring environment that measures Mono loss, we provide groundbreaking 3D graphs you can use to analyze a song’s phasing. Use the app standalone or as a plugin.</p>
+        </div>
+        <aside class="why">
+          <h3 data-copy="vz-why-h">Why get it</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Stereo width in 3D</b> — a cylinder that shows how wide every frequency is, and where it cancels in mono.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Know what’s playing</b> — note names on the peaks, plus an estimate of the key and the current chord.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Loudness the EBU R128 way</b> — LUFS, loudness range and true peak at a glance.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Nothing to set up</b> — it listens to whatever your computer plays.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Try it first</b> — 7-day free trial, Windows and Mac (beta).</span></li>
+          </ul>
+        </aside>
       </div>
 
       <div class="features">
@@ -1905,11 +1950,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="prod-title">
         <div>
           <h2 data-copy="mx-name">MixAlign</h2>
-          <p class="kicker" data-copy="mx-k">Every mix and master, lined up to the sample.</p>
+          <p class="kicker" data-copy="mx-k">Compare every version of your song, aligned to the sample.</p>
         </div>
         <div class="prod-price">
-          <span data-copy="mx-price">$19 <s>$25</s></span>
-          <small data-copy="mx-price-sub">Out Oct 27 · launch price until Nov 30 · then $25 · 7-day free trial</small>
+          $19 <s>$25</s>
+          <small data-copy="mx-home-pricenote">Includes 7-day free trial</small>
         </div>
       </div>
 
@@ -1945,12 +1990,35 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
         </div>
 
-        <p class="licnote" data-copy="mx-lic"><b>One computer at a time.</b> Your code runs on one computer at a time. Changing computers? Open About in MixAlign on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you.</p>
 
         <div class="checkout" data-checkout="mixalign" hidden style="grid-column:1/-1">
           <h4 data-copy="mx-co-h">The payment window didn’t open</h4>
           <p data-copy="mx-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20MixAlign" data-copy="mx-co-cta">Still not working? Email us →</a></p>
+        </div>
+      </div>
+
+      <div class="lic-box">
+        <p class="licnote" data-copy="mx-lic"><b>One computer at a time.</b> Your code runs on one computer at a time. Changing computers? Open About in MixAlign on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you.</p>
+        <div class="breaks">
+          <div class="keep">
+            <h4 data-copy="mx-keep-h">Your license keeps working after</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k1i">Resetting or reinstalling the operating system on the same computer</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k2i">System updates, driver updates and app updates</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k4i">Changing your audio interface, network or VPN</span></li>
+            </ul>
+          </div>
+          <div class="move">
+            <h4 data-copy="mx-end-h">Move your license (Release license in the app) when you</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e1i">Replace the motherboard or CPU</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e2i">Change to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e3i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e4i">Old computer broken? Write to us and we’ll release it</span></li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -1989,10 +2057,21 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="band" style="border-top:none">
     <div class="wrap">
-      <div class="prose">
-        <p data-copy="mx-p1">MixAlign is for the moment you have five versions of a song and can’t remember which one was better. Drop them all in — mixes, masters, the reference, a radio edit — and it lines them up to the exact sample, even when each export starts at a different time.</p>
-        <p data-copy="mx-p2">Then click from one to the next while it plays: the music never stops or jumps, and LUFS MATCH plays every version at the same loudness, so you judge the mix, not the volume.</p>
-        <p data-copy="mx-p3">When you want to know what really changed, NULL plays only what isn’t the same in two versions, DIFF plays only what one of them added, and the Differences panel says it in plain words.</p>
+      <div class="explain">
+        <div class="prose">
+          <p data-copy="mx-home-p1"><b>Switch instantaneously between different versions to hear differences.</b> One click and you will be hearing another version of your mix with no delay – all easily possible because we auto-align your uploaded mixes with beat detection. Also you can check the analysis panel, which provides written description on differences between versions. The app provides difference/null buttons to hear just the differences, so you can check and compare yourself.</p>
+          <p data-copy="mx-home-p2"><b>Blind test &amp; Annotate.</b> Hide track names and test your decision on what’s better. Rate each track you go through with stars to come back to them. When you’re sure on what you think is best, make the big reveal to find out which track to share. Also while sharing, you can leave your thoughts on the timeline of each track and export them as PDF for whoever to see.</p>
+        </div>
+        <aside class="why">
+          <h3 data-copy="mx-why-h">Why get it</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Every version lined up</b> — mixes, masters and references aligned automatically.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Switch with no gap</b> — at matched loudness, so you judge the mix, not the volume.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Hear only what changed</b> — NULL and DIFF, plus the differences in plain words.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Decide blind</b> — hide the names, rate with stars, then reveal.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Share your notes</b> — comments on the timeline, exported as a PDF.</span></li>
+          </ul>
+        </aside>
       </div>
 
       <div class="features">
@@ -2074,7 +2153,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div>
           <span class="status" data-copy="bm-status">In development</span>
           <h2 data-copy="bm-name">Beatmaker</h2>
-          <p class="kicker" data-copy="bm-k">An easy-to-use DAW, just for beat design.</p>
+          <p class="kicker" data-copy="bm-k">The easiest DAW for beatmaking</p>
+        </div>
+        <div class="prod-price">
+          $20
         </div>
       </div>
 
@@ -2085,15 +2167,82 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <span data-copy="bm-usage-cap">Fig. 1 — A full beat idea in one click</span>
         <span data-copy="bm-usage-cap2">Click to enlarge</span>
       </p>
+
+      <!-- purchase -->
+      <div class="buy">
+        <div>
+          <h3 data-copy="bm-buy-h">Pricing</h3>
+          <ul class="gets">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g1">The Windows app, downloadable straight after payment</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g2">One license code, emailed to the address you pay with</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g3">One activation, on the computer you install it on</span></li>
+          </ul>
+        </div>
+        <div class="buy-side">
+          <div class="buy-total"><span data-copy="bm-soon-l">Status</span><b data-copy="bm-soon">In development</b></div>
+          <p class="fineprint" data-copy="bm-soon-p">Beatmaker is still being built, so it isn't for sale yet. There is no way to pay for it until it's finished.</p>
+          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20out" data-waitlist="beatmaker"><span data-copy="bm-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
+        </div>
+
+
+
+        <div class="checkout" data-checkout="beatmaker" hidden style="grid-column:1/-1">
+          <h4 data-copy="bm-co-h">Checkout is not open yet</h4>
+          <p data-copy="bm-co-p1">Beatmaker is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
+          <p data-copy="bm-co-p2">Three things have to land before this button goes live:</p>
+          <ol>
+            <li data-copy="bm-co-1">The app reaches a releasable build, code-signed for Windows.</li>
+            <li data-copy="bm-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
+            <li data-copy="bm-co-3">Licensing is switched on, so a purchase issues a code that runs on one computer at a time and moves with you.</li>
+          </ol>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20for%20sale" data-waitlist="beatmaker" data-copy="bm-co-cta">Email me when Beatmaker goes on sale →</a></p>
+        </div>
+      </div>
+
+      <div class="lic-box">
+        <p class="licnote" data-copy="bm-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
+        <div class="breaks">
+          <div class="keep">
+            <h4 data-copy="bm-keep-h">Your license keeps working after</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k1i">Resetting or reinstalling Windows on the same computer</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k2i">Windows updates, driver updates and app updates</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k4i">Changing your audio interface, MIDI keyboard or network</span></li>
+            </ul>
+          </div>
+          <div class="move">
+            <h4 data-copy="bm-end-h">Move your license (Settings &gt; Release license) when you</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e1i">Replace the motherboard or CPU</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e2i">Change to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e3i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e4i">Old computer broken? Write to us and we’ll release it</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="band" style="border-top:none">
     <div class="wrap">
-      <div class="prose">
-        <p data-copy="bm-p1">Beatmaker is a sample-based idea DAW for beginners. Start with the YBK Drums library it comes with, or point it at the sample folders already on your PC, pick a genre and press Generate — drums, bass, chords and melody arrive together, ready to play.</p>
-        <p data-copy="bm-p2">It isn’t trying to be the program you finish a song in. It’s the one you start in. Shuffle the sounds, regroove the rhythm, swap the chords, add a fill, and keep pressing until something sticks. Lock the tracks you like and only the rest changes.</p>
-        <p data-copy="bm-p3">When the idea lands, export audio, stems or MIDI and carry on in the DAW you already use.</p>
+      <div class="explain">
+        <div class="prose">
+          <p data-copy="bm-home-p1"><b>Simplistic beat programming</b> – a DAW made just for the casual beat programmer. We minimized the hassle of setting up tracks, routing and menus before you hear a single beat, and made a DAW that is incredibly easy to use.</p>
+          <p data-copy="bm-home-p2"><b>Need some ideas?</b> Auto-generate drum patterns according to the BPM and genre you choose. Learned from 5000+ grooves, the Generate button can be the perfect songstarter, even for professionals.</p>
+          <p data-copy="bm-home-p3"><b>Got no samples? Don’t worry.</b> With the purchase comes 5000+ drum samples and our own synthesizer presets that you can grab after the first purchase.</p>
+        </div>
+        <aside class="why">
+          <h3 data-copy="bm-why-h">Why get it</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>A beat in one click</b> — drums, bass, chords and melody, in 29 genres.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Grooves that feel played</b> — patterns learned from 5000+ grooves.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Sounds included</b> — 5000+ drum samples come with it.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Keep what works</b> — lock tracks and regenerate the rest.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span><b>Take it further</b> — export audio, stems or MIDI to your DAW.</span></li>
+          </ul>
+        </aside>
       </div>
 
       <div class="features">
@@ -2193,57 +2342,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </tbody>
       </table>
 
-      <!-- purchase -->
-      <div class="buy">
-        <div>
-          <h3 data-copy="bm-buy-h">Beatmaker pricing</h3>
-          <ul class="gets">
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g1">The Windows app, downloadable straight after payment</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g2">One license code, emailed to the address you pay with</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g3">One activation, on the computer you install it on</span></li>
-          </ul>
-        </div>
-        <div class="buy-side">
-          <div class="buy-total"><span data-copy="bm-soon-l">Status</span><b data-copy="bm-soon">In development</b></div>
-          <p class="fineprint" data-copy="bm-soon-p">Beatmaker is still being built, so it isn't for sale yet. There is no way to pay for it until it's finished.</p>
-          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20out" data-waitlist="beatmaker"><span data-copy="bm-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
-        </div>
-
-        <p class="licnote" data-copy="bm-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
-
-        <div class="breaks">
-          <div class="keep">
-            <h4 data-copy="bm-keep-h">Your license keeps working after</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k1i">Resetting or reinstalling Windows on the same computer</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k2i">Windows updates, driver updates and app updates</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="bm-k4i">Changing your audio interface, MIDI keyboard or network</span></li>
-            </ul>
-          </div>
-          <div class="move">
-            <h4 data-copy="bm-end-h">Move your license (Settings &gt; Release license) when you</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e1i">Replace the motherboard or CPU</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e2i">Change to a different computer</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e3i">Run the app inside a new virtual machine</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="bm-e4i">Old computer broken? Write to us and we’ll release it</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="checkout" data-checkout="beatmaker" hidden style="grid-column:1/-1">
-          <h4 data-copy="bm-co-h">Checkout is not open yet</h4>
-          <p data-copy="bm-co-p1">Beatmaker is still in development, so there is nothing to sell you today — and this button is deliberately not wired to a payment page rather than taking your money for something unfinished.</p>
-          <p data-copy="bm-co-p2">Three things have to land before this button goes live:</p>
-          <ol>
-            <li data-copy="bm-co-1">The app reaches a releasable build, code-signed for Windows.</li>
-            <li data-copy="bm-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
-            <li data-copy="bm-co-3">Licensing is switched on, so a purchase issues a code that runs on one computer at a time and moves with you.</li>
-          </ol>
-          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20for%20sale" data-waitlist="beatmaker" data-copy="bm-co-cta">Email me when Beatmaker goes on sale →</a></p>
-        </div>
-      </div>
     </div>
   </section>
 </div>
