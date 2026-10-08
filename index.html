@@ -264,6 +264,12 @@ h2{
 .pagehead .shot.lead{margin-top:clamp(22px,3vw,30px)}
 /* the licence note and the "keeps working / move it" lists, right under the pricing box */
 .lic-box{margin-top:clamp(14px,2vw,18px);display:grid;gap:14px}
+/* 432hz "name your price" under its download buttons */
+.hz-tip{margin-top:clamp(14px,2vw,18px);border:1px solid var(--rule);background:var(--surface);padding:clamp(18px,3vw,28px)}
+.hz-tip>.field{display:grid;gap:10px;max-width:520px}
+.hz-tip .tip-note{margin:0}
+.hz-tip .fineprint{margin:0;font-size:12.5px;color:var(--muted);line-height:1.5}
+.hz-tip .claim-msg:empty{display:none}
 /* explanation: the home page text on the left, why get it on the right (owner 2026-10-08) */
 .explain{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap);align-items:start}
 @media(min-width:820px){.explain{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
@@ -1395,52 +1401,57 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <span data-copy="hz-usage-cap2">Click to enlarge</span>
       </p>
 
-      <!-- The sign-up form appears only once the worker says it handles 432hz
-           sign-ups (GET /launch answers with "hz432": true). Until then this
-           box shows instead, so pushing the page early can't misfire. -->
-      <div class="launch" data-hz-closed>
-        <div>
-          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="hz-soon-eye">Almost ready</span></p>
-          <p data-copy="hz-soon-p">The free download opens here very soon. Check back in a day or two.</p>
-        </div>
-      </div>
-
-      <div class="launch has-form" id="hz-free" data-hz-open hidden>
+      <!-- 432hz is a plain free download (owner 2026-10-09): no email, no sign-up. Both buttons go
+           through the worker's counted links (/dl/432hz-win, /dl/432hz-mac) and are tracked as
+           download_click (product 432hz, page win/mac). "Name your price" stays, under the buttons:
+           the worker's /tip needs an email to open the Paddle checkout, so an email box shows only
+           once an amount is picked (that email goes to Paddle for the receipt; we don't keep it). -->
+      <div class="dl-box" id="hz-download">
         <div>
           <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="hz-eye">Windows &amp; Mac</span></p>
           <h3 data-copy="hz-h">Download the App</h3>
-          <p data-copy="hz-lp">432hz is free, for Windows and Mac. Type your email, click the link we send you, and the download links arrive in the next email. No license code, nothing to activate.</p>
-          <p data-copy="hz-lp2">If you’d like to support it, name a price. Anything you add helps us make your experience better — the app is exactly the same either way.</p>
+          <p data-copy="hz-lp">432hz is free, for Windows and Mac. No email, no license code, nothing to activate: download it and open it.</p>
           <p class="launch-note" data-copy="hz-warn"><b>On Windows, Windows will probably warn you.</b> 432hz isn’t code-signed yet, so the first time you run the installer Windows may show a blue “Windows protected your PC” box. Choose <b>More info</b>, then <b>Run anyway</b>. That warning is about a certificate we haven’t bought yet, not about the file. <a href="#/help">More on this</a></p>
           <p class="launch-note" data-copy="hz-warn-mac"><b>On a Mac, macOS will warn you too.</b> Open the .dmg and drag 432hz into Applications. 432hz isn’t signed by Apple yet, so the first time you open it macOS says it can’t verify the app: go to <b>System Settings &gt; Privacy &amp; Security</b> and click <b>Open Anyway</b>. Then allow <b>System Audio Recording</b> when macOS asks — without it, 432hz can’t hear anything to retune.</p>
-          <div class="ts-box" data-turnstile></div>
         </div>
-        <form data-claim data-product="432" novalidate>
-          <div class="field">
-            <label for="hz-email" data-copy="hz-label">Your email</label>
-            <input id="hz-email" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
+        <div class="dl-act">
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/432hz-win?src=site" data-dl="432hz" data-os="win">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="hz-dl-btn">Download for Windows</span>
+            </a>
+            <p class="dl-meta"><span data-hz-version></span>Windows 10 / 11, 64-bit<span data-hz-size></span></p>
           </div>
-          <div class="field" data-tip hidden>
-            <label for="hz-amount" data-copy="hz-tip-label">Name your price (optional)</label>
-            <div class="tip-presets" role="group" aria-label="Suggested amounts">
-              <button type="button" class="tip-preset" data-amount="3">$3</button>
-              <button type="button" class="tip-preset" data-amount="5">$5</button>
-              <button type="button" class="tip-preset" data-amount="10">$10</button>
-            </div>
-            <div class="tip-input">
-              <span aria-hidden="true">$</span>
-              <input id="hz-amount" name="amount" type="number" inputmode="numeric" min="0" max="200" step="1" placeholder="0" aria-describedby="hz-tip-note">
-            </div>
-            <p class="tip-note" id="hz-tip-note" data-copy="hz-tip-note">Leave it at 0 and it’s free. Anything you add helps us make your experience better.</p>
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/432hz-mac?src=site" data-dl="432hz" data-os="mac">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="hz-dl-btn-mac">Download for Mac (beta)</span>
+            </a>
+            <p class="dl-meta">macOS 14.2 or later · 8.7 MB</p>
           </div>
-          <div class="hp" aria-hidden="true">
-            <label for="hz-website">Leave this empty</label>
-            <input id="hz-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+      </div>
+      <div class="hz-tip" data-hz-tip>
+        <div class="field" data-tip hidden>
+          <label for="hz-amount" data-copy="hz-tip-label">Name your price (optional)</label>
+          <p class="tip-note" data-copy="hz-lp2">If you’d like to support it, name a price. Anything you add helps us make your experience better — the app is exactly the same either way.</p>
+          <div class="tip-presets" role="group" aria-label="Suggested amounts">
+            <button type="button" class="tip-preset" data-amount="3">$3</button>
+            <button type="button" class="tip-preset" data-amount="5">$5</button>
+            <button type="button" class="tip-preset" data-amount="10">$10</button>
           </div>
-          <button type="submit" class="btn"><span data-copy="hz-btn">Email me the download</span><span aria-hidden="true">→</span></button>
+          <div class="tip-input">
+            <span aria-hidden="true">$</span>
+            <input id="hz-amount" name="amount" type="number" inputmode="numeric" min="0" max="200" step="1" placeholder="0">
+          </div>
+          <div class="field" data-hz-tip-email hidden>
+            <label for="hz-tip-email" data-copy="hz-tip-email-l">Email for your receipt</label>
+            <input id="hz-tip-email" type="email" autocomplete="email" placeholder="you@example.com">
+          </div>
+          <button type="button" class="btn" data-hz-tip-go hidden><span data-copy="hz-tip-btn">Continue to payment</span><span aria-hidden="true">→</span></button>
           <p class="claim-msg" role="status" aria-live="polite"></p>
-          <p class="fineprint"><span data-copy="hz-fine">We’ll email you a link to confirm your address, then the download link. To stop automated sign-ups, we record your IP address with your sign-up.</span> <span data-copy="hz-agree">By signing up you agree to our</span> <a href="#/terms">Terms</a> <span data-copy="hz-and">and</span> <a href="#/privacy">Privacy Policy</a>.</p>
-        </form>
+          <p class="fineprint" data-copy="hz-tip-fine">Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details.</p>
+        </div>
       </div>
 
     </div>
@@ -1540,6 +1551,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
        3. the purchase box, heading "Purchase License" (a free app or a free launch month: "Get Your License", its email sign-up box).
        4. the download box: eyebrow "Windows & Mac", heading "Download the App", two buttons
           "Download for Windows" / "Download for Mac (beta)" (data-dl, data-os), version lines.
+       Apps with a free trial (owner 2026-10-09): the download box comes first, eyebrow "Try for
+          free", heading "Download", then the "Purchase License" box. A free app (432hz): download
+          buttons only, "Name your price" under them, no email sign-up.
        4b. right under the download buttons: the "One computer at a time — please read" note and
           the "keeps working / move it" lists (.lic-box). Owner 2026-10-09.
        5. demo video if there is one, then the explanation, features, pictures, spec table.
@@ -1784,6 +1798,33 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <span data-copy="vz-usage-cap2">Click to enlarge</span>
       </p>
 
+      <!-- Download = the 7-day trial (no code needed to start it). Version and size come from
+           updates/visualize.json and updates/visualize-mac.json. Both buttons go through the
+           worker's counted links and are tracked as download_click (product visualize, page win/mac). -->
+      <div class="dl-box" id="vz-download">
+        <div>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="vz-dl-eye">Try for free</span></p>
+          <h3 data-copy="vz-dl-h">Download</h3>
+          <p data-copy="vz-dl-p">Download Visualize and open it: the 7-day free trial starts on its own, no code needed. Buy a license any time and paste in the code from our email to keep it after the trial.</p>
+        </div>
+        <div class="dl-act">
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/visualize-win?src=site" data-dl="visualize" data-os="win">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="vz-dl-btn">Download for Windows</span>
+            </a>
+            <p class="dl-meta"><span data-vz-version></span>Windows 10 / 11, 64-bit<span data-vz-size></span></p>
+          </div>
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/visualize-mac?src=site" data-dl="visualize" data-os="mac">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="vz-dl-btn-mac">Download for Mac (beta)</span>
+            </a>
+            <p class="dl-meta"><span data-vz-version-mac></span>macOS 14.2 or later<span data-vz-size-mac></span></p>
+            <p class="dl-note" data-copy="vz-dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>, then allow <b>System Audio Recording</b> once.</p>
+          </div>
+        </div>
+      </div>
       <div class="buy">
         <div>
           <h3 data-copy="vz-buy-h">Purchase License</h3>
@@ -1806,35 +1847,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h4 data-copy="vz-co-h">The payment window didn’t open</h4>
           <p data-copy="vz-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Visualize" data-copy="vz-co-cta">Still not working? Email us →</a></p>
-        </div>
-      </div>
-
-
-      <!-- Download = the 7-day trial (no code needed to start it). Version and size come from
-           updates/visualize.json and updates/visualize-mac.json. Both buttons go through the
-           worker's counted links and are tracked as download_click (product visualize, page win/mac). -->
-      <div class="dl-box" id="vz-download">
-        <div>
-          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="vz-dl-eye">Windows &amp; Mac</span></p>
-          <h3 data-copy="vz-dl-h">Download the App</h3>
-          <p data-copy="vz-dl-p">Download Visualize and open it: the 7-day free trial starts on its own, no code needed. Buy a license any time and paste in the code from our email to keep it after the trial.</p>
-        </div>
-        <div class="dl-act">
-          <div class="dl-choice">
-            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/visualize-win?src=site" data-dl="visualize" data-os="win">
-              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-copy="vz-dl-btn">Download for Windows</span>
-            </a>
-            <p class="dl-meta"><span data-vz-version></span>Windows 10 / 11, 64-bit<span data-vz-size></span></p>
-          </div>
-          <div class="dl-choice">
-            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/visualize-mac?src=site" data-dl="visualize" data-os="mac">
-              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-copy="vz-dl-btn-mac">Download for Mac (beta)</span>
-            </a>
-            <p class="dl-meta"><span data-vz-version-mac></span>macOS 14.2 or later<span data-vz-size-mac></span></p>
-            <p class="dl-note" data-copy="vz-dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>, then allow <b>System Audio Recording</b> once.</p>
-          </div>
         </div>
       </div>
       <div class="lic-box">
@@ -1976,6 +1988,36 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       </p>
 
       <!-- purchase -->
+      <div class="dl-box" id="download-mixalign">
+        <div>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="mx-dl-eye">Try for free</span></p>
+          <h3 data-copy="mx-dl-h">Download</h3>
+          <p data-copy="mx-dl-p">Install MixAlign and press Start free trial — no card needed. To keep using it, buy a license below and paste the code from our email into the app.</p>
+        </div>
+        <div class="dl-act">
+          <div class="dl-choice">
+            <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below.
+<a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-win?src=site" data-dl="mixalign" data-os="win">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="mx-dl-btn">Download for Windows</span>
+            </a>
+            -->
+            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon">Available Oct 27</span></span>
+            <p class="dl-meta"><span data-mx-version></span>Windows 10 / 11, 64-bit<span data-mx-size></span></p>
+          </div>
+          <div class="dl-choice">
+            <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below.
+<a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-mac?src=site" data-dl="mixalign" data-os="mac">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="mx-dl-btn-mac">Download for Mac (beta)</span>
+            </a>
+            -->
+            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon-mac">Available Oct 27</span></span>
+            <p class="dl-meta"><span data-mx-version-mac></span>Mac, Apple Silicon &amp; Intel<span data-mx-size-mac></span></p>
+            <p class="dl-note" data-copy="mx-dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>.</p>
+          </div>
+        </div>
+      </div>
       <div class="buy">
         <div>
           <h3 data-copy="mx-buy-h">Purchase License</h3>
@@ -2004,38 +2046,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h4 data-copy="mx-co-h">The payment window didn’t open</h4>
           <p data-copy="mx-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20MixAlign" data-copy="mx-co-cta">Still not working? Email us →</a></p>
-        </div>
-      </div>
-
-
-      <div class="dl-box" id="download-mixalign">
-        <div>
-          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="mx-dl-eye">Windows &amp; Mac</span></p>
-          <h3 data-copy="mx-dl-h">Download the App</h3>
-          <p data-copy="mx-dl-p">Install MixAlign and press Start free trial — no card needed. To keep using it, buy a license below and paste the code from our email into the app.</p>
-        </div>
-        <div class="dl-act">
-          <div class="dl-choice">
-            <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below.
-<a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-win?src=site" data-dl="mixalign" data-os="win">
-              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-copy="mx-dl-btn">Download for Windows</span>
-            </a>
-            -->
-            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon">Available Oct 27</span></span>
-            <p class="dl-meta"><span data-mx-version></span>Windows 10 / 11, 64-bit<span data-mx-size></span></p>
-          </div>
-          <div class="dl-choice">
-            <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below.
-<a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-mac?src=site" data-dl="mixalign" data-os="mac">
-              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-copy="mx-dl-btn-mac">Download for Mac (beta)</span>
-            </a>
-            -->
-            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon-mac">Available Oct 27</span></span>
-            <p class="dl-meta"><span data-mx-version-mac></span>Mac, Apple Silicon &amp; Intel<span data-mx-size-mac></span></p>
-            <p class="dl-note" data-copy="mx-dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>.</p>
-          </div>
         </div>
       </div>
       <div class="lic-box">
@@ -2480,7 +2490,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="wrap">
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span>Home</span></a>
       <h2 style="margin-top:20px">Privacy Policy</h2>
-      <p class="legal-meta">Last updated 8 October 2026</p>
+      <p class="legal-meta">Last updated 9 October 2026</p>
 
       <div class="legal-body">
         <p class="callout">Short version: we collect what it takes to sell and license the Software, to keep the free launch to one license per person, and to see whether our emails arrive and how many people use the app. Detailed app usage statistics are sent only if you say yes in the app. We never sell personal data, use no advertising trackers and no cookies of our own, and never receive your audio, MIDI or files.</p>
@@ -2491,6 +2501,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <h3>2. What we collect, when, and why</h3>
         <ul>
           <li><b>When you buy.</b> Paddle, our Merchant of Record, collects your name, email address, country, postal code where required, and payment details. Paddle keeps your card details; we never receive them. We receive your email address, the product, the order number, the amount paid out to us, and any later refund or chargeback, so we can deliver your license, keep sales records and handle problems.</li>
+          <li><b>When you download 432hz.</b> Nothing about you: 432hz is a free download with no sign-up and no email. The download button is counted anonymously, like other clicks (see “When you visit this website”). If you choose to name a price, the email address you type is passed to Paddle to open its checkout and send your receipt. If you then pay, we keep a record of the payment with that email address, as with any purchase, and send you one thank-you email; it is not added to any mailing list.</li>
           <li><b>When you claim a free launch license.</b> Your email address; the website or link that sent you to us and its campaign tag, if any; the first page you saw; the random visit number described below; your browser language; whether you use a phone or a computer; your country and time zone (worked out by Cloudflare from the connection); and your <b>IP address</b>. We also record the IP address that opens the confirmation link (often your email provider’s link scanner rather than you). The email address receives the confirmation link, the code, one email about two weeks later asking how the Software works for you, and a few short reminders before the free month ends — each with an unsubscribe link. The IP addresses let us keep the free launch to <b>one license per person</b>: without them, one person could collect many licenses under different email addresses and sell them. If you choose to pay through “name your price”, Paddle handles that payment as described above.</li>
           <li><b>When we email you.</b> Our email provider, Resend, tells us whether each email was delivered, delayed, bounced or marked as spam, so we notice when a license code doesn’t arrive. We do not track whether you open emails or click links in them.</li>
           <li><b>When you activate the Software.</b> The app sends your license code, a machine fingerprint, the computer’s name and platform as Windows reports them, and the time. We also record the IP address and country of the activation. The fingerprint is a one-way code derived from your motherboard and CPU identifiers; it cannot be turned back into them and exists only so a license runs on one computer at a time. The computer name is whatever you or the manufacturer called your PC, which sometimes includes a person’s name; we use it only to answer support questions about that activation. When you release or move a license, we record when that happened, and the name of the computer it left, so that the once-every-30-days limit can be applied.</li>
@@ -2815,6 +2826,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       if (v && m.version) v.textContent = 'Version ' + m.version + ' · ';
       if (s && m.size) s.textContent = ' · ' + (m.size / 1048576).toFixed(1) + ' MB';
     })['catch'](function () {});
+  fetch('updates/432hz.json', { cache: 'no-cache' })
+    .then(function (r) { return r.json(); })
+    .then(function (m) {
+      var v = document.querySelector('[data-hz-version]');
+      var s = document.querySelector('[data-hz-size]');
+      if (v && m.version) v.textContent = 'Version ' + m.version + ' · ';
+      if (s && m.size) s.textContent = ' · ' + (m.size / 1048576).toFixed(1) + ' MB';
+    })['catch'](function () {});
   [['updates/visualize.json', ''], ['updates/visualize-mac.json', '-mac']].forEach(function (f) {
     fetch(f[0], { cache: 'no-cache' })
       .then(function (r) { return r.json(); })
@@ -3095,7 +3114,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     input.addEventListener('input', paint);
   });
 
-  function openTipCheckout(email, amount, tell, product) {
+  function openTipCheckout(email, amount, tell, product, failText) {
     return fetch(LAUNCH_API + '/tip', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -3112,9 +3131,39 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           });
         });
       })['catch'](function () {
-        tell('We sent a confirmation link to ' + email + ', but the payment window couldn’t open. Thank you for wanting to support us!', 'ok');
+        tell(failText || ('We sent a confirmation link to ' + email + ', but the payment window couldn’t open. Thank you for wanting to support us!'), failText ? 'err' : 'ok');
       });
   }
+
+  /* 432hz "name your price" (no sign-up): pick an amount, an email box appears for Paddle's
+     receipt, and the button opens the same checkout as before. */
+  document.querySelectorAll('[data-hz-tip]').forEach(function (box) {
+    var amountIn = box.querySelector('input[name="amount"]');
+    var emailBox = box.querySelector('[data-hz-tip-email]');
+    var emailIn = emailBox.querySelector('input');
+    var go = box.querySelector('[data-hz-tip-go]');
+    var msg = box.querySelector('.claim-msg');
+    function tell(text, kind) { msg.textContent = text; msg.className = 'claim-msg' + (kind ? ' ' + kind : ''); }
+    function sync() {
+      var on = Number(amountIn.value || 0) > 0;
+      emailBox.hidden = !on; go.hidden = !on;
+    }
+    box.addEventListener('input', sync);
+    box.addEventListener('click', function () { setTimeout(sync, 0); });
+    go.addEventListener('click', function () {
+      var amount = Number(amountIn.value || 0);
+      if (!(amount >= TIP_MIN && amount <= TIP_MAX)) {
+        tell('Name your price: choose between $' + TIP_MIN + ' and $' + TIP_MAX + '.', 'err'); amountIn.focus(); return;
+      }
+      var email = emailIn.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        tell('That doesn’t look like an email address.', 'err'); emailIn.focus(); return;
+      }
+      go.disabled = true; tell('Opening the payment window…');
+      openTipCheckout(email, amount, tell, '432', 'The payment window couldn’t open. Please try again in a moment — and thank you!')
+        .then(function () { go.disabled = false; if (msg.className.indexOf('err') < 0) tell(''); });
+    });
+  });
 
   var claimForms = document.querySelectorAll('[data-claim]');
   if (TURNSTILE_SITEKEY && claimForms.length) {
