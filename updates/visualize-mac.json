@@ -1,11 +1,19 @@
 {
-  "version": "1.0.2",
-  "url": "https://ybkaudio.com/downloads/Visualize-1.0.2.dmg",
-  "sha256": "ae8d9da6acab87471bb9cab9859c7c34774d96b99fadc20adf8fc17e655d8c47",
-  "size": 9587054,
-  "notes": "New MONITOR picture: what is lost when the mix is played in mono, a target shape and a score - IN TARGET / OUTSIDE to see (left click) or hear (right click) only those parts. IMAGE redrawn: each sound a cloud - loud sounds in front, echo and reverb trail behind, wide sounds spread out. CYLINDER is now called VECTOR. A short tour on first start (the ? in Settings shows it again) and RETURN ALL TO DEFAULT in Settings. Loudness: the big number is the whole song. 3D pictures turn freely by dragging, the mouse wheel or the arrow keys. Smaller buttons, faster drawing and less delay.",
-  "released": "2026-10-07",
+  "version": "1.0.3",
+  "url": "https://ybkaudio.com/downloads/Visualize-1.0.3.dmg",
+  "sha256": "4760ed775994420157f0e165ac43c185752a5bf9a3c80bf317237515cdc593ee",
+  "size": 9589347,
+  "notes": "IN TARGET / OUTSIDE now work together with VOCAL / INST: right click both to hear only the part of the voice (or the instruments) inside or outside the target. The BUY button opens the Visualize page directly.",
+  "released": "2026-10-08",
   "history": [
+    {
+      "version": "1.0.3",
+      "url": "https://ybkaudio.com/downloads/Visualize-1.0.3.dmg",
+      "sha256": "4760ed775994420157f0e165ac43c185752a5bf9a3c80bf317237515cdc593ee",
+      "size": 9589347,
+      "notes": "IN TARGET / OUTSIDE now work together with VOCAL / INST: right click both to hear only the part of the voice (or the instruments) inside or outside the target. The BUY button opens the Visualize page directly.",
+      "released": "2026-10-08"
+    },
     {
       "version": "1.0.2",
       "url": "https://ybkaudio.com/downloads/Visualize-1.0.2.dmg",
