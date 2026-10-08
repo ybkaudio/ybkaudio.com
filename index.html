@@ -1404,8 +1404,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <!-- 432hz is a plain free download (owner 2026-10-09): no email, no sign-up. Both buttons go
            through the worker's counted links (/dl/432hz-win, /dl/432hz-mac) and are tracked as
            download_click (product 432hz, page win/mac). "Name your price" stays, under the buttons:
-           the worker's /tip needs an email to open the Paddle checkout, so an email box shows only
-           once an amount is picked (that email goes to Paddle for the receipt; we don't keep it). -->
+           picking an amount shows "Continue to payment"; the worker's /tip opens a Paddle checkout
+           without an email for 432hz (worker a748fdf5) and Paddle's checkout asks for it. -->
       <div class="dl-box" id="hz-download">
         <div>
           <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="hz-eye">Windows &amp; Mac</span></p>
@@ -1443,10 +1443,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <div class="tip-input">
             <span aria-hidden="true">$</span>
             <input id="hz-amount" name="amount" type="number" inputmode="numeric" min="0" max="200" step="1" placeholder="0">
-          </div>
-          <div class="field" data-hz-tip-email hidden>
-            <label for="hz-tip-email" data-copy="hz-tip-email-l">Email for your receipt</label>
-            <input id="hz-tip-email" type="email" autocomplete="email" placeholder="you@example.com">
           </div>
           <button type="button" class="btn" data-hz-tip-go hidden><span data-copy="hz-tip-btn">Continue to payment</span><span aria-hidden="true">→</span></button>
           <p class="claim-msg" role="status" aria-live="polite"></p>
@@ -2501,7 +2497,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <h3>2. What we collect, when, and why</h3>
         <ul>
           <li><b>When you buy.</b> Paddle, our Merchant of Record, collects your name, email address, country, postal code where required, and payment details. Paddle keeps your card details; we never receive them. We receive your email address, the product, the order number, the amount paid out to us, and any later refund or chargeback, so we can deliver your license, keep sales records and handle problems.</li>
-          <li><b>When you download 432hz.</b> Nothing about you: 432hz is a free download with no sign-up and no email. The download button is counted anonymously, like other clicks (see “When you visit this website”). If you choose to name a price, the email address you type is passed to Paddle to open its checkout and send your receipt. If you then pay, we keep a record of the payment with that email address, as with any purchase, and send you one thank-you email; it is not added to any mailing list.</li>
+          <li><b>When you download 432hz.</b> Nothing about you: 432hz is a free download with no sign-up and no email. The download button is counted anonymously, like other clicks (see “When you visit this website”). If you choose to name a price, Paddle’s checkout asks for your email address for the receipt. If you then pay, we keep a record of the payment with that email address, as with any purchase, and send you one thank-you email; it is not added to any mailing list.</li>
           <li><b>When you claim a free launch license.</b> Your email address; the website or link that sent you to us and its campaign tag, if any; the first page you saw; the random visit number described below; your browser language; whether you use a phone or a computer; your country and time zone (worked out by Cloudflare from the connection); and your <b>IP address</b>. We also record the IP address that opens the confirmation link (often your email provider’s link scanner rather than you). The email address receives the confirmation link, the code, one email about two weeks later asking how the Software works for you, and a few short reminders before the free month ends — each with an unsubscribe link. The IP addresses let us keep the free launch to <b>one license per person</b>: without them, one person could collect many licenses under different email addresses and sell them. If you choose to pay through “name your price”, Paddle handles that payment as described above.</li>
           <li><b>When we email you.</b> Our email provider, Resend, tells us whether each email was delivered, delayed, bounced or marked as spam, so we notice when a license code doesn’t arrive. We do not track whether you open emails or click links in them.</li>
           <li><b>When you activate the Software.</b> The app sends your license code, a machine fingerprint, the computer’s name and platform as Windows reports them, and the time. We also record the IP address and country of the activation. The fingerprint is a one-way code derived from your motherboard and CPU identifiers; it cannot be turned back into them and exists only so a license runs on one computer at a time. The computer name is whatever you or the manufacturer called your PC, which sometimes includes a person’s name; we use it only to answer support questions about that activation. When you release or move a license, we record when that happened, and the name of the computer it left, so that the once-every-30-days limit can be applied.</li>
@@ -3118,7 +3114,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     return fetch(LAUNCH_API + '/tip', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, amount: amount, product: product })
+      body: JSON.stringify(email ? { email: email, amount: amount, product: product } : { amount: amount, product: product })
     })
       .then(function (r) { return r.json().then(function (body) { return { ok: r.ok, body: body }; }); })
       .then(function (res) {
@@ -3126,7 +3122,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         return loadPaddle().then(function (Paddle) {
           Paddle.Checkout.open({
             transactionId: res.body.transactionId,
-            customer: { email: email },
+            customer: email ? { email: email } : undefined,
             settings: { displayMode: 'overlay', theme: 'dark' }
           });
         });
@@ -3135,18 +3131,16 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       });
   }
 
-  /* 432hz "name your price" (no sign-up): pick an amount, an email box appears for Paddle's
-     receipt, and the button opens the same checkout as before. */
+  /* 432hz "name your price" (no sign-up, no email on our page): pick an amount and the button
+     opens a Paddle checkout, which asks for the email itself. */
   document.querySelectorAll('[data-hz-tip]').forEach(function (box) {
     var amountIn = box.querySelector('input[name="amount"]');
-    var emailBox = box.querySelector('[data-hz-tip-email]');
-    var emailIn = emailBox.querySelector('input');
     var go = box.querySelector('[data-hz-tip-go]');
     var msg = box.querySelector('.claim-msg');
     function tell(text, kind) { msg.textContent = text; msg.className = 'claim-msg' + (kind ? ' ' + kind : ''); }
     function sync() {
       var on = Number(amountIn.value || 0) > 0;
-      emailBox.hidden = !on; go.hidden = !on;
+      go.hidden = !on;
     }
     box.addEventListener('input', sync);
     box.addEventListener('click', function () { setTimeout(sync, 0); });
@@ -3155,12 +3149,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       if (!(amount >= TIP_MIN && amount <= TIP_MAX)) {
         tell('Name your price: choose between $' + TIP_MIN + ' and $' + TIP_MAX + '.', 'err'); amountIn.focus(); return;
       }
-      var email = emailIn.value.trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        tell('That doesn’t look like an email address.', 'err'); emailIn.focus(); return;
-      }
       go.disabled = true; tell('Opening the payment window…');
-      openTipCheckout(email, amount, tell, '432', 'The payment window couldn’t open. Please try again in a moment — and thank you!')
+      openTipCheckout('', amount, tell, '432', 'The payment window couldn’t open. Please try again in a moment — and thank you!')
         .then(function () { go.disabled = false; if (msg.className.indexOf('err') < 0) tell(''); });
     });
   });
