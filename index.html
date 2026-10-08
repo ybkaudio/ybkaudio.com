@@ -259,6 +259,21 @@ h2{
   display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;line-height:1.5;
   letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px;white-space:normal;
 }
+/* apps with a free trial: a gold "TRIAL" badge left of the price, with a slow gleam (owner 2026-10-09) */
+.trial-badge{
+  position:relative;overflow:hidden;display:inline-block;vertical-align:middle;
+  margin-right:12px;padding:5px 9px 4px;transform:translateY(-.12em);
+  font-family:var(--f-mono);font-size:11px;font-weight:600;line-height:1.2;letter-spacing:.16em;text-transform:uppercase;
+  color:#F2C14E;border:1px solid #D4A537;background:rgba(242,193,78,.08);
+  box-shadow:0 0 10px rgba(242,193,78,.22);
+}
+.trial-badge::after{
+  content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;
+  background:linear-gradient(100deg,transparent,rgba(255,236,170,.55),transparent);
+  animation:trialGleam 3.6s ease-in-out infinite;
+}
+@keyframes trialGleam{0%,55%{left:-60%}100%{left:130%}}
+@media(prefers-reduced-motion:reduce){.trial-badge::after{display:none}}
 .band-price s,.prod-price s{font-size:.45em;font-weight:700;color:var(--logo-red);margin-left:.3em;text-decoration-thickness:2px}
 /* the page's main picture now sits right under the title, above the boxes */
 .pagehead .shot.lead{margin-top:clamp(22px,3vw,30px)}
@@ -951,7 +966,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h2 data-copy="h-vz-name">Visualize</h2>
           <p class="kicker" data-copy="h-vz-k">The ultimate 3D Stereo Imaging tool.</p>
         </div>
-        <div class="band-price">$19 <s>$29</s><small data-copy="h-vz-pricenote">Launch price until Nov 6<br>Not sure? Try our 7-day free trial</small></div>
+        <div class="band-price"><span class="trial-badge" data-copy="h-vz-trial">Trial</span>$19 <s>$29</s><small data-copy="h-vz-pricenote">Launch price until Nov 6<br>Not sure? Try our 7-day free trial</small></div>
       </div>
       <div class="summary">
         <div class="prose">
@@ -978,7 +993,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h2 data-copy="h-mx-name">MixAlign</h2>
           <p class="kicker" data-copy="h-mx-k">Compare every version of your song, aligned to the sample.</p>
         </div>
-        <div class="band-price">$19 <s>$25</s><small data-copy="h-mx-pricenote">Launch price until Nov 30<br>Not sure? Try our 7-day free trial</small></div>
+        <div class="band-price"><span class="trial-badge" data-copy="h-mx-trial">Trial</span>$19 <s>$25</s><small data-copy="h-mx-pricenote">Launch price until Nov 30<br>Not sure? Try our 7-day free trial</small></div>
       </div>
       <div class="summary">
         <div class="prose">
@@ -1548,7 +1563,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           "Download for Windows" / "Download for Mac (beta)" (data-dl, data-os), version lines.
        Apps with a free trial (owner 2026-10-09): the download box comes first, eyebrow "Try for
           free", heading "Download", then the "Purchase License" box. A free app (432hz): download
-          buttons only, "Name your price" under them, no email sign-up.
+          buttons only, "Name your price" under them, no email sign-up. Trial apps show a gold
+          "Trial" badge (.trial-badge) left of the price, on home and app page.
        4b. right under the download buttons: the "One computer at a time — please read" note and
           the "keeps working / move it" lists (.lic-box). Owner 2026-10-09.
        5. demo video if there is one, then the explanation, features, pictures, spec table.
@@ -1779,7 +1795,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="kicker" data-copy="vz-k">The ultimate 3D Stereo Imaging tool.</p>
         </div>
         <div class="prod-price">
-          $19 <s>$29</s>
+          <span class="trial-badge" data-copy="vz-trial">Trial</span>$19 <s>$29</s>
           <small data-copy="vz-home-pricenote">Launch price until Nov 6<br>Not sure? Try our 7-day free trial</small>
         </div>
       </div>
@@ -1969,7 +1985,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p class="kicker" data-copy="mx-k">Compare every version of your song, aligned to the sample.</p>
         </div>
         <div class="prod-price">
-          $19 <s>$25</s>
+          <span class="trial-badge" data-copy="mx-trial">Trial</span>$19 <s>$25</s>
           <small data-copy="mx-home-pricenote">Launch price until Nov 30<br>Not sure? Try our 7-day free trial</small>
         </div>
       </div>
