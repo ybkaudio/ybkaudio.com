@@ -373,6 +373,11 @@ h2{
 .feat-shot:hover img{border-color:var(--accent)}
 /* tall screenshots (432hz compact window): show all of it, letterboxed */
 .feat-shot.fit img{object-fit:contain;object-position:center}
+/* Visualize 3D clips: muted looping MP4s (converted from the app's GIF captures), played only
+   while on screen (script "feat-clip" below), poster frame until then */
+.feat-clip{margin-top:auto;padding-top:14px}
+.feat-clip video{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;
+  background:#05070a;border:1px solid var(--rule)}
 
 /* spec table */
 .specs{
@@ -941,7 +946,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h2 data-copy="h-vz-name">Visualize</h2>
           <p class="kicker" data-copy="h-vz-k">The ultimate 3D Stereo Imaging tool.</p>
         </div>
-        <div class="band-price">$19 <s>$29</s><small data-copy="h-vz-pricenote">Includes 7-day free trial</small></div>
+        <div class="band-price">$19 <s>$29</s><small data-copy="h-vz-pricenote">Launch price until Nov 6 · Includes 7-day free trial</small></div>
       </div>
       <div class="summary">
         <div class="prose">
@@ -968,7 +973,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h2 data-copy="h-mx-name">MixAlign</h2>
           <p class="kicker" data-copy="h-mx-k">Compare every version of your song, aligned to the sample.</p>
         </div>
-        <div class="band-price">$19 <s>$25</s><small data-copy="h-mx-pricenote">Includes 7-day free trial</small></div>
+        <div class="band-price">$19 <s>$25</s><small data-copy="h-mx-pricenote">Launch price until Nov 30 · Includes 7-day free trial</small></div>
       </div>
       <div class="summary">
         <div class="prose">
@@ -1168,29 +1173,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
       </div>
 
-      <div class="lic-box">
-        <p class="licnote" data-copy="sp-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
-        <div class="breaks">
-          <div class="keep">
-            <h4 data-copy="sp-keep-h">Your license keeps working after</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k1i">Resetting or reinstalling Windows on the same computer</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k2i">Windows updates, driver updates and app updates</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k4i">Changing your network, Wi-Fi adapter or VPN</span></li>
-            </ul>
-          </div>
-          <div class="move">
-            <h4 data-copy="sp-end-h">Move your license (Settings &gt; Release license) when you</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e1i">Replace the motherboard or CPU</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e2i">Change to a different computer</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e3i">Run the app inside a new virtual machine</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e4i">Old computer broken? Write to us and we’ll release it</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
       <!-- Always-visible download, reachable from the "Download" link in the top bar (#/download).
            Version and size are filled in from updates/instrument-player.json. -->
@@ -1219,6 +1201,29 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             </a>
             <p class="dl-meta"><span data-dl-version-mac></span>Mac, Apple Silicon &amp; Intel<span data-dl-size-mac></span></p>
             <p class="dl-note" data-copy="dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="lic-box">
+        <p class="licnote" data-copy="sp-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Open Settings in the app on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
+        <div class="breaks">
+          <div class="keep">
+            <h4 data-copy="sp-keep-h">Your license keeps working after</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k1i">Resetting or reinstalling Windows on the same computer</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k2i">Windows updates, driver updates and app updates</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="sp-k4i">Changing your network, Wi-Fi adapter or VPN</span></li>
+            </ul>
+          </div>
+          <div class="move">
+            <h4 data-copy="sp-end-h">Move your license (Settings &gt; Release license) when you</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e1i">Replace the motherboard or CPU</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e2i">Change to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e3i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="sp-e4i">Old computer broken? Write to us and we’ll release it</span></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1535,13 +1540,17 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
        3. the purchase box, heading "Purchase License" (a free app: its email sign-up box).
        4. the download box: eyebrow "Windows & Mac", heading "Download the App", two buttons
           "Download for Windows" / "Download for Mac (beta)" (data-dl, data-os), version lines.
+       4b. right under the download buttons: the "One computer at a time — please read" note and
+          the "keeps working / move it" lists (.lic-box). Owner 2026-10-09.
        5. demo video if there is one, then the explanation, features, pictures, spec table.
      Owner 2026-10-08: the subtitle and the price tag (with its small line) are always the home
      page's; a struck original price is red; the licence note + "keeps working / move it" lists
-     sit in their own box (.lic-box) right after the pricing box on every app with a licence;
+     sit in their own box (.lic-box) below the download box (no download box yet: after the pricing box);
      the explanation is the home text on the left and "Why get it" on the right (.explain).
      In-development apps: price shown, "Pricing" box (Email me when it's out) under the picture.
      Apps still in development: title (no price) and picture only; no purchase/download box.
+     Sale prices: the small line under the price says until when first, then the trial
+     ("Launch price until Nov 6 · Includes 7-day free trial"), on home and app page alike.
      Home page product blocks: name + kicker left, price tag right ("Free <s>$10</s>",
      "$19 <s>$29</s>"; apps in development show their set price, e.g. "$20"), one button.
      Top nav: launched apps get class "nav-live" (bright like Help); unlaunched ones stay dim.
@@ -1762,7 +1771,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <div class="prod-price">
           $19 <s>$29</s>
-          <small data-copy="vz-home-pricenote">Includes 7-day free trial</small>
+          <small data-copy="vz-home-pricenote">Launch price until Nov 6 · Includes 7-day free trial</small>
         </div>
       </div>
 
@@ -1800,29 +1809,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
       </div>
 
-      <div class="lic-box">
-        <p class="licnote" data-copy="vz-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Release the license in the app on the old one, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
-        <div class="breaks">
-          <div class="keep">
-            <h4 data-copy="vz-keep-h">Your license keeps working after</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k1i">Resetting or reinstalling the operating system on the same computer</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k2i">System updates, driver updates and app updates</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k4i">Changing your audio interface, network or VPN</span></li>
-            </ul>
-          </div>
-          <div class="move">
-            <h4 data-copy="vz-end-h">Move your license (Release license in the app) when you</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e1i">Replace the motherboard or CPU</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e2i">Change to a different computer</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e3i">Run the app inside a new virtual machine</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e4i">Old computer broken? Write to us and we’ll release it</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
       <!-- Download = the 7-day trial (no code needed to start it). Version and size come from
            updates/visualize.json and updates/visualize-mac.json. Both buttons go through the
@@ -1851,6 +1837,29 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           </div>
         </div>
       </div>
+      <div class="lic-box">
+        <p class="licnote" data-copy="vz-lic"><b>One computer at a time — please read.</b> Your code runs on one computer at a time. Changing computers? Release the license in the app on the old one, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you. A license can be moved once every 30 days.</p>
+        <div class="breaks">
+          <div class="keep">
+            <h4 data-copy="vz-keep-h">Your license keeps working after</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k1i">Resetting or reinstalling the operating system on the same computer</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k2i">System updates, driver updates and app updates</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="vz-k4i">Changing your audio interface, network or VPN</span></li>
+            </ul>
+          </div>
+          <div class="move">
+            <h4 data-copy="vz-end-h">Move your license (Release license in the app) when you</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e1i">Replace the motherboard or CPU</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e2i">Change to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e3i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="vz-e4i">Old computer broken? Write to us and we’ll release it</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1876,51 +1885,51 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
       <div class="features">
         <div class="feat">
-          <span class="n" data-copy="vz-f1n">Spectrum</span>
-          <h4 data-copy="vz-f1h">Big, sharp spectrum</h4>
-          <p data-copy="vz-f1p">A full-screen spectrum with a waterfall of the last seconds scrolling underneath. Peak hold, a whole-song average, and a snapshot curve to compare against.</p>
-          <a class="feat-shot fit" href="img/visualize/visualize-spectrum.png" target="_blank" rel="noopener">
-            <img src="img/visualize/visualize-spectrum.png" width="1280" height="759" loading="lazy" alt="The spectrum filling most of the window, with the peak curve, the whole-song average in white, and the stereo-width dots and meters beside it.">
-          </a>
+          <span class="n" data-copy="vz-f1n">3D · Vector</span>
+          <h4 data-copy="vz-f1h">A vectorscope for every frequency</h4>
+          <p data-copy="vz-f1p">One vectorscope per frequency, stacked up into a cylinder from bass to highs. The front is mono, the sides are left and right only, the back is sound that cancels in mono. Drag to turn it.</p>
+          <div class="feat-clip">
+            <video src="img/visualize/3d-vector.mp4" poster="img/visualize/3d-vector.jpg" muted loop playsinline preload="none" width="440" height="440" aria-label="VECTOR view: a cylinder of stacked vectorscopes turning while a song plays."></video>
+          </div>
         </div>
         <div class="feat">
-          <span class="n" data-copy="vz-f2n">Notes, key, chords</span>
-          <h4 data-copy="vz-f2h">Know what’s playing</h4>
-          <p data-copy="vz-f2p">The loudest peaks are labelled with their note, like “F1 · 44 Hz”. One click listens for about 8 seconds and estimates the song’s key; a chord box then shows the chord playing now and its place in the key.</p>
+          <span class="n" data-copy="vz-f2n">3D · Room</span>
+          <h4 data-copy="vz-f2h">Your two speakers in a room</h4>
+          <p data-copy="vz-f2p">See where each sound appears between your speakers, and what the speakers fill the room with.</p>
+          <div class="feat-clip">
+            <video src="img/visualize/3d-room.mp4" poster="img/visualize/3d-room.jpg" muted loop playsinline preload="none" width="440" height="440" aria-label="ROOM view: two speakers with the sound they place in the room, moving with the song."></video>
+          </div>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="vz-f3n">3D · Image</span>
+          <h4 data-copy="vz-f3h">Every sound where it sits in the mix</h4>
+          <p data-copy="vz-f3p">Each sound is a cloud at its place in the mix: left and right is its pan, height is its pitch, the front is loud, and a wide cloud means its left and right are unalike.</p>
+          <div class="feat-clip">
+            <video src="img/visualize/3d-image.mp4" poster="img/visualize/3d-image.jpg" muted loop playsinline preload="none" width="440" height="440" aria-label="IMAGE view: clouds of sound placed by pan, pitch and level."></video>
+          </div>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="vz-f4n">3D · Image + Stems</span>
+          <h4 data-copy="vz-f4h">See the instruments apart</h4>
+          <p data-copy="vz-f4p">Switch the colours to STEMS and an AI colours every graph by instrument: vocals yellow, drums blue, bass violet, everything else green. It runs about a second behind the music.</p>
+          <div class="feat-clip">
+            <video src="img/visualize/3d-image-stems.mp4" poster="img/visualize/3d-image-stems.jpg" muted loop playsinline preload="none" width="440" height="440" aria-label="IMAGE view in STEMS colours: vocals, drums, bass and other instruments each in their own colour."></video>
+          </div>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="vz-f5n">3D · Monitor</span>
+          <h4 data-copy="vz-f5h">Check what mono will lose</h4>
+          <p data-copy="vz-f5p">Every frequency, measured: left and right is its level balance, height is its pitch, the back is what gets lost when the mix is summed to mono. Inside the faint target shape is mono-safe; dots outside it stand out.</p>
+          <div class="feat-clip">
+            <video src="img/visualize/3d-monitor.mp4" poster="img/visualize/3d-monitor.jpg" muted loop playsinline preload="none" width="440" height="440" aria-label="MONITOR view: frequencies measured against a faint mono-safe target shape."></video>
+          </div>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="vz-f6n">Notes, key, chords</span>
+          <h4 data-copy="vz-f6h">Know what’s playing</h4>
+          <p data-copy="vz-f6p">The loudest peaks are labelled with their note, like “F1 · 44 Hz”. One click listens for about 8 seconds and estimates the song’s key; a chord box then shows the chord playing now and its place in the key. Loudness (LUFS, true peak) and the spectrum are always on screen.</p>
           <a class="feat-shot" href="img/visualize/visualize-main.png" target="_blank" rel="noopener">
             <img src="img/visualize/visualize-main.png" width="1920" height="1080" loading="lazy" alt="Note labels on the spectrum peaks, such as F1 at 44.2 Hz and F6 at 1.4 kHz, with the key “A minor” and the chord box showing “F, bVI”.">
-          </a>
-        </div>
-        <div class="feat">
-          <span class="n" data-copy="vz-f3n">Width // Freq</span>
-          <h4 data-copy="vz-f3h">Stereo width per frequency</h4>
-          <p data-copy="vz-f3p">See how wide every frequency is — as a line, as dots (bigger dot, louder sound) or as a 3D cylinder you turn with the mouse. Sounds that cancel in mono show in red.</p>
-          <a class="feat-shot fit" href="img/visualize/visualize-3d-close.png" target="_blank" rel="noopener">
-            <img src="img/visualize/visualize-3d-close.png" width="903" height="609" loading="lazy" alt="The 3D width cylinder: dots from bass at the bottom to highs at the top, mono at the front and opposite-phase sound marked in red at the back.">
-          </a>
-        </div>
-        <div class="feat">
-          <span class="n" data-copy="vz-f4n">Colour</span>
-          <h4 data-copy="vz-f4h">Colour by band or by sound</h4>
-          <p data-copy="vz-f4p">BANDS colours every graph by range, from orange bass to blue highs. BY START gives each sound that began at the same moment its own colour, across every graph.</p>
-          <a class="feat-shot" href="img/visualize/visualize-by-start.png" target="_blank" rel="noopener">
-            <img src="img/visualize/visualize-by-start.png" width="1920" height="1080" loading="lazy" alt="BY START colours: each sound in the spectrum, waterfall and width dots has its own colour, with a width-per-band meter on the right.">
-          </a>
-        </div>
-        <div class="feat">
-          <span class="n" data-copy="vz-f5n">Loudness</span>
-          <h4 data-copy="vz-f5h">Loudness and true peak</h4>
-          <p data-copy="vz-f5p">Momentary, short-term and integrated loudness in LUFS, loudness range, peak-to-loudness ratio and true peak, measured the EBU R128 / ITU-R BS.1770 way. It starts over on its own when a new song begins.</p>
-          <a class="feat-shot fit" href="img/visualize/visualize-loudness.png" target="_blank" rel="noopener">
-            <img src="img/visualize/visualize-loudness.png" width="294" height="348" loading="lazy" alt="Close-up of the loudness meters: short-term −16.8 LUFS in large numbers, momentary, integrated, loudness range and peak-to-loudness ratio, and true peak for left and right.">
-          </a>
-        </div>
-        <div class="feat">
-          <span class="n" data-copy="vz-f6n">Your way</span>
-          <h4 data-copy="vz-f6h">Yours To Customize</h4>
-          <p data-copy="vz-f6p">Spectrum, waterfall or both; L+R, L / R or Mid / Side; smoothing, tilt and speed; scope, polar, band or history stereo pictures. F11 shows the picture alone over the whole screen.</p>
-          <a class="feat-shot fit" href="img/visualize/visualize-settings-menu.png" target="_blank" rel="noopener">
-            <img src="img/visualize/visualize-settings-menu.png" width="592" height="586" loading="lazy" alt="The settings menu: input device, view, channels, smoothing, tilt, speed, what to show, A grid, stereo picture and route, plus freeze, snapshot, clear and reset.">
           </a>
         </div>
       </div>
@@ -1954,7 +1963,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <div class="prod-price">
           $19 <s>$25</s>
-          <small data-copy="mx-home-pricenote">Includes 7-day free trial</small>
+          <small data-copy="mx-home-pricenote">Launch price until Nov 30 · Includes 7-day free trial</small>
         </div>
       </div>
 
@@ -1998,29 +2007,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
       </div>
 
-      <div class="lic-box">
-        <p class="licnote" data-copy="mx-lic"><b>One computer at a time.</b> Your code runs on one computer at a time. Changing computers? Open About in MixAlign on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you.</p>
-        <div class="breaks">
-          <div class="keep">
-            <h4 data-copy="mx-keep-h">Your license keeps working after</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k1i">Resetting or reinstalling the operating system on the same computer</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k2i">System updates, driver updates and app updates</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
-              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k4i">Changing your audio interface, network or VPN</span></li>
-            </ul>
-          </div>
-          <div class="move">
-            <h4 data-copy="mx-end-h">Move your license (Release license in the app) when you</h4>
-            <ul>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e1i">Replace the motherboard or CPU</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e2i">Change to a different computer</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e3i">Run the app inside a new virtual machine</span></li>
-              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e4i">Old computer broken? Write to us and we’ll release it</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
       <div class="dl-box" id="download-mixalign">
         <div>
@@ -2049,6 +2035,29 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon-mac">Available Oct 27</span></span>
             <p class="dl-meta"><span data-mx-version-mac></span>Mac, Apple Silicon &amp; Intel<span data-mx-size-mac></span></p>
             <p class="dl-note" data-copy="mx-dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="lic-box">
+        <p class="licnote" data-copy="mx-lic"><b>One computer at a time.</b> Your code runs on one computer at a time. Changing computers? Open About in MixAlign on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you.</p>
+        <div class="breaks">
+          <div class="keep">
+            <h4 data-copy="mx-keep-h">Your license keeps working after</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k1i">Resetting or reinstalling the operating system on the same computer</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k2i">System updates, driver updates and app updates</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k3i">Swapping the drive, RAM, graphics card or monitor</span></li>
+              <li><span class="sym" aria-hidden="true">✓</span><span data-copy="mx-k4i">Changing your audio interface, network or VPN</span></li>
+            </ul>
+          </div>
+          <div class="move">
+            <h4 data-copy="mx-end-h">Move your license (Release license in the app) when you</h4>
+            <ul>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e1i">Replace the motherboard or CPU</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e2i">Change to a different computer</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e3i">Run the app inside a new virtual machine</span></li>
+              <li><span class="sym" aria-hidden="true">→</span><span data-copy="mx-e4i">Old computer broken? Write to us and we’ll release it</span></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -3556,6 +3565,22 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       if (box.querySelector('iframe')) box.innerHTML = thumb;
     });
   });
+})();
+</script>
+<script>
+/* feat-clip: Visualize 3D clips play while visible, pause off screen */
+(function () {
+  var vids = document.querySelectorAll('.feat-clip video');
+  if (!vids.length) return;
+  if (!('IntersectionObserver' in window)) { vids.forEach(function (v) { v.preload = 'auto'; v.autoplay = true; }); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      else if (!v.paused) v.pause();
+    });
+  }, { rootMargin: '200px 0px', threshold: 0.01 });
+  vids.forEach(function (v) { io.observe(v); });
 })();
 </script>
 </body>
