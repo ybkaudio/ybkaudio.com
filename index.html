@@ -1896,7 +1896,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <div class="prod-price">
           <span data-copy="mx-price">$19 <s>$25</s></span>
-          <small data-copy="mx-price-sub">Launch price until Nov 30 · then $25 · 7-day free trial</small>
+          <small data-copy="mx-price-sub">Out Oct 27 · launch price until Nov 30 · then $25 · 7-day free trial</small>
         </div>
       </div>
 
@@ -1922,9 +1922,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <div class="buy-total"><span data-copy="mx-total-l">Total today</span><b data-mx-price>$19.00</b></div>
           <!-- The worker picks the price by date ($19 until Nov 30, then $25), makes the Paddle
                transaction and comes back here with ?_ptxn=, which opens the checkout (script below). -->
-          <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/mixalign/buy">
+          <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below.
+<a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/mixalign/buy">
             <span data-copy="mx-buy-btn">Purchase</span><span aria-hidden="true">→</span>
           </a>
+            -->
+            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-buy-soon">Available Oct 27</span></span>
           <p class="fineprint" data-copy="mx-fine">Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
           <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
         </div>
@@ -1946,17 +1949,23 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <div class="dl-act">
           <div class="dl-choice">
-            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-win?src=site" data-dl="mixalign" data-os="win">
+            <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below.
+<a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-win?src=site" data-dl="mixalign" data-os="win">
               <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <span data-copy="mx-dl-btn">Download for Windows</span>
             </a>
+            -->
+            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon">Available Oct 27</span></span>
             <p class="dl-meta"><span data-mx-version></span>Windows 10 / 11, 64-bit<span data-mx-size></span></p>
           </div>
           <div class="dl-choice">
-            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-mac?src=site" data-dl="mixalign" data-os="mac">
+            <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below.
+<a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-mac?src=site" data-dl="mixalign" data-os="mac">
               <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <span data-copy="mx-dl-btn-mac">Download for Mac (beta)</span>
             </a>
+            -->
+            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon-mac">Available Oct 27</span></span>
             <p class="dl-meta"><span data-mx-version-mac></span>Mac, Apple Silicon &amp; Intel<span data-mx-size-mac></span></p>
             <p class="dl-note" data-copy="mx-dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>.</p>
           </div>
