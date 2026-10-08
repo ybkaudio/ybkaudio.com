@@ -826,6 +826,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <a class="navlink" href="#/player" data-nav="synth">Instrument Player</a>
       <a class="navlink" href="#/432hz" data-nav="hz432">432hz</a>
       <a class="navlink" href="#/visualize" data-nav="visualize">Visualize</a>
+      <a class="navlink" href="#/mixalign" data-nav="mixalign">MixAlign</a>
       <a class="navlink" href="#/beatmaker" data-nav="beatmaker">Beatmaker</a>
       <a class="navlink" href="#/multiconsole" data-nav="midside">MultiConsole</a>
       <a class="navlink nav-acct" href="#/help" data-nav="account">Help</a>
@@ -942,6 +943,32 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="band">
     <div class="wrap">
+      <div class="band-head">
+        <div>
+          <h2 data-copy="h-mx-name">MixAlign</h2>
+          <p class="kicker" data-copy="h-mx-k">Every mix and master, lined up to the sample.</p>
+        </div>
+        <div class="band-price">$19 <s>$25</s></div>
+      </div>
+      <div class="summary">
+        <div class="prose">
+          <p data-copy="h-mx-p1">Drop in every version of a song — mixes, masters, the reference — and MixAlign lines them up to the sample, even when they start at different times. Switch between them instantly, at the same loudness, without a gap.</p>
+          <p data-copy="h-mx-p2">Hear exactly what changed with NULL and DIFF, see it in plain words, run a blind test, and check the master before it goes out. $19 until 30 November, then $25, with a 7-day free trial. Windows, and Mac (beta).</p>
+          <div class="sum-actions btnrow">
+            <a class="btn" href="#/mixalign"><span data-copy="h-mx-cta">Get now</span><span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div>
+          <a class="shot" href="#/mixalign">
+            <img src="img/mixalign/mixalign-hero.png" width="1480" height="920" loading="lazy" alt="MixAlign: three versions of a song lined up on one timeline, with loudness, tempo and the listening controls on top.">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
       <span class="status" data-copy="h-bm-status">In development</span>
       <div class="band-head">
         <div>
@@ -1019,6 +1046,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <span class="amt" data-copy="t4a">$19</span>
           <span class="desc" data-copy="t4d">Full-screen audio analyser for everything your PC plays. $19 launch price until Nov 6, then $29 · 7-day free trial.</span>
           <a class="btn" href="#/visualize" data-copy="t4b">Get now</a>
+        </div>
+        <div class="tier">
+          <span class="nm" data-copy="t5n">MixAlign</span>
+          <span class="amt" data-copy="t5a">$19</span>
+          <span class="desc" data-copy="t5d">Every mix and master lined up to the sample. $19 launch price until Nov 30, then $25 · 7-day free trial.</span>
+          <a class="btn" href="#/mixalign" data-copy="t5b">Get now</a>
         </div>
         <div class="tier">
           <span class="nm" data-copy="t3n">Beatmaker</span>
@@ -1851,6 +1884,165 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   </section>
 </div>
 
+<!-- ==================== MIXALIGN ==================== -->
+<div data-page="mixalign" hidden>
+  <section class="pagehead">
+    <div class="wrap">
+      <a class="backlink" href="#/"><span aria-hidden="true">←</span><span data-copy="mx-back">All apps</span></a>
+      <div class="prod-title">
+        <div>
+          <h2 data-copy="mx-name">MixAlign</h2>
+          <p class="kicker" data-copy="mx-k">Every mix and master, lined up to the sample.</p>
+        </div>
+        <div class="prod-price">
+          <span data-copy="mx-price">$19 <s>$25</s></span>
+          <small data-copy="mx-price-sub">Launch price until Nov 30 · then $25 · 7-day free trial</small>
+        </div>
+      </div>
+
+      <a class="shot lead" href="img/mixalign/mixalign-hero.png" target="_blank" rel="noopener">
+        <img src="img/mixalign/mixalign-hero.png" width="1480" height="920" alt="MixAlign: three versions of a song — two mixes and the master — lined up on one timeline, each with its loudness and alignment, and the listening controls along the top.">
+      </a>
+      <p class="usage-cap">
+        <span data-copy="mx-usage-cap">Fig. 1 — Two mixes and the master, lined up to the sample on one timeline</span>
+        <span data-copy="mx-usage-cap2">Click to enlarge</span>
+      </p>
+
+      <!-- purchase -->
+      <div class="buy">
+        <div>
+          <h3 data-copy="mx-buy-h">Purchase License</h3>
+          <ul class="gets">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="mx-g1">One license code, emailed to the address you pay with</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="mx-g2">Works with the Windows and the Mac version</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="mx-g3">Runs on one computer at a time — move it when you change computers</span></li>
+          </ul>
+        </div>
+        <div class="buy-side">
+          <div class="buy-total"><span data-copy="mx-total-l">Total today</span><b data-mx-price>$19.00</b></div>
+          <!-- The worker picks the price by date ($19 until Nov 30, then $25), makes the Paddle
+               transaction and comes back here with ?_ptxn=, which opens the checkout (script below). -->
+          <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/mixalign/buy">
+            <span data-copy="mx-buy-btn">Purchase</span><span aria-hidden="true">→</span>
+          </a>
+          <p class="fineprint" data-copy="mx-fine">Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
+          <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
+        </div>
+
+        <p class="licnote" data-copy="mx-lic"><b>One computer at a time.</b> Your code runs on one computer at a time. Changing computers? Open About in MixAlign on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you.</p>
+
+        <div class="checkout" data-checkout="mixalign" hidden style="grid-column:1/-1">
+          <h4 data-copy="mx-co-h">The payment window didn’t open</h4>
+          <p data-copy="mx-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20MixAlign" data-copy="mx-co-cta">Still not working? Email us →</a></p>
+        </div>
+      </div>
+
+      <div class="dl-box" id="download-mixalign">
+        <div>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="mx-dl-eye">Windows &amp; Mac</span></p>
+          <h3 data-copy="mx-dl-h">Download the App</h3>
+          <p data-copy="mx-dl-p">Install MixAlign and press Start free trial — no card needed. To keep using it, buy a license below and paste the code from our email into the app.</p>
+        </div>
+        <div class="dl-act">
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-win?src=site" data-dl="mixalign" data-os="win">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="mx-dl-btn">Download for Windows</span>
+            </a>
+            <p class="dl-meta"><span data-mx-version></span>Windows 10 / 11, 64-bit<span data-mx-size></span></p>
+          </div>
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-mac?src=site" data-dl="mixalign" data-os="mac">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="mx-dl-btn-mac">Download for Mac (beta)</span>
+            </a>
+            <p class="dl-meta"><span data-mx-version-mac></span>Mac, Apple Silicon &amp; Intel<span data-mx-size-mac></span></p>
+            <p class="dl-note" data-copy="mx-dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" style="border-top:none">
+    <div class="wrap">
+      <div class="prose">
+        <p data-copy="mx-p1">MixAlign is for the moment you have five versions of a song and can’t remember which one was better. Drop them all in — mixes, masters, the reference, a radio edit — and it lines them up to the exact sample, even when each export starts at a different time.</p>
+        <p data-copy="mx-p2">Then click from one to the next while it plays: the music never stops or jumps, and LUFS MATCH plays every version at the same loudness, so you judge the mix, not the volume.</p>
+        <p data-copy="mx-p3">When you want to know what really changed, NULL plays only what isn’t the same in two versions, DIFF plays only what one of them added, and the Differences panel says it in plain words.</p>
+      </div>
+
+      <div class="features">
+        <div class="feat">
+          <span class="n" data-copy="mx-f1n">Align</span>
+          <h4 data-copy="mx-f1h">Lined up to the sample</h4>
+          <p data-copy="mx-f1p">Every version snaps to the first one, sample-exact, however much silence it starts with. Edits that cut or move a section are placed part by part, and the first file sets the tempo grid.</p>
+          <a class="feat-shot" href="img/mixalign/mixalign-hero.png" target="_blank" rel="noopener">
+            <img src="img/mixalign/mixalign-hero.png" width="1480" height="920" loading="lazy" alt="Three versions on one timeline, each marked LOCKED 100% with how far it was moved.">
+          </a>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="mx-f2n">NULL · DIFF</span>
+          <h4 data-copy="mx-f2h">Hear exactly what changed</h4>
+          <p data-copy="mx-f2p">NULL plays everything that isn’t the same in two versions — silence means identical. DIFF plays only what the selected version added. Hold Δ HEAR to listen for a moment and let go to come back.</p>
+          <a class="feat-shot" href="img/mixalign/mixalign-null.png" target="_blank" rel="noopener">
+            <img src="img/mixalign/mixalign-null.png" width="1480" height="920" loading="lazy" alt="NULL switched on: the selected mix against the one heard before, with the remaining difference in dB.">
+          </a>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="mx-f3n">Differences</span>
+          <h4 data-copy="mx-f3h">What changed, in plain words</h4>
+          <p data-copy="mx-f3p">For every version against your baseline: louder or quieter, brighter or darker, wider or narrower, more or less compressed — over the whole song or just the loop.</p>
+          <a class="feat-shot" href="img/mixalign/mixalign-differences.png" target="_blank" rel="noopener">
+            <img src="img/mixalign/mixalign-differences.png" width="1480" height="920" loading="lazy" alt="The Differences panel: each version described against the baseline, such as +1.8 LU louder, more mids and wider stereo.">
+          </a>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="mx-f4n">Blind test</span>
+          <h4 data-copy="mx-f4h">Choose with your ears</h4>
+          <p data-copy="mx-f4p">Hide the names, shuffle the order, and pick a favourite or rate 1–5 stars. Press reveal to see which version you really preferred.</p>
+          <a class="feat-shot" href="img/mixalign/mixalign-blind.png" target="_blank" rel="noopener">
+            <img src="img/mixalign/mixalign-blind.png" width="1480" height="920" loading="lazy" alt="Blind test: the versions shown as Version A, B and C.">
+          </a>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="mx-f5n">Master check</span>
+          <h4 data-copy="mx-f5h">Catch problems before they ship</h4>
+          <p data-copy="mx-f5p">True peak, clipping, clicks, silence at the start, a cut-off tail and DC offset, marked where they happen. Streaming preview plays each master the way Spotify, Apple Music and YouTube will turn it down.</p>
+          <a class="feat-shot" href="img/mixalign/mixalign-qc.png" target="_blank" rel="noopener">
+            <img src="img/mixalign/mixalign-qc.png" width="1480" height="920" loading="lazy" alt="The QC panel with loudness, true peak and the problems found in each version.">
+          </a>
+        </div>
+        <div class="feat">
+          <span class="n" data-copy="mx-f6n">Tone</span>
+          <h4 data-copy="mx-f6h">Tonal balance side by side</h4>
+          <p data-copy="mx-f6p">An averaged frequency curve per version, or each one against the baseline, so you can see where a new mix got brighter, thinner or heavier. Add a released song as a reference, loudness-matched.</p>
+          <a class="feat-shot" href="img/mixalign/mixalign-tone.png" target="_blank" rel="noopener">
+            <img src="img/mixalign/mixalign-tone.png" width="1480" height="920" loading="lazy" alt="The Tone panel: the averaged frequency curves of the versions laid over each other.">
+          </a>
+        </div>
+      </div>
+
+      <table class="specs">
+        <caption data-copy="mx-caption">MixAlign — specification</caption>
+        <tbody>
+          <tr><th scope="row" data-copy="mx-s1t">Type</th><td data-copy="mx-s1v">Desktop app for comparing versions of one song</td></tr>
+          <tr><th scope="row" data-copy="mx-s2t">Files</th><td data-copy="mx-s2v">WAV, AIFF, FLAC, MP3, M4A, OGG and more · as many versions as you like</td></tr>
+          <tr><th scope="row" data-copy="mx-s3t">Alignment</th><td data-copy="mx-s3v">Sample-exact · different start times and edited sections · tempo grid from the first file</td></tr>
+          <tr><th scope="row" data-copy="mx-s4t">Listening</th><td data-copy="mx-s4v">Gapless switching · LUFS match · NULL and DIFF · mono, side and low / mid / high checks · streaming preview</td></tr>
+          <tr><th scope="row" data-copy="mx-s5t">Analysis</th><td data-copy="mx-s5v">Differences in plain words · loudness curve · tonal balance · mastering QC · PDF report · loop export to WAV</td></tr>
+          <tr><th scope="row" data-copy="mx-s6t">Sessions</th><td data-copy="mx-s6v">Saves the files, alignment, names, colours, notes, marks and loops</td></tr>
+          <tr><th scope="row" data-copy="mx-s7t">Platform</th><td data-copy="mx-s7v">Windows 10 / 11, 64-bit · Mac (beta), Apple Silicon and Intel</td></tr>
+          <tr><th scope="row" data-copy="mx-s8t">Licence</th><td data-copy="mx-s8v">One computer at a time — move it to a new one from About › Release license</td></tr>
+          <tr><th scope="row" data-copy="mx-s9t">Price</th><td data-copy="mx-s9v">$19 until 30 November, then $25 — one-time, no subscription · 7-day free trial</td></tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+</div>
+
 <!-- ==================== BEATMAKER ==================== -->
 <div data-page="beatmaker" hidden>
   <section class="pagehead">
@@ -2098,7 +2290,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="legal-body">
         <h3>1. Who we are</h3>
         <p>These terms govern your purchase and use of software sold on ybkaudio.com. The seller is <b>YBK Audio</b>, a sole proprietorship registered in the Republic of Korea and owned by <b>Kim Yeonbum</b> — business registration number 288-17-02789, 221 Seolleung-ro, Gangnam-gu, Seoul, Republic of Korea. You can reach us at <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a>.</p>
-        <p>By buying, installing or using Instrument Player, MultiConsole or Beatmaker (“the Software”), you agree to these terms.</p>
+        <p>By buying, installing or using Instrument Player, MultiConsole, Beatmaker or MixAlign (“the Software”), you agree to these terms.</p>
 
         <h3>2. Payment and our reseller, Paddle</h3>
         <p>Our order process is conducted by our online reseller <b>Paddle.com</b>. Paddle.com is the Merchant of Record for all our orders: it processes your payment, charges and remits any sales tax or VAT, and issues your invoice. Your purchase is also subject to the <a href="https://www.paddle.com/legal/buyer-terms" target="_blank" rel="noopener">Paddle Buyer Terms</a>. YBK Audio never receives your card details.</p>
@@ -2129,7 +2321,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </ul>
 
         <h3>6. Third-party plugins and audio</h3>
-        <p>Instrument Player loads VST3 instruments made by other companies. Those plugins are governed by their own licenses, which you must hold separately; we are not responsible for how they behave. MultiConsole processes audio already playing on your computer; it records only when you press Record, saving the file to your own computer, and never transmits audio. Beatmaker reads the audio and MIDI files you point it at; it never moves, changes or uploads them.</p>
+        <p>Instrument Player loads VST3 instruments made by other companies. Those plugins are governed by their own licenses, which you must hold separately; we are not responsible for how they behave. MultiConsole processes audio already playing on your computer; it records only when you press Record, saving the file to your own computer, and never transmits audio. Beatmaker reads the audio and MIDI files you point it at; it never moves, changes or uploads them. MixAlign reads the audio files you open; it never changes or uploads them, and what it exports (PDF reports, WAV loops, sessions) is saved only where you choose.</p>
 
         <h3>7. Problems with an order</h3>
         <p>If something is wrong with your order, email <a href="mailto:ybkaudio@gmail.com">ybkaudio@gmail.com</a> with your order number and we will look into it. If a payment is reversed, the license code it paid for is deactivated.</p>
@@ -2378,6 +2570,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     '/console': 'midside',       // old URL (before the MultiConsole name), kept so shared links still work
     '/midside': 'midside',      // old URL, kept so shared links still work
     '/visualize': 'visualize',
+    '/mixalign': 'mixalign',
     '/beatmaker': 'beatmaker',
     '/help': 'account',
     '/account': 'account',     // old URL, kept so shared links still work
@@ -2428,8 +2621,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     device: visitDevice,
     visit: visitId   // the same anonymous visit id as the page-view statistics, so the dashboard can show the pages this sign-up saw
   };
-  var PRODUCT_SLUG = { synth: 'player', midside: 'console', beatmaker: 'beatmaker', hz432: '432hz', visualize: 'visualize' };
-  var PAGE_SLUG = { synth: 'player', midside: 'console', account: 'help', hz432: '432hz' };
+  var PRODUCT_SLUG = { synth: 'player', midside: 'console', beatmaker: 'beatmaker', hz432: '432hz', visualize: 'visualize', mixalign: 'mixalign', mixalignFull: 'mixalign' };
+  var PAGE_SLUG = { synth: 'player', midside: 'console', account: 'help', hz432: '432hz', mixalign: 'mixalign' };
   function track(step, extra) {
     var e = { step: step, visit: visitId, device: visitDevice };
     for (var k in extra) e[k] = extra[k];
@@ -2523,7 +2716,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       synth:   'pri_01m26a79x1e2751c91k981ra5v',  // Instrument Player, $10 (live)
       // Visualize, $19 launch price (live, 2026-10-07). After Nov 6, 2026 switch this to
       // the $29 price id (not created in Paddle yet) and update the page's $19 / $19.00.
-      visualize: 'pri_01m468vyx8yx6x8yf79yjcz7ba'
+      visualize: 'pri_01m468vyx8yx6x8yf79yjcz7ba',
+      // MixAlign (public 2026-10-27): $19 through 30 November (KST), then $25. Same date as the worker's
+      // APP_PRICES.mixalign.launchUntil (the app's Buy button). Both IDs are here so checkout steps count as MixAlign.
+      mixalign: Date.now() < Date.parse('2026-12-01T00:00:00+09:00') ? 'pri_01m46jbfn58122byt5vw3smk46' : 'pri_01m46jarpx950g24djv1tb47ys',
+      mixalignFull: 'pri_01m46jarpx950g24djv1tb47ys'
       // midside, beatmaker: still in development, so no price here -- their
       // buttons show the "not open yet" panel. Console's live price exists in
       // Paddle already (pri_01m26a93tt0edase9x5agnpjf0), deliberately unused.
@@ -2612,6 +2809,38 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       panel.focus({ preventScroll: true });
     });
   });
+
+  /* MixAlign: version and size under its two download buttons (updates/mixalign.json, both systems
+     in one file), and the price on its buy box. */
+  fetch('updates/mixalign.json', { cache: 'no-cache' })
+    .then(function (r) { return r.json(); })
+    .then(function (m) {
+      var put = function (sel, text) { var e = document.querySelector(sel); if (e) e.textContent = text; };
+      if (m.version) put('[data-mx-version]', 'Version ' + m.version + ' · ');
+      if (m.size) put('[data-mx-size]', ' · ' + (m.size / 1048576).toFixed(0) + ' MB');
+      if (m.mac && m.mac.version) put('[data-mx-version-mac]', 'Version ' + m.mac.version + ' · ');
+      if (m.mac && m.mac.size) put('[data-mx-size-mac]', ' · ' + (m.mac.size / 1048576).toFixed(0) + ' MB');
+    })['catch'](function () {});
+  (function () {
+    var full = PADDLE.prices.mixalign === PADDLE.prices.mixalignFull;
+    document.querySelectorAll('[data-mx-price]').forEach(function (e) { e.textContent = full ? '$25.00' : '$19.00'; });
+  })();
+
+  /* The apps' Buy buttons (e.g. MixAlign's) open <worker>/<app>/buy, which makes a Paddle transaction and
+     sends the browser here with ?_ptxn=<transaction>. Paddle's script is loaded only on a checkout, so
+     this opens that checkout. */
+  (function () {
+    var m = /[?&]_ptxn=([A-Za-z0-9_]+)/.exec(location.search);
+    if (!m) return;
+    loadPaddle().then(function (Paddle) {
+      // Paddle.js opens a ?_ptxn= checkout on its own; if it hasn't a moment later, open it here
+      setTimeout(function () {
+        if (!document.querySelector('.paddle-frame')) Paddle.Checkout.open({ transactionId: m[1], settings: { displayMode: 'overlay', theme: 'dark' } });
+      }, 1500);
+    })['catch'](function () {
+      alert('The payment window couldn’t open. Please check your connection and reload this page.');
+    });
+  })();
 
   /* ---------------- free launch month ----------------
      The license worker says whether Instrument Player's free month is
