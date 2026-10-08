@@ -148,6 +148,8 @@ a{color:var(--accent)}
 /* NB: not `.acct` — that class belongs to the account page section, whose
    padding would otherwise inflate this link and stretch the whole masthead. */
 .navlink.nav-acct{color:var(--ink);border-color:var(--rule)}
+/* apps that are out: bright like Help (owner 2026-10-08); add "nav-live" when an app launches */
+.navlink.nav-live{color:var(--ink)}
 
 /* ---------- buttons ---------- */
 .btn{
@@ -253,6 +255,10 @@ h2{
   line-height:.9;letter-spacing:-.04em;white-space:nowrap;
 }
 @media(min-width:700px){.band-price{margin-left:auto;text-align:right}}
+.band-price small{
+  display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;line-height:1.5;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px;white-space:normal;
+}
 .band-price s,.prod-price s{font-size:.45em;font-weight:700;color:var(--muted);margin-left:.3em;text-decoration-thickness:2px}
 /* the page's main picture now sits right under the title, above the boxes */
 .pagehead .shot.lead{margin-top:clamp(22px,3vw,30px)}
@@ -823,9 +829,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <span class="wordmark"><span data-copy="wm">YBK</span><i>.</i><span data-copy="wm2">Audio</span></span>
     </a>
     <nav class="nav">
-      <a class="navlink" href="#/player" data-nav="synth">Instrument Player</a>
-      <a class="navlink" href="#/432hz" data-nav="hz432">432hz</a>
-      <a class="navlink" href="#/visualize" data-nav="visualize">Visualize</a>
+      <a class="navlink nav-live" href="#/player" data-nav="synth">Instrument Player</a>
+      <a class="navlink nav-live" href="#/432hz" data-nav="hz432">432hz</a>
+      <a class="navlink nav-live" href="#/visualize" data-nav="visualize">Visualize</a>
       <a class="navlink" href="#/mixalign" data-nav="mixalign">MixAlign</a>
       <a class="navlink" href="#/beatmaker" data-nav="beatmaker">Beatmaker</a>
       <a class="navlink" href="#/multiconsole" data-nav="midside">MultiConsole</a>
@@ -843,19 +849,19 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="hero-top">
         <svg class="logo hero-mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
         <div>
-          <span class="hero-flag mono eyebrow"><span class="dot" aria-hidden="true"></span><span data-copy="flag">Instrument Player out now · Get your free license before 10/19</span></span>
+          <span class="hero-flag mono eyebrow"><span class="dot" aria-hidden="true"></span><span data-copy="flag">Launch sale</span></span>
           <h1><span data-copy="h1a">Music software</span><br><span data-copy="h1b">made simple</span><em>.</em></h1>
         </div>
       </div>
       <div class="hero-body">
         <div class="ledes">
           <p class="lede" data-copy="lede1">Making music comes with small, everyday annoyances. Booting a whole DAW just to try one synth. Guessing what key a song is in. Wanting everything your computer plays at a different pitch.</p>
-          <p class="lede strong" data-copy="lede2">Made by a fellow producer: small apps that each make one of them go away.</p>
+          <p class="lede strong" data-copy="lede2">Made by a fellow producer: made to solve our own daily problems.</p>
         </div>
         <dl class="hero-notes">
-          <div class="note"><dt data-copy="n1t">Platform</dt><dd data-copy="n1d">Windows 10 &amp; 11, and macOS (beta). Desktop applications.</dd></div>
-          <div class="note"><dt data-copy="n2t">Price</dt><dd data-copy="n2d">One code per purchase — it runs on one computer at a time and moves with you when you change computers.</dd></div>
-          <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">Instrument Player, 432hz and Visualize are out now. Beatmaker and MultiConsole are in active development.</dd></div>
+          <div class="note"><dt data-copy="n1t">Platform</dt><dd data-copy="n1d">Windows 10 &amp; 11, and macOS (beta).</dd></div>
+          <div class="note"><dt data-copy="n2t">Licensing</dt><dd data-copy="n2d">One code per purchase — it runs on one computer at a time. License transferable (once every 30 days).</dd></div>
+          <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">Instrument Player, 432hz and Visualize are out now. MixAlign, Beatmaker and MultiConsole are in active development.</dd></div>
         </dl>
       </div>
     </div>
@@ -867,14 +873,15 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="band-head">
         <div>
           <h2 data-copy="h-sp-name">Instrument Player</h2>
-          <p class="kicker" data-copy="h-sp-k">Load, Play, Recover, Edit, Export.</p>
+          <p class="kicker" data-copy="h-sp-k">Why open a DAW to play an instrument?</p>
         </div>
-        <div class="band-price"><span data-launch="active" hidden>Free <s>$10</s></span><span data-launch-hide="active upcoming">$10</span></div>
+        <div class="band-price"><span data-launch="active" hidden>Free <s>$10</s><small data-copy="h-sp-pricenote">Free launch: until 10/19</small></span><span data-launch-hide="active upcoming">$10</span></div>
       </div>
       <div class="summary">
         <div class="prose">
-          <p data-copy="h-sp-p1">Instrument Player scans the VST3 instruments already installed on your machine and opens any one of them on its own — full interface, keyboard input, audio out, nothing else in the way.</p>
-          <p data-copy="h-sp-p2">And MIDI Replay keeps the last 5 minutes of your playing without pressing Record, so the phrase you stumbled into is still there — ready to edit and export as .mid.</p>
+          <p data-copy="h-sp-p1"><b>Play your VSTs without opening the DAW.</b> Switch between massive instrument banks with little latency.</p>
+          <p data-copy="h-sp-p2"><b>No one said idea generation had to start in a heavy DAW.</b> Instrument Player helps you get closer to your instruments without having to enter work mode all the time.</p>
+          <p data-copy="h-sp-p3"><b>It remembers what you play.</b> The app provides MIDI replay, which brings back the last 5 minutes of your playing. Load up your sudden ideas and make small edits via the MIDI editor, and export the .mid file for later use.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/player"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
@@ -900,8 +907,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       </div>
       <div class="summary">
         <div class="prose">
-          <p data-copy="h-hz-p1">432hz retunes everything your PC plays, live. Choose any pitch you like — A4 = 432 Hz, the most popular choice, is where it starts.</p>
-          <p data-copy="h-hz-p2">One button switches between original and new, so you can hear the difference.</p>
+          <p data-copy="h-hz-p1">An idea from the 432Hz trend – what if you could retune your computer’s entire audio output to your liking? YBK AUDIO’s light app <b>432Hz</b> does that in a very simple and easy way.</p>
+          <p data-copy="h-hz-p2">Open the spectrum graphs to see the frequency change as the numbers go down and up. This app is great both for visual analysis, teaching and everyday listening.</p>
+          <p data-copy="h-hz-p3">Who knows, maybe hearing everything in 432Hz really is good for you.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/432hz"><span data-copy="h-hz-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
@@ -920,14 +928,15 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="band-head">
         <div>
           <h2 data-copy="h-vz-name">Visualize</h2>
-          <p class="kicker" data-copy="h-vz-k">Everything your PC plays, seen at a glance.</p>
+          <p class="kicker" data-copy="h-vz-k">The ultimate 3D Stereo Imaging tool.</p>
         </div>
-        <div class="band-price">$19 <s>$29</s></div>
+        <div class="band-price">$19 <s>$29</s><small data-copy="h-vz-pricenote">Includes 7-day free trial</small></div>
       </div>
       <div class="summary">
         <div class="prose">
-          <p data-copy="h-vz-p1">A giant full-screen audio analyser for everything your PC plays: spectrum, loudness, stereo width, notes, key and chords on one screen.</p>
-          <p data-copy="h-vz-p2">It listens to whatever your computer is playing, so there’s no plugin and nothing to set up in each app. $19 launch price until Nov 6, then $29 · 7-day free trial.</p>
+          <p data-copy="h-vz-p1">The idea came from a mixing course – what if we could <i>Visualize</i> <b>the locations of each sound in a mix?</b> The pad at the back, the bass and kicks at the bottom, mono and stereo instruments kicking in right and left, the vocals. We were working on that idea when we came up with an idea to extend a stereometer by frequency.</p>
+          <p data-copy="h-vz-p2"><b>You can find stereo imaging anywhere. But not in 3D.</b></p>
+          <p data-copy="h-vz-p3">Visualize proposes a new way of stereo image analysis. From a cylinder-shaped Vectorscope stacked up every frequency, to a monitoring environment that measures Mono loss, we provide groundbreaking 3D graphs you can use to analyze a song’s phasing. Use the app standalone or as a plugin.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/visualize"><span data-copy="h-vz-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
@@ -946,14 +955,14 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="band-head">
         <div>
           <h2 data-copy="h-mx-name">MixAlign</h2>
-          <p class="kicker" data-copy="h-mx-k">Every mix and master, lined up to the sample.</p>
+          <p class="kicker" data-copy="h-mx-k">Compare every version of your song, aligned to the sample.</p>
         </div>
-        <div class="band-price">$19 <s>$25</s></div>
+        <div class="band-price">$19 <s>$25</s><small data-copy="h-mx-pricenote">Includes 7-day free trial</small></div>
       </div>
       <div class="summary">
         <div class="prose">
-          <p data-copy="h-mx-p1">Drop in every version of a song — mixes, masters, the reference — and MixAlign lines them up to the sample, even when they start at different times. Switch between them instantly, at the same loudness, without a gap.</p>
-          <p data-copy="h-mx-p2">Hear exactly what changed with NULL and DIFF, see it in plain words, run a blind test, and check the master before it goes out. $19 until 30 November, then $25, with a 7-day free trial. Windows, and Mac (beta).</p>
+          <p data-copy="h-mx-p1"><b>Switch instantaneously between different versions to hear differences.</b> One click and you will be hearing another version of your mix with no delay – all easily possible because we auto-align your uploaded mixes with beat detection. Also you can check the analysis panel, which provides written description on differences between versions. The app provides difference/null buttons to hear just the differences, so you can check and compare yourself.</p>
+          <p data-copy="h-mx-p2"><b>Blind test &amp; Annotate.</b> Hide track names and test your decision on what’s better. Rate each track you go through with stars to come back to them. When you’re sure on what you think is best, make the big reveal to find out which track to share. Also while sharing, you can leave your thoughts on the timeline of each track and export them as PDF for whoever to see.</p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/mixalign"><span data-copy="h-mx-cta">Get now</span><span aria-hidden="true">→</span></a>
           </div>
@@ -973,13 +982,15 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="band-head">
         <div>
           <h2 data-copy="h-bm-name">Beatmaker</h2>
-          <p class="kicker" data-copy="h-bm-k">An easy-to-use DAW, just for beat design.</p>
+          <p class="kicker" data-copy="h-bm-k">The easiest DAW for beatmaking</p>
         </div>
+        <div class="band-price">$20</div>
       </div>
       <div class="summary">
         <div class="prose">
-          <p data-copy="h-bm-p1">Pick a genre, press Generate, and get drums, bass, chords and melody built from the samples already on your PC — sorted for you, never moved.</p>
-          <p data-copy="h-bm-p2">Then keep changing it: shuffle sounds, regroove, swap chords, lock what works. Export audio, stems or MIDI when the idea lands.</p>
+          <p data-copy="h-bm-p1"><b>Simplistic beat programming.</b></p>
+          <p data-copy="h-bm-p2"><b>Generate MIDI patterns and chords.</b></p>
+          <p data-copy="h-bm-p3"><b>No samples? Don’t worry, we provide a 5000+ sounds bank you can use without further purchase.</b></p>
           <div class="sum-actions btnrow">
             <a class="btn" href="#/beatmaker"><span data-copy="h-bm-cta">Learn more</span><span aria-hidden="true">→</span></a>
           </div>
@@ -1001,6 +1012,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h2 data-copy="h-ms-name">MultiConsole</h2>
           <p class="kicker" data-copy="h-ms-k">Live mixing console for your PC audio.</p>
         </div>
+        <div class="band-price">$10</div>
       </div>
       <div class="summary">
         <div class="prose">
@@ -1099,8 +1111,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         </div>
         <div class="prod-price">
           <span data-copy="sp-price" data-launch-hide="active upcoming">$10</span>
-          <span data-launch="active" hidden data-copy="sp-price-free">Free</span>
-          <small data-copy="sp-price-sub">One-time · One license · One computer at a time</small>
+          <span data-launch="active" hidden data-copy="sp-price-free">Free <s>$10</s></span>
+          <small data-copy="sp-price-sub">One computer at a time</small>
         </div>
       </div>
 
@@ -1538,7 +1550,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
        5. demo video if there is one, then the explanation, features, pictures, spec table.
      Apps still in development: title (no price) and picture only; no purchase/download box.
      Home page product blocks: name + kicker left, price tag right ("Free <s>$10</s>",
-     "$19 <s>$29</s>"; none while in development), one "Get now" button.
+     "$19 <s>$29</s>"; apps in development show their set price, e.g. "$20"), one button.
+     Top nav: launched apps get class "nav-live" (bright like Help); unlaunched ones stay dim.
      ================================================================================= -->
 <!-- ==================== MIDSIDE ==================== -->
 <div data-page="midside" hidden>
