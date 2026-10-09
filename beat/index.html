@@ -49,7 +49,7 @@ h1{text-wrap:balance;font-size:clamp(26px,5vw,40px);line-height:1.15;margin:0 0 
 .chord b{font-size:18px}
 .chord select{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
 .gridwrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px}
-.grid{display:grid;grid-template-columns:168px repeat(16,minmax(26px,1fr)) auto;gap:4px;min-width:780px}
+.grid{display:grid;grid-template-columns:194px repeat(16,minmax(26px,1fr)) auto;gap:4px;min-width:806px}
 .rowlab{display:flex;align-items:center;gap:6px;font-size:13px;white-space:nowrap;position:sticky;left:0;z-index:1;background:var(--panel);padding-right:4px}
 .rowlab .name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;line-height:1.15}
 .rowlab .name small{display:block;color:var(--muted);font-size:11px;overflow:hidden;text-overflow:ellipsis}
@@ -87,6 +87,7 @@ body.noscroll{overflow:hidden}
 .rowlab .name.cyc{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}
 .mute{border:1px solid var(--line);background:none;border-radius:5px;width:22px;height:20px;font-size:11px;cursor:pointer;color:var(--muted);padding:0}
 .mute.on{background:#c0392b;color:#fff;border-color:#c0392b}
+.mute.solo.on{background:var(--hat);color:#1a1606;border-color:var(--hat)}
 .vol{width:44px;accent-color:var(--muted)}
 .cell{height:30px;border-radius:5px;background:var(--panel2);border:0;cursor:pointer;padding:0}
 .cell.beat{background:#262a2f}
@@ -99,6 +100,7 @@ body.noscroll{overflow:hidden}
 .sec.now{border-color:var(--accent);color:var(--text)}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center}
 .note{color:var(--muted);font-size:13px;margin-top:18px}
+.gridhint{margin:6px 2px 0;color:var(--muted);font-size:12px}
 .toast{z-index:30;position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--line);padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.show{opacity:1}
 .loading{color:var(--muted);font-size:14px;margin-top:10px;min-height:1.4em}
@@ -139,6 +141,7 @@ body.noscroll{overflow:hidden}
     <div class="chordhead"><span data-t="progs">Chords</span><button class="btn small" id="newProg" data-t="newProg">New chord progression</button></div>
     <div class="chords" id="chords"></div>
     <div class="gridwrap"><div class="grid" id="grid"></div></div>
+    <p class="gridhint" data-t="cellTip">Click: note on/off · Right-click: soft note</p>
     <div class="song" id="song"></div>
 
     <div class="actions">

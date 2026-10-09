@@ -21,7 +21,7 @@ const T = {
     presets: { warm: 'Warm keys', bright: 'Bright bell keys', organ: 'Organ', pluck: 'Pluck', pad: 'Soft pad' },
     previewOn: 'Preview in loop: on', previewOff: 'Preview in loop: off', hintOn: 'Tap a sound to hear it in your loop.', hintOff: 'Tap a sound to hear it on its own.',
     useThis: 'Use this sound', cancel: 'Cancel', all: 'All', kitDefault: 'kit sound', uploaded: 'Your sound is in', uploadFail: 'That file could not be read as audio. Try a WAV or MP3.',
-    progs: 'Chords', newProg: 'New chord progression', makeSong: 'Make full track', backLoop: 'Back to loop',
+    cellTip: 'Click: note on/off · Right-click: soft note', progs: 'Chords', newProg: 'New chord progression', makeSong: 'Make full track', backLoop: 'Back to loop',
     examples: ['lo-fi drums with warm piano', 'dark trap 140 bpm', 'happy house for a summer video', 'dusty 90s boom bap, jazzy', 'driving techno, minimal'],
     tags: { warm: 'warm keys', bright: 'bright keys', vinyl: 'vinyl', jazzy: 'jazzy chords', busy: 'busier drums', sparse: 'laid back' },
   },
@@ -43,7 +43,7 @@ const T = {
     presets: { warm: '따뜻한 건반', bright: '맑은 벨 건반', organ: '오르간', pluck: '플럭', pad: '부드러운 패드' },
     previewOn: '루프에서 미리듣기: 켜짐', previewOff: '루프에서 미리듣기: 꺼짐', hintOn: '소리를 누르면 내 루프에 넣어서 들려줘요.', hintOff: '소리를 누르면 그 소리만 들려줘요.',
     useThis: '이 소리 쓰기', cancel: '취소', all: '전체', kitDefault: '키트 기본', uploaded: '내 소리로 바꿨어요', uploadFail: '오디오 파일로 읽을 수 없어요. WAV나 MP3로 올려 주세요.',
-    progs: '코드진행', newProg: '다른 코드진행', makeSong: '완성곡 만들기', backLoop: '루프로 돌아가기',
+    cellTip: '클릭: 노트 켜기/끄기 · 우클릭: 약한 노트', progs: '코드진행', newProg: '다른 코드진행', makeSong: '완성곡 만들기', backLoop: '루프로 돌아가기',
     examples: ['따뜻한 피아노 로파이', '어두운 트랩 140', '여름 영상용 밝은 하우스', '재즈풍 90년대 붐뱁', '미니멀 테크노'],
     tags: { warm: '따뜻한 건반', bright: '밝은 건반', vinyl: 'LP 잡음', jazzy: '재즈 코드', busy: '꽉 찬 드럼', sparse: '여유로운 드럼' },
   },
@@ -370,7 +370,8 @@ function playKey(c, out, midi, time, dur, vel, voice) {
 // Schedules one 16th step. `bar` is the absolute bar index; `rows` (optional) limits which rows sound.
 function scheduleStep(c, out, st, kit, bar, step, time, rows, sectionGain) {
   const sd = 60 / st.bpm / 4;
-  const live = (k) => !st.mute[k] && (!rows || rows.includes(k));
+  const anySolo = st.solo && Object.values(st.solo).some(Boolean);
+  const live = (k) => !st.mute[k] && (!anySolo || st.solo[k]) && (!rows || rows.includes(k));
   const vel = (k, v) => v * st.vol[k] * (sectionGain ?? 1);
   const deg = st.prog[bar % 4]; const notes = chordNotes(st, deg);
   for (const k of DRUMS) {
@@ -453,13 +454,14 @@ async function render(bars, song) {
   const sr = 44100, sd = 60 / S.bpm / 4, tail = 2.5;
   const len = Math.ceil((bars * 16 * sd + tail) * sr);
   const oc = new OfflineAudioContext(2, len, sr); const m = buildMaster(oc, oc.destination);
+  const full = { ...S, solo: {} }; // exports ignore solo so a forgotten S never ships a one-instrument track
   if (S.vinyl) { const v = oc.createBufferSource(); v.buffer = vinylBuffer(oc); v.loop = true; const hp = oc.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 700; const g = oc.createGain(); g.gain.value = 0.5; v.connect(hp); hp.connect(g); g.connect(m); v.start(0); v.stop(bars * 16 * sd + 0.5); }
   for (let bar = 0; bar < bars; bar++) {
     let rows = null, gain = 1;
     if (song) { const sp = songPos(bar); rows = sp.sec.rows; if (sp.sec.fade) gain = 1 - sp.inBar / sp.sec.bars * 0.8; }
     for (let step = 0; step < 16; step++) {
       const t0 = (bar * 16 + step) * sd + 0.01;
-      scheduleStep(oc, m, S, kit, bar, step, stepTime(S, step, t0), rows, gain);
+      scheduleStep(oc, m, full, kit, bar, step, stepTime(S, step, t0), rows, gain);
     }
   }
   const buf = await oc.startRendering();
@@ -543,23 +545,33 @@ const ICONS = {
   upload: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>',
   browse: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/></svg>',
 };
+const SOFT = 0.45;
+function audible(k) { const anySolo = Object.values(S.solo).some(Boolean); return !S.mute[k] && (!anySolo || S.solo[k]); }
+function cellClass(i, v) { return 'cell' + (i % 4 === 0 ? ' beat' : '') + (v >= 0.75 ? ' on' : v > 0 ? ' ghost' : ''); }
 function renderGrid() {
   const g = $('grid'); g.innerHTML = '';
   for (const k of ROWS) {
     const lab = document.createElement('div'); lab.className = 'rowlab';
     const nm = t('rows')[k];
-    lab.innerHTML = `<button class="mute ${S.mute[k] ? 'on' : ''}" title="Mute" aria-label="Mute ${nm}">M</button><span class="dot" style="background:${COLORS[k]}"></span><span class="name">${nm}<small>${soundLabel(S, k)}</small></span>`;
+    lab.innerHTML = `<button class="mute ${S.mute[k] ? 'on' : ''}" title="Mute" aria-label="Mute ${nm}">M</button><button class="mute solo ${S.solo[k] ? 'on' : ''}" title="Solo" aria-label="Solo ${nm}">S</button><span class="dot" style="background:${COLORS[k]}"></span><span class="name">${nm}<small>${soundLabel(S, k)}</small></span>`;
     const vol = document.createElement('input'); vol.type = 'range'; vol.className = 'vol'; vol.min = 0; vol.max = 1.2; vol.step = 0.05; vol.value = S.vol[k]; vol.setAttribute('aria-label', nm);
     vol.oninput = () => { S.vol[k] = Number(vol.value); save(); };
     lab.appendChild(vol);
     lab.querySelector('.mute').onclick = () => { S.mute[k] = !S.mute[k]; changed(); renderGrid(); };
+    lab.querySelector('.solo').onclick = () => { S.solo[k] = !S.solo[k]; save(); renderGrid(); };
     g.appendChild(lab);
     for (let i = 0; i < 16; i++) {
       const c = document.createElement('button'); const v = S.pat[k][i];
-      c.className = 'cell' + (i % 4 === 0 ? ' beat' : '') + (v >= 0.75 ? ' on' : v > 0 ? ' ghost' : '');
+      c.className = cellClass(i, v); c.title = t('cellTip');
       c.style.setProperty('--c', COLORS[k]); c.dataset.s = i; c.setAttribute('aria-label', `${nm} ${i + 1}`);
-      c.onclick = () => { S.pat[k][i] = S.pat[k][i] ? 0 : 1; changed(); c.className = 'cell' + (i % 4 === 0 ? ' beat' : '') + (S.pat[k][i] ? ' on' : ''); if (!playing) previewRow(k, i); };
-      if (S.mute[k]) c.style.opacity = 0.35;
+      // Left click: full note on/off. Right click (or long press on touch): soft note on/off.
+      const setCell = (val) => { S.pat[k][i] = val; changed(); c.className = cellClass(i, val); if (val && !playing) previewRow(k, i); };
+      c.onclick = () => { if (c.dataset.lp) { delete c.dataset.lp; return; } setCell(S.pat[k][i] >= 0.75 ? 0 : 1); };
+      c.oncontextmenu = (e) => { e.preventDefault(); setCell(S.pat[k][i] > 0 && S.pat[k][i] < 0.75 ? 0 : SOFT); };
+      let lp = null;
+      c.addEventListener('touchstart', () => { lp = setTimeout(() => { c.dataset.lp = '1'; setCell(S.pat[k][i] > 0 && S.pat[k][i] < 0.75 ? 0 : SOFT); }, 450); }, { passive: true });
+      ['touchend', 'touchmove', 'touchcancel'].forEach((ev) => c.addEventListener(ev, () => clearTimeout(lp), { passive: true }));
+      if (!audible(k)) c.style.opacity = 0.35;
       g.appendChild(c);
     }
     const tools = document.createElement('div'); tools.className = 'rowtools';
@@ -696,7 +708,7 @@ function renderSong() {
 }
 async function previewRow(k, i) {
   await ensureAudio(); await ensureSounds(S); const kit = kitCache[S.kit]; const tm = ctx.currentTime + 0.02;
-  const solo = { ...S, mute: {}, pat: {} }; for (const r of ROWS) solo.pat[r] = Array(16).fill(0); solo.pat[k][i] = 1;
+  const solo = { ...S, mute: {}, solo: {}, pat: {} }; for (const r of ROWS) solo.pat[r] = Array(16).fill(0); solo.pat[k][i] = 1;
   scheduleStep(ctx, master, solo, kit, 0, i, tm, null);
 }
 let editSent = false;
@@ -705,7 +717,7 @@ function changed() {
   save(); if (!editSent) { editSent = true; track('first_edit', { genre: S.genre }); }
 }
 function load(st) {
-  S = st; S.mute = S.mute || {}; S.playmode = S.playmode || 'loop'; S.snd = S.snd || {};
+  S = st; S.mute = S.mute || {}; S.solo = S.solo || {}; S.playmode = S.playmode || 'loop'; S.snd = S.snd || {};
   for (const r in S.snd) if (S.snd[r].t === 'up' && !uploads[r]) delete S.snd[r]; // uploads live only in this tab
   renderResume(); renderStudio(); renderActions(); save();
 }
