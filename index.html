@@ -279,6 +279,9 @@ h2{
 .pagehead .shot.lead{margin-top:clamp(22px,3vw,30px)}
 /* the licence note and the "keeps working / move it" lists, right under the pricing box */
 .lic-box{margin-top:clamp(14px,2vw,18px);display:grid;gap:14px}
+/* "Notify me when it's out" under an unreleased app's Pricing / Purchase box (owner 2026-10-10) */
+.notify-row{margin-top:clamp(14px,2vw,18px)}
+@media(max-width:699px){.notify-row .btn{width:100%;justify-content:center}}
 /* 432hz "name your price" under its download buttons */
 .hz-tip{margin-top:clamp(14px,2vw,18px);border:1px solid var(--rule);background:var(--surface);padding:clamp(18px,3vw,28px)}
 .hz-tip>.field{display:grid;gap:10px;max-width:520px}
@@ -1570,7 +1573,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
      page's; a struck original price is red; the licence note + "keeps working / move it" lists
      sit in their own box (.lic-box) below the download box (no download box yet: after the pricing box);
      the explanation is the home text on the left and "Why get it" on the right (.explain).
-     In-development apps: price shown, "Pricing" box (Email me when it's out) under the picture.
+     In-development apps: price shown, "Pricing" box under the picture, and right under it a
+     "Notify me when it's out" button (.notify-row, data-waitlist -> worker /waitlist); it goes
+     away when the app launches, together with the real buy/download buttons.
      Apps still in development: title (no price) and picture only; no purchase/download box.
      Sale prices: the small line under the price says until when first, then the trial
      ("Launch price until Nov 6 · Not sure? Try our 7-day free trial"), on home and app page alike.
@@ -1615,7 +1620,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div class="buy-side">
           <div class="buy-total"><span data-copy="ms-soon-l">Status</span><b data-copy="ms-soon">In development</b></div>
           <p class="fineprint" data-copy="ms-soon-p">MultiConsole is still being built, so it isn't for sale yet. There is no way to pay for it until it's finished.</p>
-          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MultiConsole%20is%20out" data-waitlist="console"><span data-copy="ms-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
         </div>
 
 
@@ -1629,8 +1633,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <li data-copy="ms-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
             <li data-copy="ms-co-3">Licensing is switched on, so a purchase issues a code that runs on one computer at a time and moves with you.</li>
           </ol>
-          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MultiConsole%20is%20for%20sale" data-waitlist="console" data-copy="ms-co-cta">Email me when MultiConsole goes on sale →</a></p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MultiConsole%20is%20for%20sale" data-waitlist="console" data-copy="ms-co-cta">Notify me when MultiConsole is out →</a></p>
         </div>
+      </div>
+      <!-- launch-notify: goes away when the app launches (with the real buy/download buttons) -->
+      <div class="notify-row">
+        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MultiConsole%20is%20out" data-waitlist="console"><span data-copy="ms-notify-btn">Notify me when it’s out</span><span aria-hidden="true">→</span></a>
       </div>
 
       <div class="lic-box">
@@ -2207,7 +2215,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <div class="buy-side">
           <div class="buy-total"><span data-copy="bm-soon-l">Status</span><b data-copy="bm-soon">In development</b></div>
           <p class="fineprint" data-copy="bm-soon-p">Beatmaker is still being built, so it isn't for sale yet. There is no way to pay for it until it's finished.</p>
-          <a class="btn ghost" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20out" data-waitlist="beatmaker"><span data-copy="bm-soon-btn">Email me when it's out</span><span aria-hidden="true">→</span></a>
         </div>
 
 
@@ -2221,8 +2228,12 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
             <li data-copy="bm-co-2">A checkout provider is connected, so card details go to them and never to us.</li>
             <li data-copy="bm-co-3">Licensing is switched on, so a purchase issues a code that runs on one computer at a time and moves with you.</li>
           </ol>
-          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20for%20sale" data-waitlist="beatmaker" data-copy="bm-co-cta">Email me when Beatmaker goes on sale →</a></p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20for%20sale" data-waitlist="beatmaker" data-copy="bm-co-cta">Notify me when Beatmaker is out →</a></p>
         </div>
+      </div>
+      <!-- launch-notify: goes away when the app launches (with the real buy/download buttons) -->
+      <div class="notify-row">
+        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20out" data-waitlist="beatmaker"><span data-copy="bm-notify-btn">Notify me when it’s out</span><span aria-hidden="true">→</span></a>
       </div>
 
       <div class="lic-box">
@@ -2497,7 +2508,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     <div class="wrap">
       <a class="backlink" href="#/"><span aria-hidden="true">←</span><span>Home</span></a>
       <h2 style="margin-top:20px">Privacy Policy</h2>
-      <p class="legal-meta">Last updated 9 October 2026</p>
+      <p class="legal-meta">Last updated 10 October 2026</p>
 
       <div class="legal-body">
         <p class="callout">Short version: we collect what it takes to sell and license the Software, to keep the free launch to one license per person, and to see whether our emails arrive and how many people use the app. Detailed app usage statistics are sent only if you say yes in the app. We never sell personal data, use no advertising trackers and no cookies of our own, and never receive your audio, MIDI or files.</p>
@@ -2508,6 +2519,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <h3>2. What we collect, when, and why</h3>
         <ul>
           <li><b>When you buy.</b> Paddle, our Merchant of Record, collects your name, email address, country, postal code where required, and payment details. Paddle keeps your card details; we never receive them. We receive your email address, the product, the order number, the amount paid out to us, and any later refund or chargeback, so we can deliver your license, keep sales records and handle problems.</li>
+          <li><b>When you ask us to tell you when an app is out.</b> Your email address, which app(s) you picked, the page you signed up on, the link that sent you (if any) and your country (worked out by Cloudflare). We use it only to send a confirmation and one email when that app is ready to buy — nothing else, and it is never shared. To be taken off the list, reply to any of our emails or write to us.</li>
           <li><b>When you download 432hz.</b> Nothing about you: 432hz is a free download with no sign-up and no email. The download button is counted anonymously, like other clicks (see “When you visit this website”). If you choose to name a price, Paddle’s checkout asks for your email address for the receipt. If you then pay, we keep a record of the payment with that email address, as with any purchase, and send you one thank-you email; it is not added to any mailing list.</li>
           <li><b>When you claim a free launch license.</b> Your email address; the website or link that sent you to us and its campaign tag, if any; the first page you saw; the random visit number described below; your browser language; whether you use a phone or a computer; your country and time zone (worked out by Cloudflare from the connection); and your <b>IP address</b>. We also record the IP address that opens the confirmation link (often your email provider’s link scanner rather than you). The email address receives the confirmation link, the code, one email about two weeks later asking how the Software works for you, and a few short reminders before the free month ends — each with an unsubscribe link. The IP addresses let us keep the free launch to <b>one license per person</b>: without them, one person could collect many licenses under different email addresses and sell them. If you choose to pay through “name your price”, Paddle handles that payment as described above.</li>
           <li><b>When we email you.</b> Our email provider, Resend, tells us whether each email was delivered, delayed, bounced or marked as spam, so we notice when a license code doesn’t arrive. We do not track whether you open emails or click links in them.</li>
