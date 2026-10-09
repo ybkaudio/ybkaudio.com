@@ -2046,7 +2046,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <div class="buy-total"><span data-copy="mx-total-l">Total today</span><b data-mx-price>$19.00</b></div>
           <!-- The worker picks the price by date ($19 until Nov 30, then $25), makes the Paddle
                transaction and comes back here with ?_ptxn=, which opens the checkout (script below). -->
-          <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below.
+          <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below, and remove the "Notify me when it’s out" row under this box.
 <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/mixalign/buy">
             <span data-copy="mx-buy-btn">Purchase</span><span aria-hidden="true">→</span>
           </a>
@@ -2062,6 +2062,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <p data-copy="mx-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20MixAlign" data-copy="mx-co-cta">Still not working? Email us →</a></p>
         </div>
+      </div>
+      <!-- launch-notify: on launch day (10/27) remove this together with turning on the real
+           buy/download buttons ("MixAlign 버튼 켜") -->
+      <div class="notify-row">
+        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MixAlign%20is%20out" data-waitlist="mixalign"><span data-copy="mx-notify-btn">Notify me when it’s out</span><span aria-hidden="true">→</span></a>
       </div>
       <div class="lic-box">
         <p class="licnote" data-copy="mx-lic"><b>One computer at a time.</b> Your code runs on one computer at a time. Changing computers? Open About in MixAlign on the old one and press Release license, then enter the code on the new one. If the old computer has broken down, write to us and we’ll release it for you.</p>
@@ -2691,6 +2696,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <legend data-copy="wl-apps">Which apps?</legend>
       <label><input type="checkbox" name="products" value="beatmaker"> Beatmaker</label>
       <label><input type="checkbox" name="products" value="console"> MultiConsole</label>
+      <label><input type="checkbox" name="products" value="mixalign"> MixAlign</label>
     </fieldset>
     <div class="field">
       <label for="wl-email" data-copy="wl-email-label">Your email</label>
