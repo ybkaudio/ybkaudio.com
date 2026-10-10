@@ -49,7 +49,7 @@ h1{text-wrap:balance;font-size:clamp(26px,5vw,40px);line-height:1.15;margin:0 0 
 .chord b{font-size:18px}
 .chord select{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
 .gridwrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px}
-.grid{display:grid;grid-template-columns:194px repeat(16,minmax(26px,1fr)) auto;gap:4px;min-width:806px}
+.grid{display:grid;grid-template-columns:194px repeat(16,minmax(26px,1fr)) auto;gap:4px;min-width:840px}
 .rowlab{display:flex;align-items:center;gap:6px;font-size:13px;white-space:nowrap;position:sticky;left:0;z-index:1;background:var(--panel);padding-right:4px}
 .rowlab .name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;line-height:1.15}
 .rowlab .name small{display:block;color:var(--muted);font-size:11px;overflow:hidden;text-overflow:ellipsis}
@@ -100,6 +100,17 @@ body.noscroll{overflow:hidden}
 .sec.now{border-color:var(--accent);color:var(--text)}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center}
 .note{color:var(--muted);font-size:13px;margin-top:18px}
+.tool.del:hover{color:#e8775c;border-color:#e8775c}
+.addrow{grid-column:1/-1;display:flex;flex-direction:column;gap:8px;margin-top:2px}
+.addbtn{height:32px;border:1px dashed var(--line);border-radius:6px;background:none;color:var(--muted);cursor:pointer;font-weight:600;text-align:left;padding:0 12px;position:sticky;left:0}
+.addbtn:hover,.addbtn[aria-expanded=true]{color:var(--text);border-color:var(--muted)}
+.addbtn span{font-size:18px;margin-right:4px}
+.addmenu{display:flex;flex-wrap:wrap;gap:6px;position:sticky;left:0;max-width:calc(100vw - 64px)}
+.addmenu .chip{display:flex;align-items:center;gap:6px;color:var(--text)}
+.addmenu .dot{width:8px;height:8px;border-radius:50%}
+.chip small{color:inherit;opacity:.6;font-size:11px}
+.toast.act{pointer-events:auto;display:flex;gap:12px;align-items:center}
+.toast button{background:none;border:0;color:var(--accent);font-weight:700;cursor:pointer;padding:0}
 .gridhint{margin:6px 2px 0;color:var(--muted);font-size:12px}
 .toast{z-index:30;position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--line);padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.show{opacity:1}

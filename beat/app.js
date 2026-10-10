@@ -13,7 +13,7 @@ const T = {
     heard: 'Heard:', loop: 'Loop', songMode: 'Full track', resume: 'Continue your last beat',
     loading: 'Loading sounds…', rendering: 'Rendering…', copied: 'Link copied', saved: 'Saved',
     noMatch: 'No style word found, starting with lo-fi. Try "trap", "house", "boom bap" or "techno".',
-    rows: { kick: 'Kick', snare: 'Snare', clap: 'Clap', hat: 'Hi-hat', ohat: 'Open hat', perc: 'Perc', bass: '808 Bass', keys: 'Keys' },
+    rows: { kick: 'Kick', snare: 'Snare', clap: 'Clap', hat: 'Hi-hat', ohat: 'Open hat', perc: 'Perc', bass: '808 Bass', keys: 'Keys', rim: 'Rim', shaker: 'Shaker', conga: 'Conga', cowbell: 'Cowbell', tambourine: 'Tambourine', tom: 'Tom', crash: 'Crash', ride: 'Ride' },
     perc: { rim: 'Rim', shaker: 'Shaker', conga: 'Conga', ride: 'Ride' },
     secs: { intro: 'Intro', main: 'Main', break: 'Break', outro: 'Outro' },
     major: 'major', minor: 'minor', bar: 'Bar',
@@ -21,6 +21,7 @@ const T = {
     presets: { warm: 'Warm keys', bright: 'Bright bell keys', organ: 'Organ', pluck: 'Pluck', pad: 'Soft pad' },
     previewOn: 'Preview in loop: on', previewOff: 'Preview in loop: off', hintOn: 'Tap a sound to hear it in your loop.', hintOff: 'Tap a sound to hear it on its own.',
     useThis: 'Use this sound', cancel: 'Cancel', all: 'All', kitDefault: 'kit sound', uploaded: 'Your sound is in', uploadFail: 'That file could not be read as audio. Try a WAV or MP3.',
+    addTrack: 'Add track', delTrack: 'Delete track', deleted: 'Track deleted', undo: 'Undo',
     cellTip: 'Click: note on/off · Right-click: soft note', progs: 'Chords', newProg: 'New chord progression', makeSong: 'Make full track', backLoop: 'Back to loop',
     examples: ['lo-fi drums with warm piano', 'dark trap 140 bpm', 'happy house for a summer video', 'dusty 90s boom bap, jazzy', 'driving techno, minimal'],
     tags: { warm: 'warm keys', bright: 'bright keys', vinyl: 'vinyl', jazzy: 'jazzy chords', busy: 'busier drums', sparse: 'laid back' },
@@ -35,7 +36,7 @@ const T = {
     heard: '이렇게 이해했어요:', loop: '루프', songMode: '완성곡', resume: '지난번 비트 이어서 하기',
     loading: '소리 불러오는 중…', rendering: '만드는 중…', copied: '링크를 복사했어요', saved: '저장됨',
     noMatch: '장르 단어가 없어서 로파이로 시작했어요. "트랩", "하우스", "붐뱁", "테크노"도 써 보세요.',
-    rows: { kick: '킥', snare: '스네어', clap: '클랩', hat: '하이햇', ohat: '오픈햇', perc: '퍼크', bass: '808 베이스', keys: '건반' },
+    rows: { kick: '킥', snare: '스네어', clap: '클랩', hat: '하이햇', ohat: '오픈햇', perc: '퍼크', bass: '808 베이스', keys: '건반', rim: '림', shaker: '셰이커', conga: '콩가', cowbell: '카우벨', tambourine: '탬버린', tom: '탐', crash: '크래시', ride: '라이드' },
     perc: { rim: '림', shaker: '셰이커', conga: '콩가', ride: '라이드' },
     secs: { intro: '인트로', main: '메인', break: '브레이크', outro: '아웃트로' },
     major: '장조', minor: '단조', bar: '마디',
@@ -43,6 +44,7 @@ const T = {
     presets: { warm: '따뜻한 건반', bright: '맑은 벨 건반', organ: '오르간', pluck: '플럭', pad: '부드러운 패드' },
     previewOn: '루프에서 미리듣기: 켜짐', previewOff: '루프에서 미리듣기: 꺼짐', hintOn: '소리를 누르면 내 루프에 넣어서 들려줘요.', hintOff: '소리를 누르면 그 소리만 들려줘요.',
     useThis: '이 소리 쓰기', cancel: '취소', all: '전체', kitDefault: '키트 기본', uploaded: '내 소리로 바꿨어요', uploadFail: '오디오 파일로 읽을 수 없어요. WAV나 MP3로 올려 주세요.',
+    addTrack: '트랙 추가', delTrack: '트랙 삭제', deleted: '트랙을 지웠어요', undo: '되돌리기',
     cellTip: '클릭: 노트 켜기/끄기 · 우클릭: 약한 노트', progs: '코드진행', newProg: '다른 코드진행', makeSong: '완성곡 만들기', backLoop: '루프로 돌아가기',
     examples: ['따뜻한 피아노 로파이', '어두운 트랩 140', '여름 영상용 밝은 하우스', '재즈풍 90년대 붐뱁', '미니멀 테크노'],
     tags: { warm: '따뜻한 건반', bright: '밝은 건반', vinyl: 'LP 잡음', jazzy: '재즈 코드', busy: '꽉 찬 드럼', sparse: '여유로운 드럼' },
@@ -85,16 +87,20 @@ const PROGS = {
   minor: [[0, 5, 2, 6], [0, 3, 6, 2], [5, 6, 0, 0], [0, 6, 5, 6], [3, 4, 0, 0], [0, 3, 0, 5]],
 };
 const DRUMS = ['kick', 'snare', 'clap', 'hat', 'ohat', 'perc'];
-const ROWS = [...DRUMS, 'bass', 'keys'];
-const COLORS = { kick: 'var(--kick)', snare: 'var(--snare)', clap: 'var(--clap)', hat: 'var(--hat)', ohat: 'var(--ohat)', perc: 'var(--perc)', bass: 'var(--bass)', keys: 'var(--keys)' };
-const DEF_VOL = { kick: 1, snare: 0.8, clap: 0.65, hat: 0.45, ohat: 0.4, perc: 0.45, bass: 0.8, keys: 0.55 };
-// Full-track arrangement: which rows play in each section.
+const ROWS = [...DRUMS, 'bass', 'keys']; // the tracks a new beat starts with
+const DRUM_TYPES = ['kick', 'snare', 'clap', 'hat', 'ohat', 'perc', 'rim', 'shaker', 'conga', 'cowbell', 'tambourine', 'tom', 'crash', 'ride'];
+const TYPES = [...DRUM_TYPES, 'bass', 'keys'];
+const COLORS = { kick: 'var(--kick)', snare: 'var(--snare)', clap: 'var(--clap)', hat: 'var(--hat)', ohat: 'var(--ohat)', perc: 'var(--perc)', bass: 'var(--bass)', keys: 'var(--keys)',
+  rim: 'var(--perc)', shaker: 'var(--perc)', conga: 'var(--snare)', cowbell: 'var(--hat)', tambourine: 'var(--ohat)', tom: 'var(--kick)', crash: 'var(--ohat)', ride: 'var(--hat)' };
+const DEF_VOL = { kick: 1, snare: 0.8, clap: 0.65, hat: 0.45, ohat: 0.4, perc: 0.45, bass: 0.8, keys: 0.55,
+  rim: 0.5, shaker: 0.4, conga: 0.55, cowbell: 0.4, tambourine: 0.4, tom: 0.7, crash: 0.4, ride: 0.35 };
+// Full-track arrangement: which instrument types play in each section (null = everything).
 const SONG = [
-  { id: 'intro', bars: 4, rows: ['keys', 'hat', 'perc'] },
-  { id: 'main', bars: 8, rows: ROWS },
-  { id: 'break', bars: 4, rows: ['keys', 'bass', 'hat', 'perc', 'ohat'] },
-  { id: 'main', bars: 8, rows: ROWS },
-  { id: 'outro', bars: 4, rows: ['keys', 'perc'], fade: true },
+  { id: 'intro', bars: 4, rows: ['keys', 'hat', 'perc', 'shaker', 'rim', 'ride'] },
+  { id: 'main', bars: 8, rows: null },
+  { id: 'break', bars: 4, rows: ['keys', 'bass', 'hat', 'perc', 'ohat', 'shaker', 'rim', 'conga', 'ride', 'tambourine'] },
+  { id: 'main', bars: 8, rows: null },
+  { id: 'outro', bars: 4, rows: ['keys', 'perc', 'shaker'], fade: true },
 ];
 const SONG_BARS = SONG.reduce((a, s) => a + s.bars, 0);
 
@@ -103,7 +109,11 @@ function rngFrom(seed) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5)
 const has = (s, list) => list.some((w) => s.includes(w));
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const $ = (id) => document.getElementById(id);
-function toast(msg) { const el = $('toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('show'), 1800); }
+function toast(msg, action, fn) {
+  const el = $('toast'); el.textContent = msg; el.classList.toggle('act', !!action);
+  if (action) { const b = document.createElement('button'); b.textContent = action; b.onclick = () => { el.classList.remove('show'); fn(); }; el.appendChild(b); }
+  el.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('show'), action ? 6000 : 1800);
+}
 
 // ---------- metrics (first sound / return / export), local + Vercel analytics if present ----------
 function track(name, props = {}) {
@@ -220,7 +230,6 @@ function chordName(st, deg) {
 
 // ---------- audio ----------
 let ctx = null, master = null;
-const kitCache = {};
 async function loadBuf(c, url) { const res = await fetch(url); const ab = await res.arrayBuffer(); return await c.decodeAudioData(ab); }
 async function ensureAudio() {
   if (!ctx) {
@@ -233,13 +242,6 @@ function buildMaster(c, dest) {
   const comp = c.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 3; comp.attack.value = 0.005; comp.release.value = 0.15;
   const g = c.createGain(); g.gain.value = 0.85; g.connect(comp); comp.connect(dest); return g;
 }
-async function loadKit(kit) {
-  if (kitCache[kit]) return kitCache[kit];
-  const names = ['kick', 'snare', 'clap', 'hat', 'ohat', 'rim', 'shaker', 'ride', 'crash', 'conga'];
-  const bufs = await Promise.all(names.map((n) => loadBuf(ctx, `samples/${kit}/${n}.wav`)));
-  const o = {}; names.forEach((n, i) => { o[n] = bufs[i]; });
-  kitCache[kit] = o; return o;
-}
 let noiseBuf = null;
 function vinylBuffer(c) {
   if (noiseBuf && noiseBuf.sampleRate === c.sampleRate) return noiseBuf;
@@ -248,16 +250,17 @@ function vinylBuffer(c) {
   noiseBuf = b; return b;
 }
 
-// ---------- sound sources per row: kit default, YBK Beats library, or the user's upload ----------
-// S.snd[row] = { t: 'lib', id } | { t: 'up', name } | { t: 'preset', id } (keys) ; missing = kit default.
-let LIB = null; const sprites = {}; const bassBufs = {}; const uploads = {};
+// ---------- sound sources per track ----------
+// S.snd[trackId] = { t: 'kit', kit, v } (a genre kit one-shot) | { t: 'lib', id, g } (YBK Beats library)
+//                | { t: 'up', name } (the user's upload) | { t: 'preset', id } (keys) | { t: 'lib', id } (808 list)
+// Every track keeps its own sound, so changing the kit never changes existing tracks.
+let LIB = null; const libBufs = {}; const spriteJobs = {}; const kitBufs = {}; const bassBufs = {}; const uploads = {};
 const KEYS_PRESETS = ['warm', 'bright', 'organ', 'pluck', 'pad'];
-const LIB_ROWS = ['kick', 'snare', 'clap', 'hat', 'ohat', 'perc'];
 const AFFINITY = { lofi: ['lofi', 'jazz', 'boombap', 'rnb'], boombap: ['boombap', 'lofi', 'jazz', 'funk'], trap: ['trap', 'drill', 'phonk'], house: ['house', 'disco', 'ukgarage', 'afrobeats'], techno: ['techno', 'dubstep', 'synthwave'] };
 async function loadLibrary() {
   if (LIB) return LIB;
   const res = await fetch('samples/library.json'); LIB = await res.json();
-  for (const row in LIB) { const seen = {}; LIB[row].items.forEach((it) => { seen[it.g] = (seen[it.g] || 0) + 1; it.n = seen[it.g]; }); }
+  for (const type in LIB) { const seen = {}; LIB[type].items.forEach((it) => { const key = it.g + (it.k ? 'k' : ''); seen[key] = (seen[key] || 0) + 1; it.n = seen[key]; }); }
   return LIB;
 }
 // Trims leading silence (also absorbs mp3 encoder delay) so hits land on the grid.
@@ -268,52 +271,76 @@ function trimOnset(c, data, from, to, sr) {
   s = Math.max(from, s - 8); let e = to; while (e > s + 64 && Math.abs(data[e - 1]) < 0.0005) e--;
   const b = c.createBuffer(1, Math.max(1, e - s), sr); b.getChannelData(0).set(data.subarray(s, e)); return b;
 }
-async function loadSprite(row) {
-  if (sprites[row]) return sprites[row];
-  await loadLibrary(); const L = LIB[row];
-  const buf = await loadBuf(ctx, L.file); const d = buf.getChannelData(0); const sr = buf.sampleRate; const slot = Math.round(L.slot * sr);
-  sprites[row] = L.items.map((_, i) => trimOnset(ctx, d, Math.min(d.length - 1, i * slot), Math.min(d.length, (i + 1) * slot), sr));
-  return sprites[row];
+// One mp3 per instrument type and genre; items carry their offset (o) and length (d) in seconds.
+function loadSprite(type, g) {
+  const key = type + '/' + g;
+  if (!spriteJobs[key]) spriteJobs[key] = (async () => {
+    await loadLibrary(); const buf = await loadBuf(ctx, `${LIB[type].dir}${g}.mp3`); const d = buf.getChannelData(0); const sr = buf.sampleRate;
+    libBufs[type] = libBufs[type] || {};
+    for (const it of LIB[type].items) if (it.g === g) {
+      const a = Math.min(d.length - 1, Math.round(it.o * sr)); // mp3 delay pushes audio a little later; trimOnset finds the real start
+      libBufs[type][it.id] = trimOnset(ctx, d, a, Math.min(d.length, a + Math.round((it.d + 0.06) * sr)), sr);
+    }
+  })();
+  return spriteJobs[key];
+}
+function loadKitVoice(kit, v) {
+  const key = kit + '/' + v;
+  if (!kitBufs[key]) kitBufs[key] = loadBuf(ctx, `samples/${kit}/${v}.wav`).then((b) => (kitBufs[key] = b));
+  return kitBufs[key];
 }
 async function loadBass(id) {
   await loadLibrary(); const it = LIB.bass.items.find((x) => x.id === id) || LIB.bass.items[0];
   if (!bassBufs[it.id]) bassBufs[it.id] = { buf: await loadBuf(ctx, it.file), root: it.root };
   return bassBufs[it.id];
 }
+async function loadSound(type, snd) {
+  if (!snd) return;
+  if (snd.t === 'kit') await loadKitVoice(snd.kit, snd.v);
+  else if (snd.t === 'lib' && type === 'bass') await loadBass(snd.id);
+  else if (snd.t === 'lib') await loadSprite(type, snd.g);
+}
+function defaultSnd(type, kit, voice) {
+  if (type === 'bass') return { t: 'lib', id: 'Trap 808 A' };
+  if (type === 'keys') return { t: 'preset', id: voice || 'warm' };
+  return { t: 'kit', kit, v: voice || type };
+}
 // Loads everything the state needs before it plays or renders.
 async function ensureSounds(st) {
-  await loadKit(st.kit); await loadLibrary();
-  const jobs = [loadBass((st.snd.bass && st.snd.bass.t === 'lib') ? st.snd.bass.id : LIB.bass.items[0].id)];
-  for (const r of LIB_ROWS) if (st.snd[r] && st.snd[r].t === 'lib') jobs.push(loadSprite(r));
-  await Promise.all(jobs);
+  await loadLibrary();
+  await Promise.all(st.tracks.map((tr) => loadSound(tr.type, st.snd[tr.id])));
 }
-function libIndex(row, id) { return LIB[row].items.findIndex((x) => x.id === id); }
-function drumBuf(st, kit, row) {
-  const s = st.snd[row];
-  if (s && s.t === 'up' && uploads[row]) return uploads[row].buf;
-  if (s && s.t === 'lib' && sprites[row]) { const i = libIndex(row, s.id); if (i >= 0) return sprites[row][i]; }
-  return row === 'perc' ? kit[st.perc] : kit[row];
+function drumBuf(st, tr) {
+  const s = st.snd[tr.id];
+  if (!s) return null;
+  if (s.t === 'up') return uploads[tr.id] ? uploads[tr.id].buf : null;
+  if (s.t === 'lib') return libBufs[tr.type] && libBufs[tr.type][s.id];
+  const b = kitBufs[s.kit + '/' + s.v]; return b instanceof AudioBuffer ? b : null;
 }
-function bassSource(st) {
-  const s = st.snd.bass;
-  if (s && s.t === 'up' && uploads.bass) return uploads.bass;
-  const id = s && s.t === 'lib' ? s.id : LIB && LIB.bass.items[0].id;
-  return bassBufs[id] || Object.values(bassBufs)[0];
+function bassSource(st, id) {
+  const s = st.snd[id];
+  if (s && s.t === 'up') return uploads[id];
+  return bassBufs[s && s.t === 'lib' ? s.id : 'Trap 808 A'];
 }
-function keysVoice(st) {
-  const s = st.snd.keys;
-  if (s && s.t === 'up' && uploads.keys) return { sample: uploads.keys };
+function keysVoice(st, id) {
+  const s = st.snd[id];
+  if (s && s.t === 'up' && uploads[id]) return { sample: uploads[id] };
   return { preset: s && s.t === 'preset' ? s.id : st.tone };
 }
-function soundLabel(st, row) {
-  const s = st.snd[row];
-  if (!s) return row === 'keys' ? t('presets')[st.tone] : row === 'bass' ? 'Trap 808 A' : `${GENRES[st.kit].name} kit`;
+function soundLabel(st, tr) {
+  const s = st.snd[tr.id];
+  if (!s) return '';
   if (s.t === 'up') return s.name;
   if (s.t === 'preset') return t('presets')[s.id];
-  if (row === 'bass') return s.id;
-  const it = LIB && LIB[row].items.find((x) => x.id === s.id); return it ? itemName(it) : s.id;
+  if (s.t === 'kit') return `${GENRES[s.kit].name} kit`;
+  if (tr.type === 'bass') return s.id;
+  const it = LIB && LIB[tr.type].items.find((x) => x.id === s.id); return it ? itemName(it) : s.id;
 }
-function itemName(it) { return `${GENRE_NAMES[it.g] || it.g} ${it.n}${it.c && !['kick', 'snare', 'hat_closed', 'hat_open', 'clap'].includes(it.c) ? ' · ' + it.c.replace('_', ' ') : ''}`; }
+function itemName(it) {
+  const g = GENRE_NAMES[it.g] || it.g;
+  if (it.k) return `${g} kit ${it.n}${it.c && !['kick', 'snare', 'clap', 'hihat_closed', 'hihat_open', 'rim', 'shaker', 'cowbell', 'tambourine', 'tom', 'crash', 'ride', 'conga'].includes(it.c) ? ' · ' + it.c.replace('_', ' ') : ''}`;
+  return `${g} ${it.n}${it.c && ['snap', 'perc'].includes(it.c) ? ' · ' + it.c : ''}`;
+}
 const GENRE_NAMES = { lofi: 'Lo-fi', boombap: 'Boom bap', trap: 'Trap', house: 'House', techno: 'Techno', afrobeats: 'Afrobeats', amapiano: 'Amapiano', any: 'Basic', bailefunk: 'Baile funk', blues: 'Blues', dancehall: 'Dancehall', disco: 'Disco', dnb: 'Drum & bass', drill: 'Drill', dubstep: 'Dubstep', funk: 'Funk', futurebass: 'Future bass', jazz: 'Jazz', jerseyclub: 'Jersey club', kpop: 'K-pop', metal: 'Metal', phonk: 'Phonk', pop: 'Pop', punk: 'Punk', reggae: 'Reggae', reggaeton: 'Reggaeton', rnb: 'R&B', rock: 'Rock', synthwave: 'Synthwave', ukgarage: 'UK garage' };
 // Pitch of an uploaded one-shot (autocorrelation over a short window), as a MIDI note.
 function detectRoot(buf) {
@@ -367,32 +394,30 @@ function playKey(c, out, midi, time, dur, vel, voice) {
   flt.connect(amp); amp.connect(out);
 }
 
-// Schedules one 16th step. `bar` is the absolute bar index; `rows` (optional) limits which rows sound.
-function scheduleStep(c, out, st, kit, bar, step, time, rows, sectionGain) {
+// Schedules one 16th step. `bar` is the absolute bar index; `rows` (optional) limits which instrument types sound.
+function scheduleStep(c, out, st, _unused, bar, step, time, rows, sectionGain) {
   const sd = 60 / st.bpm / 4;
   const anySolo = st.solo && Object.values(st.solo).some(Boolean);
-  const live = (k) => !st.mute[k] && (!anySolo || st.solo[k]) && (!rows || rows.includes(k));
-  const vel = (k, v) => v * st.vol[k] * (sectionGain ?? 1);
+  const live = (tr) => !st.mute[tr.id] && (!anySolo || st.solo[tr.id]) && (!rows || rows.includes(tr.type));
+  const vel = (tr, v) => v * st.vol[tr.id] * (sectionGain ?? 1);
   const deg = st.prog[bar % 4]; const notes = chordNotes(st, deg);
-  for (const k of DRUMS) {
-    const v = st.pat[k][step]; if (!v || !live(k)) continue;
-    const src = playDrum(c, out, drumBuf(st, kit, k), time, vel(k, v));
-    if (k === 'ohat') chokeOhat.set(c, src);
-    if (k === 'hat') { const o = chokeOhat.get(c); if (o) { try { o.stop(time + 0.01); } catch {} chokeOhat.delete(c); } }
-  }
   const G = GENRES[st.genre];
-  if (st.pat.bass[step] && live('bass')) {
-    let nxt = 16; for (let i = step + 1; i < 16; i++) if (st.pat.bass[i]) { nxt = i; break; }
-    const dur = Math.min((nxt - step) * sd, G.bassGate);
-    let midi = 24 + ((notes[0] % 12) + 12) % 12; if (midi < 29) midi += 12;
-    play808(c, out, bassSource(st), midi, time, vel('bass', st.pat.bass[step]), dur);
-  }
-  if (st.pat.keys[step] && live('keys')) {
-    let nxt = 16; for (let i = step + 1; i < 16; i++) if (st.pat.keys[i]) { nxt = i; break; }
-    const dur = G.keysGate ? G.keysGate * sd : (nxt - step) * sd - 0.02;
-    const strum = st.genre === 'lofi' || st.genre === 'boombap' ? 0.012 : 0;
-    const voice = keysVoice(st);
-    notes.forEach((n, i) => playKey(c, out, n, time + i * strum, dur, vel('keys', st.pat.keys[step]), voice));
+  for (const tr of st.tracks) {
+    const p = st.pat[tr.id]; const v = p[step]; if (!v || !live(tr)) continue;
+    let nxt = 16; for (let i = step + 1; i < 16; i++) if (p[i]) { nxt = i; break; }
+    if (tr.type === 'bass') {
+      let midi = 24 + ((notes[0] % 12) + 12) % 12; if (midi < 29) midi += 12;
+      play808(c, out, bassSource(st, tr.id), midi, time, vel(tr, v), Math.min((nxt - step) * sd, G.bassGate));
+    } else if (tr.type === 'keys') {
+      const dur = G.keysGate ? G.keysGate * sd : (nxt - step) * sd - 0.02;
+      const strum = st.genre === 'lofi' || st.genre === 'boombap' ? 0.012 : 0; const voice = keysVoice(st, tr.id);
+      notes.forEach((n, i) => playKey(c, out, n, time + i * strum, dur, vel(tr, v), voice));
+    } else {
+      const buf = drumBuf(st, tr); if (!buf) continue;
+      const src = playDrum(c, out, buf, time, vel(tr, v));
+      if (tr.type === 'ohat') chokeOhat.set(c, src);
+      if (tr.type === 'hat') { const o = chokeOhat.get(c); if (o) { try { o.stop(time + 0.01); } catch {} chokeOhat.delete(c); } }
+    }
   }
 }
 function stepTime(st, step, t0) { const sd = 60 / st.bpm / 4; return t0 + (step % 2 ? (st.swing / 100) * sd : 0); }
@@ -402,7 +427,7 @@ let S = null; // current state
 let playing = false, nextTime = 0, absStep = 0, timer = null, vinylSrc = null, vinylGain = null, uiQueue = [];
 function songPos(bar) { let b = bar % SONG_BARS; for (let i = 0; i < SONG.length; i++) { if (b < SONG[i].bars) return { i, sec: SONG[i], inBar: b }; b -= SONG[i].bars; } }
 function scheduler() {
-  const kit = kitCache[S.kit]; if (!kit) { nextTime = Math.max(nextTime, ctx.currentTime + 0.05); return; }
+  const kit = null;
   while (nextTime < ctx.currentTime + 0.12) {
     const step = absStep % 16, bar = Math.floor(absStep / 16);
     let rows = null, secIdx = -1;
@@ -450,7 +475,7 @@ function drawPlayhead() {
 
 // ---------- export ----------
 async function render(bars, song) {
-  await ensureAudio(); await ensureSounds(S); const kit = kitCache[S.kit];
+  await ensureAudio(); await ensureSounds(S); const kit = null;
   const sr = 44100, sd = 60 / S.bpm / 4, tail = 2.5;
   const len = Math.ceil((bars * 16 * sd + tail) * sr);
   const oc = new OfflineAudioContext(2, len, sr); const m = buildMaster(oc, oc.destination);
@@ -543,17 +568,22 @@ function newProgression() {
 const ICONS = {
   shuffle: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>',
   upload: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>',
+  del: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
   browse: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/></svg>',
 };
 const SOFT = 0.45;
 function audible(k) { const anySolo = Object.values(S.solo).some(Boolean); return !S.mute[k] && (!anySolo || S.solo[k]); }
 function cellClass(i, v) { return 'cell' + (i % 4 === 0 ? ' beat' : '') + (v >= 0.75 ? ' on' : v > 0 ? ' ghost' : ''); }
+function trackName(tr) {
+  const same = S.tracks.filter((x) => x.type === tr.type);
+  return t('rows')[tr.type] + (same.length > 1 ? ' ' + (same.indexOf(tr) + 1) : '');
+}
 function renderGrid() {
   const g = $('grid'); g.innerHTML = '';
-  for (const k of ROWS) {
-    const lab = document.createElement('div'); lab.className = 'rowlab';
-    const nm = t('rows')[k];
-    lab.innerHTML = `<button class="mute ${S.mute[k] ? 'on' : ''}" title="Mute" aria-label="Mute ${nm}">M</button><button class="mute solo ${S.solo[k] ? 'on' : ''}" title="Solo" aria-label="Solo ${nm}">S</button><span class="dot" style="background:${COLORS[k]}"></span><span class="name">${nm}<small>${soundLabel(S, k)}</small></span>`;
+  for (const tr of S.tracks) {
+    const k = tr.id; const lab = document.createElement('div'); lab.className = 'rowlab';
+    const nm = trackName(tr);
+    lab.innerHTML = `<button class="mute ${S.mute[k] ? 'on' : ''}" title="Mute" aria-label="Mute ${nm}">M</button><button class="mute solo ${S.solo[k] ? 'on' : ''}" title="Solo" aria-label="Solo ${nm}">S</button><span class="dot" style="background:${COLORS[tr.type]}"></span><span class="name">${nm}<small>${soundLabel(S, tr)}</small></span>`;
     const vol = document.createElement('input'); vol.type = 'range'; vol.className = 'vol'; vol.min = 0; vol.max = 1.2; vol.step = 0.05; vol.value = S.vol[k]; vol.setAttribute('aria-label', nm);
     vol.oninput = () => { S.vol[k] = Number(vol.value); save(); };
     lab.appendChild(vol);
@@ -563,7 +593,7 @@ function renderGrid() {
     for (let i = 0; i < 16; i++) {
       const c = document.createElement('button'); const v = S.pat[k][i];
       c.className = cellClass(i, v); c.title = t('cellTip');
-      c.style.setProperty('--c', COLORS[k]); c.dataset.s = i; c.setAttribute('aria-label', `${nm} ${i + 1}`);
+      c.style.setProperty('--c', COLORS[tr.type]); c.dataset.s = i; c.setAttribute('aria-label', `${nm} ${i + 1}`);
       // Left click: full note on/off. Right click (or long press on touch): soft note on/off.
       const setCell = (val) => { S.pat[k][i] = val; changed(); c.className = cellClass(i, val); if (val && !playing) previewRow(k, i); };
       c.onclick = () => { if (c.dataset.lp) { delete c.dataset.lp; return; } setCell(S.pat[k][i] >= 0.75 ? 0 : 1); };
@@ -577,101 +607,144 @@ function renderGrid() {
     const tools = document.createElement('div'); tools.className = 'rowtools';
     tools.innerHTML = `<button class="tool" data-a="shuffle" title="${t('shuffle')}" aria-label="${t('shuffle')} ${nm}">${ICONS.shuffle}</button>`
       + `<button class="tool" data-a="upload" title="${t('upload')}" aria-label="${t('upload')} ${nm}">${ICONS.upload}</button>`
-      + `<button class="tool" data-a="browse" title="${t('browse')}" aria-label="${t('browse')} ${nm}">${ICONS.browse}</button>`;
+      + `<button class="tool" data-a="browse" title="${t('browse')}" aria-label="${t('browse')} ${nm}">${ICONS.browse}</button>`
+      + `<button class="tool del" data-a="del" title="${t('delTrack')}" aria-label="${t('delTrack')} ${nm}">${ICONS.del}</button>`;
     tools.querySelector('[data-a=shuffle]').onclick = () => shuffleRow(k);
     tools.querySelector('[data-a=upload]').onclick = () => pickUpload(k);
     tools.querySelector('[data-a=browse]').onclick = () => openBrowser(k);
+    tools.querySelector('[data-a=del]').onclick = () => deleteTrack(k);
     g.appendChild(tools);
   }
+  // "+" row: add a track
+  const add = document.createElement('div'); add.className = 'addrow';
+  const btn = document.createElement('button'); btn.className = 'addbtn'; btn.id = 'addTrack'; btn.setAttribute('aria-expanded', String(addOpen));
+  btn.innerHTML = `<span aria-hidden="true">+</span> ${t('addTrack')}`; btn.onclick = () => { addOpen = !addOpen; renderGrid(); };
+  add.appendChild(btn);
+  if (addOpen) {
+    const menu = document.createElement('div'); menu.className = 'addmenu';
+    for (const type of TYPES) {
+      const b = document.createElement('button'); b.className = 'chip'; b.innerHTML = `<span class="dot" style="background:${COLORS[type]}"></span>${t('rows')[type]}`;
+      b.onclick = () => addTrack(type); menu.appendChild(b);
+    }
+    add.appendChild(menu);
+  }
+  g.appendChild(add);
+}
+let addOpen = false;
+async function addTrack(type) {
+  let n = 1; while (S.tracks.some((x) => x.id === (n === 1 ? type : `${type}-${n}`))) n++;
+  const id = n === 1 ? type : `${type}-${n}`;
+  const snd = defaultSnd(type, S.kit, type === 'keys' ? S.tone : undefined);
+  await ensureAudio(); await loadSound(type, snd);
+  S.tracks.push({ id, type }); S.pat[id] = Array(16).fill(0); S.vol[id] = DEF_VOL[type] ?? 0.6; S.snd[id] = snd;
+  addOpen = false; changed(); renderGrid(); auditionRow(id); track('add_track', { type });
+}
+let lastDeleted = null;
+function deleteTrack(id) {
+  const idx = S.tracks.findIndex((x) => x.id === id); if (idx < 0) return;
+  lastDeleted = { idx, tr: S.tracks[idx], pat: S.pat[id], vol: S.vol[id], snd: S.snd[id], mute: S.mute[id], solo: S.solo[id], up: uploads[id] };
+  S.tracks.splice(idx, 1); for (const m of [S.pat, S.vol, S.snd, S.mute, S.solo]) delete m[id];
+  changed(); renderGrid(); toast(t('deleted'), t('undo'), undoDelete);
+}
+function undoDelete() {
+  const d = lastDeleted; if (!d) return; lastDeleted = null;
+  const id = d.tr.id; S.tracks.splice(Math.min(d.idx, S.tracks.length), 0, d.tr);
+  S.pat[id] = d.pat; S.vol[id] = d.vol; if (d.snd) S.snd[id] = d.snd; if (d.mute) S.mute[id] = d.mute; if (d.solo) S.solo[id] = d.solo; if (d.up) uploads[id] = d.up;
+  changed(); renderGrid();
 }
 
-// ---------- per-row sound changes ----------
-function rowChoices(row) {
-  if (row === 'keys') return KEYS_PRESETS.map((id) => ({ t: 'preset', id }));
-  if (row === 'bass') return LIB.bass.items.map((it) => ({ t: 'lib', id: it.id }));
-  return LIB[row].items.map((it) => ({ t: 'lib', id: it.id, g: it.g }));
+// ---------- per-track sound changes ----------
+const trackOf = (id) => S.tracks.find((x) => x.id === id);
+function rowChoices(type) {
+  if (type === 'keys') return KEYS_PRESETS.map((id) => ({ t: 'preset', id }));
+  if (type === 'bass') return LIB.bass.items.map((it) => ({ t: 'lib', id: it.id }));
+  return LIB[type].items.map((it) => ({ t: 'lib', id: it.id, g: it.g }));
 }
-async function setSound(row, snd) {
-  await ensureAudio(); await loadLibrary();
-  if (snd && snd.t === 'lib') { if (row === 'bass') await loadBass(snd.id); else await loadSprite(row); }
-  if (snd) S.snd[row] = snd; else delete S.snd[row];
+async function setSound(id, snd) {
+  await ensureAudio(); await loadLibrary(); const tr = trackOf(id);
+  await loadSound(tr.type, snd); S.snd[id] = snd;
 }
-async function shuffleRow(row) {
-  await ensureAudio(); await loadLibrary();
-  const all = rowChoices(row); const cur = JSON.stringify(S.snd[row] || null);
-  let pool = all.filter((c) => JSON.stringify(c) !== cur);
-  const near = pool.filter((c) => c.g && AFFINITY[S.genre].includes(c.g));
-  if (near.length && Math.random() < 0.8) pool = near; // mostly stay close to the described style
-  const pick = pool[Math.floor(Math.random() * pool.length)]; delete pick.g;
-  await setSound(row, pick); changed(); renderGrid();
-  if (!playing) auditionRow(row);
+// Shuffle stays inside the genre of the kit selected right now.
+async function shuffleRow(id) {
+  await ensureAudio(); await loadLibrary(); const tr = trackOf(id);
+  const cur = JSON.stringify(S.snd[id] || null);
+  let pool = rowChoices(tr.type);
+  if (tr.type !== 'keys' && tr.type !== 'bass') {
+    const inGenre = pool.filter((c) => c.g === S.kit);
+    pool = inGenre.length >= 2 ? inGenre : pool.filter((c) => AFFINITY[S.kit].includes(c.g)); // a few rare types have no samples in some genres
+    if (!pool.length) pool = rowChoices(tr.type);
+  }
+  pool = pool.filter((c) => JSON.stringify(c) !== cur);
+  const pick = pool[Math.floor(Math.random() * pool.length)];
+  await setSound(id, pick); changed(); renderGrid();
+  if (!playing) auditionRow(id);
 }
 let uploadRow = null;
-function pickUpload(row) { uploadRow = row; const f = $('file'); f.value = ''; f.click(); }
+function pickUpload(id) { uploadRow = id; const f = $('file'); f.value = ''; f.click(); }
 $('file').onchange = async (e) => {
-  const file = e.target.files[0]; const row = uploadRow; if (!file || !row) return;
+  const file = e.target.files[0]; const id = uploadRow; if (!file || !id) return;
+  const tr = trackOf(id); if (!tr) return; const pitched = tr.type === 'keys' || tr.type === 'bass';
   try {
     await ensureAudio(); const raw = await ctx.decodeAudioData(await file.arrayBuffer());
     const mono = new Float32Array(raw.length); for (let c = 0; c < raw.numberOfChannels; c++) { const d = raw.getChannelData(c); for (let i = 0; i < raw.length; i++) mono[i] += d[i] / raw.numberOfChannels; }
-    const maxLen = Math.min(mono.length, Math.round(raw.sampleRate * (row === 'keys' || row === 'bass' ? 4 : 2.5)));
+    const maxLen = Math.min(mono.length, Math.round(raw.sampleRate * (pitched ? 4 : 2.5)));
     const buf = trimOnset(ctx, mono, 0, maxLen, raw.sampleRate);
-    uploads[row] = { buf, root: row === 'keys' || row === 'bass' ? detectRoot(buf) : 60, name: file.name.replace(/\.[^.]+$/, '').slice(0, 28) };
-    S.snd[row] = { t: 'up', name: uploads[row].name }; changed(); renderGrid(); toast(t('uploaded'));
-    if (!playing) auditionRow(row);
-    track('upload', { row });
+    uploads[id] = { buf, root: pitched ? detectRoot(buf) : 60, name: file.name.replace(/\.[^.]+$/, '').slice(0, 28) };
+    S.snd[id] = { t: 'up', name: uploads[id].name }; changed(); renderGrid(); toast(t('uploaded'));
+    if (!playing) auditionRow(id);
+    track('upload', { type: tr.type });
   } catch { toast(t('uploadFail')); }
 };
-// Plays one hit (or one chord) of the row's current sound on its own.
-async function auditionRow(row) {
-  await ensureAudio(); await ensureSounds(S); const kit = kitCache[S.kit]; const tm = ctx.currentTime + 0.02;
-  if (DRUMS.includes(row)) { playDrum(ctx, master, drumBuf(S, kit, row), tm, S.vol[row]); return; }
+// Plays one hit (or one chord) of the track's current sound on its own.
+async function auditionRow(id) {
+  await ensureAudio(); await ensureSounds(S); const tr = trackOf(id); if (!tr) return; const tm = ctx.currentTime + 0.02;
   const notes = chordNotes(S, S.prog[0]);
-  if (row === 'bass') { const src = bassSource(S); let midi = 24 + notes[0] % 12; if (midi < 29) midi += 12; play808(ctx, master, src, midi, tm, S.vol.bass, 0.8); return; }
-  const v = keysVoice(S); notes.forEach((n) => playKey(ctx, master, n, tm, 0.9, S.vol.keys, v));
+  if (tr.type === 'bass') { let midi = 24 + notes[0] % 12; if (midi < 29) midi += 12; play808(ctx, master, bassSource(S, id), midi, tm, S.vol[id], 0.8); return; }
+  if (tr.type === 'keys') { const v = keysVoice(S, id); notes.forEach((n) => playKey(ctx, master, n, tm, 0.9, S.vol[id], v)); return; }
+  const b = drumBuf(S, tr); if (b) playDrum(ctx, master, b, tm, S.vol[id]);
 }
 
 // ---------- YBK Beats sample browser ----------
-let BR = null; // { row, before, chosen, genre }
+let BR = null; // { id, type, before, chosen, genre }
 let previewOn = (() => { try { return localStorage.getItem('ybk-preview') !== '0'; } catch { return true; } })();
-async function openBrowser(row) {
-  await ensureAudio(); await loadLibrary();
-  if (LIB_ROWS.includes(row)) await loadSprite(row);
-  BR = { row, before: S.snd[row] ? { ...S.snd[row] } : null, chosen: null, genre: 'all' };
+async function openBrowser(id) {
+  await ensureAudio(); await loadLibrary(); const tr = trackOf(id);
+  BR = { id, type: tr.type, before: S.snd[id] ? { ...S.snd[id] } : null, chosen: null, genre: LIB[tr.type] && LIB[tr.type].items ? (LIB[tr.type].items.some((x) => x.g === S.kit) ? S.kit : 'all') : 'all' };
   $('browser').hidden = false; document.body.classList.add('noscroll');
   renderBrowser(); $('brClose').focus();
 }
+function restoreBefore() { if (BR.before) S.snd[BR.id] = BR.before; else delete S.snd[BR.id]; }
 function closeBrowser(apply) {
   if (!BR) return;
-  if (!apply) { if (BR.before) S.snd[BR.row] = BR.before; else delete S.snd[BR.row]; }
-  else { changed(); track('browse_pick', { row: BR.row }); }
+  if (!apply) restoreBefore(); else { changed(); track('browse_pick', { type: BR.type }); }
   BR = null; $('browser').hidden = true; document.body.classList.remove('noscroll'); renderGrid();
 }
 function renderBrowser() {
-  const row = BR.row;
-  $('brTitle').textContent = `YBK Beats · ${t('rows')[row]}`;
+  const { id, type } = BR; const tr = trackOf(id);
+  $('brTitle').textContent = `YBK Beats · ${trackName(tr)}`;
   $('brPreview').setAttribute('aria-pressed', String(previewOn)); $('brPreview').querySelector('span').textContent = previewOn ? t('previewOn') : t('previewOff');
   $('brUse').disabled = !BR.chosen;
   $('brHint').textContent = previewOn ? t('hintOn') : t('hintOff');
-  const choices = [{ t: 'kit' }, ...rowChoices(row)];
-  const genres = row === 'keys' || row === 'bass' ? [] : ['all', ...new Set(LIB[row].items.map((x) => x.g))].sort((a, b) => (a === 'all' ? -1 : b === 'all' ? 1 : (AFFINITY[S.genre].includes(b) - AFFINITY[S.genre].includes(a)) || a.localeCompare(b)));
+  const pitched = type === 'keys' || type === 'bass';
+  const choices = pitched ? rowChoices(type) : [defaultSnd(type, S.kit), ...rowChoices(type)];
+  const counts = {}; if (!pitched) for (const x of LIB[type].items) counts[x.g] = (counts[x.g] || 0) + 1;
+  const genres = pitched ? [] : ['all', ...Object.keys(counts)].sort((a, b) => (a === 'all' ? -1 : b === 'all' ? 1 : (b === S.kit) - (a === S.kit) || (AFFINITY[S.kit].includes(b) - AFFINITY[S.kit].includes(a)) || a.localeCompare(b)));
   const gf = $('brGenres'); gf.innerHTML = '';
-  for (const g of genres) { const b = document.createElement('button'); b.className = 'chip' + (g === BR.genre ? ' sel' : ''); b.textContent = g === 'all' ? t('all') : (GENRE_NAMES[g] || g); b.onclick = () => { BR.genre = g; renderBrowser(); }; gf.appendChild(b); }
+  for (const g of genres) { const b = document.createElement('button'); b.className = 'chip' + (g === BR.genre ? ' sel' : ''); b.innerHTML = (g === 'all' ? t('all') : (GENRE_NAMES[g] || g)) + (g === 'all' ? '' : ` <small>${counts[g]}</small>`); b.onclick = () => { BR.genre = g; renderBrowser(); }; gf.appendChild(b); }
   const list = $('brList'); list.innerHTML = '';
-  const cur = JSON.stringify(S.snd[row] || { t: 'kit' });
+  const cur = JSON.stringify(S.snd[id] || null);
   for (const c of choices) {
     if (c.g && BR.genre !== 'all' && c.g !== BR.genre) continue;
-    const it = c.t === 'lib' && row !== 'bass' ? LIB[row].items.find((x) => x.id === c.id) : null;
-    const label = c.t === 'kit' ? `${GENRES[S.kit].name} kit` : c.t === 'preset' ? t('presets')[c.id] : row === 'bass' ? c.id : itemName(it);
-    const clean = { ...c }; delete clean.g;
-    const b = document.createElement('button'); b.className = 'item' + (JSON.stringify(clean) === cur ? ' sel' : '');
+    const it = c.t === 'lib' && !pitched ? LIB[type].items.find((x) => x.id === c.id) : null;
+    const label = c.t === 'kit' ? `${GENRES[c.kit].name} kit` : c.t === 'preset' ? t('presets')[c.id] : type === 'bass' ? c.id : itemName(it);
+    const b = document.createElement('button'); b.className = 'item' + (JSON.stringify(c) === cur ? ' sel' : '');
     b.innerHTML = `<span class="play" aria-hidden="true">▶</span><span>${label}</span>${c.t === 'kit' ? `<small>${t('kitDefault')}</small>` : ''}`;
     b.onclick = async () => {
-      const snd = c.t === 'kit' ? null : clean;
       if (previewOn) { // swap it into the loop for real
-        await setSound(row, snd); BR.chosen = snd || { t: 'kit' }; if (!playing) await start(); renderBrowser();
+        await setSound(id, c); BR.chosen = c; if (!playing) await start(); renderBrowser();
       } else { // audition alone, loop untouched
-        const keep = S.snd[row]; await setSound(row, snd); await auditionRow(row); if (keep) S.snd[row] = keep; else delete S.snd[row];
-        BR.chosen = snd || { t: 'kit' }; renderBrowser();
+        const keep = S.snd[id]; await setSound(id, c); await auditionRow(id); S.snd[id] = keep;
+        BR.chosen = c; renderBrowser();
       }
     };
     list.appendChild(b);
@@ -680,12 +753,11 @@ function renderBrowser() {
 $('brPreview').onclick = async () => {
   previewOn = !previewOn; try { localStorage.setItem('ybk-preview', previewOn ? '1' : '0'); } catch {}
   if (BR) { // switching off returns the loop to the original sound until the user decides
-    if (!previewOn) { if (BR.before) S.snd[BR.row] = BR.before; else delete S.snd[BR.row]; }
-    else if (BR.chosen) await setSound(BR.row, BR.chosen.t === 'kit' ? null : BR.chosen);
+    if (!previewOn) restoreBefore(); else if (BR.chosen) await setSound(BR.id, BR.chosen);
     renderBrowser();
   }
 };
-$('brUse').onclick = async () => { if (BR && BR.chosen) await setSound(BR.row, BR.chosen.t === 'kit' ? null : BR.chosen); closeBrowser(true); };
+$('brUse').onclick = async () => { if (BR && BR.chosen) await setSound(BR.id, BR.chosen); closeBrowser(true); };
 $('brClose').onclick = () => closeBrowser(false);
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && BR) closeBrowser(false); });
 
@@ -706,20 +778,31 @@ function renderSong() {
   el.style.display = S.playmode === 'song' ? 'flex' : 'none';
   SONG.forEach((s) => { const d = document.createElement('div'); d.className = 'sec'; d.style.setProperty('--n', s.bars); d.textContent = `${t('secs')[s.id]} · ${s.bars}`; el.appendChild(d); });
 }
-async function previewRow(k, i) {
-  await ensureAudio(); await ensureSounds(S); const kit = kitCache[S.kit]; const tm = ctx.currentTime + 0.02;
-  const solo = { ...S, mute: {}, solo: {}, pat: {} }; for (const r of ROWS) solo.pat[r] = Array(16).fill(0); solo.pat[k][i] = 1;
-  scheduleStep(ctx, master, solo, kit, 0, i, tm, null);
+async function previewRow(id, i) {
+  await ensureAudio(); await ensureSounds(S); const tm = ctx.currentTime + 0.02;
+  const tr = trackOf(id); const one = { ...S, tracks: [tr], mute: {}, solo: {}, pat: { [id]: Array(16).fill(0) } }; one.pat[id][i] = 1;
+  scheduleStep(ctx, master, one, null, 0, i, tm, null);
 }
 let editSent = false;
 function changed() {
   if (S && !S.edited) { S.edited = true; renderActions(); }
   save(); if (!editSent) { editSent = true; track('first_edit', { genre: S.genre }); }
 }
+// Brings older saved beats (fixed rows, kit-following sounds) up to per-track sounds.
+function migrate(st) {
+  st.mute = st.mute || {}; st.solo = st.solo || {}; st.snd = st.snd || {}; st.playmode = st.playmode || 'loop';
+  if (!st.tracks) st.tracks = ROWS.filter((r) => st.pat[r]).map((r) => ({ id: r, type: r }));
+  for (const tr of st.tracks) {
+    const s = st.snd[tr.id];
+    if (s && s.t === 'up' && !uploads[tr.id]) delete st.snd[tr.id]; // uploads live only in this tab
+    if (s && s.t === 'lib' && !s.g && tr.type !== 'bass') delete st.snd[tr.id]; // ids from an older library
+    if (!st.snd[tr.id]) st.snd[tr.id] = defaultSnd(tr.type, st.kit, tr.type === 'perc' ? (st.perc || 'perc') : tr.type === 'keys' ? st.tone : undefined);
+    if (st.vol[tr.id] == null) st.vol[tr.id] = DEF_VOL[tr.type] ?? 0.6;
+  }
+  return st;
+}
 function load(st) {
-  S = st; S.mute = S.mute || {}; S.solo = S.solo || {}; S.playmode = S.playmode || 'loop'; S.snd = S.snd || {};
-  for (const r in S.snd) if (S.snd[r].t === 'up' && !uploads[r]) delete S.snd[r]; // uploads live only in this tab
-  renderResume(); renderStudio(); renderActions(); save();
+  S = migrate(st); renderResume(); renderStudio(); renderActions(); save();
 }
 async function make(seedBump) {
   const text = $('q').value.trim() || t('examples')[0];
@@ -728,8 +811,8 @@ async function make(seedBump) {
   const wasPlaying = playing; if (playing) stop();
   $('loading').textContent = t('loading');
   await ensureAudio();
-  const st = generate(text, seed); st.playmode = 'loop'; st.edited = false;
-  st.snd = {}; await ensureSounds(st); $('loading').textContent = '';
+  const st = migrate(generate(text, seed)); st.playmode = 'loop'; st.edited = false;
+  await ensureSounds(st); $('loading').textContent = '';
   load(st); track('generate', { genre: st.genre, guessed: st.guessed, again: !!seedBump });
   await start();
   if (!wasPlaying && !seedBump) $('studio').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -741,7 +824,7 @@ $('lang').onclick = () => { lang = lang === 'en' ? 'ko' : 'en'; try { localStora
 $('play').onclick = () => (playing ? stop() : start());
 $('bpm').oninput = (e) => { S.bpm = Number(e.target.value); $('bpmv').textContent = S.bpm; changed(); };
 $('swing').oninput = (e) => { S.swing = Number(e.target.value); $('swingv').textContent = S.swing + '%'; changed(); };
-$('kit').onchange = async (e) => { S.kit = e.target.value; await ensureAudio(); await loadKit(S.kit); changed(); renderGrid(); };
+$('kit').onchange = (e) => { S.kit = e.target.value; changed(); }; // only steers shuffle, new tracks and the browser; existing tracks keep their sounds
 $('root').onchange = (e) => { S.root = Number(e.target.value); changed(); renderStudio(); };
 $('mode').onchange = (e) => { S.minor = e.target.value === 'minor'; changed(); renderStudio(); };
 $('vinyl').onchange = (e) => { S.vinyl = e.target.checked; changed(); if (playing) updateVinyl(); };
