@@ -25,8 +25,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      # One folder per page (/visualize/ ...), 404.html and sitemap.xml, all from index.html
+      - run: node tools/build-pages.js
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4

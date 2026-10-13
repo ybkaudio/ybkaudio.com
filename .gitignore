@@ -5,3 +5,4 @@ server.js
 # Working files that should not be public
 *.pdf
 logo.jpg
+_site/
