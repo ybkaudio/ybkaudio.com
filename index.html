@@ -895,7 +895,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       </div>
       <div class="hero-body">
         <div class="ledes">
-          <p class="lede" data-copy="lede1">Music-making work leaves a lot of room to wonder. We wondered if we could make easier, better software for all levels of users. Our team leader, an intermediate music producer himself, had the ideas and the incentive to make the best software for himself and everyone else.</p>
+          <p class="lede" data-copy="lede1">Music-making work leaves a lot of room to wonder. We wondered if we could make easier, better software for all levels of users.</p>
         </div>
         <dl class="hero-notes">
           <div class="note"><dt data-copy="n1t">Platform</dt><dd data-copy="n1d">Windows 10 &amp; 11, and macOS (beta).</dd></div>
@@ -998,7 +998,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h2 data-copy="h-mx-name">MixAlign</h2>
           <p class="kicker" data-copy="h-mx-k">Compare every version of your song, aligned to the sample.</p>
         </div>
-        <div class="band-price"><span class="trial-badge" data-copy="h-mx-trial">Trial</span>$19 <s>$25</s><small data-copy="h-mx-pricenote">Launch price until Nov 30<br>Not sure? Try our 7-day free trial</small></div>
       </div>
       <div class="summary">
         <div class="prose">
@@ -1025,7 +1024,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h2 data-copy="h-bm-name">Beatmaker</h2>
           <p class="kicker" data-copy="h-bm-k">The easiest DAW for beatmaking</p>
         </div>
-        <div class="band-price">$20</div>
       </div>
       <div class="summary">
         <div class="prose">
@@ -1053,7 +1051,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h2 data-copy="h-ms-name">MultiConsole</h2>
           <p class="kicker" data-copy="h-ms-k">A live mixing console for your PC audio</p>
         </div>
-        <div class="band-price">$10</div>
       </div>
       <div class="summary">
         <div class="prose">
@@ -1582,7 +1579,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
      Sale prices: the small line under the price says until when first, then the trial
      ("Launch price until Nov 6 · Not sure? Try our 7-day free trial"), on home and app page alike.
      Home page product blocks: name + kicker left, price tag right ("Free <s>$10</s>",
-     "$19 <s>$29</s>"; apps in development show their set price, e.g. "$20"), one button.
+     "$19 <s>$29</s>"), one button. Unreleased apps show NO price, trial badge or sale line
+     anywhere (owner 2026-10-13); their box is "Coming soon" + "Notify me when it's out". The removed
+     price markup is kept on the owner's PC in YBK AUDIO\_site-launch-snippets\prices-before-launch.html.
      Top nav: launched apps get class "nav-live" (bright like Help); unlaunched ones stay dim.
      ================================================================================= -->
 <!-- ==================== MIDSIDE ==================== -->
@@ -1595,9 +1594,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <span class="status" data-copy="ms-status">In development</span>
           <h2 data-copy="ms-name">MultiConsole</h2>
           <p class="kicker" data-copy="ms-k">A live mixing console for your PC audio</p>
-        </div>
-        <div class="prod-price">
-          $10
         </div>
       </div>
 
@@ -1612,7 +1608,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <!-- purchase -->
       <div class="buy">
         <div>
-          <h3 data-copy="ms-buy-h">Pricing</h3>
+          <h3 data-copy="ms-buy-h">Coming soon</h3>
           <ul class="gets">
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g1">The Windows installer, downloadable straight after payment</span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="ms-g2">One license code, emailed to the address you pay with</span></li>
@@ -1782,7 +1778,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <tr><th scope="row" data-copy="ms-s7t">Requires</th><td data-copy="ms-s7v">Free VB-Audio Virtual Cable, or an interface with loop-back</td></tr>
           <tr><th scope="row" data-copy="ms-s8t">Platform</th><td data-copy="ms-s8v">Windows 10 / 11</td></tr>
           <tr><th scope="row" data-copy="ms-s9t">Licence</th><td data-copy="ms-s9v">One computer at a time — move it to a new one from Settings, once every 30 days</td></tr>
-          <tr><th scope="row" data-copy="ms-s10t">Price</th><td data-copy="ms-s10v">$10.00 — one-time, no subscription</td></tr>
         </tbody>
       </table>
 
@@ -1991,10 +1986,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h2 data-copy="mx-name">MixAlign</h2>
           <p class="kicker" data-copy="mx-k">Compare every version of your song, aligned to the sample.</p>
         </div>
-        <div class="prod-price">
-          <span class="trial-badge" data-copy="mx-trial">Trial</span>$19 <s>$25</s>
-          <small data-copy="mx-home-pricenote">Launch price until Nov 30<br>Not sure? Try our 7-day free trial</small>
-        </div>
       </div>
 
       <a class="shot lead" href="img/mixalign/mixalign-hero.png" target="_blank" rel="noopener">
@@ -2008,28 +1999,18 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <!-- purchase -->
       <div class="dl-box" id="download-mixalign">
         <div>
-          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="mx-dl-eye">Try for free</span></p>
-          <h3 data-copy="mx-dl-h">Download</h3>
-          <p data-copy="mx-dl-p">Install MixAlign and press Start free trial — no card needed. To keep using it, buy a license below and paste the code from our email into the app.</p>
+          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="mx-dl-eye">Windows &amp; Mac</span></p>
+          <h3 data-copy="mx-dl-h">Download the App</h3>
+          <p data-copy="mx-dl-p">MixAlign comes out on October 27. The download buttons open here on launch day.</p>
         </div>
         <div class="dl-act">
           <div class="dl-choice">
-            <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below.
-<a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-win?src=site" data-dl="mixalign" data-os="win">
-              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-copy="mx-dl-btn">Download for Windows</span>
-            </a>
-            -->
+            <!-- LAUNCH DAY (10/27): restore the real windows download button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). -->
             <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon">Available Oct 27</span></span>
             <p class="dl-meta"><span data-mx-version></span>Windows 10 / 11, 64-bit<span data-mx-size></span></p>
           </div>
           <div class="dl-choice">
-            <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below.
-<a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-mac?src=site" data-dl="mixalign" data-os="mac">
-              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-copy="mx-dl-btn-mac">Download for Mac (beta)</span>
-            </a>
-            -->
+            <!-- LAUNCH DAY (10/27): restore the real mac download button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). -->
             <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon-mac">Available Oct 27</span></span>
             <p class="dl-meta"><span data-mx-version-mac></span>Mac, Apple Silicon &amp; Intel<span data-mx-size-mac></span></p>
             <p class="dl-note" data-copy="mx-dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>.</p>
@@ -2038,7 +2019,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       </div>
       <div class="buy">
         <div>
-          <h3 data-copy="mx-buy-h">Purchase License</h3>
+          <h3 data-copy="mx-buy-h">Coming soon</h3>
           <ul class="gets">
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="mx-g1">One license code, emailed to the address you pay with</span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="mx-g2">Works with the Windows and the Mac version</span></li>
@@ -2046,14 +2027,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           </ul>
         </div>
         <div class="buy-side">
-          <div class="buy-total"><span data-copy="mx-total-l">Total today</span><b data-mx-price>$19.00</b></div>
-          <!-- The worker picks the price by date ($19 until Nov 30, then $25), makes the Paddle
-               transaction and comes back here with ?_ptxn=, which opens the checkout (script below). -->
-          <!-- LAUNCH DAY (10/27): put this back in place of the "Available Oct 27" button below, and remove the "Notify me when it’s out" row under this box and the "In development" tags (home block + page title).
-<a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/mixalign/buy">
-            <span data-copy="mx-buy-btn">Purchase</span><span aria-hidden="true">→</span>
-          </a>
-            -->
+          <div class="buy-total"><span data-copy="mx-soon-l">Status</span><b data-copy="mx-soon">Out Oct 27</b></div>
+          <!-- LAUNCH DAY (10/27): restore the real purchase button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). Also remove the "Notify me when it’s out" row under this box and the "In development" tags (home block + page title). -->
             <span class="btn ghost" aria-disabled="true"><span data-copy="mx-buy-soon">Available Oct 27</span></span>
           <p class="fineprint" data-copy="mx-fine">Payment is handled by Paddle.com, our Merchant of Record — YBK Audio never sees your card details. Instant delivery by email.</p>
           <p class="buy-links">By purchasing you agree to the <a href="#/terms">Terms</a>.</p>
@@ -2178,7 +2153,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <tr><th scope="row" data-copy="mx-s6t">Sessions</th><td data-copy="mx-s6v">Saves the files, alignment, names, colours, notes, marks and loops</td></tr>
           <tr><th scope="row" data-copy="mx-s7t">Platform</th><td data-copy="mx-s7v">Windows 10 / 11, 64-bit · Mac (beta), Apple Silicon and Intel</td></tr>
           <tr><th scope="row" data-copy="mx-s8t">Licence</th><td data-copy="mx-s8v">One computer at a time — move it to a new one from About › Release license</td></tr>
-          <tr><th scope="row" data-copy="mx-s9t">Price</th><td data-copy="mx-s9v">$19 until 30 November, then $25 — one-time, no subscription · 7-day free trial</td></tr>
         </tbody>
       </table>
 
@@ -2197,9 +2171,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h2 data-copy="bm-name">Beatmaker</h2>
           <p class="kicker" data-copy="bm-k">The easiest DAW for beatmaking</p>
         </div>
-        <div class="prod-price">
-          $20
-        </div>
       </div>
 
       <a class="shot" href="img/beatmaker/01-main.png" target="_blank" rel="noopener">
@@ -2213,7 +2184,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <!-- purchase -->
       <div class="buy">
         <div>
-          <h3 data-copy="bm-buy-h">Pricing</h3>
+          <h3 data-copy="bm-buy-h">Coming soon</h3>
           <ul class="gets">
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g1">The Windows app, downloadable straight after payment</span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="bm-g2">One license code, emailed to the address you pay with</span></li>
@@ -2383,7 +2354,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <tr><th scope="row" data-copy="bm-s11t">Samples included</th><td data-copy="bm-s11v">YBK Drums — 4,208 drum one-shots, made by YBK AUDIO</td></tr>
           <tr><th scope="row" data-copy="bm-s8t">Platform</th><td data-copy="bm-s8v">Windows 10 / 11</td></tr>
           <tr><th scope="row" data-copy="bm-s9t">Licence</th><td data-copy="bm-s9v">One computer at a time — move it to a new one from Settings, once every 30 days</td></tr>
-          <tr><th scope="row" data-copy="bm-s10t">Price</th><td data-copy="bm-s10v">$20.00 — one-time, no subscription</td></tr>
         </tbody>
       </table>
 
