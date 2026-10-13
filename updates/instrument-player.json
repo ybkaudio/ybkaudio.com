@@ -1,11 +1,19 @@
 {
-    "version":  "1.7.3",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.7.3.exe",
-    "sha256":  "ad0075f199ce9f8b03eb1701a87a833d04c793f4e5f71b78a23c4206475bb878",
-    "size":  8220522,
-    "notes":  "New features\n- Settings is easier to read: brighter text, softer switches, and tabs that look like buttons.\n- The Keyboard shortcuts tab is now called Hotkeys.",
-    "released":  "2026-09-30",
+    "version":  "1.8.0",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.8.0.exe",
+    "sha256":  "9adaa56b3224a576a780b9c1776b7139a946bb21986e02695303d874fe277deb",
+    "size":  8255168,
+    "notes":  "New features\n- Count-in for recording in the MIDI editor: turn on the hand button beside Record, pick 1, 2, 3, 4 or 8 beats, and recording starts after the count.\n- MIDI Replay has a new look.",
+    "released":  "2026-10-13",
     "history":  [
+                    {
+                        "version":  "1.8.0",
+                        "released":  "2026-10-13",
+                        "notes":  "New features\n- Count-in for recording in the MIDI editor: turn on the hand button beside Record, pick 1, 2, 3, 4 or 8 beats, and recording starts after the count.\n- MIDI Replay has a new look.",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.8.0.exe",
+                        "sha256":  "9adaa56b3224a576a780b9c1776b7139a946bb21986e02695303d874fe277deb",
+                        "size":  8255168
+                    },
                     {
                         "version":  "1.7.3",
                         "released":  "2026-09-30",
