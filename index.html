@@ -895,6 +895,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 .app-card b{font-family:var(--f-display);font-size:clamp(20px,1.8vw,24px);font-weight:800;letter-spacing:-.02em}
 .app-card span{font-size:14.5px;color:var(--muted);line-height:1.45}
 .app-card .status{align-self:flex-start;margin:0}
+.app-card .card-price{font-family:var(--f-display);font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
+.app-card .card-price s{font-size:.6em;font-weight:700;color:var(--logo-red);margin-left:.3em;text-decoration-thickness:2px}
+.app-card .card-price span{font-size:inherit;color:inherit;line-height:inherit}
+.app-card .card-price .trial-badge{color:#F2C14E;font-size:10px;line-height:1.2;padding:3px 7px 2px;margin-right:8px;transform:translateY(-.15em)}
 .app-card .go{margin-top:auto;padding-top:8px;font-weight:600;color:var(--accent);font-size:14.5px}
 /* ============ end UI PREVIEW ============ */
 </style>
@@ -967,18 +971,21 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
         <a class="app-card" href="/player/">
           <img src="/img/player/01-main.png" alt="" loading="lazy">
           <b>Instrument Player</b>
+          <span class="card-price"><span data-launch="active" hidden>Free <s>$10</s></span><span data-launch-hide="active upcoming">$10</span></span>
           <span>Why open a DAW to play an instrument?</span>
           <span class="go">See Instrument Player →</span>
         </a>
         <a class="app-card" href="/432hz/">
           <img src="/img/432/432-main.png" alt="" loading="lazy">
           <b>432hz</b>
+          <span class="card-price">Free</span>
           <span>Your whole computer sound, retuned</span>
           <span class="go">See 432hz →</span>
         </a>
         <a class="app-card" href="/visualize/">
           <img src="/img/visualize/visualize-hero.png" alt="" loading="lazy">
           <b>Visualize</b>
+          <span class="card-price"><span class="trial-badge">Trial</span>$19 <s>$29</s></span>
           <span>Stereo imaging, in 3D.</span>
           <span class="go">See Visualize →</span>
         </a>
@@ -1003,170 +1010,6 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <span>A live mixing console for your PC audio</span>
           <span class="go">See MultiConsole →</span>
         </a>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="band">
-    <div class="wrap">
-      <span class="status ok" data-launch="active" hidden data-copy="h-sp-free">Free until 10/19</span>
-      <div class="band-head">
-        <div>
-          <h2 data-copy="h-sp-name">Instrument Player</h2>
-          <p class="kicker" data-copy="h-sp-k">Why open a DAW to play an instrument?</p>
-        </div>
-        <div class="band-price"><span data-launch="active" hidden>Free <s>$10</s><small data-copy="h-sp-pricenote">Free launch: until 10/19</small></span><span data-launch-hide="active upcoming">$10</span></div>
-      </div>
-      <div class="summary">
-        <div class="prose">
-          <p data-copy="h-sp-p1">Play your VSTs without opening a DAW, and switch between big instrument libraries with little latency.</p>
-          <p data-copy="h-sp-p2">Ideas don’t have to start in a heavy DAW session. Instrument Player lets you sit down and play your instruments without switching into work mode.</p>
-          <p data-copy="h-sp-p3">It also remembers what you played. MIDI Replay keeps the last 5 minutes, so if something good came out while you were noodling, you can pull it back, tidy it up in the MIDI editor and save it as a .mid file.</p>
-          <div class="sum-actions btnrow">
-            <a class="btn" href="/player/"><span data-copy="h-sp-cta">Get now</span><span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <div>
-          <a class="shot" href="/player/">
-            <img src="/img/player/01-main.png" width="902" height="526" loading="lazy" alt="The Instrument Player window: Choose an instrument, Audio Effects and MIDI editor along the top, and the 88-note on-screen keyboard at the bottom.">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="wrap">
-      <span class="status ok" data-copy="h-hz-status">Free</span>
-      <div class="band-head">
-        <div>
-          <h2 data-copy="h-hz-name">432hz</h2>
-          <p class="kicker" data-copy="h-hz-k">Your whole computer sound, retuned</p>
-        </div>
-        <div class="band-price">Free</div>
-      </div>
-      <div class="summary">
-        <div class="prose">
-          <p data-copy="h-hz-p1">The idea came from the 432 Hz trend: what if you could retune everything your computer plays, to whatever pitch you like? 432hz is a small app that does exactly that.</p>
-          <p data-copy="h-hz-p2">Open the spectrum graph and watch the frequencies move as you change the tuning. Useful for teaching, or just for listening.</p>
-          <p data-copy="h-hz-p3">Whether 432 Hz is actually better is up to your ears.</p>
-          <div class="sum-actions btnrow">
-            <a class="btn" href="/432hz/"><span data-copy="h-hz-cta">Get now</span><span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <div>
-          <a class="shot" href="/432hz/">
-            <img src="/img/432/432-main.png" width="957" height="419" loading="lazy" alt="The 432hz window: a gold button reading “432 Hz, ON” and a live spectrum with every A marked.">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="wrap">
-      <div class="band-head">
-        <div>
-          <h2 data-copy="h-vz-name">Visualize</h2>
-          <p class="kicker" data-copy="h-vz-k">Stereo imaging, in 3D.</p>
-        </div>
-        <div class="band-price"><span class="trial-badge" data-copy="h-vz-trial">Trial</span>$19 <s>$29</s><small data-copy="h-vz-pricenote">Launch price until Nov 6<br>Not sure? Try our 7-day free trial</small></div>
-      </div>
-      <div class="summary">
-        <div class="prose">
-          <p data-copy="h-vz-p1">The idea came from a mixing course. What if you could see where each sound sits in a mix: the pad at the back, bass and kick at the bottom, mono and stereo parts left and right, and the vocals? While working on that, we thought of splitting a stereometer by frequency.</p>
-          <p data-copy="h-vz-p2">Plenty of tools show stereo width. We hadn’t seen one that shows it in 3D.</p>
-          <p data-copy="h-vz-p3">Visualize stacks a vectorscope for every frequency into a cylinder, and has a monitor view that measures what gets lost in mono. Use these 3D views to check a song’s phase.</p>
-          <div class="sum-actions btnrow">
-            <a class="btn" href="/visualize/"><span data-copy="h-vz-cta">Get now</span><span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <div>
-          <a class="shot" href="/visualize/">
-            <img src="/img/visualize/visualize-hero.png" width="1280" height="759" loading="lazy" alt="Visualize: a spectrum over a waterfall, the 3D stereo-width cylinder, and loudness and stereo meters.">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="wrap">
-      <!-- LAUNCH DAY (10/27): remove this "In development" tag (and the one on the MixAlign page) -->
-      <span class="status" data-copy="h-mx-status">In development</span>
-      <div class="band-head">
-        <div>
-          <h2 data-copy="h-mx-name">MixAlign</h2>
-          <p class="kicker" data-copy="h-mx-k">Compare every version of your song, aligned to the sample.</p>
-        </div>
-      </div>
-      <div class="summary">
-        <div class="prose">
-          <p data-copy="h-mx-p1">Load every version of a mix and flip between them with one click. MixAlign lines them up to the sample, so you land on the same spot every time you switch. A null button plays only what changed, and an analysis panel spells out the differences in words.</p>
-          <p data-copy="h-mx-p2">For a blind test, hide the names and pick your favourite before you know which is which. Star the ones worth coming back to, then reveal. You can also leave notes on each version’s timeline and export them as a PDF for whoever you’re sending it to.</p>
-          <div class="sum-actions btnrow">
-            <a class="btn" href="/mixalign/"><span data-copy="h-mx-cta">Get now</span><span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <div>
-          <a class="shot" href="/mixalign/">
-            <img src="/img/mixalign/mixalign-hero.png" width="1480" height="920" loading="lazy" alt="MixAlign: three versions of a song lined up on one timeline, with loudness, tempo and the listening controls on top.">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="wrap">
-      <span class="status" data-copy="h-bm-status">In development</span>
-      <div class="band-head">
-        <div>
-          <h2 data-copy="h-bm-name">Beatmaker</h2>
-          <p class="kicker" data-copy="h-bm-k">The easiest DAW for beatmaking</p>
-        </div>
-      </div>
-      <div class="summary">
-        <div class="prose">
-          <p data-copy="h-bm-p1">Beatmaker is a DAW just for programming beats. You don’t set up tracks, routing or menus before you hear the first beat.</p>
-          <p data-copy="h-bm-p2">Stuck for an idea? Pick a BPM and a genre and the Generate button writes a drum pattern, learned from 5000+ grooves. It’s a quick way to start a song at any level.</p>
-          <p data-copy="h-bm-p3">It comes with 4,000+ drum samples and our own synth presets, included with the purchase.</p>
-          <div class="sum-actions btnrow">
-            <a class="btn" href="/beatmaker/"><span data-copy="h-bm-cta">Learn more</span><span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <div>
-          <a class="shot" href="/beatmaker/">
-            <img src="/img/beatmaker/01-main.png" width="1920" height="1080" loading="lazy" alt="Beatmaker showing a generated Boom Bap beat with drums, 808 bass, chords and melody tracks.">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="wrap">
-      <span class="status" data-copy="h-ms-status">In development</span>
-      <div class="band-head">
-        <div>
-          <h2 data-copy="h-ms-name">MultiConsole</h2>
-          <p class="kicker" data-copy="h-ms-k">A live mixing console for your PC audio</p>
-        </div>
-      </div>
-      <div class="summary">
-        <div class="prose">
-          <p data-copy="h-ms-p1"><b>Ever imagined A Desktop FX Chain?</b> Change the state and visibility of any knob and line them up the way you want. Mix YouTube vocals live. Mess with your favorite song. Even, analyze and hear different frequencies using our Band Sweep. MultiConsole has all audio effects you need, and it awaits your touch.</p>
-          <p data-copy="h-ms-p2">Analyze and Experiment using our 11 knobs to hear what your whole computer sound would be like with a little touch. The app provides Autotune, Saturator, Compressor, Band Sweep, Chorus, Delay, Reverb, Limiter, Mid/Side, Width and Gain that you can move around in your desktop or minimize.</p>
-          <div class="sum-actions btnrow">
-            <a class="btn" href="/multiconsole/"><span data-copy="h-ms-cta">Learn more</span><span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <div>
-          <a class="shot" href="/multiconsole/">
-            <img src="/img/console/01-home.png" width="536" height="302" loading="lazy" alt="A close view of the MultiConsole capsule: the autotune, saturator and compressor knobs, each with a live display inside.">
-          </a>
-        </div>
       </div>
     </div>
   </section>
@@ -1682,6 +1525,9 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
      Apps still in development: title (no price) and picture only; no purchase/download box.
      Sale prices: the small line under the price says until when first, then the trial
      ("Launch price until Nov 6 · Not sure? Try our 7-day free trial"), on home and app page alike.
+     Home page (owner 2026-10-16): hero, then the "Explore each app" picture cards (released apps
+     show a small price; unreleased ones "In development" only), then the launch list, then the footer.
+     The long per-app blocks are gone from home; each app page keeps its full content.
      Home page product blocks: name + kicker left, price tag right ("Free <s>$10</s>",
      "$19 <s>$29</s>"), one button. Unreleased apps show NO price, trial badge or sale line
      anywhere (owner 2026-10-13); their box is "Coming soon" + "Notify me when it's out". The removed
