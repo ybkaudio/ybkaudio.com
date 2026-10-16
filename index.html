@@ -894,7 +894,10 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 .app-card img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top;border-radius:var(--r-img);margin-bottom:10px;background:var(--ground)}
 .app-card b{font-family:var(--f-display);font-size:clamp(20px,1.8vw,24px);font-weight:800;letter-spacing:-.02em}
 .app-card span{font-size:14.5px;color:var(--muted);line-height:1.45}
-.app-card .status{align-self:flex-start;margin:0}
+.app-card .status{align-self:flex-start;margin:0;color:var(--hot);border-color:var(--hot);border-radius:10px;font-size:12px;letter-spacing:.16em;padding:5px 12px 4px}
+.app-card .status.ok{color:var(--ok);border-color:var(--ok)}
+.app-card .status.gold{color:#F2C14E;border-color:#F2C14E}
+.app-card .status[hidden]{display:none}
 .app-card .card-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px;color:var(--ink);font-size:inherit}
 .app-card .card-price{margin-left:auto;text-align:right;white-space:nowrap;font-family:var(--f-display);font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
 .app-card .card-price s{font-size:.6em;font-weight:700;color:var(--logo-red);margin-left:.3em;text-decoration-thickness:2px}
@@ -971,18 +974,21 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="app-cards">
         <a class="app-card" href="/player/">
           <img src="/img/player/01-main.png" alt="" loading="lazy">
-          <span class="card-top"><b>Instrument Player</b><span class="card-price"><span data-launch="active" hidden>Free <s>$10</s></span><span data-launch-hide="active upcoming">$10</span></span></span>
+          <span class="status ok" data-launch="active" hidden>Free until 10/19</span>
+          <span class="card-top"><b>Instrument Player</b><span class="card-price"><span data-launch="active" hidden>$0 <s>$10</s></span><span data-launch-hide="active upcoming">$10</span></span></span>
           <span>Why open a DAW to play an instrument?</span>
           <span class="go">See Instrument Player →</span>
         </a>
         <a class="app-card" href="/432hz/">
           <img src="/img/432/432-main.png" alt="" loading="lazy">
-          <span class="card-top"><b>432hz</b><span class="card-price">Free</span></span>
+          <span class="status ok">Free</span>
+          <span class="card-top"><b>432hz</b><span class="card-price">$0</span></span>
           <span>Your whole computer sound, retuned</span>
           <span class="go">See 432hz →</span>
         </a>
         <a class="app-card" href="/visualize/">
           <img src="/img/visualize/visualize-hero.png" alt="" loading="lazy">
+          <span class="status gold">7-day trial</span>
           <span class="card-top"><b>Visualize</b><span class="card-price"><span class="trial-badge">Trial</span>$19 <s>$29</s></span></span>
           <span>Stereo imaging, in 3D.</span>
           <span class="go">See Visualize →</span>
