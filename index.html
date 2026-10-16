@@ -895,7 +895,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 .app-card b{font-family:var(--f-display);font-size:clamp(20px,1.8vw,24px);font-weight:800;letter-spacing:-.02em}
 .app-card span{font-size:14.5px;color:var(--muted);line-height:1.45}
 .app-card .status{align-self:flex-start;margin:0}
-.app-card .card-price{font-family:var(--f-display);font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
+.app-card .card-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px;color:var(--ink);font-size:inherit}
+.app-card .card-price{margin-left:auto;text-align:right;white-space:nowrap;font-family:var(--f-display);font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
 .app-card .card-price s{font-size:.6em;font-weight:700;color:var(--logo-red);margin-left:.3em;text-decoration-thickness:2px}
 .app-card .card-price span{font-size:inherit;color:inherit;line-height:inherit}
 .app-card .card-price .trial-badge{color:#F2C14E;font-size:10px;line-height:1.2;padding:3px 7px 2px;margin-right:8px;transform:translateY(-.15em)}
@@ -970,22 +971,19 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
       <div class="app-cards">
         <a class="app-card" href="/player/">
           <img src="/img/player/01-main.png" alt="" loading="lazy">
-          <b>Instrument Player</b>
-          <span class="card-price"><span data-launch="active" hidden>Free <s>$10</s></span><span data-launch-hide="active upcoming">$10</span></span>
+          <span class="card-top"><b>Instrument Player</b><span class="card-price"><span data-launch="active" hidden>Free <s>$10</s></span><span data-launch-hide="active upcoming">$10</span></span></span>
           <span>Why open a DAW to play an instrument?</span>
           <span class="go">See Instrument Player →</span>
         </a>
         <a class="app-card" href="/432hz/">
           <img src="/img/432/432-main.png" alt="" loading="lazy">
-          <b>432hz</b>
-          <span class="card-price">Free</span>
+          <span class="card-top"><b>432hz</b><span class="card-price">Free</span></span>
           <span>Your whole computer sound, retuned</span>
           <span class="go">See 432hz →</span>
         </a>
         <a class="app-card" href="/visualize/">
           <img src="/img/visualize/visualize-hero.png" alt="" loading="lazy">
-          <b>Visualize</b>
-          <span class="card-price"><span class="trial-badge">Trial</span>$19 <s>$29</s></span>
+          <span class="card-top"><b>Visualize</b><span class="card-price"><span class="trial-badge">Trial</span>$19 <s>$29</s></span></span>
           <span>Stereo imaging, in 3D.</span>
           <span class="go">See Visualize →</span>
         </a>
