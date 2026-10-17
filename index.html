@@ -906,6 +906,21 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 .app-card .card-price .trial-badge{color:#F2C14E;font-size:10px;line-height:1.2;padding:3px 7px 2px;margin-right:8px;transform:translateY(-.15em)}
 .app-card .go{margin-top:auto;padding-top:8px;font-weight:600;color:var(--accent);font-size:14.5px}
 /* ============ end UI PREVIEW ============ */
+
+/* ============ HOME SCROLL ANIMATION (owner 2026-10-17) ============
+   html.anim is set by the script below (not with prefers-reduced-motion). The hero title fills the
+   first screen, shrinks and moves up as you scroll while the intro rises under it; the app cards,
+   the launch list and the footer pop in (fade + rise + slight scale, cards one after another) and
+   fade back out when they leave the screen. Only transform/opacity are animated. */
+html.anim .hero{padding-top:0}
+html.anim .hero-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center}
+html.anim .hero-top{width:100%;transform-origin:50% 0;will-change:transform;
+  transform:translateY(var(--hero-y,0px)) scale(var(--hero-s,1))}
+html.anim [data-reveal]{opacity:0;transform:translateY(34px) scale(.97);
+  transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+html.anim [data-reveal].in{opacity:1;transform:none}
+html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
+/* ============ end HOME SCROLL ANIMATION ============ */
 </style>
 </head>
 <body>
@@ -949,6 +964,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 <div data-page="home">
   <section class="hero">
     <div class="wrap">
+      <div class="hero-pin">
       <div class="hero-top">
         <svg class="logo hero-mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
         <div>
@@ -956,7 +972,8 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
           <h1><span data-copy="h1a">Music software</span><br><span data-copy="h1b">made simple</span><em>.</em></h1>
         </div>
       </div>
-      <div class="hero-body">
+      </div>
+      <div class="hero-body" data-reveal>
         <div class="ledes">
           <p class="lede" data-copy="lede1">Music-making work leaves a lot of room to wonder. We wondered if we could make easier, better software for all levels of users.</p>
         </div>
@@ -971,44 +988,44 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 
   <section class="explore" id="apps">
     <div class="wrap">
-      <h2 class="explore-h">Explore each app</h2>
+      <h2 class="explore-h" data-reveal>Explore each app</h2>
       <div class="app-cards">
-        <a class="app-card" href="/player/">
+        <a class="app-card" data-reveal style="--d:0ms" href="/player/">
           <img src="/img/player/01-main.png" alt="" loading="lazy">
           <span class="status ok" data-launch="active" hidden>Free until 10/19</span>
           <span class="card-top"><b>Instrument Player</b><span class="card-price"><span data-launch="active" hidden>$0 <s>$10</s></span><span data-launch-hide="active upcoming">$10</span></span></span>
           <span>Why open a DAW to play an instrument?</span>
           <span class="go">See Instrument Player →</span>
         </a>
-        <a class="app-card" href="/432hz/">
+        <a class="app-card" data-reveal style="--d:90ms" href="/432hz/">
           <img src="/img/432/432-main.png" alt="" loading="lazy">
           <span class="status ok">Free</span>
           <span class="card-top"><b>432hz</b><span class="card-price">$0</span></span>
           <span>Your whole computer sound, retuned</span>
           <span class="go">See 432hz →</span>
         </a>
-        <a class="app-card" href="/visualize/">
+        <a class="app-card" data-reveal style="--d:180ms" href="/visualize/">
           <img src="/img/visualize/visualize-hero.png" alt="" loading="lazy">
           <span class="status gold">7-day trial</span>
           <span class="card-top"><b>Visualize</b><span class="card-price">$19 <s>$29</s></span></span>
           <span>Stereo imaging, in 3D.</span>
           <span class="go">See Visualize →</span>
         </a>
-        <a class="app-card" href="/mixalign/">
+        <a class="app-card" data-reveal style="--d:0ms" href="/mixalign/">
           <img src="/img/mixalign/mixalign-hero.png" alt="" loading="lazy">
           <span class="status">In development</span>
           <b>MixAlign</b>
           <span>Compare every version of your song, aligned to the sample.</span>
           <span class="go">See MixAlign →</span>
         </a>
-        <a class="app-card" href="/beatmaker/">
+        <a class="app-card" data-reveal style="--d:90ms" href="/beatmaker/">
           <img src="/img/beatmaker/01-main.png" alt="" loading="lazy">
           <span class="status">In development</span>
           <b>Beatmaker</b>
           <span>The easiest DAW for beatmaking</span>
           <span class="go">See Beatmaker →</span>
         </a>
-        <a class="app-card" href="/multiconsole/">
+        <a class="app-card" data-reveal style="--d:180ms" href="/multiconsole/">
           <img src="/img/console/01-main.png" alt="" loading="lazy">
           <span class="status">In development</span>
           <b>MultiConsole</b>
@@ -1020,7 +1037,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
   </section>
 
   <section class="signup">
-    <div class="wrap signup-inner">
+    <div class="wrap signup-inner" data-reveal>
       <div>
         <span class="eyebrow" data-copy="su-eye">Launch list</span>
         <h3 class="big"><span data-copy="su-h">Hear it first</span><em>.</em></h3>
@@ -2567,7 +2584,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 </main>
 
 <footer>
-  <div class="wrap foot">
+  <div class="wrap foot" data-reveal>
     <span class="foot-l">
       <svg class="logo" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
       <span data-copy="f1">Contact - ybkaudio@gmail.com</span>
@@ -3686,6 +3703,33 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
     });
   }, { rootMargin: '200px 0px', threshold: 0.01 });
   vids.forEach(function (v) { io.observe(v); });
+})();
+</script>
+<script>
+/* Home scroll animation (see the CSS block "HOME SCROLL ANIMATION"). Off for prefers-reduced-motion. */
+(function () {
+  if (!window.matchMedia || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('anim');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { e.target.classList.toggle('in', e.isIntersecting); });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+
+  var top = document.querySelector('.hero-top'), hero = document.querySelector('.hero'), ticking = false;
+  function frame() {
+    ticking = false;
+    if (!hero || !hero.offsetParent) return;                 // only while the home page is shown
+    var vh = window.innerHeight, start = hero.offsetTop;
+    var p = Math.min(1, Math.max(0, (window.scrollY - start) / (vh * 0.45)));
+    var e = p * p * (3 - 2 * p);                               // smooth start and end
+    top.style.setProperty('--hero-s', (1 - 0.38 * e).toFixed(4));
+    top.style.setProperty('--hero-y', (-e * vh * 0.1).toFixed(1) + 'px');
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  document.addEventListener('ybk:route', onScroll);
+  frame();
 })();
 </script>
 </body>
