@@ -1023,6 +1023,51 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
 @media(prefers-reduced-motion:reduce){.scroll-cue span,.scroll-cue svg{animation:none!important}}
 @media(max-width:699px){.scroll-cue{bottom:70px!important}}   /* keep clear of the "Give us feedback" button */
 /* ============ end HERO DESIGN A ============ */
+
+/* ============ HOME = THREE PAGES (owner 2026-10-18) ============
+   1 logo + name, 2 Our Products, 3 Hear it first + footer. Each page is exactly the window below the top
+   bar, so nothing of the next page peeks in at rest; the scroll snaps from page to page. Our Products
+   fits one screen on phones too (2 small cards a row); on very small screens it scrolls inside itself. */
+html.home-snap .hero{height:calc(100vh - var(--mh,64px));height:calc(100svh - var(--mh,64px));padding:0}
+html.home-snap .hero>.wrap{height:100%}
+html.home-snap .hero-pin{position:relative;top:auto;height:100%;display:flex;align-items:center;justify-content:center;padding-bottom:12vh;padding-bottom:12svh}
+html.home-snap .explore{height:calc(100vh - var(--mh,64px));height:calc(100svh - var(--mh,64px));min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  display:flex;align-items:center;padding-block:clamp(12px,2vh,24px)}
+html.home-snap .explore>.wrap{margin-block:auto}
+html.home-snap .signup{min-height:calc(100vh - var(--mh,64px) - var(--fh,170px));min-height:calc(100svh - var(--mh,64px) - var(--fh,170px));
+  display:flex;flex-direction:column;justify-content:center;border-top:0}
+@media(max-width:699px){
+  html.home-snap .explore .explore-h{margin:0 0 4px;font-size:22px}
+  html.home-snap .app-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+  html.home-snap .app-card{padding:10px;gap:4px;border-radius:18px}
+  html.home-snap .app-card img{aspect-ratio:16/10;border-radius:10px;margin-bottom:4px}
+  html.home-snap .app-card b{font-size:16px}
+  html.home-snap .app-card .card-price{font-size:15px}
+  html.home-snap .app-card .card-top{gap:2px 6px}
+  html.home-snap .app-card>span:not(.status):not(.card-top):not(.go),html.home-snap .app-card .go{display:none}
+}
+/* the Scroll arrow: bigger on computers */
+@media(min-width:900px){
+  .scroll-cue{font-size:13.5px!important;letter-spacing:.26em!important;min-width:64px;min-height:64px;justify-content:center}
+  .scroll-cue svg{width:32px!important;height:32px!important}
+}
+/* ============ end HOME = THREE PAGES ============ */
+
+/* ============ PHOTO VIEWER (owner 2026-10-18) ============ */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(5,6,8,.92);display:flex;align-items:center;justify-content:center;
+  padding:56px 64px;touch-action:pan-y}
+.lb[hidden]{display:none}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px;box-shadow:0 20px 70px rgba(0,0,0,.6);user-select:none}
+.lb button{position:absolute;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;cursor:pointer;
+  border:1px solid #3A3B40;background:rgba(20,20,23,.85);color:#fff;font-size:22px;line-height:1;padding:0}
+.lb button:hover{border-color:var(--accent)}
+.lb-close{top:14px;right:14px}
+.lb-prev{left:14px;top:50%;transform:translateY(-50%)}
+.lb-next{right:14px;top:50%;transform:translateY(-50%)}
+.lb-count{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--muted)}
+@media(max-width:699px){.lb{padding:60px 10px}.lb-prev,.lb-next{top:auto;bottom:8px;transform:none}.lb-prev{left:12px}.lb-next{right:12px}}
+html.lb-open{overflow:hidden}
+/* ============ end PHOTO VIEWER ============ */
 </style>
 </head>
 <body>
@@ -1077,7 +1122,6 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
 <div data-page="home">
   <section class="hero">
     <span class="snap-mark snap-top" aria-hidden="true"></span>
-    <span class="snap-mark snap-intro" id="intro" aria-hidden="true"></span>
     <div class="wrap">
       <div class="hero-pin">
       <div class="hero-top hero-a">
@@ -1086,18 +1130,7 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
         <h1 class="hero-tag"><span class="ln" aria-hidden="true"></span><span class="sr-only">YBK Audio: </span><span data-copy="h1a">Music software</span>&nbsp;<span data-copy="h1b">made simple</span><span class="ln" aria-hidden="true"></span></h1>
         <span class="hero-flag mono eyebrow"><span class="dot" aria-hidden="true"></span><span data-copy="flag">Launch sale</span></span>
       </div>
-      <a class="scroll-cue" href="#intro" aria-label="Scroll down"><span>Scroll</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-      <div class="hero-spacer" aria-hidden="true"></div>
-      <div class="hero-body">
-        <div class="ledes">
-          <p class="lede" data-copy="lede1">Music-making work leaves a lot of room to wonder. We wondered if we could make easier, better software for all levels of users.</p>
-        </div>
-        <dl class="hero-notes">
-          <div class="note"><dt data-copy="n1t">Platform</dt><dd data-copy="n1d">Windows 10 &amp; 11, and macOS (beta).</dd></div>
-          <div class="note"><dt data-copy="n2t">Licensing</dt><dd data-copy="n2d">Each purchase comes with one code. It works on one computer at a time, and you can move it to a new one once every 30 days.</dd></div>
-          <div class="note"><dt data-copy="n3t">Status</dt><dd data-copy="n3d">Instrument Player, 432hz and Visualize are out now. MixAlign, Beatmaker and MultiConsole are in active development.</dd></div>
-        </dl>
+      <a class="scroll-cue" href="#apps" aria-label="Scroll down to Our Products"><span>Scroll</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
   </section>
@@ -1347,9 +1380,9 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
     <div class="wrap">
       <div class="explain">
         <div class="prose">
-          <p data-copy="sp-home-p1">Play your VSTs without opening a DAW, and switch between big instrument libraries with little latency.</p>
-          <p data-copy="sp-home-p2">Ideas don’t have to start in a heavy DAW session. Instrument Player lets you sit down and play your instruments without switching into work mode.</p>
-          <p data-copy="sp-home-p3">It also remembers what you played. MIDI Replay keeps the last 5 minutes, so if something good came out while you were noodling, you can pull it back, tidy it up in the MIDI editor and save it as a .mid file.</p>
+          <p data-copy="sp-home-p1"><b>Play your VSTs without opening the DAW.</b> Switch between massive instrument banks with little latency.</p>
+          <p data-copy="sp-home-p2"><b>No one said idea generation had to start in a heavy DAW.</b> Instrument Player helps you get closer to your instruments without having to enter work mode all the time.</p>
+          <p data-copy="sp-home-p3"><b>It remembers what you play.</b> The app provides MIDI replay, which brings back the last 5 minutes of your playing. Load up your sudden ideas and make small edits via the MIDI editor, and export the .mid file for later use.</p>
         </div>
         <aside class="why">
           <h3 data-copy="sp-why-h">Why get it</h3>
@@ -1555,9 +1588,9 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
     <div class="wrap">
       <div class="explain">
         <div class="prose">
-          <p data-copy="hz-home-p1">The idea came from the 432 Hz trend: what if you could retune everything your computer plays, to whatever pitch you like? 432hz is a small app that does exactly that.</p>
-          <p data-copy="hz-home-p2">Open the spectrum graph and watch the frequencies move as you change the tuning. Useful for teaching, or just for listening.</p>
-          <p data-copy="hz-home-p3">Whether 432 Hz is actually better is up to your ears.</p>
+          <p data-copy="hz-home-p1">An idea from the 432Hz trend – what if you could retune your computer’s entire audio output to your liking? YBK AUDIO’s light app <b>432Hz</b> does that in a very simple and easy way.</p>
+          <p data-copy="hz-home-p2">Open the spectrum graphs to see the frequency change as the numbers go down and up. This app is great both for visual analysis, teaching and everyday listening.</p>
+          <p data-copy="hz-home-p3">Who knows, maybe hearing everything in 432Hz really is good for you.</p>
         </div>
         <aside class="why">
           <h3 data-copy="hz-why-h">Why get it</h3>
@@ -1980,9 +2013,9 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
     <div class="wrap">
       <div class="explain">
         <div class="prose">
-          <p data-copy="vz-home-p1">The idea came from a mixing course. What if you could see where each sound sits in a mix: the pad at the back, bass and kick at the bottom, mono and stereo parts left and right, and the vocals? While working on that, we thought of splitting a stereometer by frequency.</p>
-          <p data-copy="vz-home-p2">Plenty of tools show stereo width. We hadn’t seen one that shows it in 3D.</p>
-          <p data-copy="vz-home-p3">Visualize stacks a vectorscope for every frequency into a cylinder, and has a monitor view that measures what gets lost in mono. Use these 3D views to check a song’s phase.</p>
+          <p data-copy="vz-home-p1">The idea came from a mixing course – what if we could <i>Visualize</i> <b>the locations of each sound in a mix?</b> The pad at the back, the bass and kicks at the bottom, mono and stereo instruments kicking in right and left, the vocals. We were working on that idea when we came up with an idea to extend a stereometer by frequency.</p>
+          <p data-copy="vz-home-p2"><b>You can find stereo imaging anywhere. But not in 3D.</b></p>
+          <p data-copy="vz-home-p3">Visualize proposes a new way of stereo image analysis. From a cylinder-shaped Vectorscope stacked up every frequency, to a monitoring environment that measures Mono loss, we provide groundbreaking 3D graphs you can use to analyze a song’s phasing.</p>
         </div>
         <aside class="why">
           <h3 data-copy="vz-why-h">Why get it</h3>
@@ -2166,8 +2199,8 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
     <div class="wrap">
       <div class="explain">
         <div class="prose">
-          <p data-copy="mx-home-p1">Load every version of a mix and flip between them with one click. MixAlign lines them up to the sample, so you land on the same spot every time you switch. A null button plays only what changed, and an analysis panel spells out the differences in words.</p>
-          <p data-copy="mx-home-p2">For a blind test, hide the names and pick your favourite before you know which is which. Star the ones worth coming back to, then reveal. You can also leave notes on each version’s timeline and export them as a PDF for whoever you’re sending it to.</p>
+          <p data-copy="mx-home-p1"><b>Switch instantaneously between different versions to hear differences.</b> One click and you will be hearing another version of your mix with no delay – all easily possible because we auto-align your uploaded mixes with beat detection. Also you can check the analysis panel, which provides written description on differences between versions. The app provides difference/null buttons to hear just the differences, so you can check and compare yourself.</p>
+          <p data-copy="mx-home-p2"><b>Blind test &amp; Annotate.</b> Hide track names and test your decision on what’s better. Rate each track you go through with stars to come back to them. When you’re sure on what you think is best, make the big reveal to find out which track to share. Also while sharing, you can leave your thoughts on the timeline of each track and export them as PDF for whoever to see.</p>
         </div>
         <aside class="why">
           <h3 data-copy="mx-why-h">Why get it</h3>
@@ -2336,9 +2369,9 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
     <div class="wrap">
       <div class="explain">
         <div class="prose">
-          <p data-copy="bm-home-p1">Beatmaker is a DAW just for programming beats. You don’t set up tracks, routing or menus before you hear the first beat.</p>
-          <p data-copy="bm-home-p2">Stuck for an idea? Pick a BPM and a genre and the Generate button writes a drum pattern, learned from 5000+ grooves. It’s a quick way to start a song at any level.</p>
-          <p data-copy="bm-home-p3">It comes with 4,000+ drum samples and our own synth presets, included with the purchase.</p>
+          <p data-copy="bm-home-p1"><b>Simplistic beat programming</b> – a DAW made just for the casual beat programmer. We minimized the hassle of setting up tracks, routing and menus before you hear a single beat, and made a DAW that is incredibly easy to use.</p>
+          <p data-copy="bm-home-p2"><b>Need some ideas?</b> Auto-generate drum patterns according to the BPM and genre you choose. Learned from 5000+ grooves, the Generate button can be the perfect songstarter, even for professionals.</p>
+          <p data-copy="bm-home-p3"><b>Got no samples? Don’t worry.</b> With the purchase comes 4,000+ drum samples and our own synthesizer presets that you can grab after the first purchase.</p>
         </div>
         <aside class="why">
           <h3 data-copy="bm-why-h">Why get it</h3>
@@ -3874,7 +3907,7 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
   var mark = document.querySelector('.hero-mark'), words = document.querySelector('.hero-words');
   var h1 = document.querySelector('.hero-tag'), wm = words.querySelector('.hero-wm'), flag = document.querySelector('.hero-flag');
   var brand = document.querySelector('.masthead .brand'), bLogo = brand.querySelector('.logo'), bWord = brand.querySelector('.wordmark');
-  var pin = document.querySelector('.hero-pin'), body = document.querySelector('.hero-body');
+  var pin = document.querySelector('.hero-pin'), next = document.querySelector('.explore');
   var M = null, ticking = false;
   var clamp = function (x) { return Math.min(1, Math.max(0, x)); };
   var ease = function (x) { x = clamp(x); return x * x * (3 - 2 * x); };
@@ -3888,13 +3921,15 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
     var mr = mark.getBoundingClientRect(), wr = wm.getBoundingClientRect(), cr = words.getBoundingClientRect();
     var lr = bLogo.getBoundingClientRect(), tr = bWord.getBoundingClientRect(), p0 = pin.getBoundingClientRect().top;
     var hs = head.getBoundingClientRect().top;      // the top bar sits a few px lower at the very top; once stuck it is at 0
+    var nd = next.getBoundingClientRect().top - head.getBoundingClientRect().bottom;
     lr = { left: lr.left, top: lr.top - hs, width: lr.width, height: lr.height }; tr = { left: tr.left, top: tr.top - hs, width: tr.width, height: tr.height };
     window.scrollTo(0, y);
     M = {
       mdx: (lr.left + lr.width / 2) - (mr.left + mr.width / 2), mdy: (lr.top + lr.height / 2) - (mr.top + mr.height / 2), mk: lr.width / mr.width,
       wdx: (tr.left + tr.width / 2) - (wr.left + wr.width / 2), wdy: (tr.top + tr.height / 2) - (wr.top + wr.height / 2), wk: tr.width / wr.width,
       ox: (wr.left - cr.left) + wr.width / 2, oy: (wr.top - cr.top) + wr.height / 2,
-      pin0: p0
+      pin0: p0,
+      dist: Math.max(1, nd)   // scroll from page 1 to page 2
     };
     words.style.transformOrigin = M.ox + 'px ' + M.oy + 'px';
   }
@@ -3903,11 +3938,9 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
     if (!hero.offsetParent) { brand.style.opacity = ''; return; }
     if (!M) measure();
     if (!M) return;
-    var p = clamp(window.scrollY / (window.innerHeight * 0.4));
+    var p = clamp(window.scrollY / M.dist);
     var m = seg(p, 0.05, 0.95);                                  // the move to the top bar
     var off = pin.getBoundingClientRect().top - M.pin0;        // if the title box has started scrolling away, aim higher
-    var bo = seg(p, 0.45, 0.9);                                  // the intro rises in while the logo flies
-    body.style.opacity = bo.toFixed(3); body.style.transform = 'translateY(' + ((1 - bo) * 40).toFixed(1) + 'px)';
     mark.style.transform = 'translate(' + (M.mdx * m).toFixed(1) + 'px,' + (M.mdy * m - off * m).toFixed(1) + 'px) scale(' + (1 + (M.mk - 1) * m).toFixed(4) + ')';
     words.style.transform = 'translate(' + (M.wdx * m).toFixed(1) + 'px,' + (M.wdy * m - off * m).toFixed(1) + 'px) scale(' + (1 + (M.wk - 1) * m).toFixed(4) + ')';
     flag.style.opacity = h1.style.opacity = (1 - seg(p, 0, 0.3)).toFixed(3);   // tagline and pill fade; logo + YBK.AUDIO fly
@@ -3940,14 +3973,15 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
 /* Home slides: snap scrolling only while the home page is shown; the scroll cue jumps to screen 2. */
 (function () {
   var root = document.documentElement, hero = document.querySelector('.hero');
-  var cue = document.querySelector('.scroll-cue'), mark = document.getElementById('intro');
+  var cue = document.querySelector('.scroll-cue'), mark = document.getElementById('apps');
   function update() {
     var home = !!(hero && hero.offsetParent);
     root.classList.toggle('home-snap', home);
-    if (!root.style.getPropertyValue('--mh')) root.style.setProperty('--mh', document.querySelector('.masthead').offsetHeight + 'px');
+    root.style.setProperty('--mh', document.querySelector('.masthead').offsetHeight + 'px');
+    root.style.setProperty('--fh', document.querySelector('footer').offsetHeight + 'px');
   }
   document.addEventListener('ybk:route', update);
-  window.addEventListener('resize', function () { root.style.setProperty('--mh', document.querySelector('.masthead').offsetHeight + 'px'); });
+  window.addEventListener('resize', update);
   update();
   if (cue && mark) cue.addEventListener('click', function (e) {
     e.preventDefault();
@@ -3958,6 +3992,59 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
     cue.style.opacity = Math.max(0, 1 - window.scrollY / (window.innerHeight * 0.12)).toFixed(2);
     cue.style.pointerEvents = window.scrollY > 40 ? 'none' : '';
   }, { passive: true });
+})();
+</script>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <img alt="">
+  <button type="button" class="lb-close" aria-label="Close">×</button>
+  <button type="button" class="lb-prev" aria-label="Previous photo">‹</button>
+  <button type="button" class="lb-next" aria-label="Next photo">›</button>
+  <span class="lb-count"></span>
+</div>
+<script>
+/* Photo viewer: a picture link (a.shot / a.feat-shot) opens here instead of a new page; ‹ › go through
+   the other pictures on the same page. Without JS the links still open the image itself. */
+(function () {
+  var lb = document.getElementById('lb'), img = lb.querySelector('img'), count = lb.querySelector('.lb-count');
+  var list = [], at = 0, back = null, x0 = null;
+  function group() {
+    return Array.prototype.filter.call(document.querySelectorAll('a.shot, a.feat-shot'), function (a) {
+      return a.offsetParent !== null && /\.(png|jpe?g|webp|gif)$/i.test(a.getAttribute('href'));
+    });
+  }
+  function show(i) {
+    at = (i + list.length) % list.length;
+    var a = list[at], im = a.querySelector('img');
+    img.src = a.getAttribute('href'); img.alt = im ? im.alt : '';
+    count.textContent = (at + 1) + ' / ' + list.length;
+    lb.querySelector('.lb-prev').hidden = lb.querySelector('.lb-next').hidden = list.length < 2;
+  }
+  function open(a) {
+    list = group(); if (!list.length) return;
+    back = a; document.documentElement.classList.add('lb-open'); lb.hidden = false;
+    show(Math.max(0, list.indexOf(a))); lb.querySelector('.lb-close').focus();
+  }
+  function close() { lb.hidden = true; img.removeAttribute('src'); document.documentElement.classList.remove('lb-open'); if (back) back.focus(); }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a.shot, a.feat-shot');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    if (!/\.(png|jpe?g|webp|gif)$/i.test(a.getAttribute('href'))) return;
+    e.preventDefault(); open(a);
+  });
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  lb.querySelector('.lb-close').addEventListener('click', close);
+  lb.querySelector('.lb-prev').addEventListener('click', function () { show(at - 1); });
+  lb.querySelector('.lb-next').addEventListener('click', function () { show(at + 1); });
+  document.addEventListener('keydown', function (e) {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(at - 1); else if (e.key === 'ArrowRight') show(at + 1);
+  });
+  lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 45 && list.length > 1) show(at + (dx < 0 ? 1 : -1));
+  });
+  document.addEventListener('ybk:route', function () { if (!lb.hidden) close(); });
 })();
 </script>
 </body>
