@@ -969,6 +969,60 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
 /* About us */
 .about-notes{margin-top:clamp(26px,3.5vw,40px);max-width:760px}
 /* ============ end INFORMATION MENU ============ */
+
+/* ============ HOME SLIDES (owner 2026-10-18) ============
+   On the home page the scroll snaps from screen to screen: 1 the title, 2 the intro (the logo has just
+   landed on the top bar), 3 Our Products, 4 the launch list + footer. A screen taller than the window
+   (Our Products on a phone) scrolls normally inside before moving on. html.home-snap is set by the
+   script only while the home page is shown; without JS the page scrolls normally. */
+html.home-snap{scroll-snap-type:y mandatory;scroll-padding-top:var(--mh,64px)}
+html.home-snap .hero{position:relative}
+html.home-snap .snap-top{scroll-snap-align:start}
+.snap-top{top:-40px}   /* above the page top, so slide 1 snaps to the very top (0) */
+.snap-mark{position:absolute;left:0;width:1px;height:1px;pointer-events:none;scroll-margin-top:0}
+.snap-intro{top:40vh}
+html.home-snap .snap-intro{scroll-snap-align:start}
+html.home-snap .explore,html.home-snap .signup{scroll-snap-align:start;scroll-snap-stop:always;scroll-margin-top:0}
+html.home-snap .explore{min-height:calc(100vh - var(--mh,64px));min-height:calc(100svh - var(--mh,64px));display:flex;align-items:center}
+html.home-snap .explore>.wrap{width:100%}
+html.home-snap footer{scroll-snap-align:end}   /* the last screen shows the launch list and the footer together */
+.scroll-cue{display:none}
+html.anim .scroll-cue,html.home-snap .scroll-cue{display:flex;flex-direction:column;align-items:center;gap:2px;position:absolute;left:50%;bottom:22px;
+  transform:translateX(-50%);color:var(--muted);text-decoration:none;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;z-index:2}
+.scroll-cue svg{width:22px;height:22px;color:var(--ink)}
+html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite}
+@keyframes cueBob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media(prefers-reduced-motion:reduce){.scroll-cue svg{animation:none}}
+html.anim .hero-pin{position:sticky}
+html.anim .hero-pin .scroll-cue{position:absolute}
+/* on wider screens the products screen fits in one window: lower pictures, tighter cards */
+@media(min-width:1000px){
+  html.home-snap .explore .explore-h{margin-top:0}
+  html.home-snap .app-cards{gap:16px;margin-top:16px}
+  html.home-snap .app-card{padding:16px 18px;gap:5px}
+  html.home-snap .app-card img{aspect-ratio:3/1;margin-bottom:6px}
+  html.home-snap .explore{padding-block:0}
+  html.home-snap .app-card .go{padding-top:4px}
+}
+/* ============ end HOME SLIDES ============ */
+
+/* ============ HERO DESIGN A (owner 2026-10-18): logo, big YBK.AUDIO, tagline between two lines, pill ============ */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hero-a{display:flex!important;flex-direction:column;align-items:center;text-align:center;gap:clamp(14px,2.2vw,24px);width:100%}
+.hero-a .hero-mark{width:clamp(110px,14vw,170px)}
+.hero-a .hero-words{position:relative}
+.hero-a .hero-wm{position:static;display:block;opacity:1;font-size:clamp(52px,12vw,150px);letter-spacing:-.02em;line-height:.9;white-space:nowrap}
+.hero-tag{display:flex;align-items:center;justify-content:center;gap:16px;margin:0;font-family:var(--f-mono);font-weight:500;
+  font-size:clamp(11px,1.5vw,16px);letter-spacing:clamp(.12em,1vw,.32em);line-height:1.3;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.hero-tag .ln{display:block;flex:none;height:1px;width:clamp(20px,5vw,60px);background:var(--rule)}
+.hero-a .hero-flag{margin:4px 0 0}
+html.anim .hero-pin{justify-content:center;padding-bottom:14vh;padding-bottom:14svh}   /* group sits a little above the middle (~43%) */
+html.anim .scroll-cue span{animation:cueBlink 1.4s ease-in-out infinite}
+html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.4s ease-in-out infinite}
+@keyframes cueBlink{0%,100%{opacity:1}50%{opacity:.35}}
+@media(prefers-reduced-motion:reduce){.scroll-cue span,.scroll-cue svg{animation:none!important}}
+@media(max-width:699px){.scroll-cue{bottom:70px!important}}   /* keep clear of the "Give us feedback" button */
+/* ============ end HERO DESIGN A ============ */
 </style>
 </head>
 <body>
@@ -1022,18 +1076,17 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
 <!-- ==================== HOME ==================== -->
 <div data-page="home">
   <section class="hero">
+    <span class="snap-mark snap-top" aria-hidden="true"></span>
+    <span class="snap-mark snap-intro" id="intro" aria-hidden="true"></span>
     <div class="wrap">
       <div class="hero-pin">
-      <div class="hero-top">
+      <div class="hero-top hero-a">
         <svg class="logo hero-mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
-        <div>
-          <span class="hero-flag mono eyebrow"><span class="dot" aria-hidden="true"></span><span data-copy="flag">Launch sale</span></span>
-          <div class="hero-words">
-            <h1><span data-copy="h1a">Music software</span><br><span data-copy="h1b">made simple</span><em>.</em></h1>
-            <span class="hero-wm wordmark" aria-hidden="true">YBK<i>.</i>Audio</span>
-          </div>
-        </div>
+        <div class="hero-words"><span class="hero-wm wordmark" aria-hidden="true">YBK<i>.</i>Audio</span></div>
+        <h1 class="hero-tag"><span class="ln" aria-hidden="true"></span><span class="sr-only">YBK Audio: </span><span data-copy="h1a">Music software</span>&nbsp;<span data-copy="h1b">made simple</span><span class="ln" aria-hidden="true"></span></h1>
+        <span class="hero-flag mono eyebrow"><span class="dot" aria-hidden="true"></span><span data-copy="flag">Launch sale</span></span>
       </div>
+      <a class="scroll-cue" href="#intro" aria-label="Scroll down"><span>Scroll</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
       <div class="hero-spacer" aria-hidden="true"></div>
       <div class="hero-body">
@@ -3819,7 +3872,7 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
 
   var hero = document.querySelector('.hero'), head = document.querySelector('.masthead');
   var mark = document.querySelector('.hero-mark'), words = document.querySelector('.hero-words');
-  var h1 = words.querySelector('h1'), wm = words.querySelector('.hero-wm'), flag = document.querySelector('.hero-flag');
+  var h1 = document.querySelector('.hero-tag'), wm = words.querySelector('.hero-wm'), flag = document.querySelector('.hero-flag');
   var brand = document.querySelector('.masthead .brand'), bLogo = brand.querySelector('.logo'), bWord = brand.querySelector('.wordmark');
   var pin = document.querySelector('.hero-pin'), body = document.querySelector('.hero-body');
   var M = null, ticking = false;
@@ -3839,7 +3892,7 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
     window.scrollTo(0, y);
     M = {
       mdx: (lr.left + lr.width / 2) - (mr.left + mr.width / 2), mdy: (lr.top + lr.height / 2) - (mr.top + mr.height / 2), mk: lr.width / mr.width,
-      wdx: (tr.left + tr.width / 2) - (wr.left + wr.width / 2), wdy: (tr.top + tr.height / 2) - (wr.top + wr.height / 2), wk: tr.height / wr.height,
+      wdx: (tr.left + tr.width / 2) - (wr.left + wr.width / 2), wdy: (tr.top + tr.height / 2) - (wr.top + wr.height / 2), wk: tr.width / wr.width,
       ox: (wr.left - cr.left) + wr.width / 2, oy: (wr.top - cr.top) + wr.height / 2,
       pin0: p0
     };
@@ -3857,9 +3910,7 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
     body.style.opacity = bo.toFixed(3); body.style.transform = 'translateY(' + ((1 - bo) * 40).toFixed(1) + 'px)';
     mark.style.transform = 'translate(' + (M.mdx * m).toFixed(1) + 'px,' + (M.mdy * m - off * m).toFixed(1) + 'px) scale(' + (1 + (M.mk - 1) * m).toFixed(4) + ')';
     words.style.transform = 'translate(' + (M.wdx * m).toFixed(1) + 'px,' + (M.wdy * m - off * m).toFixed(1) + 'px) scale(' + (1 + (M.wk - 1) * m).toFixed(4) + ')';
-    flag.style.opacity = (1 - seg(p, 0, 0.2)).toFixed(3);
-    h1.style.opacity = (1 - seg(p, 0.2, 0.45)).toFixed(3);       // the title turns into YBK.AUDIO
-    wm.style.opacity = seg(p, 0.3, 0.55).toFixed(3);
+    flag.style.opacity = h1.style.opacity = (1 - seg(p, 0, 0.3)).toFixed(3);   // tagline and pill fade; logo + YBK.AUDIO fly
     var hand = seg(p, 0.9, 1);                                   // the top bar takes over
     mark.style.opacity = words.style.opacity = (1 - hand).toFixed(3);
     brand.style.opacity = hand.toFixed(3);
@@ -3883,6 +3934,30 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { set(false); btn.focus(); } });
   menu.addEventListener('click', function () { set(false); });
   document.addEventListener('ybk:route', function () { set(false); });
+})();
+</script>
+<script>
+/* Home slides: snap scrolling only while the home page is shown; the scroll cue jumps to screen 2. */
+(function () {
+  var root = document.documentElement, hero = document.querySelector('.hero');
+  var cue = document.querySelector('.scroll-cue'), mark = document.getElementById('intro');
+  function update() {
+    var home = !!(hero && hero.offsetParent);
+    root.classList.toggle('home-snap', home);
+    if (!root.style.getPropertyValue('--mh')) root.style.setProperty('--mh', document.querySelector('.masthead').offsetHeight + 'px');
+  }
+  document.addEventListener('ybk:route', update);
+  window.addEventListener('resize', function () { root.style.setProperty('--mh', document.querySelector('.masthead').offsetHeight + 'px'); });
+  update();
+  if (cue && mark) cue.addEventListener('click', function (e) {
+    e.preventDefault();
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: mark.getBoundingClientRect().top + window.scrollY - (parseFloat(getComputedStyle(root).scrollPaddingTop) || 0), behavior: reduce ? 'auto' : 'smooth' });
+  });
+  if (cue) window.addEventListener('scroll', function () {
+    cue.style.opacity = Math.max(0, 1 - window.scrollY / (window.innerHeight * 0.12)).toFixed(2);
+    cue.style.pointerEvents = window.scrollY > 40 ? 'none' : '';
+  }, { passive: true });
 })();
 </script>
 </body>
