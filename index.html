@@ -604,7 +604,10 @@ h2{
 .wl-apps[disabled]{opacity:.45}
 .wl-opt{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;cursor:pointer;margin:6px 0 10px}
 .wl-opt input{width:18px;height:18px;accent-color:var(--accent)}
-.wl-hint{margin:-6px 0 14px 28px;font-size:13px;color:var(--muted)}
+.wl-news-row{margin:4px 0 14px}
+.wl-news-row .wl-opt{margin-bottom:2px}
+#wl-dialog .wl-news-row .wl-hint{margin:0;padding-left:35px}
+.wl-hint{margin:0 0 0 28px;font-size:13px;line-height:1.45;color:var(--muted)}   /* belongs to the newsletter box only */
 .wl-apps legend{padding:0;margin-bottom:8px;font-size:13px;color:var(--muted)}
 .wl-apps label{display:flex;align-items:center;gap:8px;font-size:15px;cursor:pointer}
 .wl-apps input{width:18px;height:18px;accent-color:var(--accent)}
@@ -2876,7 +2879,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
 <dialog class="fb-dialog" id="wl-dialog" aria-labelledby="wl-title">
   <form novalidate>
     <h3 id="wl-title" data-copy="wl-title">Subscribe</h3>
-    <p data-copy="wl-intro">Pick what you’d like to hear about. We never share your address.</p>
     <label class="wl-opt"><input type="checkbox" name="notify"> <span data-copy="wl-notify">Notify me when released</span></label>
     <fieldset class="wl-apps">
       <legend class="sr-only">Which apps?</legend>
@@ -2884,8 +2886,10 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <label><input type="checkbox" name="products" value="beatmaker"> Beatmaker</label>
       <label><input type="checkbox" name="products" value="console"> MultiConsole</label>
     </fieldset>
-    <label class="wl-opt wl-news"><input type="checkbox" name="newsletter"> <span data-copy="wl-news">Join our newsletter</span></label>
-    <p class="wl-hint wl-news" data-copy="wl-news-hint">New apps and updates, now and then. Unsubscribe any time.</p>
+    <div class="wl-news-row">
+      <label class="wl-opt wl-news"><input type="checkbox" name="newsletter"> <span data-copy="wl-news">Join our newsletter</span></label>
+      <p class="wl-hint wl-news" data-copy="wl-news-hint">New apps and updates, now and then. Unsubscribe any time.</p>
+    </div>
     <div class="field">
       <label for="wl-email" data-copy="wl-email-label">Your email</label>
       <input id="wl-email" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
