@@ -1031,7 +1031,7 @@ html.anim .scroll-cue svg{animation:cueBob 1.8s ease-in-out infinite,cueBlink 1.
 html.home-snap .hero{height:calc(100vh - var(--mh,64px));height:calc(100svh - var(--mh,64px));padding:0}
 html.home-snap .hero>.wrap{height:100%}
 html.home-snap .hero-pin{position:relative;top:auto;height:100%;display:flex;align-items:center;justify-content:center;padding-bottom:12vh;padding-bottom:12svh}
-html.home-snap .explore{height:calc(100vh - var(--mh,64px));height:calc(100svh - var(--mh,64px));min-height:0;overflow-y:auto;overscroll-behavior:contain;
+html.home-snap .explore{height:auto;min-height:calc(100vh - var(--mh,64px));min-height:calc(100svh - var(--mh,64px));overflow:visible;
   display:flex;align-items:center;padding-block:clamp(12px,2vh,24px)}
 html.home-snap .explore>.wrap{margin-block:auto}
 html.home-snap .signup{min-height:calc(100vh - var(--mh,64px) - var(--fh,170px));min-height:calc(100svh - var(--mh,64px) - var(--fh,170px));
@@ -1046,12 +1046,13 @@ html.home-snap .signup{min-height:calc(100vh - var(--mh,64px) - var(--fh,170px))
   html.home-snap .app-card .card-top{gap:2px 6px}
   html.home-snap .app-card>span:not(.status):not(.card-top):not(.go),html.home-snap .app-card .go{display:none}
 }
+@media(max-width:699px){html.home-snap .explore{padding-bottom:96px}}   /* free scroll room: the last cards can rise above "Give us feedback" */
 /* the Scroll arrow: bigger on computers */
 @media(min-width:900px){
   .scroll-cue{font-size:13.5px!important;letter-spacing:.26em!important;min-width:64px;min-height:64px;justify-content:center}
   .scroll-cue svg{width:32px!important;height:32px!important}
 }
-html.home-snap.pager{scroll-snap-type:none}   /* the page-turner script moves one page per scroll, swipe or key */
+html.home-snap.pager{scroll-snap-type:none}   /* the settle script below does the locking */
 /* ============ end HOME = THREE PAGES ============ */
 
 /* ============ PHOTO VIEWER (owner 2026-10-18) ============ */
@@ -4049,84 +4050,73 @@ html.lb-open{overflow:hidden}
 })();
 </script>
 <script>
-/* Home page-turner: one wheel flick, swipe or key press = exactly one page (the CSS snap alone pulled
-   short scrolls back to the same page). Pages: 0 logo + name, 1 Our Products, 2 Hear it first + footer. */
+/* Home scrolling: free scroll + magnetic lock (owner 2026-10-18). The page follows the finger / wheel 1:1;
+   inside a page (top to bottom of a page that is taller than the window) nothing snaps. When scrolling
+   stops between two pages, it glides to one of them: on to the next if you went 20% of a screen into
+   the gap in that direction, otherwise back. Keys and the Scroll arrow jump to the next stop. */
 (function () {
-  var root = document.documentElement, hero = document.querySelector('.hero'), ex = document.querySelector('.explore');
-  var lb = document.getElementById('lb'), cue = document.querySelector('.scroll-cue');
+  var root = document.documentElement, hero = document.querySelector('.hero'), ex = document.querySelector('.explore'), su = document.querySelector('.signup');
+  var lb = document.getElementById('lb'), cue = document.querySelector('.scroll-cue'), head = document.querySelector('.masthead');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var busyUntil = 0, lastWheel = 0, y0 = null, anim = null;
+  var anim = null, startY = 0, touching = false, idle = null, lastInput = 0;
   function on() { return root.classList.contains('home-snap') && hero && hero.offsetParent && lb.hidden; }
-  function stops() {
-    var mh = document.querySelector('.masthead').offsetHeight;
-    var max = root.scrollHeight - window.innerHeight;
-    return [0, Math.min(max, Math.round(ex.getBoundingClientRect().top + window.scrollY - mh)), max];
+  function pages() {                       // [top, bottom] scroll range of each page
+    var mh = head.offsetHeight, vh = window.innerHeight, max = root.scrollHeight - vh, y = window.scrollY;
+    var t1 = Math.round(ex.getBoundingClientRect().top + y - mh), t2 = Math.min(max, Math.round(su.getBoundingClientRect().top + y - mh));
+    var b1 = Math.max(t1, Math.round(t1 + ex.offsetHeight - (vh - mh)));
+    return [[0, 0], [t1, Math.min(b1, t2)], [t2, max]];
   }
-  function current() {
-    var s = stops(), y = window.scrollY, best = 0;
-    for (var i = 1; i < s.length; i++) if (Math.abs(s[i] - y) < Math.abs(s[best] - y)) best = i;
-    return best;
-  }
-  function goTo(i) {
-    var s = stops(); i = Math.max(0, Math.min(s.length - 1, i));
-    var from = window.scrollY, to = s[i];
+  function stop() { if (anim) { cancelAnimationFrame(anim); anim = null; } }
+  function glide(to) {
+    stop();
+    var from = window.scrollY;
     if (Math.abs(to - from) < 2) return;
-    if (anim) cancelAnimationFrame(anim);
-    if (reduce) { window.scrollTo(0, to); return; }
-    var t0 = performance.now(), dur = 750;
-    busyUntil = t0 + dur + 60;
+    if (reduce) { window.scrollTo(0, to); startY = to; return; }
+    var t0 = performance.now(), dur = 520;
     (function step(t) {
-      var k = Math.min(1, (t - t0) / dur), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+      var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
       window.scrollTo(0, from + (to - from) * e);
-      anim = k < 1 ? requestAnimationFrame(step) : null;
+      if (k < 1) anim = requestAnimationFrame(step); else { anim = null; startY = to; }
     })(t0);
   }
-  window.ybkGoPage = goTo;
-  // a tall Our Products panel (very small phones) scrolls inside first
-  function panelScrolls(target, dy) {
-    if (!(target instanceof Node) || !ex.contains(target) || ex.scrollHeight <= ex.clientHeight + 1) return false;
-    return dy > 0 ? ex.scrollTop + ex.clientHeight < ex.scrollHeight - 1 : ex.scrollTop > 0;
+  function settle() {
+    if (!on() || anim || touching) return;
+    var P = pages(), y = window.scrollY, vh = window.innerHeight, dir = y - startY;
+    for (var i = 0; i < P.length; i++) if (y >= P[i][0] - 1 && y <= P[i][1] + 1) { startY = y; return; }   // inside a page: free
+    for (var j = 0; j < P.length - 1; j++) {
+      var lo = P[j][1], hi = P[j + 1][0];
+      if (y > lo && y < hi) {
+        var into = dir >= 0 ? y - lo : hi - y;
+        if (dir >= 0) glide(into >= vh * 0.2 ? hi : lo); else glide(into >= vh * 0.2 ? lo : hi);
+        return;
+      }
+    }
   }
-  function turn(dy) {
-    var now = performance.now();
-    if (now < busyUntil) return;
-    goTo(current() + (dy > 0 ? 1 : -1));
-  }
-  window.addEventListener('wheel', function (e) {
-    if (!on() || e.ctrlKey) return;
-    if (panelScrolls(e.target, e.deltaY)) return;
-    e.preventDefault();
-    var now = performance.now(), gap = now - lastWheel; lastWheel = now;
-    if (Math.abs(e.deltaY) < 2) return;
-    if (gap < 140) return;                         // the rest of the same flick (trackpad inertia): one page per gesture
-    turn(e.deltaY);
-  }, { passive: false });
-  window.addEventListener('touchstart', function (e) { if (on()) y0 = e.touches[0].clientY; }, { passive: true });
-  window.addEventListener('touchmove', function (e) {
-    if (!on() || y0 === null) return;
-    var dy = y0 - e.touches[0].clientY;
-    if (panelScrolls(e.target, dy)) return;
-    e.preventDefault();
-  }, { passive: false });
-  window.addEventListener('touchend', function (e) {
-    if (!on() || y0 === null) return;
-    var dy = y0 - e.changedTouches[0].clientY; y0 = null;
-    if (Math.abs(dy) >= 30 && !panelScrolls(e.target, dy)) turn(dy);
-  });
+  function soon() { clearTimeout(idle); idle = setTimeout(settle, 140); }
+  function input() { stop(); var now = performance.now(); if (now - lastInput > 300 && !anim) startY = window.scrollY; lastInput = now; }
+  window.addEventListener('wheel', function () { if (on()) input(); }, { passive: true });
+  window.addEventListener('touchstart', function () { if (on()) { input(); touching = true; } }, { passive: true });
+  window.addEventListener('touchend', function () { touching = false; if (on()) soon(); }, { passive: true });
+  window.addEventListener('scroll', function () { if (on() && !anim) soon(); }, { passive: true });
+  if ('onscrollend' in window) window.addEventListener('scrollend', function () { if (on() && !anim) { clearTimeout(idle); settle(); } });
+  function stopsList() { var P = pages(), out = []; P.forEach(function (r) { [r[0], r[1]].forEach(function (v) { if (out.indexOf(v) < 0) out.push(v); }); }); return out.sort(function (a, b) { return a - b; }); }
   window.addEventListener('keydown', function (e) {
-    if (!on() || /input|textarea|select/i.test((e.target.tagName || '')) || e.target.isContentEditable) return;
+    if (!on() || /input|textarea|select/i.test(e.target.tagName || '') || e.target.isContentEditable) return;
     var k = e.key, d = 0;
     if (k === 'PageDown' || k === 'ArrowDown' || (k === ' ' && !e.shiftKey)) d = 1;
     else if (k === 'PageUp' || k === 'ArrowUp' || (k === ' ' && e.shiftKey)) d = -1;
-    else if (k === 'Home') { e.preventDefault(); goTo(0); return; }
-    else if (k === 'End') { e.preventDefault(); goTo(2); return; }
     if (!d) return;
-    e.preventDefault(); turn(d);
+    e.preventDefault(); stop();
+    var y = window.scrollY, S = stopsList(), vh = window.innerHeight, to = y;
+    if (d > 0) { for (var i = 0; i < S.length; i++) if (S[i] > y + 2) { to = Math.min(S[i], y + vh * 0.9 > S[i] ? S[i] : S[i]); break; } }
+    else { for (var j = S.length - 1; j >= 0; j--) if (S[j] < y - 2) { to = S[j]; break; } }
+    startY = y; glide(to);
   });
+  window.ybkGoPage = function (i) { var P = pages(); glide(P[Math.max(0, Math.min(2, i))][0]); };
+  if (cue) cue.addEventListener('click', function (e) { if (on()) { e.preventDefault(); e.stopImmediatePropagation(); startY = window.scrollY; glide(pages()[1][0]); } }, true);
   function sync() { root.classList.toggle('pager', root.classList.contains('home-snap')); }
   document.addEventListener('ybk:route', sync);
   sync();
-  if (cue) cue.addEventListener('click', function (e) { if (on()) { e.preventDefault(); e.stopImmediatePropagation(); goTo(1); } }, true);
 })();
 </script>
 </body>
