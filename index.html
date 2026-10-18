@@ -128,7 +128,7 @@ a{color:var(--accent)}
 .logo{display:block;flex:none;height:auto}
 
 /* ---------- masthead ---------- */
-.brandbar{display:flex;height:3px}
+.brandbar{display:flex;height:3px;position:sticky;top:0;z-index:61}
 .brandbar i{display:block;height:100%}
 .brandbar .b{background:var(--logo-blue);flex:1 1 auto}
 .brandbar .r{background:var(--logo-red);flex:0 0 22%}
@@ -600,7 +600,11 @@ h2{
 .fb-dialog .field{margin:0}
 .fb-dialog .btnrow .btn{flex:1 1 auto;padding:12px 16px}
 .fb-dialog .fb-hint{margin-top:6px;font-size:12.5px}
-.wl-apps{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px}
+.wl-apps{border:0;margin:0 0 6px;padding:0 0 0 28px;display:flex;flex-wrap:wrap;gap:8px 20px}
+.wl-apps[disabled]{opacity:.45}
+.wl-opt{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;cursor:pointer;margin:6px 0 10px}
+.wl-opt input{width:18px;height:18px;accent-color:var(--accent)}
+.wl-hint{margin:-6px 0 14px 28px;font-size:13px;color:var(--muted)}
 .wl-apps legend{padding:0;margin-bottom:8px;font-size:13px;color:var(--muted)}
 .wl-apps label{display:flex;align-items:center;gap:8px;font-size:15px;cursor:pointer}
 .wl-apps input{width:18px;height:18px;accent-color:var(--accent)}
@@ -913,7 +917,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
    they move up, the title turns into "YBK.AUDIO", and both land on the top bar's own logo + wordmark,
    which then takes over. The intro rises under it; cards, launch list and footer pop in and out.
    Only transform/opacity are animated. */
-.masthead{position:sticky;top:0;z-index:60}
+.masthead{position:sticky;top:3px;z-index:60}
 [id]{scroll-margin-top:90px}   /* jump links land below the sticky top bar */
 .hero-words{position:relative}
 .hero-wm{position:absolute;left:0;top:calc(50% - .5em);font-size:clamp(44px,9.2vw,116px);line-height:1;opacity:0;pointer-events:none;white-space:nowrap}
@@ -1070,6 +1074,38 @@ html.home-snap.pager{scroll-snap-type:none}   /* the settle script below does th
 @media(max-width:699px){.lb{padding:60px 10px}.lb-prev,.lb-next{top:auto;bottom:8px;transform:none}.lb-prev{left:12px}.lb-next{right:12px}}
 html.lb-open{overflow:hidden}
 /* ============ end PHOTO VIEWER ============ */
+
+/* page 3 (Hear it first): bigger, owner 2026-10-18 */
+html.home-snap .signup h3.big{font-size:clamp(46px,7.2vw,104px);margin-bottom:22px}
+html.home-snap .signup .eyebrow{font-size:13px;letter-spacing:.2em}
+html.home-snap .signup .blurb{font-size:clamp(18px,1.9vw,23px);line-height:1.5;max-width:34ch}
+html.home-snap .signup .btn{font-size:18px;padding:18px 32px;border-radius:14px}
+html.home-snap .signup .cta-note{font-size:15px}
+@media(min-width:820px){html.home-snap .signup-inner{align-items:center}}
+
+/* home: the top stripe shows how far down the page you are (blue = done, red = still to come), owner 2026-10-18 */
+html.home-snap .brandbar .b{flex:0 0 auto;width:calc(var(--prog,0) * 100%)}
+html.home-snap .brandbar .r{flex:1 1 auto}
+
+/* phone, home page 1: the top bar is one line (app links + i); while the logo flies up it grows into the
+   usual two lines. The bar keeps its full height in the layout; only its background, bottom line and rows
+   move (transforms set by the home scroll script through --bs / --bt / --bp), owner 2026-10-18 */
+@media(max-width:899px){
+  html.anim.home-snap .masthead.slim{background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+  html.anim.home-snap .masthead.slim::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(11,11,12,.82);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transform-origin:top;transform:scaleY(var(--bs,1))}
+  html.anim.home-snap .masthead.slim::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--rule);
+    transform:translateY(calc(var(--bt,0) * -1px))}
+  html.anim.home-snap .masthead.slim .nav{width:calc(100% - (1 - var(--bp,1)) * 46px)}
+}
+
+/* the Scroll arrow on computers: about 190 x 160, owner 2026-10-18 */
+@media(min-width:900px){
+  html.anim .scroll-cue,html.home-snap .scroll-cue{min-width:190px!important;min-height:160px!important;justify-content:center;gap:16px!important;
+    font-size:23px!important;letter-spacing:.26em!important;bottom:14px}
+  .scroll-cue svg{width:48px!important;height:48px!important}
+  .scroll-cue svg path{stroke-width:2.4}
+}
 </style>
 </head>
 <body>
@@ -1129,7 +1165,7 @@ html.lb-open{overflow:hidden}
       <div class="hero-top hero-a">
         <svg class="logo hero-mark" viewBox="283 276 878 907" aria-hidden="true" focusable="false"><use href="#ybk-logo"/></svg>
         <div class="hero-words"><span class="hero-wm wordmark" aria-hidden="true">YBK<i>.</i>Audio</span></div>
-        <h1 class="hero-tag"><span class="ln" aria-hidden="true"></span><span class="sr-only">YBK Audio: </span><span data-copy="h1a">Music software</span>&nbsp;<span data-copy="h1b">made simple</span><span class="ln" aria-hidden="true"></span></h1>
+        <h1 class="hero-tag"><span class="ln" aria-hidden="true"></span><span class="sr-only">YBK Audio: </span><span class="tag-t"><span data-copy="h1a">Music software</span> <span data-copy="h1b">made simple</span></span><span class="ln" aria-hidden="true"></span></h1>
         <span class="hero-flag mono eyebrow"><span class="dot" aria-hidden="true"></span><span data-copy="flag">Launch sale</span></span>
       </div>
       <a class="scroll-cue" href="#apps" aria-label="Scroll down to Our Products"><span>Scroll</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -1192,14 +1228,14 @@ html.lb-open{overflow:hidden}
       <div>
         <span class="eyebrow" data-copy="su-eye">Launch list</span>
         <h3 class="big"><span data-copy="su-h">Hear it first</span><em>.</em></h3>
-        <p class="blurb" data-copy="su-p">Leave your email and we’ll let you know when MixAlign, Beatmaker and MultiConsole come out.</p>
+        <p class="blurb" data-copy="su-p">We'll let you know when our newer apps and updates are ready.</p>
       </div>
       <div>
-        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches" data-waitlist="mixalign beatmaker console">
-          <span data-copy="su-cta">Join the launch list</span>
+        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches" data-waitlist="mixalign beatmaker console newsletter">
+          <span data-copy="su-cta">Subscribe</span>
           <span aria-hidden="true">→</span>
         </a>
-        <p class="cta-note" data-copy="su-note">One email per app, when it comes out.</p>
+        <p class="cta-note" data-copy="su-note">Pick what you want to hear about. Unsubscribe any time.</p>
       </div>
     </div>
   </section>
@@ -2820,14 +2856,17 @@ html.lb-open{overflow:hidden}
      which keeps it and emails a confirmation. Buttons carry data-waitlist. -->
 <dialog class="fb-dialog" id="wl-dialog" aria-labelledby="wl-title">
   <form novalidate>
-    <h3 id="wl-title" data-copy="wl-title">Get one email when it’s out</h3>
-    <p data-copy="wl-intro">We’ll write once, when the app is ready to buy. We never share your address.</p>
+    <h3 id="wl-title" data-copy="wl-title">Subscribe</h3>
+    <p data-copy="wl-intro">Pick what you’d like to hear about. We never share your address.</p>
+    <label class="wl-opt"><input type="checkbox" name="notify"> <span data-copy="wl-notify">Notify me when released</span></label>
     <fieldset class="wl-apps">
-      <legend data-copy="wl-apps">Which apps?</legend>
+      <legend class="sr-only">Which apps?</legend>
+      <label><input type="checkbox" name="products" value="mixalign"> MixAlign</label>
       <label><input type="checkbox" name="products" value="beatmaker"> Beatmaker</label>
       <label><input type="checkbox" name="products" value="console"> MultiConsole</label>
-      <label><input type="checkbox" name="products" value="mixalign"> MixAlign</label>
     </fieldset>
+    <label class="wl-opt wl-news" hidden><input type="checkbox" name="newsletter"> <span data-copy="wl-news">Join our newsletter</span></label>
+    <p class="wl-hint wl-news" hidden data-copy="wl-news-hint">New apps and updates, now and then. Unsubscribe any time.</p>
     <div class="field">
       <label for="wl-email" data-copy="wl-email-label">Your email</label>
       <input id="wl-email" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
@@ -2839,7 +2878,7 @@ html.lb-open{overflow:hidden}
     <p class="claim-msg" role="status" aria-live="polite"></p>
     <div class="btnrow">
       <button type="button" class="btn ghost" data-wl-close>Close</button>
-      <button type="submit" class="btn">Notify me</button>
+      <button type="submit" class="btn">Subscribe</button>
     </div>
   </form>
 </dialog>
@@ -3606,6 +3645,9 @@ html.lb-open{overflow:hidden}
     var wlSend = wlForm.querySelector('button[type="submit"]');
     var wlTell = function (text, kind) { wlMsg.textContent = text; wlMsg.className = 'claim-msg' + (kind ? ' ' + kind : ''); };
     var wlBoxes = Array.prototype.slice.call(wlForm.querySelectorAll('input[name="products"]'));
+    var wlNotify = wlForm.elements.notify, wlNews = wlForm.elements.newsletter, wlSet = wlForm.querySelector('.wl-apps');
+    var wlSync = function () { wlSet.disabled = !wlNotify.checked; };
+    wlNotify.addEventListener('change', function () { if (wlNotify.checked && !wlBoxes.some(function (b) { return b.checked; })) wlBoxes.forEach(function (b) { b.checked = true; }); wlSync(); });
 
     document.querySelectorAll('[data-waitlist]').forEach(function (el) {
       el.addEventListener('click', function (e) {
@@ -3615,6 +3657,9 @@ html.lb-open{overflow:hidden}
         wlForm.reset();
         wlForm.elements.email.value = keepEmail;
         wlBoxes.forEach(function (b) { b.checked = want.indexOf(b.value) >= 0; });
+        wlNotify.checked = wlBoxes.some(function (b) { return b.checked; });
+        wlNews.checked = !wlNews.closest('label').hidden && want.indexOf('newsletter') >= 0;   // the newsletter box shows once the worker keeps newsletter sign-ups
+        wlSync();
         wlSend.disabled = false;
         wlTell('');
         wlDialog.showModal();
@@ -3627,8 +3672,9 @@ html.lb-open{overflow:hidden}
     wlForm.addEventListener('submit', function (e) {
       e.preventDefault();
       var email = wlForm.elements.email.value.trim();
-      var products = wlBoxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; });
-      if (!products.length) { wlTell('Pick at least one app.', 'err'); return; }
+      var products = wlNotify.checked ? wlBoxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; }) : [];
+      var newsletter = wlNews.checked && !wlNews.closest('label').hidden;
+      if (!products.length && !newsletter) { wlTell(wlNews.closest('label').hidden ? 'Pick at least one app.' : 'Pick an app to hear about, or the newsletter.', 'err'); return; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         wlTell('Please enter your email address.', 'err');
         wlForm.elements.email.focus();
@@ -3639,15 +3685,17 @@ html.lb-open{overflow:hidden}
       fetch(LAUNCH_API + '/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, products: products, website: wlForm.elements.website.value,
-                               page: window.ybkPagePath() || 'home' })
+        body: JSON.stringify({ email: email, products: products,
+                               apps: products.map(function (v) { return v === 'console' ? 'multiconsole' : v; }),
+                               newsletter: newsletter, website: wlForm.elements.website.value,
+                               page: window.ybkPagePath() || 'home', attr: { src: signupAttr.src } })
       })
         .then(function (r) { return r.json().then(function (body) { return { ok: r.ok, body: body }; }); })
         .then(function (res) {
           if (res.ok) {
             wlTell(res.body.already
-              ? 'You’re already on the list. We’ll email ' + email + ' when it’s ready.'
-              : 'You’re on the list! We’ve sent a confirmation to ' + email + '.', 'ok');
+              ? 'You’re already subscribed. We’ll keep writing to ' + email + '.'
+              : 'Subscribed! We’ve sent a confirmation to ' + email + '.', 'ok');
           } else {
             wlSend.disabled = false;
             wlTell(res.body.message || 'Something went wrong. Please try again.', 'err');
@@ -3909,6 +3957,8 @@ html.lb-open{overflow:hidden}
   var mark = document.querySelector('.hero-mark'), words = document.querySelector('.hero-words');
   var h1 = document.querySelector('.hero-tag'), wm = words.querySelector('.hero-wm'), flag = document.querySelector('.hero-flag');
   var brand = document.querySelector('.masthead .brand'), bLogo = brand.querySelector('.logo'), bWord = brand.querySelector('.wordmark');
+  var hNav = head.querySelector('.nav'), hInfo = head.querySelector('.info'), phone = matchMedia('(max-width: 899px)');
+  function unslim() { head.classList.remove('slim'); hNav.style.transform = hInfo.style.transform = ''; ['--bs', '--bt', '--bp'].forEach(function (v) { head.style.removeProperty(v); }); }
   var pin = document.querySelector('.hero-pin'), next = document.querySelector('.explore');
   var M = null, ticking = false;
   var clamp = function (x) { return Math.min(1, Math.max(0, x)); };
@@ -3917,12 +3967,17 @@ html.lb-open{overflow:hidden}
 
   function measure() {                     // where things sit with no animation applied
     if (!hero.offsetParent) { M = null; return; }
-    root.style.setProperty('--mh', head.offsetHeight + 'px');
+    root.style.setProperty('--mh', head.getBoundingClientRect().bottom - head.getBoundingClientRect().top + (parseFloat(getComputedStyle(head).top) || 0) + 'px');
     mark.style.transform = words.style.transform = '';
+    unslim();
     var y = window.scrollY; window.scrollTo(0, 0);
+    var hr = head.getBoundingClientRect(), nr = hNav.getBoundingClientRect(), ir = hInfo.getBoundingClientRect();
+    var padT = parseFloat(getComputedStyle(head.querySelector('.wrap')).paddingTop) || 0;
+    var ndy = nr.top - (hr.top + padT);                        // phone: how far the links row lifts into the first line
+    var bar = { on: phone.matches && ndy > 8, dy: ndy, h: hr.height, idy: (nr.top + nr.height / 2 - ndy) - (ir.top + ir.height / 2) };
     var mr = mark.getBoundingClientRect(), wr = wm.getBoundingClientRect(), cr = words.getBoundingClientRect();
     var lr = bLogo.getBoundingClientRect(), tr = bWord.getBoundingClientRect(), p0 = pin.getBoundingClientRect().top;
-    var hs = head.getBoundingClientRect().top;      // the top bar sits a few px lower at the very top; once stuck it is at 0
+    var hs = head.getBoundingClientRect().top - (parseFloat(getComputedStyle(head).top) || 0);   // where the bar is now vs where it sticks
     var nd = next.getBoundingClientRect().top - head.getBoundingClientRect().bottom;
     lr = { left: lr.left, top: lr.top - hs, width: lr.width, height: lr.height }; tr = { left: tr.left, top: tr.top - hs, width: tr.width, height: tr.height };
     window.scrollTo(0, y);
@@ -3931,13 +3986,14 @@ html.lb-open{overflow:hidden}
       wdx: (tr.left + tr.width / 2) - (wr.left + wr.width / 2), wdy: (tr.top + tr.height / 2) - (wr.top + wr.height / 2), wk: tr.width / wr.width,
       ox: (wr.left - cr.left) + wr.width / 2, oy: (wr.top - cr.top) + wr.height / 2,
       pin0: p0,
-      dist: Math.max(1, nd)   // scroll from page 1 to page 2
+      dist: Math.max(1, nd),  // scroll from page 1 to page 2
+      bar: bar
     };
     words.style.transformOrigin = M.ox + 'px ' + M.oy + 'px';
   }
   function frame() {
     ticking = false;
-    if (!hero.offsetParent) { brand.style.opacity = ''; return; }
+    if (!hero.offsetParent) { brand.style.opacity = ''; unslim(); return; }
     if (!M) measure();
     if (!M) return;
     var p = clamp(window.scrollY / M.dist);
@@ -3949,6 +4005,15 @@ html.lb-open{overflow:hidden}
     var hand = seg(p, 0.9, 1);                                   // the top bar takes over
     mark.style.opacity = words.style.opacity = (1 - hand).toFixed(3);
     brand.style.opacity = hand.toFixed(3);
+    if (M.bar.on) {                                              // phone: one-line bar on page 1, two lines once the logo lands
+      var u = 1 - m, B = M.bar;
+      head.classList.add('slim');
+      hNav.style.transform = 'translateY(' + (-B.dy * u).toFixed(1) + 'px)';
+      hInfo.style.transform = 'translateY(' + (B.idy * u).toFixed(1) + 'px)';
+      head.style.setProperty('--bs', ((B.h - B.dy * u) / B.h).toFixed(4));
+      head.style.setProperty('--bt', (B.dy * u).toFixed(1));
+      head.style.setProperty('--bp', m.toFixed(3));
+    } else unslim();
   }
   function onScroll() { if (document.hidden) { frame(); return; } if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -3979,7 +4044,8 @@ html.lb-open{overflow:hidden}
   function update() {
     var home = !!(hero && hero.offsetParent);
     root.classList.toggle('home-snap', home);
-    root.style.setProperty('--mh', document.querySelector('.masthead').offsetHeight + 'px');
+    var mhd = document.querySelector('.masthead');
+    root.style.setProperty('--mh', mhd.offsetHeight + (parseFloat(getComputedStyle(mhd).top) || 0) + 'px');
     root.style.setProperty('--fh', document.querySelector('footer').offsetHeight + 'px');
   }
   document.addEventListener('ybk:route', update);
@@ -4058,10 +4124,10 @@ html.lb-open{overflow:hidden}
   var root = document.documentElement, hero = document.querySelector('.hero'), ex = document.querySelector('.explore'), su = document.querySelector('.signup');
   var lb = document.getElementById('lb'), cue = document.querySelector('.scroll-cue'), head = document.querySelector('.masthead');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var anim = null, startY = 0, touching = false, idle = null, lastInput = 0;
+  var anim = null, startY = 0, touching = false, idle = null, lastInput = 0, wheelSum = 0, pend = 0, prog = 0;
   function on() { return root.classList.contains('home-snap') && hero && hero.offsetParent && lb.hidden; }
   function pages() {                       // [top, bottom] scroll range of each page
-    var mh = head.offsetHeight, vh = window.innerHeight, max = root.scrollHeight - vh, y = window.scrollY;
+    var mh = head.offsetHeight + (parseFloat(getComputedStyle(head).top) || 0), vh = window.innerHeight, max = root.scrollHeight - vh, y = window.scrollY;
     var t1 = Math.round(ex.getBoundingClientRect().top + y - mh), t2 = Math.min(max, Math.round(su.getBoundingClientRect().top + y - mh));
     var b1 = Math.max(t1, Math.round(t1 + ex.offsetHeight - (vh - mh)));
     return [[0, 0], [t1, Math.min(b1, t2)], [t2, max]];
@@ -4086,19 +4152,20 @@ html.lb-open{overflow:hidden}
     for (var j = 0; j < P.length - 1; j++) {
       var lo = P[j][1], hi = P[j + 1][0];
       if (y > lo && y < hi) {
+        if (wheelSum) dir = wheelSum;                       // the wheel's own direction over the whole gesture
         var into = dir >= 0 ? y - lo : hi - y;
+        if (wheelSum && (wheelSum > 0) === (dir >= 0)) into = Math.max(into, Math.abs(wheelSum));
         if (dir >= 0) glide(into >= vh * 0.2 ? hi : lo); else glide(into >= vh * 0.2 ? lo : hi);
         return;
       }
     }
   }
-  function soon() { clearTimeout(idle); idle = setTimeout(settle, 140); }
-  function input() { stop(); var now = performance.now(); if (now - lastInput > 300 && !anim) startY = window.scrollY; lastInput = now; }
-  window.addEventListener('wheel', function () { if (on()) input(); }, { passive: true });
-  window.addEventListener('touchstart', function () { if (on()) { input(); touching = true; } }, { passive: true });
+  function soon() { clearTimeout(idle); idle = setTimeout(function () { if (performance.now() - lastInput < 380) soon(); else settle(); }, 400); }
+  function input() { stop(); var now = performance.now(); if (now - lastInput > 1000) { startY = window.scrollY; wheelSum = 0; } lastInput = now; }
+  window.addEventListener('wheel', function (e) { if (on()) { input(); wheelSum += e.deltaMode === 1 ? e.deltaY * 40 : e.deltaY; soon(); } }, { passive: true });
+  window.addEventListener('touchstart', function () { if (on()) { input(); wheelSum = 0; touching = true; } }, { passive: true });
   window.addEventListener('touchend', function () { touching = false; if (on()) soon(); }, { passive: true });
   window.addEventListener('scroll', function () { if (on() && !anim) soon(); }, { passive: true });
-  if ('onscrollend' in window) window.addEventListener('scrollend', function () { if (on() && !anim) { clearTimeout(idle); settle(); } });
   function stopsList() { var P = pages(), out = []; P.forEach(function (r) { [r[0], r[1]].forEach(function (v) { if (out.indexOf(v) < 0) out.push(v); }); }); return out.sort(function (a, b) { return a - b; }); }
   window.addEventListener('keydown', function (e) {
     if (!on() || /input|textarea|select/i.test(e.target.tagName || '') || e.target.isContentEditable) return;
@@ -4110,11 +4177,14 @@ html.lb-open{overflow:hidden}
     var y = window.scrollY, S = stopsList(), vh = window.innerHeight, to = y;
     if (d > 0) { for (var i = 0; i < S.length; i++) if (S[i] > y + 2) { to = Math.min(S[i], y + vh * 0.9 > S[i] ? S[i] : S[i]); break; } }
     else { for (var j = S.length - 1; j >= 0; j--) if (S[j] < y - 2) { to = S[j]; break; } }
-    startY = y; glide(to);
+    startY = y; wheelSum = 0; glide(to);
   });
   window.ybkGoPage = function (i) { var P = pages(); glide(P[Math.max(0, Math.min(2, i))][0]); };
-  if (cue) cue.addEventListener('click', function (e) { if (on()) { e.preventDefault(); e.stopImmediatePropagation(); startY = window.scrollY; glide(pages()[1][0]); } }, true);
-  function sync() { root.classList.toggle('pager', root.classList.contains('home-snap')); }
+  if (cue) cue.addEventListener('click', function (e) { if (on()) { e.preventDefault(); e.stopImmediatePropagation(); startY = window.scrollY; wheelSum = 0; glide(pages()[1][0]); } }, true);
+  function bar() { prog = 0; var max = root.scrollHeight - window.innerHeight; root.style.setProperty('--prog', max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4) : '0'); }
+  window.addEventListener('scroll', function () { if (root.classList.contains('home-snap') && !prog) prog = requestAnimationFrame(bar); }, { passive: true });
+  window.addEventListener('resize', bar);
+  function sync() { root.classList.toggle('pager', root.classList.contains('home-snap')); bar(); }
   document.addEventListener('ybk:route', sync);
   sync();
 })();
