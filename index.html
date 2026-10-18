@@ -4117,14 +4117,16 @@ html.home-snap .brandbar .r{flex:1 1 auto}
 </script>
 <script>
 /* Home scrolling: free scroll + magnetic lock (owner 2026-10-18). The page follows the finger / wheel 1:1;
-   inside a page (top to bottom of a page that is taller than the window) nothing snaps. When scrolling
-   stops between two pages, it glides to one of them: on to the next if you went 20% of a screen into
-   the gap in that direction, otherwise back. Keys and the Scroll arrow jump to the next stop. */
+   inside a page (top to bottom of a page that is taller than the window) nothing snaps. Wheel notches of one
+   gesture add up; as soon as they reach 20% of a screen past a page (40% to leave Our Products downward) it
+   glides (0.43 s) to the next page, and the rest of that fling is held back, so one gesture = one page.
+   If it stops short, it glides back 0.15 s after the last input (touch: on lifting the finger).
+   Keys and the Scroll arrow jump to the next stop. */
 (function () {
   var root = document.documentElement, hero = document.querySelector('.hero'), ex = document.querySelector('.explore'), su = document.querySelector('.signup');
   var lb = document.getElementById('lb'), cue = document.querySelector('.scroll-cue'), head = document.querySelector('.masthead');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var anim = null, startY = 0, touching = false, idle = null, lastInput = 0, wheelSum = 0, pend = 0, prog = 0;
+  var anim = null, startY = 0, touching = false, idle = null, lastInput = 0, wheelSum = 0, lock = 0, back = false, prog = 0;
   function on() { return root.classList.contains('home-snap') && hero && hero.offsetParent && lb.hidden; }
   function pages() {                       // [top, bottom] scroll range of each page
     var mh = head.offsetHeight + (parseFloat(getComputedStyle(head).top) || 0), vh = window.innerHeight, max = root.scrollHeight - vh, y = window.scrollY;
@@ -4138,34 +4140,76 @@ html.home-snap .brandbar .r{flex:1 1 auto}
     var from = window.scrollY;
     if (Math.abs(to - from) < 2) return;
     if (reduce) { window.scrollTo(0, to); startY = to; return; }
-    var t0 = performance.now(), dur = 520;
+    var t0 = performance.now(), dur = 430;
     (function step(t) {
       var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
       window.scrollTo(0, from + (to - from) * e);
       if (k < 1) anim = requestAnimationFrame(step); else { anim = null; startY = to; }
     })(t0);
   }
-  function settle() {
-    if (!on() || anim || touching) return;
-    var P = pages(), y = window.scrollY, vh = window.innerHeight, dir = y - startY;
-    for (var i = 0; i < P.length; i++) if (y >= P[i][0] - 1 && y <= P[i][1] + 1) { startY = y; return; }   // inside a page: free
-    for (var j = 0; j < P.length - 1; j++) {
-      var lo = P[j][1], hi = P[j + 1][0];
-      if (y > lo && y < hi) {
-        if (wheelSum) dir = wheelSum;                       // the wheel's own direction over the whole gesture
-        var into = dir >= 0 ? y - lo : hi - y;
-        if (wheelSum && (wheelSum > 0) === (dir >= 0)) into = Math.max(into, Math.abs(wheelSum));
-        if (dir >= 0) glide(into >= vh * 0.2 ? hi : lo); else glide(into >= vh * 0.2 ? lo : hi);
-        return;
+  // How far into the gap you must go before it moves on: one wheel notch (100 px; a 20% screen drag by
+  // finger), but about three notches (40% by finger) to leave the middle page (Our Products) downward, so
+  // it is hard to skip (owner 2026-10-18).
+  function need(j, down) {
+    var vh = window.innerHeight, mid = j === 1 && down;
+    return wheelSum ? (mid ? Math.min(vh * 0.4, 260) : Math.min(vh * 0.2, 100)) : vh * (mid ? 0.4 : 0.2);
+  }
+  // Where a scroll in direction dir (+1 down, -1 up) leads from y: null while inside a page, or the gap it is in.
+  function gapAt(P, y, dir) {
+    for (var i = 0; i < P.length; i++) {
+      if (y >= P[i][0] - 1 && y <= P[i][1] + 1) {
+        if (dir > 0 && i < P.length - 1 && y >= P[i][1] - 1) return { j: i, lo: P[i][1], hi: P[i + 1][0] };
+        if (dir < 0 && i > 0 && y <= P[i][0] + 1) return { j: i - 1, lo: P[i - 1][1], hi: P[i][0] };
+        return null;
       }
     }
+    for (var j = 0; j < P.length - 1; j++) if (y > P[j][1] && y < P[j + 1][0]) return { j: j, lo: P[j][1], hi: P[j + 1][0] };
+    return null;
   }
-  function soon() { clearTimeout(idle); idle = setTimeout(function () { if (performance.now() - lastInput < 380) soon(); else settle(); }, 400); }
-  function input() { stop(); var now = performance.now(); if (now - lastInput > 1000) { startY = window.scrollY; wheelSum = 0; } lastInput = now; }
-  window.addEventListener('wheel', function (e) { if (on()) { input(); wheelSum += e.deltaMode === 1 ? e.deltaY * 40 : e.deltaY; soon(); } }, { passive: true });
-  window.addEventListener('touchstart', function () { if (on()) { input(); wheelSum = 0; touching = true; } }, { passive: true });
-  window.addEventListener('touchend', function () { touching = false; if (on()) soon(); }, { passive: true });
-  window.addEventListener('scroll', function () { if (on() && !anim) soon(); }, { passive: true });
+  // Decide now: returns the scroll position to glide to, or null (stay free / not decided yet).
+  function decide(final) {
+    var P = pages(), y = window.scrollY, dir = wheelSum ? wheelSum : (y - startY);
+    if (!dir) dir = 1;
+    var g = gapAt(P, y, dir > 0 ? 1 : -1);
+    if (!g) return null;
+    var down = dir > 0, into = down ? y - g.lo : g.hi - y;
+    if (wheelSum) into = Math.max(into, Math.abs(wheelSum));
+    if (into >= need(g.j, down)) return down ? g.hi : g.lo;
+    if (!final) return null;
+    return y - g.lo < g.hi - y ? g.lo : g.hi;                 // not far enough: back to the nearer side's page
+  }
+  function go(to) { back = false; lock = performance.now() + 260; wheelSum = 0; glide(to); }
+  function settle() {
+    if (!on() || anim || touching) return;
+    var to = decide(true);
+    if (to === null) { startY = window.scrollY; return; }
+    var y = window.scrollY, d = wheelSum || (y - startY);
+    if ((to - y > 0) === (d > 0)) go(to); else { back = true; glide(to); }   // a glide back keeps the count, so slow notches still add up
+  }
+  function soon() { clearTimeout(idle); idle = setTimeout(function () { if (performance.now() - lastInput < 140) soon(); else settle(); }, 150); }
+  function input() { var now = performance.now(); if (now - lastInput > 500 && !anim) { startY = window.scrollY; wheelSum = 0; } lastInput = now; }
+  window.addEventListener('wheel', function (e) {
+    if (!on() || e.ctrlKey) return;
+    var d = e.deltaMode === 1 ? e.deltaY * 40 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
+    var now = performance.now();
+    // while gliding, and while one fling / burst of notches goes on right after it, the page stays put:
+    // one gesture moves one page at most
+    if (anim && back) { stop(); back = false; }               // a new notch during a glide back: keep going from here
+    if (anim || now < lock) {
+      if (now - lastInput < 160 || anim) { lock = now + 260; lastInput = now; e.preventDefault(); return; }
+    }
+    input();
+    var P = pages(), y = window.scrollY;
+    if (!gapAt(P, y, d > 0 ? 1 : -1) && !gapAt(P, y + d, d > 0 ? 1 : -1)) { wheelSum = 0; soon(); return; }   // scrolling inside a page
+    if (wheelSum && (wheelSum > 0) !== (d > 0)) wheelSum = 0;  // changed direction: start counting again
+    wheelSum += d;
+    var to = decide(false);
+    if (to !== null) { e.preventDefault(); go(to); return; }   // far enough: move on right away
+    soon();
+  }, { passive: false });
+  window.addEventListener('touchstart', function () { if (on()) { stop(); input(); startY = window.scrollY; wheelSum = 0; touching = true; } }, { passive: true });
+  window.addEventListener('touchend', function () { touching = false; if (on()) settle(); }, { passive: true });
+  window.addEventListener('scroll', function () { if (on() && !anim && !touching) soon(); }, { passive: true });
   function stopsList() { var P = pages(), out = []; P.forEach(function (r) { [r[0], r[1]].forEach(function (v) { if (out.indexOf(v) < 0) out.push(v); }); }); return out.sort(function (a, b) { return a - b; }); }
   window.addEventListener('keydown', function (e) {
     if (!on() || /input|textarea|select/i.test(e.target.tagName || '') || e.target.isContentEditable) return;
