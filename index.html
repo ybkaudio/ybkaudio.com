@@ -1123,6 +1123,9 @@ html.home-snap .brandbar .r{flex:1 1 auto}
 .feat-ph{display:block;order:-1;margin:0 0 10px;aspect-ratio:var(--fr);border-radius:var(--r-img);
   background:linear-gradient(135deg,var(--surface-2),transparent);border:1px dashed var(--rule)}
 .features.sq .feat-shot:not(.fit) img{object-fit:cover;object-position:62% 30%}
+
+/* home: no rubber-band / pull-to-refresh bounce, the script moves the page (owner 2026-10-18) */
+html.home-snap,html.home-snap body{overscroll-behavior-y:none}
 </style>
 </head>
 <body>
@@ -4156,7 +4159,7 @@ html.home-snap .brandbar .r{flex:1 1 auto}
     var from = window.scrollY;
     if (Math.abs(to - from) < 2) return;
     if (reduce) { window.scrollTo(0, to); startY = to; return; }
-    var t0 = performance.now(), dur = 430;
+    var t0 = performance.now(), dur = Math.min(430, 260 + Math.abs(to - from) * 0.25);
     (function step(t) {
       var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
       window.scrollTo(0, from + (to - from) * e);
@@ -4210,7 +4213,10 @@ html.home-snap .brandbar .r{flex:1 1 auto}
     var now = performance.now();
     // while gliding, and while one fling / burst of notches goes on right after it, the page stays put:
     // one gesture moves one page at most
-    if (anim && back) { stop(); back = false; }               // a new notch during a glide back: keep going from here
+    if (anim && back) {                                          // during a glide back: the tail of the same burst (trackpad
+      if (now - lastInput < 160) { lastInput = now; e.preventDefault(); return; }   // inertia) is held; a new notch keeps counting
+      stop(); back = false;
+    }
     if (anim || now < lock) {
       if (now - lastInput < 160 || anim) { lock = now + 260; lastInput = now; e.preventDefault(); return; }
     }
@@ -4223,8 +4229,57 @@ html.home-snap .brandbar .r{flex:1 1 auto}
     if (to !== null) { e.preventDefault(); go(to); return; }   // far enough: move on right away
     soon();
   }, { passive: false });
-  window.addEventListener('touchstart', function () { if (on()) { stop(); input(); startY = window.scrollY; wheelSum = 0; touching = true; } }, { passive: true });
-  window.addEventListener('touchend', function () { touching = false; if (on()) settle(); }, { passive: true });
+  // Touch (owner 2026-10-18, after a phone recording): the page follows the finger 1:1 with no native
+  // momentum, so nothing fights the glide and there is no rubber-band at the top or bottom. On release:
+  // far enough (or a quick flick) = exactly one page on; otherwise a short coast that stops inside the
+  // page's own free range (at its nearest edge), then the page stays still.
+  var T = null;
+  function freeTouch(el) {                  // places where the finger scrolls something else
+    if (el.closest && el.closest('.masthead, dialog, .lb, input, textarea, select')) return true;
+    var exv = el.closest && el.closest('.explore');
+    return !!(exv && exv.scrollHeight > exv.clientHeight + 2);
+  }
+  window.addEventListener('touchstart', function (e) {
+    T = null;
+    if (!on() || e.touches.length !== 1 || freeTouch(e.target)) return;
+    stop(); clearTimeout(idle); wheelSum = 0; touching = true;
+    var P = pages(), y = window.scrollY, k = 0;
+    for (var i = 0; i < P.length; i++) if (y >= P[i][0] - 1) k = i;      // the page we start on (or just above)
+    T = { x: e.touches[0].clientX, y: e.touches[0].clientY, sy: y, mode: '', pts: [[performance.now(), y]],
+          lo: P[Math.max(0, k - 1)][0], hi: k < P.length - 1 ? P[k + 1][0] : P[k][1], k: k };
+  }, { passive: true });
+  window.addEventListener('touchmove', function (e) {
+    if (!T || e.touches.length !== 1) return;
+    var dx = e.touches[0].clientX - T.x, dy = e.touches[0].clientY - T.y;
+    if (!T.mode) { if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) { T = null; touching = false; return; } if (Math.abs(dy) > 4) T.mode = 'y'; else return; }
+    e.preventDefault();
+    var y = Math.max(T.lo, Math.min(T.hi, T.sy - dy));                   // one page at most per gesture
+    window.scrollTo(0, y);
+    var now = performance.now(); T.pts.push([now, y]); while (T.pts.length > 2 && now - T.pts[0][0] > 100) T.pts.shift();
+  }, { passive: false });
+  function touchEnd() {
+    touching = false;
+    var t = T; T = null;
+    if (!t || !t.mode || !on()) { if (on() && !anim) soon(); return; }
+    var P = pages(), y = window.scrollY, vh = window.innerHeight, a = t.pts[0], b = t.pts[t.pts.length - 1];
+    var v = (performance.now() - b[0] > 80 || b[0] === a[0]) ? 0 : (b[1] - a[1]) / (b[0] - a[0]);   // px per ms, + = down
+    var moved = y - t.sy, dir = moved !== 0 ? (moved > 0 ? 1 : -1) : (v > 0 ? 1 : v < 0 ? -1 : 0);
+    var r = P[t.k], to;
+    if (dir > 0 && y > r[1] + 1 && t.k < P.length - 1) {                // went down past this page's free range
+      var mid = t.k === 1, far = y - r[1] >= vh * (mid ? 0.4 : 0.2) || (v > (mid ? 1.5 : 0.6) && y - r[1] >= (mid ? vh * 0.22 : 24));
+      to = far ? P[t.k + 1][0] : r[1];
+    } else if (dir < 0 && y < r[0] - 1) {                                // went up past it (from page k, or from between pages)
+      var up = t.k > 0 ? P[t.k - 1] : P[0], farU = r[0] - y >= vh * 0.2 || (v < -0.6 && r[0] - y >= 24);
+      to = farU ? up[1] : r[0];
+      if (farU && t.k > 0 && up[1] > up[0]) to = up[1];
+    } else {                                                             // inside the page: a short coast, kept inside it
+      to = Math.max(r[0], Math.min(r[1], y + v * 220));
+    }
+    to = Math.max(0, Math.min(root.scrollHeight - vh, to));
+    startY = to; glide(to);
+  }
+  window.addEventListener('touchend', touchEnd, { passive: true });
+  window.addEventListener('touchcancel', touchEnd, { passive: true });
   window.addEventListener('scroll', function () { if (on() && !anim && !touching) soon(); }, { passive: true });
   function stopsList() { var P = pages(), out = []; P.forEach(function (r) { [r[0], r[1]].forEach(function (v) { if (out.indexOf(v) < 0) out.push(v); }); }); return out.sort(function (a, b) { return a - b; }); }
   window.addEventListener('keydown', function (e) {
