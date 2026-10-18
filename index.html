@@ -1047,11 +1047,14 @@ html.home-snap .signup{min-height:calc(100vh - var(--mh,64px) - var(--fh,170px))
   html.home-snap .explore .explore-h{margin:0 0 4px;font-size:22px}
   html.home-snap .app-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
   html.home-snap .app-card{padding:10px;gap:4px;border-radius:18px}
-  html.home-snap .app-card img{aspect-ratio:16/10;border-radius:10px;margin-bottom:4px}
+  html.home-snap .app-card img{aspect-ratio:2/1;border-radius:10px;margin-bottom:4px}
   html.home-snap .app-card b{font-size:16px}
   html.home-snap .app-card .card-price{font-size:15px}
   html.home-snap .app-card .card-top{gap:2px 6px}
-  html.home-snap .app-card>span:not(.status):not(.card-top):not(.go),html.home-snap .app-card .go{display:none}
+  html.home-snap .app-card .go{display:none}
+  /* the one-line description stays on phones too (owner 2026-10-18): small, at most two lines */
+  html.home-snap .app-card>span:not(.status):not(.card-top):not(.go){font-size:12px;line-height:1.35;color:var(--muted);
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 }
 @media(max-width:699px){html.home-snap .explore{padding-bottom:96px}}   /* free scroll room: the last cards can rise above "Give us feedback" */
 /* the Scroll arrow: bigger on computers */
