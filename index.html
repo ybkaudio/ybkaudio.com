@@ -2186,17 +2186,17 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         <div>
           <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="mx-dl-eye">Windows &amp; Mac</span></p>
           <h3 data-copy="mx-dl-h">Download the App</h3>
-          <p data-copy="mx-dl-p">MixAlign comes out on October 27. The download buttons open here on launch day.</p>
+          <p data-copy="mx-dl-p">MixAlign comes out on November 3. The download buttons open here on launch day.</p>
         </div>
         <div class="dl-act">
           <div class="dl-choice">
-            <!-- LAUNCH DAY (10/27): restore the real windows download button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). -->
-            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon">Available Oct 27</span></span>
+            <!-- LAUNCH DAY (11/3, moved from 10/27): restore the real windows download button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). -->
+            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon">Available Nov 3</span></span>
             <p class="dl-meta"><span data-mx-version></span>Windows 10 / 11, 64-bit<span data-mx-size></span></p>
           </div>
           <div class="dl-choice">
-            <!-- LAUNCH DAY (10/27): restore the real mac download button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). -->
-            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon-mac">Available Oct 27</span></span>
+            <!-- LAUNCH DAY (11/3, moved from 10/27): restore the real mac download button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). -->
+            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon-mac">Available Nov 3</span></span>
             <p class="dl-meta"><span data-mx-version-mac></span>Mac, Apple Silicon &amp; Intel<span data-mx-size-mac></span></p>
             <p class="dl-note" data-copy="mx-dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>.</p>
           </div>
@@ -2212,8 +2212,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           </ul>
         </div>
         <div class="buy-side">
-          <div class="buy-total"><span data-copy="mx-soon-l">Status</span><b data-copy="mx-soon">Out Oct 27</b></div>
-          <!-- LAUNCH DAY (10/27): this "Notify me" button is replaced by the real purchase button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). Also remove the "In development" tags (home block + page title). -->
+          <div class="buy-total"><span data-copy="mx-soon-l">Status</span><b data-copy="mx-soon">Out Nov 3</b></div>
+          <!-- LAUNCH DAY (11/3, moved from 10/27): this "Notify me" button is replaced by the real purchase button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). Also remove the "In development" tags (home block + page title). -->
           <a class="btn" href="#subscribe" data-waitlist="mixalign"><span data-copy="mx-notify-btn">Notify me when it’s out</span><span aria-hidden="true">→</span></a>
           <p class="fineprint" data-copy="mx-fine">Payment is handled by Paddle.com, our Merchant of Record. YBK Audio never sees your card details. Instant delivery by email.</p>
           <p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p>
@@ -3183,8 +3183,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       // Visualize, $19 launch price (live, 2026-10-07). After Nov 6, 2026 switch this to
       // the $29 price id (not created in Paddle yet) and update the page's $19 / $19.00.
       visualize: 'pri_01m468vyx8yx6x8yf79yjcz7ba',
-      // MixAlign (public 2026-10-27): $19 through 30 November (KST), then $25. Same date as the worker's
-      // APP_PRICES.mixalign.launchUntil (the app's Buy button). Both IDs are here so checkout steps count as MixAlign.
+      // MixAlign (public 2026-11-03, moved from 10/27): launch price id until 2026-12-01 (KST), then the full price id; same date as the
+      // worker's APP_PRICES.mixalign.launchUntil. No MixAlign checkout button exists on the site until launch day.
       mixalign: Date.now() < Date.parse('2026-12-01T00:00:00+09:00') ? 'pri_01m46jbfn58122byt5vw3smk46' : 'pri_01m46jarpx950g24djv1tb47ys',
       mixalignFull: 'pri_01m46jarpx950g24djv1tb47ys'
       // midside, beatmaker: still in development, so no price here -- their
