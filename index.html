@@ -1254,7 +1254,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         <p class="blurb" data-copy="su-p">We'll let you know when our newer apps and updates are ready.</p>
       </div>
       <div>
-        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches" data-waitlist="mixalign beatmaker console newsletter">
+        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Notify%20me%20when%20YBK%20Audio%20launches" data-waitlist="mixalign beatmaker console">
           <span data-copy="su-cta">Subscribe</span>
           <span aria-hidden="true">→</span>
         </a>
@@ -3681,7 +3681,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         wlForm.elements.email.value = keepEmail;
         wlBoxes.forEach(function (b) { b.checked = want.indexOf(b.value) >= 0; });
         wlNotify.checked = wlBoxes.some(function (b) { return b.checked; });
-        wlNews.checked = !wlNews.closest('label').hidden && want.indexOf('newsletter') >= 0;   // the newsletter box shows once the worker keeps newsletter sign-ups
+        wlNews.checked = false;   // the newsletter is never ticked for people: it has to be their own choice
         wlSync();
         wlSend.disabled = false;
         wlTell('');
