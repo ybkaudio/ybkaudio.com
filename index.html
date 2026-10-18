@@ -1106,6 +1106,23 @@ html.home-snap .brandbar .r{flex:1 1 auto}
   .scroll-cue svg{width:48px!important;height:48px!important}
   .scroll-cue svg path{stroke-width:2.4}
 }
+
+/* 432hz download box (owner 2026-10-18): heading on top, the two buttons left, "Name your price" right */
+@media(min-width:820px){.hz-box{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;column-gap:clamp(24px,3vw,40px)}}
+.hz-box>.dl-head{grid-column:1/-1}
+.hz-box .hz-tip{margin:0;border:0;background:none;padding:0;border-radius:0}
+@media(min-width:820px){.hz-box .hz-tip{border-left:1px solid var(--rule);padding-left:clamp(24px,3vw,40px)}}
+@media(max-width:819px){.hz-box .hz-tip{border-top:1px solid var(--rule);padding-top:18px}}
+.hz-box .dl-act{align-self:start}
+
+/* feature cards (owner 2026-10-18): every card has the same picture frame on top (an empty one when
+   there is no picture yet), so the text starts at the same height in every card of a row */
+.features{--fr:16/10}
+.features.sq{--fr:1/1}
+.feat-shot img,.feat-clip video{aspect-ratio:var(--fr)!important}
+.feat-ph{display:block;order:-1;margin:0 0 10px;aspect-ratio:var(--fr);border-radius:var(--r-img);
+  background:linear-gradient(135deg,var(--surface-2),transparent);border:1px dashed var(--rule)}
+.features.sq .feat-shot:not(.fit) img{object-fit:cover;object-position:62% 30%}
 </style>
 </head>
 <body>
@@ -1280,7 +1297,6 @@ html.home-snap .brandbar .r{flex:1 1 auto}
           <h3 data-copy="lx-h">Get Your License</h3>
           <p data-copy="lx-p">Instrument Player is free for its first month. Claim a license now and it’s yours to keep; it never expires.</p>
           <p data-copy="lx-p2">Updates released during the free month are included too. From October 20, new versions come with the paid app, and your free license keeps working on the last free-month version.</p>
-          <p class="launch-note" data-copy="lx-warn"><b>Windows will probably warn you.</b> Instrument Player isn’t code-signed yet, so the first time you run the installer Windows may show a blue “Windows protected your PC” box. Choose <b>More info</b>, then <b>Run anyway</b>. The warning is about a certificate we haven’t bought yet. Dismissing it doesn’t use up your license. <a href="/help/">More on this</a></p>
           <p class="launch-clock"><span data-copy="lx-ends">Free for another</span> <b data-countdown></b><span data-copy="lx-then">, then $10</span></p>
           <div class="ts-box" data-turnstile></div>
         </div>
@@ -1575,15 +1591,13 @@ html.home-snap .brandbar .r{flex:1 1 auto}
            download_click (product 432hz, page win/mac). "Name your price" stays, under the buttons:
            picking an amount shows "Continue to payment"; the worker's /tip opens a Paddle checkout
            without an email for 432hz (worker a748fdf5) and Paddle's checkout asks for it. -->
-      <div class="dl-box" id="hz-download">
-        <div>
+      <div class="dl-box hz-box" id="hz-download">
+        <div class="dl-head">
           <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="hz-eye">Windows &amp; Mac</span></p>
           <h3 data-copy="hz-h">Download the App</h3>
           <p data-copy="hz-lp">432hz is free for Windows and Mac. There’s no email, license code or activation: download it and open it.</p>
-          <p class="launch-note" data-copy="hz-warn"><b>On Windows, Windows will probably warn you.</b> 432hz isn’t code-signed yet, so the first time you run the installer Windows may show a blue “Windows protected your PC” box. Choose <b>More info</b>, then <b>Run anyway</b>. That warning is about a certificate we haven’t bought yet, not about the file. <a href="/help/">More on this</a></p>
-          <p class="launch-note" data-copy="hz-warn-mac"><b>On a Mac, macOS will warn you too.</b> Open the .dmg and drag 432hz into Applications. 432hz isn’t signed by Apple yet, so the first time you open it macOS says it can’t verify the app: go to <b>System Settings &gt; Privacy &amp; Security</b> and click <b>Open Anyway</b>. Then allow <b>System Audio Recording</b> when macOS asks. Without it, 432hz can’t hear anything to retune.</p>
         </div>
-        <div class="dl-act">
+        <div class="dl-act hz-dl">
           <div class="dl-choice">
             <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/432hz-win?src=site" data-dl="432hz" data-os="win">
               <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1597,25 +1611,26 @@ html.home-snap .brandbar .r{flex:1 1 auto}
               <span data-copy="hz-dl-btn-mac">Download for Mac (beta)</span>
             </a>
             <p class="dl-meta">macOS 14.2 or later · 8.7 MB</p>
+            <p class="dl-note" data-copy="hz-dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>, then allow <b>System Audio Recording</b> once.</p>
           </div>
         </div>
-      </div>
-      <div class="hz-tip" data-hz-tip>
-        <div class="field" data-tip hidden>
-          <label for="hz-amount" data-copy="hz-tip-label">Name your price (optional)</label>
-          <p class="tip-note" data-copy="hz-lp2">If you’d like to support it, name a price. Anything you add helps us make your experience better. The app is the same either way.</p>
-          <div class="tip-presets" role="group" aria-label="Suggested amounts">
-            <button type="button" class="tip-preset" data-amount="3">$3</button>
-            <button type="button" class="tip-preset" data-amount="5">$5</button>
-            <button type="button" class="tip-preset" data-amount="10">$10</button>
+        <div class="hz-tip" data-hz-tip>
+          <div class="field" data-tip hidden>
+            <label for="hz-amount" data-copy="hz-tip-label">Name your price (optional)</label>
+            <p class="tip-note" data-copy="hz-lp2">If you’d like to support it, name a price. Anything you add helps us make your experience better. The app is the same either way.</p>
+            <div class="tip-presets" role="group" aria-label="Suggested amounts">
+              <button type="button" class="tip-preset" data-amount="3">$3</button>
+              <button type="button" class="tip-preset" data-amount="5">$5</button>
+              <button type="button" class="tip-preset" data-amount="10">$10</button>
+            </div>
+            <div class="tip-input">
+              <span aria-hidden="true">$</span>
+              <input id="hz-amount" name="amount" type="number" inputmode="numeric" min="0" max="200" step="1" placeholder="0">
+            </div>
+            <button type="button" class="btn" data-hz-tip-go hidden><span data-copy="hz-tip-btn">Continue to payment</span><span aria-hidden="true">→</span></button>
+            <p class="claim-msg" role="status" aria-live="polite"></p>
+            <p class="fineprint" data-copy="hz-tip-fine">Payment is handled by Paddle.com, our Merchant of Record. YBK Audio never sees your card details.</p>
           </div>
-          <div class="tip-input">
-            <span aria-hidden="true">$</span>
-            <input id="hz-amount" name="amount" type="number" inputmode="numeric" min="0" max="200" step="1" placeholder="0">
-          </div>
-          <button type="button" class="btn" data-hz-tip-go hidden><span data-copy="hz-tip-btn">Continue to payment</span><span aria-hidden="true">→</span></button>
-          <p class="claim-msg" role="status" aria-live="polite"></p>
-          <p class="fineprint" data-copy="hz-tip-fine">Payment is handled by Paddle.com, our Merchant of Record. YBK Audio never sees your card details.</p>
         </div>
       </div>
 
@@ -1685,6 +1700,7 @@ html.home-snap .brandbar .r{flex:1 1 auto}
           </a>
         </div>
         <div class="feat">
+          <span class="feat-ph" aria-hidden="true"></span>
           <span class="n" data-copy="hz-f6n">Out of the way</span>
           <h4 data-copy="hz-f6h">Out of sight</h4>
           <p data-copy="hz-f6p">Close the window and 432hz keeps going from the tray (the menu bar on a Mac). Turn on Start with Windows (Open at login on a Mac) and every session starts at your pitch. Uninstall it and your sound is back exactly as it was.</p>
@@ -2068,7 +2084,7 @@ html.home-snap .brandbar .r{flex:1 1 auto}
       </div>
 
       <h2 class="explore-h">Explore each feature</h2>
-      <div class="features">
+      <div class="features sq">
         <div class="feat">
           <span class="n" data-copy="vz-f1n">3D · Vector</span>
           <h4 data-copy="vz-f1h">A vectorscope for every frequency</h4>
@@ -2112,7 +2128,7 @@ html.home-snap .brandbar .r{flex:1 1 auto}
         <div class="feat">
           <span class="n" data-copy="vz-f6n">Notes, key, chords</span>
           <h4 data-copy="vz-f6h">Know what’s playing</h4>
-          <p data-copy="vz-f6p">The loudest peaks are labelled with their note, like “F1 · 44 Hz”. One click listens for about 8 seconds and estimates the song’s key; a chord box then shows the chord playing now and its place in the key. Loudness (LUFS, true peak) and the spectrum are always on screen.</p>
+          <p data-copy="vz-f6p">The loudest peaks are labelled with their note, like “F1 · 44 Hz”. One click listens for about 8 seconds and estimates the song’s key; a chord box then shows the chord playing now.</p>
           <a class="feat-shot" href="/img/visualize/visualize-main.png" target="_blank" rel="noopener">
             <img src="/img/visualize/visualize-main.png" width="1920" height="1080" loading="lazy" alt="Note labels on the spectrum peaks, such as F1 at 44.2 Hz and F6 at 1.4 kHz, with the key “A minor” and the chord box showing “F, bVI”.">
           </a>
