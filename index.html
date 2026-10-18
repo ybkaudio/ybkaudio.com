@@ -287,7 +287,7 @@ h2{
 /* the page's main picture now sits right under the title, above the boxes */
 .pagehead .shot.lead{margin-top:clamp(22px,3vw,30px)}
 /* the licence note and the "keeps working / move it" lists, right under the pricing box */
-.lic-box{margin-top:clamp(14px,2vw,18px);display:grid;gap:14px}
+.lic-box{margin-top:14px;display:grid;gap:14px}
 /* "Notify me when it's out" under an unreleased app's Pricing / Purchase box (owner 2026-10-10) */
 .notify-row{margin-top:clamp(14px,2vw,18px)}
 @media(max-width:699px){.notify-row .btn{width:100%;justify-content:center}}
@@ -1129,6 +1129,11 @@ html.home-snap .brandbar .r{flex:1 1 auto}
 
 /* home: no rubber-band / pull-to-refresh bounce, the script moves the page (owner 2026-10-18) */
 html.home-snap,html.home-snap body{overscroll-behavior-y:none}
+
+/* boxes stacked under the main picture (download, purchase / coming soon, get your license) sit 14px
+   apart, the gap the licence box used inside itself (owner 2026-10-18) */
+:is(.dl-box,.buy,.launch) ~ :is(.dl-box,.buy,.launch){margin-top:14px}
+.buy-side .btn[data-waitlist]{width:100%;justify-content:center}
 </style>
 </head>
 <body>
@@ -1750,8 +1755,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
      sit in their own box (.lic-box) below the download box (no download box yet: after the pricing box);
      the explanation is the home text on the left and "Why get it" on the right (.explain).
      In-development apps: price shown, "Pricing" box under the picture, and right under it a
-     "Notify me when it's out" button (.notify-row, data-waitlist -> worker /waitlist); it goes
-     away when the app launches, together with the real buy/download buttons.
+     "Notify me when it's out" button inside the Coming soon box (.buy-side, data-waitlist -> the
+     Subscribe dialog -> worker /waitlist; owner 2026-10-18); on launch it is replaced by the real buy button.
      Apps still in development: title (no price) and picture only; no purchase/download box.
      Sale prices: the small line under the price says until when first, then the trial
      ("Launch price until Nov 6 · Not sure? Try our 7-day free trial"), on home and app page alike.
@@ -1797,6 +1802,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         </div>
         <div class="buy-side">
           <div class="buy-total"><span data-copy="ms-soon-l">Status</span><b data-copy="ms-soon">In development</b></div>
+          <a class="btn" href="#subscribe" data-waitlist="console"><span data-copy="ms-notify-btn">Notify me when it’s out</span><span aria-hidden="true">→</span></a>
           <p class="fineprint" data-copy="ms-soon-p">MultiConsole is still being built, so it isn’t for sale yet and there’s no way to pay for it.</p>
         </div>
 
@@ -1813,10 +1819,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           </ol>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MultiConsole%20is%20for%20sale" data-waitlist="console" data-copy="ms-co-cta">Notify me when MultiConsole is out →</a></p>
         </div>
-      </div>
-      <!-- launch-notify: goes away when the app launches (with the real buy/download buttons) -->
-      <div class="notify-row">
-        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MultiConsole%20is%20out" data-waitlist="console"><span data-copy="ms-notify-btn">Notify me when it’s out</span><span aria-hidden="true">→</span></a>
       </div>
 
       <div class="lic-box">
@@ -2208,8 +2210,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         </div>
         <div class="buy-side">
           <div class="buy-total"><span data-copy="mx-soon-l">Status</span><b data-copy="mx-soon">Out Oct 27</b></div>
-          <!-- LAUNCH DAY (10/27): restore the real purchase button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). Also remove the "Notify me when it’s out" row under this box and the "In development" tags (home block + page title). -->
-            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-buy-soon">Available Oct 27</span></span>
+          <!-- LAUNCH DAY (10/27): this "Notify me" button is replaced by the real purchase button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). Also remove the "In development" tags (home block + page title). -->
+          <a class="btn" href="#subscribe" data-waitlist="mixalign"><span data-copy="mx-notify-btn">Notify me when it’s out</span><span aria-hidden="true">→</span></a>
           <p class="fineprint" data-copy="mx-fine">Payment is handled by Paddle.com, our Merchant of Record. YBK Audio never sees your card details. Instant delivery by email.</p>
           <p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p>
         </div>
@@ -2220,11 +2222,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <p data-copy="mx-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20MixAlign" data-copy="mx-co-cta">Still not working? Email us →</a></p>
         </div>
-      </div>
-      <!-- launch-notify: on launch day (10/27) remove this together with turning on the real
-           buy/download buttons ("MixAlign 버튼 켜") -->
-      <div class="notify-row">
-        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MixAlign%20is%20out" data-waitlist="mixalign"><span data-copy="mx-notify-btn">Notify me when it’s out</span><span aria-hidden="true">→</span></a>
       </div>
       <div class="lic-box">
         <div class="breaks">
@@ -2373,6 +2370,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         </div>
         <div class="buy-side">
           <div class="buy-total"><span data-copy="bm-soon-l">Status</span><b data-copy="bm-soon">In development</b></div>
+          <a class="btn" href="#subscribe" data-waitlist="beatmaker"><span data-copy="bm-notify-btn">Notify me when it’s out</span><span aria-hidden="true">→</span></a>
           <p class="fineprint" data-copy="bm-soon-p">Beatmaker is still being built, so it isn’t for sale yet and there’s no way to pay for it.</p>
         </div>
 
@@ -2389,10 +2387,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           </ol>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20for%20sale" data-waitlist="beatmaker" data-copy="bm-co-cta">Notify me when Beatmaker is out →</a></p>
         </div>
-      </div>
-      <!-- launch-notify: goes away when the app launches (with the real buy/download buttons) -->
-      <div class="notify-row">
-        <a class="btn" href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20out" data-waitlist="beatmaker"><span data-copy="bm-notify-btn">Notify me when it’s out</span><span aria-hidden="true">→</span></a>
       </div>
 
       <div class="lic-box">
@@ -2426,7 +2420,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         <div class="prose">
           <p data-copy="bm-home-p1"><b>Simplistic beat programming</b> – a DAW made just for the casual beat programmer. We minimized the hassle of setting up tracks, routing and menus before you hear a single beat, and made a DAW that is incredibly easy to use.</p>
           <p data-copy="bm-home-p2"><b>Need some ideas?</b> Auto-generate drum patterns according to the BPM and genre you choose. Learned from 5000+ grooves, the Generate button can be the perfect songstarter, even for professionals.</p>
-          <p data-copy="bm-home-p3"><b>Got no samples? Don’t worry.</b> With the purchase comes 4,000+ drum samples and our own synthesizer presets that you can grab after the first purchase.</p>
+          <p data-copy="bm-home-p3"><b>Got no samples? Don’t worry.</b> With the download comes 4,000+ drum samples and our own synthesizer presets that you can grab after the first download.</p>
         </div>
         <aside class="why">
           <h3 data-copy="bm-why-h">Why get it</h3>
@@ -2484,10 +2478,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         </div>
       </div>
 
-      <div class="requires">
-        <h3 data-copy="bm-req-h">What you’ll need</h3>
-        <p data-copy="bm-req-p">Beatmaker comes with YBK Drums, 4,208 drum one-shots we made ourselves for its 29 genres, and it also uses the one-shots, loops and MIDI grooves already on your computer, so there’s nothing else to buy. It opens in its own window using Microsoft Edge or Google Chrome, and MP3 export needs ffmpeg.</p>
-      </div>
 
       <div class="shots">
         <figure>
