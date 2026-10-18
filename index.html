@@ -929,6 +929,46 @@ html.anim [data-reveal]{opacity:0;transform:translateY(34px) scale(.97);
 html.anim [data-reveal].in{opacity:1;transform:none}
 html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
 /* ============ end HOME SCROLL ANIMATION ============ */
+
+/* ============ INFORMATION MENU (owner 2026-10-18) ============
+   The circled "i" at the top right opens About us, FAQs, Terms, Privacy, Refunds. On a phone the
+   top bar is two lines: logo + name + "i", then the app links (they scroll sideways if they don't fit). */
+.info{position:relative;flex:none}
+.info-btn{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);
+  background:var(--surface-2);color:var(--ink);cursor:pointer;padding:0}
+.info-btn:hover,.info-btn[aria-expanded="true"]{border-color:var(--accent)}
+.info-btn svg{width:20px;height:20px}
+.info-menu{position:absolute;right:0;top:calc(100% + 8px);min-width:190px;padding:8px;z-index:70;
+  background:var(--surface);border:1px solid var(--rule);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.55);
+  display:flex;flex-direction:column}
+.info-menu[hidden]{display:none}
+.info-menu a{color:var(--ink);text-decoration:none;font-size:14.5px;padding:10px 12px;border-radius:10px}
+.info-menu a:hover,.info-menu a:focus-visible{background:var(--surface-2);outline:none}
+.info-menu a[aria-current="page"]{color:var(--accent)}
+.masthead .wrap{gap:10px 18px}
+.masthead .brand{order:1}
+.masthead .nav{order:2;margin-left:auto}
+.masthead .info{order:3}
+@media(max-width:899px){
+  .masthead .wrap{padding-block:10px}
+  .masthead .info{order:2;margin-left:auto}
+  .masthead .nav{order:3;width:100%;margin-left:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;margin-inline:-6px;padding-inline:6px}
+  .masthead .nav::-webkit-scrollbar{display:none}
+  .masthead .navlink{white-space:nowrap;flex:none}
+}
+/* FAQs */
+.faq{border-top:1px solid var(--rule);padding:4px 0}
+.faq:last-child{border-bottom:1px solid var(--rule)}
+.faq summary{cursor:pointer;list-style:none;padding:16px 28px 16px 0;position:relative;font-weight:600;font-size:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:12px;font-size:22px;color:var(--muted)}
+.faq[open] summary::after{content:"−"}
+.faq p{margin:0 0 16px;color:var(--muted);line-height:1.6;max-width:70ch}
+.faqs{margin-top:clamp(30px,4vw,46px)}
+/* About us */
+.about-notes{margin-top:clamp(26px,3.5vw,40px);max-width:760px}
+/* ============ end INFORMATION MENU ============ */
 </style>
 </head>
 <body>
@@ -961,8 +1001,19 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
       <a class="navlink" href="/mixalign/" data-nav="mixalign">MixAlign</a>
       <a class="navlink" href="/beatmaker/" data-nav="beatmaker">Beatmaker</a>
       <a class="navlink" href="/multiconsole/" data-nav="midside">MultiConsole</a>
-      <a class="navlink nav-acct" href="/help/" data-nav="account"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6.2 6.2a1.9 1.9 0 0 1 3.6.7c0 1.2-1.8 1.5-1.8 2.6M8 11.6v.1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Help</a>
     </nav>
+    <div class="info">
+      <button type="button" class="info-btn" aria-label="Information" aria-haspopup="true" aria-expanded="false" aria-controls="info-menu">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v5.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="10" cy="6.1" r="1.15" fill="currentColor"/></svg>
+      </button>
+      <div class="info-menu" id="info-menu" role="menu" hidden>
+        <a role="menuitem" href="/about/" data-nav="about">About us</a>
+        <a role="menuitem" href="/help/" data-nav="account">FAQs</a>
+        <a role="menuitem" href="/terms/" data-nav="terms">Terms</a>
+        <a role="menuitem" href="/privacy/" data-nav="privacy">Privacy</a>
+        <a role="menuitem" href="/refund/" data-nav="refund">Refunds</a>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -2355,7 +2406,7 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
   <section class="acct">
     <div class="wrap">
       <a class="backlink" href="/"><span aria-hidden="true">←</span><span data-copy="ac-back">All apps</span></a>
-      <h2 style="margin-top:20px" data-copy="ac-h">Help</h2>
+      <h2 style="margin-top:20px" data-copy="ac-h">FAQs</h2>
       <p class="kicker" data-copy="ac-k">Installing, your license code, and how to reach us.</p>
 
       <div class="help-warn" id="smartscreen">
@@ -2395,6 +2446,37 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
           </p>
         </div>
       </div>
+
+      <div class="faqs">
+        <h3 class="help-h" data-copy="faq-h">More questions</h3>
+          <details class="faq"><summary data-copy="faq-q1">Is it a subscription?</summary><p data-copy="faq-a1">No. You pay once and keep the app. There is no subscription.</p></details>
+          <details class="faq"><summary data-copy="faq-q2">Which computers do the apps run on?</summary><p data-copy="faq-a2">Windows 10 and 11 (64-bit). Mac versions are in beta; each app’s download box lists the macOS version it needs.</p></details>
+          <details class="faq"><summary data-copy="faq-q3">Can I try an app before I buy it?</summary><p data-copy="faq-a3">Visualize comes with a 7-day free trial: download it and open it, and the trial starts on its own, no code needed. To keep using it after that, buy a license and paste the code from our email into the app.</p></details>
+          <details class="faq"><summary data-copy="faq-q4">Can I use my license on two computers?</summary><p data-copy="faq-a4">A code runs on one computer at a time. To switch, release the license in the app on the old computer and enter the code on the new one. A license can be moved once every 30 days.</p></details>
+          <details class="faq"><summary data-copy="faq-q5">Who handles the payment?</summary><p data-copy="faq-a5">Paddle.com, our Merchant of Record. They take the payment and handle tax and invoicing, and YBK Audio never sees your card details. Your license code arrives by email right after payment.</p></details>
+          <details class="faq"><summary data-copy="faq-q6">Can I get a refund?</summary><p data-copy="faq-a6">You can ask for a refund within 30 days of your purchase. Email ybkaudio@gmail.com from the address you bought with and include the order number from your Paddle receipt. The details are in our <a href="/refund/">Refund Policy</a>.</p></details>
+          <details class="faq"><summary data-copy="faq-q7">My Mac says it can’t verify the app. What do I do?</summary><p data-copy="faq-a7">The Mac versions are in beta and not signed by Apple yet. The first time you open the app, go to System Settings &gt; Privacy &amp; Security and click Open Anyway. For 432hz and Visualize, also allow System Audio Recording when macOS asks.</p></details>
+          <details class="faq"><summary data-copy="faq-q8">Is 432hz really free?</summary><p data-copy="faq-a8">Yes. 432hz is a free download with no email, license code or activation. You can name a price if you’d like to support it; the app is the same either way.</p></details>
+          <details class="faq"><summary data-copy="faq-q9">What does 432hz retune?</summary><p data-copy="faq-a9">Whatever your computer plays through its normal audio: your browser, music player, games, video calls and your DAW. On Windows, apps that use ASIO or exclusive-mode audio skip the Windows audio engine, so they aren’t retuned.</p></details>
+          <details class="faq"><summary data-copy="faq-q10">Where can I download an app again?</summary><p data-copy="faq-a10">On that app’s page here on ybkaudio.com. The code and the app are separate, so you can always download the app again and enter the same code.</p></details>
+          <details class="faq"><summary data-copy="faq-q11">How does the launch list work?</summary><p data-copy="faq-a11">Leave your email on the home page or on an app that isn’t out yet. We send one email per app when it comes out, and nothing else.</p></details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== ABOUT US (owner 2026-10-18: owner's own text) ==================== -->
+<div data-page="about" hidden>
+  <section class="acct">
+    <div class="wrap">
+      <a class="backlink" href="/"><span aria-hidden="true">←</span><span data-copy="ab-back">All apps</span></a>
+      <h2 style="margin-top:20px" data-copy="ab-h">About us</h2>
+      <p class="lede" style="margin-top:22px;max-width:60ch" data-copy="ab-p">Music-making work leaves a lot of room to wonder. We wondered if we could make easier, better software for all levels of users.</p>
+      <dl class="hero-notes about-notes">
+        <div class="note"><dt data-copy="ab-n1t">Platform</dt><dd data-copy="ab-n1d">Windows 10 &amp; 11, and macOS (beta).</dd></div>
+        <div class="note"><dt data-copy="ab-n2t">Licensing</dt><dd data-copy="ab-n2d">Each purchase comes with one code. It works on one computer at a time, and you can move it to a new one once every 30 days.</dd></div>
+        <div class="note"><dt data-copy="ab-n3t">Status</dt><dd data-copy="ab-n3d">Instrument Player, 432hz and Visualize are out now. MixAlign, Beatmaker and MultiConsole are in active development.</dd></div>
+      </dl>
     </div>
   </section>
 </div>
@@ -2605,7 +2687,6 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
       <a href="/terms/">Terms</a>
       <a href="/privacy/">Privacy</a>
       <a href="/refund/">Refunds</a>
-      <a href="#feedback" data-feedback>Feedback</a>
     </nav>
   </div>
   <div class="wrap">
@@ -2719,10 +2800,15 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
   "title": "MultiConsole: a live mixing console for your PC audio | YBK Audio",
   "desc": "A desktop FX chain for everything your computer plays: autotune, saturator, compressor, band sweep, delay, reverb and more, live."
  },
+ "about": {
+  "path": "/about/",
+  "title": "About us | YBK Audio",
+  "desc": "Music-making work leaves a lot of room to wonder. We wondered if we could make easier, better software for all levels of users."
+ },
  "account": {
   "path": "/help/",
-  "title": "Help: licenses, downloads and installing | YBK Audio",
-  "desc": "Help with YBK Audio apps: getting your license code again, moving it to a new computer, downloads and installing."
+  "title": "FAQs: licenses, downloads, installing and more | YBK Audio",
+  "desc": "Answers about YBK Audio apps: license codes, moving to a new computer, downloads, installing on Windows and Mac, trials, refunds and payment."
  },
  "terms": {
   "path": "/terms/",
@@ -2759,6 +2845,9 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
     '/beatmaker': 'beatmaker',
     '/help': 'account',
     '/account': 'account',     // old URL, kept so shared links still work
+    '/about': 'about',
+    '/faq': 'account',
+    '/faqs': 'account',
     '/terms': 'terms',
     '/privacy': 'privacy',
     '/refund': 'refund'
@@ -2830,7 +2919,7 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
     visit: visitId   // the same anonymous visit id as the page-view statistics, so the dashboard can show the pages this sign-up saw
   };
   var PRODUCT_SLUG = { synth: 'player', midside: 'console', beatmaker: 'beatmaker', hz432: '432hz', visualize: 'visualize', mixalign: 'mixalign', mixalignFull: 'mixalign' };
-  var PAGE_SLUG = { synth: 'player', midside: 'console', account: 'help', hz432: '432hz', mixalign: 'mixalign' };
+  var PAGE_SLUG = { synth: 'player', midside: 'console', account: 'help', about: 'about', hz432: '432hz', mixalign: 'mixalign' };
   function track(step, extra) {
     var e = { step: step, visit: visitId, device: visitDevice };
     for (var k in extra) e[k] = extra[k];
@@ -3781,6 +3870,19 @@ html.anim .app-card[data-reveal].in:hover{transform:translateY(-3px)}
   document.addEventListener('ybk:route', function () { M = null; frame(); });   // right away, so the top-bar logo never stays hidden on other pages
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { M = null; onScroll(); });
   frame();
+})();
+</script>
+<script>
+/* Information menu (top right). */
+(function () {
+  var btn = document.querySelector('.info-btn'), menu = document.getElementById('info-menu');
+  if (!btn || !menu) return;
+  function set(open) { menu.hidden = !open; btn.setAttribute('aria-expanded', String(open)); }
+  btn.addEventListener('click', function (e) { e.stopPropagation(); set(menu.hidden); if (!menu.hidden) menu.querySelector('a').focus(); });
+  document.addEventListener('click', function (e) { if (!menu.hidden && !menu.contains(e.target)) set(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { set(false); btn.focus(); } });
+  menu.addEventListener('click', function () { set(false); });
+  document.addEventListener('ybk:route', function () { set(false); });
 })();
 </script>
 </body>
