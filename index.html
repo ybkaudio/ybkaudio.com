@@ -1051,6 +1051,7 @@ html.home-snap .signup{min-height:calc(100vh - var(--mh,64px) - var(--fh,170px))
   .scroll-cue{font-size:13.5px!important;letter-spacing:.26em!important;min-width:64px;min-height:64px;justify-content:center}
   .scroll-cue svg{width:32px!important;height:32px!important}
 }
+html.home-snap.pager{scroll-snap-type:none}   /* the page-turner script moves one page per scroll, swipe or key */
 /* ============ end HOME = THREE PAGES ============ */
 
 /* ============ PHOTO VIEWER (owner 2026-10-18) ============ */
@@ -4045,6 +4046,87 @@ html.lb-open{overflow:hidden}
     if (Math.abs(dx) > 45 && list.length > 1) show(at + (dx < 0 ? 1 : -1));
   });
   document.addEventListener('ybk:route', function () { if (!lb.hidden) close(); });
+})();
+</script>
+<script>
+/* Home page-turner: one wheel flick, swipe or key press = exactly one page (the CSS snap alone pulled
+   short scrolls back to the same page). Pages: 0 logo + name, 1 Our Products, 2 Hear it first + footer. */
+(function () {
+  var root = document.documentElement, hero = document.querySelector('.hero'), ex = document.querySelector('.explore');
+  var lb = document.getElementById('lb'), cue = document.querySelector('.scroll-cue');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var busyUntil = 0, lastWheel = 0, y0 = null, anim = null;
+  function on() { return root.classList.contains('home-snap') && hero && hero.offsetParent && lb.hidden; }
+  function stops() {
+    var mh = document.querySelector('.masthead').offsetHeight;
+    var max = root.scrollHeight - window.innerHeight;
+    return [0, Math.min(max, Math.round(ex.getBoundingClientRect().top + window.scrollY - mh)), max];
+  }
+  function current() {
+    var s = stops(), y = window.scrollY, best = 0;
+    for (var i = 1; i < s.length; i++) if (Math.abs(s[i] - y) < Math.abs(s[best] - y)) best = i;
+    return best;
+  }
+  function goTo(i) {
+    var s = stops(); i = Math.max(0, Math.min(s.length - 1, i));
+    var from = window.scrollY, to = s[i];
+    if (Math.abs(to - from) < 2) return;
+    if (anim) cancelAnimationFrame(anim);
+    if (reduce) { window.scrollTo(0, to); return; }
+    var t0 = performance.now(), dur = 750;
+    busyUntil = t0 + dur + 60;
+    (function step(t) {
+      var k = Math.min(1, (t - t0) / dur), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+      window.scrollTo(0, from + (to - from) * e);
+      anim = k < 1 ? requestAnimationFrame(step) : null;
+    })(t0);
+  }
+  window.ybkGoPage = goTo;
+  // a tall Our Products panel (very small phones) scrolls inside first
+  function panelScrolls(target, dy) {
+    if (!(target instanceof Node) || !ex.contains(target) || ex.scrollHeight <= ex.clientHeight + 1) return false;
+    return dy > 0 ? ex.scrollTop + ex.clientHeight < ex.scrollHeight - 1 : ex.scrollTop > 0;
+  }
+  function turn(dy) {
+    var now = performance.now();
+    if (now < busyUntil) return;
+    goTo(current() + (dy > 0 ? 1 : -1));
+  }
+  window.addEventListener('wheel', function (e) {
+    if (!on() || e.ctrlKey) return;
+    if (panelScrolls(e.target, e.deltaY)) return;
+    e.preventDefault();
+    var now = performance.now(), gap = now - lastWheel; lastWheel = now;
+    if (Math.abs(e.deltaY) < 2) return;
+    if (gap < 140) return;                         // the rest of the same flick (trackpad inertia): one page per gesture
+    turn(e.deltaY);
+  }, { passive: false });
+  window.addEventListener('touchstart', function (e) { if (on()) y0 = e.touches[0].clientY; }, { passive: true });
+  window.addEventListener('touchmove', function (e) {
+    if (!on() || y0 === null) return;
+    var dy = y0 - e.touches[0].clientY;
+    if (panelScrolls(e.target, dy)) return;
+    e.preventDefault();
+  }, { passive: false });
+  window.addEventListener('touchend', function (e) {
+    if (!on() || y0 === null) return;
+    var dy = y0 - e.changedTouches[0].clientY; y0 = null;
+    if (Math.abs(dy) >= 30 && !panelScrolls(e.target, dy)) turn(dy);
+  });
+  window.addEventListener('keydown', function (e) {
+    if (!on() || /input|textarea|select/i.test((e.target.tagName || '')) || e.target.isContentEditable) return;
+    var k = e.key, d = 0;
+    if (k === 'PageDown' || k === 'ArrowDown' || (k === ' ' && !e.shiftKey)) d = 1;
+    else if (k === 'PageUp' || k === 'ArrowUp' || (k === ' ' && e.shiftKey)) d = -1;
+    else if (k === 'Home') { e.preventDefault(); goTo(0); return; }
+    else if (k === 'End') { e.preventDefault(); goTo(2); return; }
+    if (!d) return;
+    e.preventDefault(); turn(d);
+  });
+  function sync() { root.classList.toggle('pager', root.classList.contains('home-snap')); }
+  document.addEventListener('ybk:route', sync);
+  sync();
+  if (cue) cue.addEventListener('click', function (e) { if (on()) { e.preventDefault(); e.stopImmediatePropagation(); goTo(1); } }, true);
 })();
 </script>
 </body>
