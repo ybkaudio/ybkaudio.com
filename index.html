@@ -1328,9 +1328,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
             </div>
             <div class="tip-input">
               <span aria-hidden="true">$</span>
-              <input id="claim-amount" name="amount" type="number" inputmode="numeric" min="0" max="200" step="1" placeholder="0" aria-describedby="claim-tip-note">
+              <input id="claim-amount" name="amount" type="number" inputmode="numeric" min="0" max="200" step="1" placeholder="0">
             </div>
-            <p class="tip-note" id="claim-tip-note" data-copy="lx-tip-note">Leave it at 0 and it’s free. Anything you add helps us make your experience better.</p>
           </div>
           <div class="hp" aria-hidden="true">
             <label for="claim-website">Leave this empty</label>
@@ -1338,7 +1337,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           </div>
           <button type="submit" class="btn"><span data-copy="lx-btn">Get my free license</span><span aria-hidden="true">→</span></button>
           <p class="claim-msg" role="status" aria-live="polite"></p>
-          <p class="fineprint"><span data-copy="lx-fine">One free license per person. We’ll email you a link to confirm your address, then your license code and the download link. After that: one “how’s it going?” email about two weeks later, and a few short reminders before the free month ends. Unsubscribe any time. To keep it to one license per person, we record your IP address with your sign-up.</span> <span data-copy="lx-agree">By claiming a license you agree to our</span> <a href="/terms/">Terms</a> <span data-copy="lx-and">and</span> <a href="/privacy/">Privacy Policy</a>.</p>
+          <p class="fineprint"><span data-copy="lx-agree">By claiming a license you agree to our</span> <a href="/terms/">Terms</a> <span data-copy="lx-and">and</span> <a href="/privacy/">Privacy Policy</a>.</p>
         </form>
       </div>
 
@@ -4007,7 +4006,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
     if (!hero.offsetParent) { brand.style.opacity = ''; unslim(); return; }
     if (!M) measure();
     if (!M) return;
-    var p = clamp(window.scrollY / M.dist);
+    var p = clamp(window.scrollY / (M.dist * 0.65));   // done at 65% of the way to page 2, so the logo is home before the page settles
     var m = seg(p, 0.05, 0.95);                                  // the move to the top bar
     var off = pin.getBoundingClientRect().top - M.pin0;        // if the title box has started scrolling away, aim higher
     mark.style.transform = 'translate(' + (M.mdx * m).toFixed(1) + 'px,' + (M.mdy * m - off * m).toFixed(1) + 'px) scale(' + (1 + (M.mk - 1) * m).toFixed(4) + ')';
