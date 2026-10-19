@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /downloads/
+Disallow: /checkout-preview/
 
 Sitemap: https://ybkaudio.com/sitemap.xml

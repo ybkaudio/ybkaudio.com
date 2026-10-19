@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Checkout preview | YBK Audio</title>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<!-- PREVIEW ONLY (2026-10-20): a YBK-branded page around Paddle's inline checkout, in Paddle's SANDBOX
+     (test cards, no real money). Not linked from the site. ?p=standard | pro | visualize -->
+<style>
+:root{color-scheme:dark;--ground:#0B0B0C;--surface:#141417;--surface-2:#1D1E21;--ink:#fff;--muted:#9B9B9A;--rule:#2A2B2F;
+  --accent:#3B82EE;--blue:#1C60C4;--red:#EE1B24;--ok:#3DD68C;
+  --f-display:'Archivo','Helvetica Neue',Arial,sans-serif;--f-body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;--f-mono:'IBM Plex Mono',Consolas,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body)}
+.stripe{height:3px;display:flex}.stripe i{display:block;height:100%}.stripe .b{background:var(--blue);flex:1}.stripe .r{background:var(--red);flex:0 0 22%}
+header{border-bottom:1px solid var(--rule)}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:var(--f-display);font-weight:900;font-size:20px;letter-spacing:-.02em;text-transform:uppercase}
+.brand i{font-style:normal;color:var(--red)}
+.secure{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.secure svg{width:14px;height:14px;color:var(--ok)}
+.pv{background:#F2C14E;color:#111;font:600 11px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:6px 16px}
+main .wrap{display:grid;gap:28px;padding-block:clamp(24px,4vw,44px) 60px}
+@media(min-width:900px){main .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:start;gap:44px}}
+.order{display:grid;gap:18px}
+.back{color:var(--muted);text-decoration:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.back:hover{color:var(--ink)}
+.eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0}
+h1{font-family:var(--f-display);font-weight:900;font-size:clamp(30px,4.2vw,46px);line-height:.95;letter-spacing:-.03em;text-transform:uppercase;margin:6px 0 0}
+.tag{display:inline-block;vertical-align:middle;margin-left:10px;padding:3px 7px 2px;border:1px solid var(--accent);border-radius:8px;color:var(--accent);font:600 10px/1.2 var(--f-mono);letter-spacing:.16em}
+.shot{border-radius:16px;overflow:hidden;border:1px solid var(--rule);background:var(--surface)}
+.shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:top}
+.line{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 0}
+.line span{color:var(--muted);font-size:14px}
+.line b{font-family:var(--f-display);font-weight:900;font-size:30px}
+ul.get{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.get li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;font-size:15px;line-height:1.45}
+ul.get svg{width:16px;height:16px;margin-top:3px;color:var(--accent)}
+.trust{display:grid;gap:10px;padding:16px;border:1px solid var(--rule);border-radius:16px;background:var(--surface);font-size:13px;color:var(--muted);line-height:1.5}
+.trust div{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px}
+.trust svg{width:16px;height:16px;margin-top:2px;color:var(--ink)}
+.trust a{color:var(--ink)}
+.pay{border:1px solid var(--rule);border-radius:24px;background:var(--surface);padding:clamp(14px,2vw,22px);min-height:460px}
+.pay h2{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:2px 4px 12px}
+.checkout-container{min-height:420px}
+.loading{color:var(--muted);font-size:14px;padding:30px 4px}
+.done{display:grid;gap:10px;padding:20px 6px}.done h3{margin:0;font-family:var(--f-display);font-size:26px;text-transform:uppercase}
+.done p{margin:0;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="stripe" aria-hidden="true"><i class="b"></i><i class="r"></i></div>
+<div class="pv">Checkout preview · Paddle test mode · use test card 4242 4242 4242 4242, any future date, CVC 100</div>
+<header><div class="wrap">
+  <a class="brand" href="/"><svg width="28" height="29" viewBox="283 276 878 907" aria-hidden="true"><path fill="#1C60C4" d="M722 286 L1057 1172 L722 916 L387 1173 Z"/><path fill="#EE1B24" d="M860 548 L1151 507 L964 800 Z"/><path fill="#EE1B24" d="M585 547 L293 506 L481 799 Z"/></svg>YBK<i>.</i>Audio</a>
+  <span class="secure"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 7V5a4 4 0 0 1 8 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="2.5" y="7" width="11" height="7.5" rx="2" fill="currentColor"/></svg>Secure checkout</span>
+</div></header>
+
+<main><div class="wrap">
+  <section class="order" aria-label="Your order">
+    <a class="back" id="back" href="/player/">← Back to the app page</a>
+    <div>
+      <p class="eyebrow" id="eye">Your order</p>
+      <h1 id="name">Instrument Player</h1>
+    </div>
+    <div class="shot"><img id="pic" src="/img/player/01-main.png" alt=""></div>
+    <div class="line"><span id="what">One license, pay once</span><b id="price">$10.00</b></div>
+    <ul class="get" id="gets"></ul>
+    <div class="trust">
+      <div><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 2.5 4v4c0 3.2 2.3 5.6 5.5 6.5 3.2-.9 5.5-3.3 5.5-6.5V4Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>Payment is handled by <b>Paddle.com</b>, our Merchant of Record. They take the card and handle tax; we never see your card details.</span></div>
+      <div><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12v8H2z M2 4l6 5 6-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>Your license code arrives by email right after payment, from YBK Audio.</span></div>
+      <div><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8a5 5 0 1 0 1.5-3.5M3 2.5V5h2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>Refunds within 30 days. <a href="/refund/">Refund policy</a> · <a href="/terms/">Terms</a></span></div>
+    </div>
+  </section>
+
+  <section class="pay" aria-label="Payment">
+    <h2>Payment</h2>
+    <div class="checkout-container"><p class="loading" id="loading">Loading the secure payment form…</p></div>
+  </section>
+</div></main>
+
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script>
+(function () {
+  var TICK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var P = {
+    standard: { eye: 'Instrument Player · Standard', name: 'Instrument Player', price: '$10.00', what: 'Standard license, pay once', pic: '/img/player/01-main.png', back: '/player/',
+      gets: ['Windows and Mac, download right after payment', 'One license code by email', 'Play VST3 instruments without a DAW'] },
+    pro: { eye: 'Instrument Player · Pro', name: 'Instrument Player Pro', price: '$20.00', what: 'Pro license, pay once', pic: '/img/player/06-midi-edit.png', back: '/player/',
+      gets: ['Pro Editor, 30-minute MIDI Replay, audio export', 'Opens Standard and Pro', 'One license code by email'] },
+    visualize: { eye: 'Visualize', name: 'Visualize', price: '$19.00', what: 'Launch price, pay once', pic: '/img/visualize/visualize-hero.png', back: '/visualize/',
+      gets: ['Windows and Mac, download right after payment', 'One license code by email', 'Every 3D view, notes, key and chords'] }
+  };
+  var key = (/[?&]p=(\w+)/.exec(location.search) || [])[1];
+  var d = P[key] || P.standard;
+  document.getElementById('eye').textContent = d.eye;
+  document.getElementById('name').innerHTML = d.name.replace(' Pro', ' <span class="tag">PRO</span>').replace('Instrument Player <span', 'Instrument Player<span');
+  document.getElementById('price').textContent = d.price;
+  document.getElementById('what').textContent = d.what;
+  document.getElementById('pic').src = d.pic;
+  document.getElementById('back').href = d.back;
+  document.getElementById('gets').innerHTML = d.gets.map(function (g) { return '<li>' + TICK + '<span>' + g + '</span></li>'; }).join('');
+
+  // Paddle SANDBOX (test mode): the test client token and the sandbox Instrument Player price.
+  // For the preview every product uses that one sandbox price; the page around it shows each product.
+  Paddle.Environment.set('sandbox');
+  Paddle.Initialize({
+    token: 'test_613e1e64ceedb67e1c32b7a0b0b',
+    eventCallback: function (ev) {
+      if (ev.name === 'checkout.loaded') { var l = document.getElementById('loading'); if (l) l.remove(); }
+      if (ev.name === 'checkout.completed') {
+        document.querySelector('.checkout-container').innerHTML = '<div class="done"><h3>Thank you</h3><p>Your license code is on its way to your email. (Test mode: nothing was charged.)</p></div>';
+      }
+    }
+  });
+  Paddle.Checkout.open({
+    items: [{ priceId: 'pri_01m2a544atvbsmdpa3j2yk6a8w', quantity: 1 }],
+    settings: {
+      displayMode: 'inline', variant: 'one-page', theme: 'dark',
+      frameTarget: 'checkout-container', frameInitialHeight: 450,
+      frameStyle: 'width:100%; min-width:286px; background-color:transparent; border:none;'
+    }
+  });
+})();
+</script>
+</body>
+</html>
