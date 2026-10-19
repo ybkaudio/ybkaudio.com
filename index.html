@@ -1158,6 +1158,14 @@ html.home-snap .brandbar .r{flex:1 1 auto}
 @media(min-width:820px){.hz-box .hz-tip{border-left:1px solid var(--rule);padding-left:clamp(24px,3vw,40px)}}
 @media(max-width:819px){.hz-box .hz-tip{border-top:1px solid var(--rule);padding-top:18px}}
 .hz-box .dl-act{align-self:start}
+/* 432hz (owner 2026-10-20): Features left; Name your price on top of the right side, the two download buttons under it */
+.hz-feat h4{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.hz-feat ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.hz-feat li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:14.5px;line-height:1.5}
+.hz-feat svg{width:16px;height:16px;margin-top:4px;color:var(--accent)}
+.hz-right{display:grid;gap:18px;align-content:start}
+@media(min-width:820px){.hz-right{border-left:1px solid var(--rule);padding-left:clamp(24px,3vw,40px)}.hz-box .hz-right .hz-tip{border-left:0;padding-left:0}}
+@media(max-width:819px){.hz-right{border-top:1px solid var(--rule);padding-top:18px}.hz-box .hz-right .hz-tip{border-top:0;padding-top:0}}
 
 /* feature cards (owner 2026-10-18): every card has the same picture frame on top (an empty one when
    there is no picture yet), so the text starts at the same height in every card of a row */
@@ -1634,20 +1642,17 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="hz-eye">Windows &amp; Mac</span></p>
           <h3 data-copy="hz-h">Download the App</h3>
         </div>
-        <div class="dl-act hz-dl">
-          <div class="dl-choice">
-            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/432hz-win?src=site" data-dl="432hz" data-os="win">
-              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-copy="hz-dl-btn">Download for Windows</span>
-            </a>
-          </div>
-          <div class="dl-choice">
-            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/432hz-mac?src=site" data-dl="432hz" data-os="mac">
-              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-copy="hz-dl-btn-mac">Download for Mac</span>
-            </a>
-          </div>
+        <div class="hz-feat">
+          <h4 data-copy="hz-why-h">Features</h4>
+          <ul>
+              <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Retunes every app at once, live: your browser, music player, games and DAW.</span></li>
+              <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Every note from 41 Hz to 4 kHz lands within 0.2 cents, and the tempo stays the same.</span></li>
+              <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Set A4 (or C4) to any pitch you like, not just 432.</span></li>
+              <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>One button switches between the original and the new pitch with no gap.</span></li>
+              <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Free, for Windows and Mac (beta).</span></li>
+            </ul>
         </div>
+        <div class="hz-right">
         <div class="hz-tip" data-hz-tip>
           <div class="field" data-tip hidden>
             <label for="hz-amount" data-copy="hz-tip-label">Name your price (optional)</label>
@@ -1664,6 +1669,21 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
             <p class="claim-msg" role="status" aria-live="polite"></p>
           </div>
         </div>
+        <div class="dl-act hz-dl">
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/432hz-win?src=site" data-dl="432hz" data-os="win">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="hz-dl-btn">Download for Windows</span>
+            </a>
+          </div>
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/432hz-mac?src=site" data-dl="432hz" data-os="mac">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="hz-dl-btn-mac">Download for Mac</span>
+            </a>
+          </div>
+        </div>
+        </div>
       </div>
 
     </div>
@@ -1671,22 +1691,12 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
 
   <section class="band" style="border-top:none">
     <div class="wrap">
-      <div class="explain">
+      <div class="explain solo">
         <div class="prose">
           <p data-copy="hz-home-p1">An idea from the 432Hz trend – what if you could retune your computer’s entire audio output to your liking? YBK AUDIO’s light app <b>432Hz</b> does that in a very simple and easy way.</p>
           <p data-copy="hz-home-p2">Open the spectrum graphs to see the frequency change as the numbers go down and up. This app is great both for visual analysis, teaching and everyday listening.</p>
           <p data-copy="hz-home-p3">Who knows, maybe hearing everything in 432Hz really is good for you.</p>
         </div>
-        <aside class="why">
-          <h3 data-copy="hz-why-h">Why get it</h3>
-          <ul>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Retunes every app at once, live: your browser, music player, games and DAW.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Every note from 41 Hz to 4 kHz lands within 0.2 cents, and the tempo stays the same.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Set A4 (or C4) to any pitch you like, not just 432.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>One button switches between the original and the new pitch with no gap.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Free, for Windows and Mac (beta).</span></li>
-          </ul>
-        </aside>
       </div>
 
       <h2 class="explore-h">Explore each feature</h2>
@@ -1868,7 +1878,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <p data-copy="ms-home-p2">Analyze and Experiment using our 11 knobs to hear what your whole computer sound would be like with a little touch. The app provides Autotune, Saturator, Compressor, Band Sweep, Chorus, Delay, Reverb, Limiter, Mid/Side, Width and Gain that you can move around in your desktop or minimize.</p>
         </div>
         <aside class="why">
-          <h3 data-copy="ms-why-h">Why get it</h3>
+          <h3 data-copy="ms-why-h">Features</h3>
           <ul>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Eleven effects, from autotune to reverb, live on everything your PC plays.</span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Each knob shows its own effect as it happens.</span></li>
@@ -2078,7 +2088,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <p data-copy="vz-home-p3">Visualize proposes a new way of stereo image analysis. From a cylinder-shaped Vectorscope stacked up every frequency, to a monitoring environment that measures Mono loss, we provide groundbreaking 3D graphs you can use to analyze a song’s phasing.</p>
         </div>
         <aside class="why">
-          <h3 data-copy="vz-why-h">Why get it</h3>
+          <h3 data-copy="vz-why-h">Features</h3>
           <ul>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>A 3D cylinder shows how wide every frequency is and where it cancels in mono.</span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Note names on the peaks, plus an estimate of the key and the chord playing now.</span></li>
@@ -2246,7 +2256,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <p data-copy="mx-home-p2"><b>Blind test &amp; Annotate.</b> Hide track names and test your decision on what’s better. Rate each track you go through with stars to come back to them. When you’re sure on what you think is best, make the big reveal to find out which track to share. Also while sharing, you can leave your thoughts on the timeline of each track and export them as PDF for whoever to see.</p>
         </div>
         <aside class="why">
-          <h3 data-copy="mx-why-h">Why get it</h3>
+          <h3 data-copy="mx-why-h">Features</h3>
           <ul>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Mixes, masters and references line up automatically.</span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Switching has no gap and matches loudness, so the volume doesn’t sway your choice.</span></li>
@@ -2405,7 +2415,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <p data-copy="bm-home-p3"><b>Got no samples? Don’t worry.</b> With the download comes 4,000+ drum samples and our own synthesizer presets that you can grab after the first download.</p>
         </div>
         <aside class="why">
-          <h3 data-copy="bm-why-h">Why get it</h3>
+          <h3 data-copy="bm-why-h">Features</h3>
           <ul>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Drums, bass, chords and melody in one click, in 29 genres.</span></li>
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Patterns learned from 5000+ grooves, so they feel played.</span></li>
