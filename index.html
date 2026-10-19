@@ -3351,6 +3351,7 @@ html.co-open{overflow:hidden}
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !coView.hidden) coView.querySelector('.co-close').click(); });
   var checkoutPaid = false;
   function checkoutStep(ev) {
+    if (ev && ev.name === 'checkout.loaded') { var ld = document.querySelector('#co-frame .co-loading'); if (ld) ld.remove(); }
     if (ev && ev.name === 'checkout.loaded' && !window.__ybkCheckoutOpen) {
       window.__ybkCheckoutOpen = true;
       history.pushState({ checkout: true }, '', location.href);
