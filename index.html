@@ -1188,6 +1188,13 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
 /* version beside the app title (owner 2026-10-19), read from the same updates/*.json as the download lines */
 .prod-title h2 .title-ver{font-family:var(--f-mono);font-size:clamp(14px,1.4vw,18px);font-weight:500;letter-spacing:.04em;
   text-transform:none;color:var(--muted);margin-left:.5em;white-space:nowrap;vertical-align:baseline}
+
+/* Visualize: one full-width card like Instrument Player's Standard card (owner 2026-10-20) */
+.duo.vz{grid-template-rows:none!important;grid-auto-flow:row!important}
+.vz-l,.vz-r{display:grid;gap:14px;align-content:start}
+.vz-label{margin:4px 0 0;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.vz-pricenote{margin:8px 0 0;font-size:12.5px;color:var(--muted)}
+@media(max-width:899px){.vz-r{border-top:1px solid var(--rule);padding-top:18px}}
 </style>
 </head>
 <body>
@@ -1418,7 +1425,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
             <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g1"><b>Pro Editor</b>: pitch bend and mod wheel lanes, quantize strength, humanize</span></li>
             <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g2"><b>MIDI Replay</b> remembers 30 minutes</span></li>
             <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g3"><b>Export audio</b>: an audio editor to pick the part you want and save it as WAV, MP3 or FLAC</span></li>
-            <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g4"><b>Can use on both</b> Standard and Pro</span></li>
+            <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g4"><b>Pro licenses</b> can activate both standard and pro versions of instrument player.</span></li>
           </ul></div>
           <div class="duo-price p"><div class="buy-total"><span data-copy="pp-total-l">Total</span><b data-copy="pp-total">$20.00</b></div></div>
           <div class="duo-dl p"><div class="dl-act">
@@ -2012,12 +2019,24 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <!-- Download = the 7-day trial (no code needed to start it). Version and size come from
            updates/visualize.json and updates/visualize-mac.json. Both buttons go through the
            worker's counted links and are tracked as download_click (product visualize, page win/mac). -->
-      <div class="dl-box" id="vz-download">
-        <div>
-          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="vz-dl-eye">Try for free</span></p>
-          <h3 data-copy="vz-dl-h">Download</h3>
-        </div>
-        <div class="dl-act">
+      <!-- One card like Instrument Player's Standard card, full width (owner 2026-10-20) -->
+      <div class="duo-box" id="vz-download">
+        <div class="duo vz">
+          <div class="vz-l">
+            <div class="duo-head"><p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="vz-dl-eye">Windows &amp; Mac</span></p><h3 data-copy="vz-card-h">Visualize</h3></div>
+            <p class="vz-label" data-copy="vz-why-h">Features</p>
+            <ul class="gets">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>A 3D cylinder shows how wide every frequency is and where it cancels in mono.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Note names on the peaks, plus an estimate of the key and the chord playing now.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>LUFS, loudness range and true peak, measured the EBU R128 way.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Nothing to set up. It listens to whatever your computer plays.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>7-day free trial on Windows and Mac.</span></li>
+          </ul>
+          </div>
+          <div class="vz-r p">
+            <div class="duo-price"><div class="buy-total"><span data-copy="vz-total-l">Total</span><b data-copy="vz-total">$19.00</b></div>
+              <p class="vz-pricenote" data-copy="vz-fine">Launch price until Nov 6, 2026, then $29.</p></div>
+            <div class="duo-dl"><div class="dl-act">
           <div class="dl-choice">
             <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/visualize-win?src=site" data-dl="visualize" data-os="win">
               <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2030,25 +2049,11 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
               <span data-copy="vz-dl-btn-mac">Download for Mac</span>
             </a>
           </div>
+        </div></div>
+            <div class="duo-buy"><button type="button" class="btn" data-buy="visualize"><span data-copy="vz-buy-btn">Get Visualize License</span><span aria-hidden="true">→</span></button><p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p></div>
+          </div>
         </div>
-      </div>
-      <div class="buy">
-        <div>
-          <h3 data-copy="vz-buy-h">Purchase License</h3>
-          <ul class="gets">
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="vz-g3">Runs on one computer at a time, and moves with you when you change computers</span></li>
-          </ul>
-        </div>
-        <div class="buy-side">
-          <div class="buy-total"><span data-copy="vz-total-l">Total today</span><b data-copy="vz-total">$19.00</b></div>
-          <button type="button" class="btn" data-buy="visualize">
-            <span data-copy="vz-buy-btn">Purchase</span><span aria-hidden="true">→</span>
-          </button>
-          <p class="fineprint" data-copy="vz-fine">Launch price until Nov 6, 2026, then $29.</p>
-          <p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p>
-        </div>
-
-        <div class="checkout" data-checkout="visualize" hidden style="grid-column:1/-1">
+        <div class="checkout" data-checkout="visualize" hidden>
           <h4 data-copy="vz-co-h">The payment window didn’t open</h4>
           <p data-copy="vz-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Visualize" data-copy="vz-co-cta">Still not working? Email us →</a></p>
@@ -2081,22 +2086,12 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
 
   <section class="band" style="border-top:none">
     <div class="wrap">
-      <div class="explain">
+      <div class="explain solo">
         <div class="prose">
           <p data-copy="vz-home-p1">The idea came from a mixing course – what if we could <i>Visualize</i> <b>the locations of each sound in a mix?</b> The pad at the back, the bass and kicks at the bottom, mono and stereo instruments kicking in right and left, the vocals. We were working on that idea when we came up with an idea to extend a stereometer by frequency.</p>
           <p data-copy="vz-home-p2"><b>You can find stereo imaging anywhere. But not in 3D.</b></p>
           <p data-copy="vz-home-p3">Visualize proposes a new way of stereo image analysis. From a cylinder-shaped Vectorscope stacked up every frequency, to a monitoring environment that measures Mono loss, we provide groundbreaking 3D graphs you can use to analyze a song’s phasing.</p>
         </div>
-        <aside class="why">
-          <h3 data-copy="vz-why-h">Features</h3>
-          <ul>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>A 3D cylinder shows how wide every frequency is and where it cancels in mono.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Note names on the peaks, plus an estimate of the key and the chord playing now.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>LUFS, loudness range and true peak, measured the EBU R128 way.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Nothing to set up. It listens to whatever your computer plays.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>7-day free trial on Windows and Mac (beta).</span></li>
-          </ul>
-        </aside>
       </div>
 
       <h2 class="explore-h">Explore each feature</h2>
