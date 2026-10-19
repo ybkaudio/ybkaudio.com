@@ -987,8 +987,6 @@ html.home-snap .hero{position:relative}
 html.home-snap .snap-top{scroll-snap-align:start}
 .snap-top{top:-40px}   /* above the page top, so slide 1 snaps to the very top (0) */
 .snap-mark{position:absolute;left:0;width:1px;height:1px;pointer-events:none;scroll-margin-top:0}
-.snap-intro{top:40vh}
-html.home-snap .snap-intro{scroll-snap-align:start}
 html.home-snap .explore,html.home-snap .signup{scroll-snap-align:start;scroll-snap-stop:always;scroll-margin-top:0}
 html.home-snap .explore{min-height:calc(100vh - var(--mh,64px));min-height:calc(100svh - var(--mh,64px));display:flex;align-items:center}
 html.home-snap .explore>.wrap{width:100%}
@@ -1062,7 +1060,6 @@ html.home-snap .signup{min-height:calc(100vh - var(--mh,64px) - var(--fh,170px))
   .scroll-cue{font-size:13.5px!important;letter-spacing:.26em!important;min-width:64px;min-height:64px;justify-content:center}
   .scroll-cue svg{width:32px!important;height:32px!important}
 }
-html.home-snap.pager{scroll-snap-type:none}   /* the settle script below does the locking */
 /* ============ end HOME = THREE PAGES ============ */
 
 /* ============ PHOTO VIEWER (owner 2026-10-18) ============ */
@@ -4087,179 +4084,17 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
 })();
 </script>
 <script>
-/* Home scrolling: free scroll + magnetic lock (owner 2026-10-18). The page follows the finger / wheel 1:1;
-   inside a page (top to bottom of a page that is taller than the window) nothing snaps. Wheel notches of one
-   gesture add up; as soon as they reach 20% of a screen past a page (40% to leave Our Products downward) it
-   glides (0.43 s) to the next page, and the rest of that fling is held back, so one gesture = one page.
-   If it stops short, it glides back 0.15 s after the last input (touch: on lifting the finger).
-   Keys and the Scroll arrow jump to the next stop. */
+/* Home scrolling (owner 2026-10-19, rebuilt from scratch): the browser's own scroll-snap does the paging
+   (CSS "HOME SLIDES": html.home-snap, mandatory snap; Our Products and Hear it first have
+   scroll-snap-stop, so one flick moves one page). No script moves the page. This only fills the
+   top stripe with how far down the home page you are. */
 (function () {
-  var root = document.documentElement, hero = document.querySelector('.hero'), ex = document.querySelector('.explore'), su = document.querySelector('.signup');
-  var lb = document.getElementById('lb'), cue = document.querySelector('.scroll-cue'), head = document.querySelector('.masthead');
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var anim = null, startY = 0, touching = false, idle = null, lastInput = 0, wheelSum = 0, lock = 0, back = false, prog = 0;
-  // Trial (owner 2026-10-19): ?scroll=new switches this script off and lets the browser's own scroll-snap
-  // do the paging (CSS "HOME SLIDES": mandatory snap, scroll-snap-stop on Our Products / Hear it first).
-  var native = false;
-  try { if (/[?&]scroll=new\b/.test(location.search)) sessionStorage.setItem('ybk-scroll', 'new');
-        if (/[?&]scroll=old\b/.test(location.search)) sessionStorage.removeItem('ybk-scroll');
-        native = sessionStorage.getItem('ybk-scroll') === 'new'; } catch (e) { native = /[?&]scroll=new\b/.test(location.search); }
-  function on() { return !native && root.classList.contains('home-snap') && hero && hero.offsetParent && lb.hidden; }
-  function pages() {                       // [top, bottom] scroll range of each page
-    var mh = head.offsetHeight + (parseFloat(getComputedStyle(head).top) || 0), vh = window.innerHeight, max = root.scrollHeight - vh, y = window.scrollY;
-    var t1 = Math.round(ex.getBoundingClientRect().top + y - mh), t2 = Math.min(max, Math.round(su.getBoundingClientRect().top + y - mh));
-    var b1 = Math.max(t1, Math.round(t1 + ex.offsetHeight - (vh - mh)));
-    return [[0, 0], [t1, Math.min(b1, t2)], [t2, max]];
-  }
-  function stop() { if (anim) { cancelAnimationFrame(anim); anim = null; } }
-  function glide(to) {
-    stop();
-    var from = window.scrollY;
-    if (Math.abs(to - from) < 2) return;
-    if (reduce) { window.scrollTo(0, to); startY = to; return; }
-    var t0 = performance.now(), dur = Math.min(430, 260 + Math.abs(to - from) * 0.25);
-    (function step(t) {
-      var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
-      window.scrollTo(0, from + (to - from) * e);
-      if (k < 1) anim = requestAnimationFrame(step); else { anim = null; startY = to; }
-    })(t0);
-  }
-  // How far into the gap you must go before it moves on: one wheel notch (100 px; a 20% screen drag by
-  // finger), but about three notches (40% by finger) to leave the middle page (Our Products) downward, so
-  // it is hard to skip (owner 2026-10-18).
-  function need(j, down) {
-    var vh = window.innerHeight, mid = j === 1 && down;
-    return wheelSum ? (mid ? Math.min(vh * 0.4, 260) : Math.min(vh * 0.2, 100)) : vh * (mid ? 0.4 : 0.2);
-  }
-  // Where a scroll in direction dir (+1 down, -1 up) leads from y: null while inside a page, or the gap it is in.
-  function gapAt(P, y, dir) {
-    for (var i = 0; i < P.length; i++) {
-      if (y >= P[i][0] - 1 && y <= P[i][1] + 1) {
-        if (dir > 0 && i < P.length - 1 && y >= P[i][1] - 1) return { j: i, lo: P[i][1], hi: P[i + 1][0] };
-        if (dir < 0 && i > 0 && y <= P[i][0] + 1) return { j: i - 1, lo: P[i - 1][1], hi: P[i][0] };
-        return null;
-      }
-    }
-    for (var j = 0; j < P.length - 1; j++) if (y > P[j][1] && y < P[j + 1][0]) return { j: j, lo: P[j][1], hi: P[j + 1][0] };
-    return null;
-  }
-  // Decide now: returns the scroll position to glide to, or null (stay free / not decided yet).
-  function decide(final) {
-    var P = pages(), y = window.scrollY, dir = wheelSum ? wheelSum : (y - startY);
-    if (!dir) dir = 1;
-    var g = gapAt(P, y, dir > 0 ? 1 : -1);
-    if (!g) return null;
-    var down = dir > 0, into = down ? y - g.lo : g.hi - y;
-    if (wheelSum) into = Math.max(into, Math.abs(wheelSum));
-    if (into >= need(g.j, down)) return down ? g.hi : g.lo;
-    if (!final) return null;
-    return y - g.lo < g.hi - y ? g.lo : g.hi;                 // not far enough: back to the nearer side's page
-  }
-  function go(to) { back = false; lock = performance.now() + 260; wheelSum = 0; glide(to); }
-  function settle() {
-    if (!on() || anim || touching) return;
-    var to = decide(true);
-    if (to === null) { startY = window.scrollY; return; }
-    var y = window.scrollY, d = wheelSum || (y - startY);
-    if ((to - y > 0) === (d > 0)) go(to); else { back = true; glide(to); }   // a glide back keeps the count, so slow notches still add up
-  }
-  function soon() { clearTimeout(idle); idle = setTimeout(function () { if (performance.now() - lastInput < 140) soon(); else settle(); }, 150); }
-  function input() { var now = performance.now(); if (now - lastInput > 500 && !anim) { startY = window.scrollY; wheelSum = 0; } lastInput = now; }
-  window.addEventListener('wheel', function (e) {
-    if (!on() || e.ctrlKey) return;
-    var d = e.deltaMode === 1 ? e.deltaY * 40 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
-    var now = performance.now();
-    // while gliding, and while one fling / burst of notches goes on right after it, the page stays put:
-    // one gesture moves one page at most
-    if (anim && back) {                                          // during a glide back: the tail of the same burst (trackpad
-      if (now - lastInput < 160) { lastInput = now; e.preventDefault(); return; }   // inertia) is held; a new notch keeps counting
-      stop(); back = false;
-    }
-    if (anim || now < lock) {
-      if (now - lastInput < 160 || anim) { lock = now + 260; lastInput = now; e.preventDefault(); return; }
-    }
-    input();
-    var P = pages(), y = window.scrollY;
-    if (!gapAt(P, y, d > 0 ? 1 : -1) && !gapAt(P, y + d, d > 0 ? 1 : -1)) { wheelSum = 0; soon(); return; }   // scrolling inside a page
-    if (wheelSum && (wheelSum > 0) !== (d > 0)) wheelSum = 0;  // changed direction: start counting again
-    wheelSum += d;
-    var to = decide(false);
-    if (to !== null) { e.preventDefault(); go(to); return; }   // far enough: move on right away
-    soon();
-  }, { passive: false });
-  // Touch (owner 2026-10-18, after a phone recording): the page follows the finger 1:1 with no native
-  // momentum, so nothing fights the glide and there is no rubber-band at the top or bottom. On release:
-  // far enough (or a quick flick) = exactly one page on; otherwise a short coast that stops inside the
-  // page's own free range (at its nearest edge), then the page stays still.
-  var T = null;
-  function freeTouch(el) {                  // places where the finger scrolls something else
-    if (el.closest && el.closest('.masthead, dialog, .lb, input, textarea, select')) return true;
-    var exv = el.closest && el.closest('.explore');
-    return !!(exv && exv.scrollHeight > exv.clientHeight + 2);
-  }
-  window.addEventListener('touchstart', function (e) {
-    T = null;
-    if (!on() || e.touches.length !== 1 || freeTouch(e.target)) return;
-    stop(); clearTimeout(idle); wheelSum = 0; touching = true;
-    var P = pages(), y = window.scrollY, k = 0;
-    for (var i = 0; i < P.length; i++) if (y >= P[i][0] - 1) k = i;      // the page we start on (or just above)
-    T = { x: e.touches[0].clientX, y: e.touches[0].clientY, sy: y, mode: '', pts: [[performance.now(), y]],
-          lo: P[Math.max(0, k - 1)][0], hi: k < P.length - 1 ? P[k + 1][0] : P[k][1], k: k };
-  }, { passive: true });
-  window.addEventListener('touchmove', function (e) {
-    if (!T || e.touches.length !== 1) return;
-    var dx = e.touches[0].clientX - T.x, dy = e.touches[0].clientY - T.y;
-    if (!T.mode) { if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) { T = null; touching = false; return; } if (Math.abs(dy) > 4) T.mode = 'y'; else return; }
-    e.preventDefault();
-    var y = Math.max(T.lo, Math.min(T.hi, T.sy - dy));                   // one page at most per gesture
-    window.scrollTo(0, y);
-    var now = performance.now(); T.pts.push([now, y]); while (T.pts.length > 2 && now - T.pts[0][0] > 100) T.pts.shift();
-  }, { passive: false });
-  function touchEnd() {
-    touching = false;
-    var t = T; T = null;
-    if (!t || !t.mode || !on()) { if (on() && !anim) soon(); return; }
-    var P = pages(), y = window.scrollY, vh = window.innerHeight, a = t.pts[0], b = t.pts[t.pts.length - 1];
-    var v = (performance.now() - b[0] > 80 || b[0] === a[0]) ? 0 : (b[1] - a[1]) / (b[0] - a[0]);   // px per ms, + = down
-    var moved = y - t.sy, dir = moved !== 0 ? (moved > 0 ? 1 : -1) : (v > 0 ? 1 : v < 0 ? -1 : 0);
-    var r = P[t.k], to;
-    if (dir > 0 && y > r[1] + 1 && t.k < P.length - 1) {                // went down past this page's free range
-      var mid = t.k === 1, far = y - r[1] >= vh * (mid ? 0.4 : 0.2) || (v > (mid ? 1.5 : 0.6) && y - r[1] >= (mid ? vh * 0.22 : 24));
-      to = far ? P[t.k + 1][0] : r[1];
-    } else if (dir < 0 && y < r[0] - 1) {                                // went up past it (from page k, or from between pages)
-      var up = t.k > 0 ? P[t.k - 1] : P[0], farU = r[0] - y >= vh * 0.2 || (v < -0.6 && r[0] - y >= 24);
-      to = farU ? up[1] : r[0];
-      if (farU && t.k > 0 && up[1] > up[0]) to = up[1];
-    } else {                                                             // inside the page: a short coast, kept inside it
-      to = Math.max(r[0], Math.min(r[1], y + v * 220));
-    }
-    to = Math.max(0, Math.min(root.scrollHeight - vh, to));
-    startY = to; glide(to);
-  }
-  window.addEventListener('touchend', touchEnd, { passive: true });
-  window.addEventListener('touchcancel', touchEnd, { passive: true });
-  window.addEventListener('scroll', function () { if (on() && !anim && !touching) soon(); }, { passive: true });
-  function stopsList() { var P = pages(), out = []; P.forEach(function (r) { [r[0], r[1]].forEach(function (v) { if (out.indexOf(v) < 0) out.push(v); }); }); return out.sort(function (a, b) { return a - b; }); }
-  window.addEventListener('keydown', function (e) {
-    if (!on() || /input|textarea|select/i.test(e.target.tagName || '') || e.target.isContentEditable) return;
-    var k = e.key, d = 0;
-    if (k === 'PageDown' || k === 'ArrowDown' || (k === ' ' && !e.shiftKey)) d = 1;
-    else if (k === 'PageUp' || k === 'ArrowUp' || (k === ' ' && e.shiftKey)) d = -1;
-    if (!d) return;
-    e.preventDefault(); stop();
-    var y = window.scrollY, S = stopsList(), vh = window.innerHeight, to = y;
-    if (d > 0) { for (var i = 0; i < S.length; i++) if (S[i] > y + 2) { to = Math.min(S[i], y + vh * 0.9 > S[i] ? S[i] : S[i]); break; } }
-    else { for (var j = S.length - 1; j >= 0; j--) if (S[j] < y - 2) { to = S[j]; break; } }
-    startY = y; wheelSum = 0; glide(to);
-  });
-  window.ybkGoPage = function (i) { var P = pages(); glide(P[Math.max(0, Math.min(2, i))][0]); };
-  if (cue) cue.addEventListener('click', function (e) { if (on()) { e.preventDefault(); e.stopImmediatePropagation(); startY = window.scrollY; wheelSum = 0; glide(pages()[1][0]); } }, true);
+  var root = document.documentElement, prog = 0;
   function bar() { prog = 0; var max = root.scrollHeight - window.innerHeight; root.style.setProperty('--prog', max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4) : '0'); }
   window.addEventListener('scroll', function () { if (root.classList.contains('home-snap') && !prog) prog = requestAnimationFrame(bar); }, { passive: true });
   window.addEventListener('resize', bar);
-  function sync() { root.classList.toggle('pager', !native && root.classList.contains('home-snap')); bar(); }
-  document.addEventListener('ybk:route', sync);
-  sync();
+  document.addEventListener('ybk:route', bar);
+  bar();
 })();
 </script>
 </body>
