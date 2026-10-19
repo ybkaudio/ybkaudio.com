@@ -903,6 +903,11 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 .app-card span{font-size:14.5px;color:var(--muted);line-height:1.45}
 /* same size as the gold TRIAL badge (10px, .16em, 3px 7px 2px, radius 8px) */
 .app-card .status{align-self:flex-start;margin:0;color:var(--hot);border-color:var(--hot);border-width:1px;border-radius:8px;font-size:10px;font-weight:600;line-height:1.2;letter-spacing:.16em;padding:3px 7px 2px;white-space:nowrap}
+.prod-title .page-tag{align-self:flex-start;margin:0;color:var(--hot);border-color:var(--hot);border-width:1px;border-radius:8px;font-size:10px;font-weight:600;line-height:1.2;letter-spacing:.16em;padding:3px 7px 2px;white-space:nowrap}
+.prod-title .page-tag.ok{color:var(--ok);border-color:var(--ok)}
+.prod-title .page-tag.gold{color:#F2C14E;border-color:#F2C14E}
+.prod-title .page-tag.blue{color:var(--accent);border-color:var(--accent)}
+.prod-title .page-tag{display:inline-block;margin:0 6px 10px 0}
 .app-card .status.ok{color:var(--ok);border-color:var(--ok)}
 .app-card .status.gold{color:#F2C14E;border-color:#F2C14E}
 .app-card .status[hidden]{display:none}
@@ -1561,7 +1566,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <a class="backlink" href="/"><span aria-hidden="true">←</span><span data-copy="hz-back">All apps</span></a>
       <div class="prod-title">
         <div>
-          <span class="status ok" data-copy="hz-status">Free</span>
           <h2 data-copy="hz-name">432hz</h2>
           <p class="kicker" data-copy="hz-k">Your whole computer sound, retuned</p>
         </div>
@@ -1751,7 +1755,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <a class="backlink" href="/"><span aria-hidden="true">←</span><span data-copy="ms-back">All apps</span></a>
       <div class="prod-title">
         <div>
-          <span class="status" data-copy="ms-status">In development</span>
           <h2 data-copy="ms-name">MultiConsole</h2>
           <p class="kicker" data-copy="ms-k">A live mixing console for your PC audio</p>
         </div>
@@ -2122,7 +2125,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <a class="backlink" href="/"><span aria-hidden="true">←</span><span data-copy="mx-back">All apps</span></a>
       <div class="prod-title">
         <div>
-          <span class="status" data-copy="mx-status">In development</span>
           <h2 data-copy="mx-name">MixAlign</h2>
           <p class="kicker" data-copy="mx-k">Compare every version of your song, aligned to the sample.</p>
         </div>
@@ -2295,7 +2297,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <a class="backlink" href="/"><span aria-hidden="true">←</span><span data-copy="bm-back">All apps</span></a>
       <div class="prod-title">
         <div>
-          <span class="status" data-copy="bm-status">In development</span>
           <h2 data-copy="bm-name">Beatmaker</h2>
           <p class="kicker" data-copy="bm-k">The easiest DAW for beatmaking</p>
         </div>
@@ -4076,6 +4077,33 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
   window.addEventListener('resize', bar);
   document.addEventListener('ybk:route', bar);
   bar();
+})();
+</script>
+<script>
+/* App page tags (owner 2026-10-19): every tag on a home "Our Products" card is shown on that app's page
+   too, above the title. The home card is the only source: its tags are copied here and follow the
+   card's tag as it is shown or hidden (e.g. the launch-month tags), so a tag is only ever changed on
+   the card. */
+(function () {
+  var seo = {};
+  try { seo = JSON.parse(document.getElementById('ybk-seo').textContent); } catch (e) { return; }
+  var byPath = {};
+  Object.keys(seo).forEach(function (k) { if (seo[k] && seo[k].path) byPath[seo[k].path] = k; });
+  document.querySelectorAll('.app-cards .app-card').forEach(function (card) {
+    var key = byPath[card.getAttribute('href')];
+    var head = key && document.querySelector('[data-page="' + key + '"] .prod-title > div');
+    if (!head) return;
+    var title = head.querySelector('h2');
+    card.querySelectorAll('.status').forEach(function (src) {
+      var tag = document.createElement('span');
+      tag.className = src.className + ' page-tag';
+      tag.textContent = src.textContent;
+      var mirror = function () { tag.hidden = src.hidden; };
+      mirror();
+      new MutationObserver(mirror).observe(src, { attributes: true, attributeFilter: ['hidden'] });
+      head.insertBefore(tag, title);
+    });
+  });
 })();
 </script>
 </body>
