@@ -288,6 +288,39 @@ h2{
 .pagehead .shot.lead{margin-top:clamp(22px,3vw,30px)}
 /* the licence note and the "keeps working / move it" lists, right under the pricing box */
 .lic-box{margin-top:14px;display:grid;gap:14px}
+.duo-box{margin-top:14px;border:1px solid var(--rule);border-top:2px solid var(--logo-blue);background:var(--surface);border-radius:var(--r-box);padding:clamp(20px,3vw,30px)}
+.duo{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.duo h3{font-weight:900;font-size:clamp(24px,3.4vw,34px);line-height:.98;letter-spacing:-.03em;text-transform:uppercase;margin:0}
+.duo .launch-eye{color:var(--accent);margin:0 0 6px}.duo .launch-eye .dot{background:var(--accent)}
+.duo .gets{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.duo .gets li{display:grid;grid-template-columns:16px 1fr;gap:10px;align-items:start;font-size:15px;line-height:1.45}
+.duo .gets svg{width:16px;height:16px;margin-top:4px;color:var(--accent)}
+.duo .buy-total{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:10px}
+.duo .buy-total b{font-family:var(--f-display);font-weight:900;font-size:clamp(24px,3vw,32px)}
+.duo .dl-act{grid-template-columns:repeat(2,minmax(0,1fr))}
+.duo .dl-act .btn{min-height:0!important;padding-block:11px}
+.duo-buy{display:grid;gap:10px}.duo-buy .btn{width:100%;justify-content:center}.duo-buy .buy-links{margin:0;font-size:12.5px;color:var(--muted)}
+.duo-head.p{margin-top:18px;padding-top:18px;border-top:1px solid var(--rule)}
+@media(min-width:900px){
+  .duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:repeat(5,auto);grid-auto-flow:column;column-gap:0;row-gap:16px}
+  .duo>*{padding-inline:0 clamp(20px,2.4vw,30px)}
+  .duo>.p{padding-inline:clamp(20px,2.4vw,30px) 0;border-left:1px solid var(--rule)}
+  .duo-head.p{margin-top:0;padding-top:0;border-top:0}
+}
+/* Instrument Player Pro (launch 2026-10-20): Pro box and "upgrade with the same code" box */
+.buy.pro{border-color:var(--accent)}
+.pro-tag{display:inline-block;margin-left:10px;padding:3px 8px 2px;vertical-align:middle;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent)}
+.upgrade-box{margin-top:clamp(14px,2vw,18px);border:1px solid var(--rule);background:var(--surface);padding:clamp(18px,3vw,28px);display:grid;gap:18px}
+@media(min-width:820px){.upgrade-box{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
+.upgrade-box h3{margin:0 0 8px}
+.upgrade-box p{margin:0 0 10px;color:var(--muted);line-height:1.55}
+.upgrade-box .prices{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.upgrade-box form .btn{width:100%;justify-content:center}
+.up-confirm{display:grid;gap:10px}.up-confirm[hidden]{display:none}
+.up-what{margin:0!important;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)!important}
+.up-confirm .btn{width:100%;justify-content:center}
+.gets.plus li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;align-items:start}
+.gets.plus .plus-mark{font-family:var(--f-mono);font-weight:600;font-size:17px;line-height:1.25;color:var(--accent);text-align:center}
 /* "Notify me when it's out" under an unreleased app's Pricing / Purchase box (owner 2026-10-10) */
 .notify-row{margin-top:clamp(14px,2vw,18px)}
 @media(max-width:699px){.notify-row .btn{width:100%;justify-content:center}}
@@ -910,6 +943,7 @@ body.ybk-editing [data-copy]:focus{outline:2px solid var(--accent);outline-offse
 .prod-title .page-tag{display:inline-block;margin:0 6px 10px 0}
 .app-card .status.ok{color:var(--ok);border-color:var(--ok)}
 .app-card .status.gold{color:#F2C14E;border-color:#F2C14E}
+.app-card .status.blue{color:var(--accent);border-color:var(--accent)}
 .app-card .status[hidden]{display:none}
 .app-card .card-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px;color:var(--ink);font-size:inherit}
 .app-card .card-price{margin-left:auto;text-align:right;white-space:nowrap;font-family:var(--f-display);font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
@@ -1218,7 +1252,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         <a class="app-card" data-reveal style="--d:0ms" href="/player/">
           <img src="/img/player/01-main.png" alt="" loading="lazy">
           <span class="status ok" data-launch="active" hidden>Free until 10/19</span>
-          <span class="card-top"><b>Instrument Player</b><span class="card-price"><span data-launch="active" hidden>$0 <s>$10</s></span><span data-launch-hide="active upcoming">$10</span></span></span>
+          <span class="status blue" data-launch-hide="active upcoming">Standard / Pro</span>
+          <span class="card-top"><b>Instrument Player</b><span class="card-price"><span data-launch="active" hidden>$0 <s>$10</s></span><span data-launch-hide="active upcoming">$10+</span></span></span>
           <span>Why open a DAW to play an instrument?</span>
           <span class="go">See Instrument Player →</span>
         </a>
@@ -1291,7 +1326,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         </div>
         <div class="prod-price">
           <span data-launch="active" hidden>Free <s>$10</s>
-          <small data-copy="sp-home-pricenote">Free launch: until 10/19</small></span><span data-launch-hide="active upcoming">$10</span>
+          <small data-copy="sp-home-pricenote">Free launch: until 10/19</small></span><span data-launch-hide="active upcoming">$10+</span>
         </div>
       </div>
 
@@ -1345,50 +1380,13 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       </div>
 
       <!-- purchase: the paid box takes the free-claim box's place once the free month is over -->
-      <div class="buy" data-launch-hide="active upcoming">
-        <div>
-          <h3 data-copy="sp-buy-h">Purchase License</h3>
-          <ul class="gets">
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="sp-g3">Runs on one computer at a time, and moves with you when you change computers</span></li>
-          </ul>
-        </div>
-        <div class="buy-side" data-launch="active" hidden>
-          <div class="buy-total"><span data-copy="sp-total-l-free">Total today</span><b data-copy="sp-total-free">$0.00</b></div>
-          <button type="button" class="btn" data-scroll-free>
-            <span data-copy="sp-free-btn">Claim it free</span><span aria-hidden="true">↑</span>
-          </button>
-          <p class="fineprint" data-copy="sp-free-fine">Free during the launch month. No payment, no card.</p>
-        </div>
-        <div class="buy-side" data-launch="ended off" hidden>
-          <div class="buy-total"><span data-copy="sp-total-l">Total today</span><b data-copy="sp-total">$10.00</b></div>
-          <button type="button" class="btn" data-buy="synth">
-            <span data-copy="sp-buy-btn">Purchase</span><span aria-hidden="true">→</span>
-          </button>
-          <p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p>
-        </div>
-
-
-
-        <div class="checkout" data-checkout="synth" hidden style="grid-column:1/-1">
-          <h4 data-copy="sp-co-h">The payment window didn’t open</h4>
-          <p data-copy="sp-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
-          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Instrument%20Player" data-copy="sp-co-cta">Still not working? Email us →</a></p>
-        </div>
-      </div>
-
-
-      <!-- Always-visible download, reachable from the "Download" link in the top bar (#/download).
-           Version and size are filled in from updates/instrument-player.json. -->
-      <div class="dl-box" id="download">
-        <div>
-          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="dl-eye">Windows &amp; Mac</span></p>
-          <h3 data-copy="dl-h">Download the App</h3>
-        </div>
-        <!-- Two buttons, Windows and Mac (owner 2026-10-06): each click is counted as
-             download_click with page "win" or "mac". Windows goes through the worker's
-             counting redirects /dl/player-win and /dl/player-mac. Version and size come from
-             the two updates/*.json. -->
-        <div class="dl-act">
+      <!-- Standard / Pro, side by side (owner 2026-10-19) -->
+      <div class="duo-box" id="download">
+        <div class="duo">
+          <div class="duo-head"><p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="duo-eye">Windows &amp; Mac</span></p><h3 data-copy="duo-std-h">Standard</h3></div>
+          <div class="duo-gets"><ul class="gets"><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s1"><b>Play any VST3 instrument</b> (plus the built-in Starter Synth), straight away</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s2">Play from your <b>computer keyboard or a MIDI keyboard</b></span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s3"><b>MIDI Replay</b>: bring back the last 5 minutes of playing as MIDI notes</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s4"><b>MIDI editor</b>: draw, record and edit notes, with velocity and sustain pedal lanes</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s5"><b>Record</b> what you play and save it as WAV, MP3 or FLAC</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s6"><b>Audio effects</b> rack</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s7"><b>Save and open</b> projects</span></li></ul></div>
+          <div class="duo-price"><div class="buy-total"><span data-copy="sp-total-l">Total</span><b data-copy="sp-total">$10.00</b></div></div>
+          <div class="duo-dl"><div class="dl-act">
           <div class="dl-choice">
             <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/player-win?src=site" data-dl="player" data-os="win">
               <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1401,7 +1399,59 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
               <span data-copy="dl-btn-mac">Download for Mac</span>
             </a>
           </div>
+        </div></div>
+          <div class="duo-buy"><button type="button" class="btn" data-buy="synth">
+            <span data-copy="sp-buy-btn">Get Standard</span><span aria-hidden="true">→</span>
+          </button><p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p></div>
+          <div class="duo-head p"><p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="duo-eye-pro">Windows</span></p><h3><span data-copy="duo-pro-h">Pro</span><span class="pro-tag" data-copy="pp-tag">Pro</span></h3></div>
+          <div class="duo-gets p"><ul class="gets plus">
+            <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g1"><b>Pro Editor</b>: pitch bend and mod wheel lanes, quantize strength, humanize</span></li>
+            <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g2"><b>MIDI Replay</b> remembers 30 minutes</span></li>
+            <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g3"><b>Export audio</b>: an audio editor to pick the part you want and save it as WAV, MP3 or FLAC</span></li>
+            <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g4"><b>Can use on both</b> Standard and Pro</span></li>
+          </ul></div>
+          <div class="duo-price p"><div class="buy-total"><span data-copy="pp-total-l">Total</span><b data-copy="pp-total">$20.00</b></div></div>
+          <div class="duo-dl p"><div class="dl-act">
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/playerpro-win?src=site" data-dl="playerpro" data-os="win">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="ppdl-btn">Download for Windows</span>
+            </a>
+          </div>
+        </div></div>
+          <div class="duo-buy p"><button type="button" class="btn" data-buy="playerpro">
+            <span data-copy="pp-buy-btn">Get Pro</span><span aria-hidden="true">→</span>
+          </button><p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p></div>
         </div>
+<div class="checkout" data-checkout="synth" hidden>
+          <h4 data-copy="sp-co-h">The payment window didn’t open</h4>
+          <p data-copy="sp-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Instrument%20Player" data-copy="sp-co-cta">Still not working? Email us →</a></p>
+        </div>
+<div class="checkout" data-checkout="playerpro" hidden>
+          <h4 data-copy="pp-co-h">The payment window didn’t open</h4>
+          <p data-copy="pp-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase Pro again.</p>
+          <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Instrument%20Player%20Pro" data-copy="pp-co-cta">Still not working? Email us →</a></p>
+        </div>
+      </div>
+<div class="upgrade-box" id="upgrade">
+        <div>
+          <h3 data-copy="pp-up-h">Already have Instrument Player? Upgrade to Pro</h3>
+          <p data-copy="pp-up-p1">Enter your license code. Free-month and Standard codes both upgrade to Pro for $10, and the same code then opens Pro.</p>
+          <p data-copy="pp-up-p2">Want Standard updates on a free-month code? Get Standard above.</p>
+        </div>
+        <form data-upgrade novalidate>
+          <div class="field">
+            <label for="up-key" data-copy="pp-up-label">Your license code</label>
+            <input id="up-key" name="key" autocomplete="off" spellcheck="false" placeholder="YBKI-XXXX-XXXX-XXXX-XXXX" required>
+          </div>
+          <button type="submit" class="btn"><span data-copy="pp-up-btn">Upgrade to Pro</span><span aria-hidden="true">→</span></button>
+          <div class="up-confirm" hidden>
+            <p class="up-what"></p>
+            <a class="btn" href="#"><span data-copy="pp-up-go">Continue to payment</span><span aria-hidden="true">→</span></a>
+          </div>
+          <p class="claim-msg" role="status" aria-live="polite"></p>
+        </form>
       </div>
       <div class="lic-box">
         <div class="breaks">
@@ -2987,7 +3037,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
     device: visitDevice,
     visit: visitId   // the same anonymous visit id as the page-view statistics, so the dashboard can show the pages this sign-up saw
   };
-  var PRODUCT_SLUG = { synth: 'player', midside: 'console', beatmaker: 'beatmaker', hz432: '432hz', visualize: 'visualize', mixalign: 'mixalign', mixalignFull: 'mixalign' };
+  var PRODUCT_SLUG = { synth: 'player', playerpro: 'playerpro', midside: 'console', beatmaker: 'beatmaker', hz432: '432hz', visualize: 'visualize', mixalign: 'mixalign', mixalignFull: 'mixalign' };
   var PAGE_SLUG = { synth: 'player', midside: 'console', account: 'help', about: 'about', hz432: '432hz', mixalign: 'mixalign' };
   function track(step, extra) {
     var e = { step: step, visit: visitId, device: visitDevice };
@@ -3111,6 +3161,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
     clientToken: 'live_c368a3e2c91fc58f6b40c7258dd',
     prices: {
       synth:   'pri_01m26a79x1e2751c91k981ra5v',  // Instrument Player, $10 (live)
+      playerpro: 'pri_01m489qemegfqasntrnhth1ay7',  // Instrument Player Pro, $20 (live from 2026-10-20)
       // Visualize, $19 launch price (live, 2026-10-07). After Nov 6, 2026 switch this to
       // the $29 price id (not created in Paddle yet) and update the page's $19 / $19.00.
       visualize: 'pri_01m468vyx8yx6x8yf79yjcz7ba',
@@ -3204,6 +3255,46 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       panel.setAttribute('tabindex', '-1');
       panel.focus({ preventScroll: true });
+    });
+  });
+
+  /* Instrument Player Pro: "upgrade with the same code". The worker checks the code, picks the price and
+     answers with Paddle's checkout link; a wrong or unsuitable code gets a message right here. */
+  /* One upgrade: Standard (bought) or free launch license -> Pro, $10 either way (owner 2026-10-20). After the
+     code check it says which license it found and the price, then the visitor goes on to Paddle. */
+  document.querySelectorAll('[data-upgrade]').forEach(function (form) {
+    var msg = form.querySelector('.claim-msg'), btn = form.querySelector('button[type="submit"]');
+    var box = form.querySelector('.up-confirm'), what = box.querySelector('.up-what'), go = box.querySelector('a');
+    function tell(text, kind) { msg.textContent = text; msg.className = 'claim-msg' + (kind ? ' ' + kind : ''); }
+    form.elements.key.addEventListener('input', function () { box.hidden = true; btn.hidden = false; });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var key = form.elements.key.value.trim().toUpperCase();
+      if (key.length < 10) { tell('Please type your license code.', 'err'); form.elements.key.focus(); return; }
+      btn.disabled = true; tell('Checking your code…');
+      track('buy_click', { product: 'playerpro', page: 'upgrade' });
+      fetch(LAUNCH_API + '/upgrade', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key: key, to: 'pro' }) })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          btn.disabled = false;
+          if (res.ok && res.url) {
+            var amount = (res.price != null && res.price !== '') ? (res.currency && res.currency !== 'USD' ? res.price + ' ' + res.currency : '$' + res.price) : '';
+            what.textContent = (res.from === 'launch' ? 'Free-month license' : 'Standard license') + ' → Instrument Player Pro' + (amount ? ' · ' + amount : '');
+            go.href = res.url; box.hidden = false; btn.hidden = true; tell('');
+            return;
+          }
+          var why = {
+            not_found: 'We couldn’t find that license code. Check it against your license email.',
+            already_pro: 'This code already opens Instrument Player Pro.',
+            master: 'This code already opens everything.',
+            not_upgradable: 'This code can’t be upgraded. Reply to your license email and we’ll sort it out.',
+            not_open: 'Upgrades to Pro aren’t open yet.',
+            paddle: 'The checkout couldn’t open just now. Please try again in a minute.'
+          };
+          tell(res.message || why[res.error] || 'Something went wrong. Please try again.', 'err');
+        })['catch'](function () {
+          btn.disabled = false; tell('Couldn’t reach our server. Check your connection, or email ybkaudio@gmail.com.', 'err');
+        });
     });
   });
 
