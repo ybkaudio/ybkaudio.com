@@ -1140,6 +1140,10 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
 :is(.dl-box,.buy,.launch) ~ :is(.dl-box,.buy,.launch){margin-top:14px}
 .prod-title ~ .shot ~ :is(.dl-box,.buy,.launch){margin-top:14px}   /* no caption under the main picture any more (owner 2026-10-19) */
 .buy-side .btn[data-waitlist]{width:100%;justify-content:center}
+
+/* version beside the app title (owner 2026-10-19), read from the same updates/*.json as the download lines */
+.prod-title h2 .title-ver{font-family:var(--f-mono);font-size:clamp(14px,1.4vw,18px);font-weight:500;letter-spacing:.04em;
+  text-transform:none;color:var(--muted);margin-left:.5em;white-space:nowrap;vertical-align:baseline}
 </style>
 </head>
 <body>
@@ -4103,6 +4107,24 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       new MutationObserver(mirror).observe(src, { attributes: true, attributeFilter: ['hidden'] });
       head.insertBefore(tag, title);
     });
+  });
+})();
+</script>
+<script>
+/* Version beside the title of released apps; unreleased apps have no updates file and show nothing. */
+(function () {
+  var FILES = { synth: 'instrument-player.json', hz432: '432hz.json', visualize: 'visualize.json' };
+  Object.keys(FILES).forEach(function (key) {
+    var h2 = document.querySelector('[data-page="' + key + '"] .prod-title h2');
+    if (!h2) return;
+    fetch('/updates/' + FILES[key], { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (m) {
+        if (!m || !m.version || h2.querySelector('.title-ver')) return;
+        var v = document.createElement('span');
+        v.className = 'title-ver'; v.textContent = 'v' + m.version;
+        h2.appendChild(v);
+      })['catch'](function () {});
   });
 })();
 </script>
