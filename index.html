@@ -752,9 +752,9 @@ h2{
 }
 .dl-box p{margin:0;font-size:14.5px;line-height:1.5}
 .dl-act{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
-@media(min-width:560px){.dl-act{grid-template-columns:repeat(2,minmax(0,1fr))}.dl-act .btn{min-height:64px}}
+@media(min-width:560px){.dl-act{grid-template-columns:repeat(2,minmax(0,1fr))}.dl-act .btn{min-height:52px}}
 .dl-choice{display:flex;flex-direction:column;gap:10px}
-.dl-act .btn{width:100%;justify-content:center;gap:10px;text-align:center}
+.dl-act .btn{width:100%;justify-content:center;gap:8px;text-align:center;font-size:14px;white-space:nowrap;padding-inline:12px}
 .dl-meta{
   font-family:var(--f-mono);font-size:11.5px !important;letter-spacing:.06em;
   text-transform:uppercase;color:var(--muted);text-align:center;
@@ -1194,6 +1194,11 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
 .vz-l,.vz-r{display:grid;gap:14px;align-content:start}
 .vz-label{margin:4px 0 0;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .vz-pricenote{margin:8px 0 0;font-size:12.5px;color:var(--muted)}
+.vz-or{color:var(--muted);font-weight:800}
+.vz-tot{display:flex;align-items:baseline;gap:10px}
+.vz-tot .trial-badge{align-self:center;transform:translateY(-.1em)}
+.vz-tot s{font-family:var(--f-display);font-weight:800;font-size:16px;color:var(--logo-red);text-decoration-thickness:2px}
+.vz-dlnote{margin:8px 0 0;font-size:12.5px;color:var(--muted);text-align:center}
 @media(max-width:899px){.vz-r{border-top:1px solid var(--rule);padding-top:18px}}
 
 /* ============ CHECKOUT VIEW (owner 2026-10-20): our page around Paddle's inline checkout ============ */
@@ -2062,7 +2067,7 @@ html.co-open{overflow:hidden}
       <div class="duo-box" id="vz-download">
         <div class="duo vz">
           <div class="vz-l">
-            <div class="duo-head"><p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="vz-dl-eye">Windows &amp; Mac</span></p><h3 data-copy="vz-card-h">Visualize</h3></div>
+            <div class="duo-head"><p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="vz-dl-eye">Windows &amp; Mac</span></p><h3 data-copy="vz-card-h">Get Visualize <span class="vz-or">/ Try it out</span></h3></div>
             <p class="vz-label" data-copy="vz-why-h">Features</p>
             <ul class="gets">
             <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>A 3D cylinder shows how wide every frequency is and where it cancels in mono.</span></li>
@@ -2073,8 +2078,8 @@ html.co-open{overflow:hidden}
           </ul>
           </div>
           <div class="vz-r p">
-            <div class="duo-price"><div class="buy-total"><span data-copy="vz-total-l">Total</span><b data-copy="vz-total">$19.00</b></div>
-              <p class="vz-pricenote" data-copy="vz-fine">Launch price until Nov 6, 2026, then $29.</p></div>
+            <div class="duo-price"><div class="buy-total"><span data-copy="vz-total-l">Total</span><span class="vz-tot"><span class="trial-badge" data-copy="vz-card-trial">Trial</span><b data-copy="vz-total">$19.00</b><s>$29</s></span></div>
+              <p class="vz-pricenote" data-copy="vz-fine">Launch price until Nov 6, 2026.</p></div>
             <div class="duo-dl"><div class="dl-act">
           <div class="dl-choice">
             <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/visualize-win?src=site" data-dl="visualize" data-os="win">
@@ -2088,7 +2093,7 @@ html.co-open{overflow:hidden}
               <span data-copy="vz-dl-btn-mac">Download for Mac</span>
             </a>
           </div>
-        </div></div>
+        </div><p class="vz-dlnote" data-copy="vz-dl-note">Includes the 7-day free trial</p></div>
             <div class="duo-buy"><button type="button" class="btn" data-buy="visualize"><span data-copy="vz-buy-btn">Get Visualize License</span><span aria-hidden="true">→</span></button><p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p></div>
           </div>
         </div>
@@ -2930,57 +2935,57 @@ html.co-open{overflow:hidden}
  },
  "synth": {
   "path": "/player/",
-  "title": "Instrument Player: play your VST instruments without a DAW | YBK Audio",
+  "title": "Instrument Player: Why open a DAW to play an instrument? | YBK AUDIO",
   "desc": "Why open a DAW to play an instrument? Instrument Player plays your VST3 instruments on their own, brings back the last 5 minutes you played and records it. Standard and Pro, for Windows and Mac."
  },
  "hz432": {
   "path": "/432hz/",
-  "title": "432hz: retune everything your computer plays, live | YBK Audio",
+  "title": "432hz: Your whole computer sound, retuned | YBK AUDIO",
   "desc": "432hz retunes your whole computer's sound live, without changing the tempo. A free app for Windows and Mac."
  },
  "visualize": {
   "path": "/visualize/",
-  "title": "Visualize: the 3D stereo imaging tool | YBK Audio",
+  "title": "Visualize: Stereo imaging, in 3D | YBK AUDIO",
   "desc": "See where every sound sits in a mix: vectorscopes for every frequency, a 3D room and mono-loss monitoring, plus spectrum, loudness, key and chords. Windows and Mac, with a 7-day free trial."
  },
  "mixalign": {
   "path": "/mixalign/",
-  "title": "MixAlign: compare every version of your song, aligned | YBK Audio",
+  "title": "MixAlign: Compare every version of your song, aligned to the sample | YBK AUDIO",
   "desc": "Switch between mixes and masters with no gap: MixAlign lines every version up to the sample, matches loudness, and helps you choose blind."
  },
  "beatmaker": {
   "path": "/beatmaker/",
-  "title": "Beatmaker: the easiest DAW for beatmaking | YBK Audio",
+  "title": "Beatmaker: The easiest DAW for beatmaking | YBK AUDIO",
   "desc": "Beatmaker is a simple DAW made just for beats: generate drum patterns and chords, and start with thousands of included sounds."
  },
  "midside": {
   "path": "/multiconsole/",
-  "title": "MultiConsole: a live mixing console for your PC audio | YBK Audio",
+  "title": "MultiConsole: A live mixing console for your PC audio | YBK AUDIO",
   "desc": "A desktop FX chain for everything your computer plays: autotune, saturator, compressor, band sweep, delay, reverb and more, live."
  },
  "about": {
   "path": "/about/",
-  "title": "About us | YBK Audio",
+  "title": "About us | YBK AUDIO",
   "desc": "YBK Audio makes music software made simple: small, easy apps for producers at every level."
  },
  "account": {
   "path": "/help/",
-  "title": "FAQs: licenses, downloads, installing and more | YBK Audio",
+  "title": "FAQs: licenses, downloads, installing and more | YBK AUDIO",
   "desc": "Answers about YBK Audio apps: license codes, moving to a new computer, downloads, installing on Windows and Mac, trials, refunds and payment."
  },
  "terms": {
   "path": "/terms/",
-  "title": "Terms of Service | YBK Audio",
+  "title": "Terms of Service | YBK AUDIO",
   "desc": "Terms of Service for YBK Audio apps and licenses."
  },
  "privacy": {
   "path": "/privacy/",
-  "title": "Privacy Policy | YBK Audio",
+  "title": "Privacy Policy | YBK AUDIO",
   "desc": "What personal data YBK Audio collects, why, and how long it is kept."
  },
  "refund": {
   "path": "/refund/",
-  "title": "Refund Policy | YBK Audio",
+  "title": "Refund Policy | YBK AUDIO",
   "desc": "How refunds work for YBK Audio purchases."
  }
 }
