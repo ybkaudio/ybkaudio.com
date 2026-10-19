@@ -4098,7 +4098,13 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
   var lb = document.getElementById('lb'), cue = document.querySelector('.scroll-cue'), head = document.querySelector('.masthead');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var anim = null, startY = 0, touching = false, idle = null, lastInput = 0, wheelSum = 0, lock = 0, back = false, prog = 0;
-  function on() { return root.classList.contains('home-snap') && hero && hero.offsetParent && lb.hidden; }
+  // Trial (owner 2026-10-19): ?scroll=new switches this script off and lets the browser's own scroll-snap
+  // do the paging (CSS "HOME SLIDES": mandatory snap, scroll-snap-stop on Our Products / Hear it first).
+  var native = false;
+  try { if (/[?&]scroll=new\b/.test(location.search)) sessionStorage.setItem('ybk-scroll', 'new');
+        if (/[?&]scroll=old\b/.test(location.search)) sessionStorage.removeItem('ybk-scroll');
+        native = sessionStorage.getItem('ybk-scroll') === 'new'; } catch (e) { native = /[?&]scroll=new\b/.test(location.search); }
+  function on() { return !native && root.classList.contains('home-snap') && hero && hero.offsetParent && lb.hidden; }
   function pages() {                       // [top, bottom] scroll range of each page
     var mh = head.offsetHeight + (parseFloat(getComputedStyle(head).top) || 0), vh = window.innerHeight, max = root.scrollHeight - vh, y = window.scrollY;
     var t1 = Math.round(ex.getBoundingClientRect().top + y - mh), t2 = Math.min(max, Math.round(su.getBoundingClientRect().top + y - mh));
@@ -4251,7 +4257,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
   function bar() { prog = 0; var max = root.scrollHeight - window.innerHeight; root.style.setProperty('--prog', max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4) : '0'); }
   window.addEventListener('scroll', function () { if (root.classList.contains('home-snap') && !prog) prog = requestAnimationFrame(bar); }, { passive: true });
   window.addEventListener('resize', bar);
-  function sync() { root.classList.toggle('pager', root.classList.contains('home-snap')); bar(); }
+  function sync() { root.classList.toggle('pager', !native && root.classList.contains('home-snap')); bar(); }
   document.addEventListener('ybk:route', sync);
   sync();
 })();
