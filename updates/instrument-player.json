@@ -1,11 +1,19 @@
 {
-    "version":  "1.8.0",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.8.0.exe",
-    "sha256":  "9adaa56b3224a576a780b9c1776b7139a946bb21986e02695303d874fe277deb",
-    "size":  8255168,
-    "notes":  "New features\n- Count-in for recording in the MIDI editor: turn on the hand button beside Record, pick 1, 2, 3, 4 or 8 beats, and recording starts after the count.\n- MIDI Replay has a new look.",
-    "released":  "2026-10-13",
+    "version":  "1.9.9",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.9.9.exe",
+    "sha256":  "dfd79dd6ef93827541d5dce917a044c8ab0c6af6161efd2e8dc6ecfcdfc6c025",
+    "size":  8323863,
+    "notes":  "New Record button: record what you play and save it as WAV, MP3 or FLAC.\nMIDI editor: velocity and sustain pedal lanes under the notes.\nInstrument list: type a letter to jump to instruments starting with it.\nWaves plugins now show up (the first scan takes a few minutes).",
+    "released":  "2026-10-19",
     "history":  [
+                    {
+                        "version":  "1.9.9",
+                        "released":  "2026-10-19",
+                        "notes":  "New Record button: record what you play and save it as WAV, MP3 or FLAC.\nMIDI editor: velocity and sustain pedal lanes under the notes.\nInstrument list: type a letter to jump to instruments starting with it.\nWaves plugins now show up (the first scan takes a few minutes).",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.9.9.exe",
+                        "sha256":  "dfd79dd6ef93827541d5dce917a044c8ab0c6af6161efd2e8dc6ecfcdfc6c025",
+                        "size":  8323863
+                    },
                     {
                         "version":  "1.8.0",
                         "released":  "2026-10-13",
