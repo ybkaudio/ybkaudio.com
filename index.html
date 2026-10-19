@@ -1135,6 +1135,19 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
 :is(.dl-box,.buy,.launch) ~ :is(.dl-box,.buy,.launch){margin-top:14px}
 .shot.lead ~ :is(.dl-box,.buy,.launch){margin-top:14px}   /* no caption under the main picture any more (owner 2026-10-19) */
 .buy-side .btn[data-waitlist]{width:100%;justify-content:center}
+
+/* app pages (owner 2026-10-19): main picture left at half width, the purchase / download / coming soon
+   boxes stacked beside it on the right; one column on narrower screens */
+.top-split{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-top:clamp(18px,2.4vw,26px)}
+.top-split .ts-pic>.shot{margin:0;display:block}
+.top-split .ts-boxes{display:flex;flex-direction:column;gap:14px;min-width:0}
+.top-split .ts-boxes>*{margin:0!important}
+@media(min-width:1000px){
+  .top-split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+  .top-split .ts-pic{position:sticky;top:calc(var(--mh,70px) + 16px)}   /* the picture stays in view next to the boxes */
+  .top-split .buy,.top-split .dl-box,.top-split .launch,.top-split .hz-box{grid-template-columns:minmax(0,1fr)!important}
+  .top-split .hz-box .hz-tip{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:18px}
+}
 </style>
 </head>
 <body>
@@ -1286,9 +1299,13 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         </div>
       </div>
 
-      <a class="shot lead" href="/img/player/01-main.png" target="_blank" rel="noopener">
+      <div class="top-split">
+        <div class="ts-pic">
+        <a class="shot lead" href="/img/player/01-main.png" target="_blank" rel="noopener">
         <img src="/img/player/01-main.png" width="902" height="526" alt="The Instrument Player window just after launch: “Choose an instrument”, Audio Effects and MIDI editor along the top, an empty instrument slot reading “No instrument loaded”, and the 88-note on-screen keyboard at the bottom.">
       </a>
+        </div>
+        <div class="ts-boxes">
 
       <!-- free launch month: the launch script shows one of these (or neither) -->
       <div class="launch" data-launch="upcoming" hidden>
@@ -1399,6 +1416,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
             <p class="dl-meta"><span data-dl-version-mac></span>Mac, Apple Silicon &amp; Intel<span data-dl-size-mac></span></p>
             <p class="dl-note" data-copy="dl-mac-note">Beta, not signed by Apple yet: the first time, open System Settings &gt; Privacy &amp; Security and click <b>Open Anyway</b>.</p>
           </div>
+        </div>
+      </div>
         </div>
       </div>
       <div class="lic-box">
@@ -1574,9 +1593,13 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         </div>
       </div>
 
-      <a class="shot lead" href="/img/432/432-fullscreen.png" target="_blank" rel="noopener">
+      <div class="top-split">
+        <div class="ts-pic">
+        <a class="shot lead" href="/img/432/432-fullscreen.png" target="_blank" rel="noopener">
         <img src="/img/432/432-fullscreen-1920.png" width="1920" height="782" alt="432hz maximised: the live spectrum fills the screen with every A marked from A0 at 27 Hz to A9, and a small panel on the left shows the gold button reading “432 Hz, ON” with “A4 = 432 Hz” between the minus and plus buttons.">
       </a>
+        </div>
+        <div class="ts-boxes">
 
       <!-- 432hz is a plain free download (owner 2026-10-09): no email, no sign-up. Both buttons go
            through the worker's counted links (/dl/432hz-win, /dl/432hz-mac) and are tracked as
@@ -1623,6 +1646,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
             <p class="claim-msg" role="status" aria-live="polite"></p>
             <p class="fineprint" data-copy="hz-tip-fine">Payment is handled by Paddle.com, our Merchant of Record. YBK Audio never sees your card details.</p>
           </div>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -1764,9 +1789,13 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         </div>
       </div>
 
-      <a class="shot crop-wide" href="/img/console/01-main.png" target="_blank" rel="noopener">
+      <div class="top-split">
+        <div class="ts-pic">
+        <a class="shot crop-wide" href="/img/console/01-main.png" target="_blank" rel="noopener">
         <img src="/img/console/01-main.png" width="1920" height="1080" alt="The full MultiConsole capsule with autotune, saturator, compressor, band sweep, chorus, delay, reverb, limiter, mid/side, width and gain, every display moving to the music and the pit reading 115 ms latency.">
       </a>
+        </div>
+        <div class="ts-boxes">
 
       <!-- purchase -->
       <div class="buy">
@@ -1796,6 +1825,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
             <li data-copy="ms-co-3">Licensing is switched on, so a purchase issues a code that runs on one computer at a time and moves with you.</li>
           </ol>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20MultiConsole%20is%20for%20sale" data-waitlist="console" data-copy="ms-co-cta">Notify me when MultiConsole is out →</a></p>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -1959,9 +1990,13 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       </div>
 
 
-      <a class="shot lead" href="/img/visualize/visualize-hero.png" target="_blank" rel="noopener">
+      <div class="top-split">
+        <div class="ts-pic">
+        <a class="shot lead" href="/img/visualize/visualize-hero.png" target="_blank" rel="noopener">
         <img src="/img/visualize/visualize-hero.png" width="1280" height="759" alt="Visualize: a spectrum with peak and whole-song average curves over a waterfall, the 3D stereo-width cylinder in the middle, and loudness, true-peak, correlation, polar and balance meters on the right.">
       </a>
+        </div>
+        <div class="ts-boxes">
 
       <!-- Download = the 7-day trial (no code needed to start it). Version and size come from
            updates/visualize.json and updates/visualize-mac.json. Both buttons go through the
@@ -2012,6 +2047,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <h4 data-copy="vz-co-h">The payment window didn’t open</h4>
           <p data-copy="vz-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Visualize" data-copy="vz-co-cta">Still not working? Email us →</a></p>
+        </div>
+      </div>
         </div>
       </div>
       <div class="lic-box">
@@ -2141,9 +2178,13 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         </div>
       </div>
 
-      <a class="shot lead" href="/img/mixalign/mixalign-hero.png" target="_blank" rel="noopener">
+      <div class="top-split">
+        <div class="ts-pic">
+        <a class="shot lead" href="/img/mixalign/mixalign-hero.png" target="_blank" rel="noopener">
         <img src="/img/mixalign/mixalign-hero.png" width="1480" height="920" alt="MixAlign: three versions of a song (two mixes and the master) lined up on one timeline, each with its loudness and alignment, and the listening controls along the top.">
       </a>
+        </div>
+        <div class="ts-boxes">
 
       <!-- purchase -->
       <div class="dl-box" id="download-mixalign">
@@ -2188,6 +2229,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <h4 data-copy="mx-co-h">The payment window didn’t open</h4>
           <p data-copy="mx-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20MixAlign" data-copy="mx-co-cta">Still not working? Email us →</a></p>
+        </div>
+      </div>
         </div>
       </div>
       <div class="lic-box">
@@ -2317,9 +2360,13 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         </div>
       </div>
 
-      <a class="shot" href="/img/beatmaker/01-main.png" target="_blank" rel="noopener">
+      <div class="top-split">
+        <div class="ts-pic">
+        <a class="shot" href="/img/beatmaker/01-main.png" target="_blank" rel="noopener">
         <img src="/img/beatmaker/01-main.png" width="1920" height="1080" alt="Beatmaker showing a generated Boom Bap beat in G# minor with kick, snare, hi-hat, 808 bass, a locked chords track open in its piano roll, and a melody track.">
       </a>
+        </div>
+        <div class="ts-boxes">
 
       <!-- purchase -->
       <div class="buy">
@@ -2349,6 +2396,8 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
             <li data-copy="bm-co-3">Licensing is switched on, so a purchase issues a code that runs on one computer at a time and moves with you.</li>
           </ol>
           <p><a href="mailto:ybkaudio@gmail.com?subject=Tell%20me%20when%20Beatmaker%20is%20for%20sale" data-waitlist="beatmaker" data-copy="bm-co-cta">Notify me when Beatmaker is out →</a></p>
+        </div>
+      </div>
         </div>
       </div>
 
