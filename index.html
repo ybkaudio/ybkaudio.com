@@ -1136,6 +1136,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
 /* boxes stacked under the main picture (download, purchase / coming soon, get your license) sit 14px
    apart, the gap the licence box used inside itself (owner 2026-10-18) */
 :is(.dl-box,.buy,.launch) ~ :is(.dl-box,.buy,.launch){margin-top:14px}
+.shot.lead ~ :is(.dl-box,.buy,.launch){margin-top:14px}   /* no caption under the main picture any more (owner 2026-10-19) */
 .buy-side .btn[data-waitlist]{width:100%;justify-content:center}
 </style>
 </head>
@@ -1291,10 +1292,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <a class="shot lead" href="/img/player/01-main.png" target="_blank" rel="noopener">
         <img src="/img/player/01-main.png" width="902" height="526" alt="The Instrument Player window just after launch: “Choose an instrument”, Audio Effects and MIDI editor along the top, an empty instrument slot reading “No instrument loaded”, and the 88-note on-screen keyboard at the bottom.">
       </a>
-      <p class="usage-cap">
-        <span data-copy="sp-usage-cap">Fig. 1: Open it and pick an instrument</span>
-        <span data-copy="sp-usage-cap2">Click to enlarge</span>
-      </p>
 
       <!-- free launch month: the launch script shows one of these (or neither) -->
       <div class="launch" data-launch="upcoming" hidden>
@@ -1434,10 +1431,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
         <img src="https://i.ytimg.com/vi/HaD2k5t7o8U/hqdefault.jpg" width="480" height="360" alt="">
         <span class="play" aria-hidden="true"></span>
       </button>
-      <p class="usage-cap">
-        <span data-copy="sp-video-cap">Demo: see it in action</span>
-        <a href="https://youtu.be/HaD2k5t7o8U" target="_blank" rel="noopener">Watch on YouTube</a>
-      </p>
 
     </div>
   </section>
@@ -1519,37 +1512,31 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <a class="shot" href="/img/player/02-starter-synth.png" target="_blank" rel="noopener">
             <img src="/img/player/02-starter-synth.png" width="1016" height="1025" loading="lazy" alt="Starter Synth, the instrument built into Instrument Player, open with its sound buttons along the bottom and a chord held on the on-screen keyboard.">
           </a>
-          <figcaption data-copy="sp-shot2">Fig. 2: Starter Synth comes built in, so you can play something even before you install a plugin</figcaption>
         </figure>
         <figure>
           <a class="shot" href="/img/player/03-audio-effects.png" target="_blank" rel="noopener">
             <img src="/img/player/03-audio-effects.png" width="860" height="909" loading="lazy" alt="The Audio Effects rack with two effect plugins, a reverb and a multiband compressor, one under the other in the order the sound goes through them.">
           </a>
-          <figcaption data-copy="sp-shot3">Fig. 3: Audio Effects: put your own VST3 effects after the instrument</figcaption>
         </figure>
         <figure>
           <a class="shot" href="/img/player/04-instruments.png" target="_blank" rel="noopener">
             <img src="/img/player/04-instruments.png" width="902" height="526" loading="lazy" alt="The instrument list open over the app, with Starter Synth starred and pinned to the top above the other instrument plugins found on the computer.">
           </a>
-          <figcaption data-copy="sp-shot4">Fig. 4: Every instrument plugin on your PC in one list, favourites pinned on top</figcaption>
         </figure>
         <figure>
           <a class="shot" href="/img/player/05-effects-list.png" target="_blank" rel="noopener">
             <img src="/img/player/05-effects-list.png" width="1016" height="1025" loading="lazy" alt="The Add an effect list open over the app, showing the effect plugins found on the computer with their type and maker.">
           </a>
-          <figcaption data-copy="sp-shot5">Fig. 5: Every effect plugin, with what kind of effect it is</figcaption>
         </figure>
         <figure>
           <a class="shot" href="/img/player/06-midi-edit.png" target="_blank" rel="noopener">
             <img src="/img/player/06-midi-edit.png" width="1406" height="853" loading="lazy" alt="The MIDI editor with a phrase brought back by MIDI Replay: the first bar is selected and quantised onto the 1/16 grid while the rest stays exactly as played.">
           </a>
-          <figcaption data-copy="sp-shot6">Fig. 6: MIDI Replay brings back what you played; select it and quantise it</figcaption>
         </figure>
         <figure>
           <a class="shot" href="/img/player/07-midi-export.png" target="_blank" rel="noopener">
             <img src="/img/player/07-midi-export.png" width="1406" height="853" loading="lazy" alt="The same phrase fully quantised, with the Export MIDI button's tooltip reading “Write the pattern out as a .mid file” and the status line reading “Exported Phrase.mid”.">
           </a>
-          <figcaption data-copy="sp-shot7">Fig. 7: Export the finished phrase as a .mid file for your DAW</figcaption>
         </figure>
       </div>
 
@@ -1593,10 +1580,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <a class="shot lead" href="/img/432/432-fullscreen.png" target="_blank" rel="noopener">
         <img src="/img/432/432-fullscreen-1920.png" width="1920" height="782" alt="432hz maximised: the live spectrum fills the screen with every A marked from A0 at 27 Hz to A9, and a small panel on the left shows the gold button reading “432 Hz, ON” with “A4 = 432 Hz” between the minus and plus buttons.">
       </a>
-      <p class="usage-cap">
-        <span data-copy="hz-usage-cap">Fig. 1: Maximised, the spectrum fills the screen (here at A4 = 432 Hz, with every A marked)</span>
-        <span data-copy="hz-usage-cap2">Click to enlarge</span>
-      </p>
 
       <!-- 432hz is a plain free download (owner 2026-10-09): no email, no sign-up. Both buttons go
            through the worker's counted links (/dl/432hz-win, /dl/432hz-mac) and are tracked as
@@ -1741,7 +1724,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
      Every app page follows the Instrument Player page:
        1. back link, then the title row: name + one-line kicker on the left, the price
           right-aligned on the right (with its small line under it). No "Available now" badge.
-       2. the main picture (Fig. 1, class "shot lead") right under the title.
+       2. the main picture (class "shot lead") right under the title, no caption under pictures (owner 2026-10-19).
        3. the purchase box, heading "Purchase License" (a free app or a free launch month: "Get Your License", its email sign-up box).
        4. the download box: eyebrow "Windows & Mac", heading "Download the App", two buttons
           "Download for Windows" / "Download for Mac (beta)" (data-dl, data-os), version lines.
@@ -1787,10 +1770,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <a class="shot crop-wide" href="/img/console/01-main.png" target="_blank" rel="noopener">
         <img src="/img/console/01-main.png" width="1920" height="1080" alt="The full MultiConsole capsule with autotune, saturator, compressor, band sweep, chorus, delay, reverb, limiter, mid/side, width and gain, every display moving to the music and the pit reading 115 ms latency.">
       </a>
-      <p class="usage-cap">
-        <span data-copy="ms-usage-cap">Fig. 1: Eleven live modules on one capsule</span>
-        <span data-copy="ms-usage-cap2">Click to enlarge</span>
-      </p>
 
       <!-- purchase -->
       <div class="buy">
@@ -1917,19 +1896,16 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <a class="shot crop" href="/img/console/02-analysis.png" target="_blank" rel="noopener">
             <img src="/img/console/02-analysis.png" width="1600" height="1000" loading="lazy" alt="A close view of the band sweep knob isolating 448 Hz at Q 4.5 over a live spectrum, next to the mid/side balance bar set to S 25 and the width knob drawing a stereo dot cloud at 140 percent.">
           </a>
-          <figcaption data-copy="ms-shot2">Fig. 2: Hear any band, see the stereo field</figcaption>
         </figure>
         <figure>
           <a class="shot crop" href="/img/console/03-autotune.png" target="_blank" rel="noopener">
             <img src="/img/console/03-autotune.png" width="1600" height="1000" loading="lazy" alt="A close view of the autotune knob at 85 percent with C min picked in the key box and its piano roll tracing the incoming pitch against the corrected pitch, beside the compressor knob whose spectrum pushes into the red above the threshold.">
           </a>
-          <figcaption data-copy="ms-shot3">Fig. 3: Chromatic tuning in your chosen key</figcaption>
         </figure>
         <figure>
           <a class="shot crop" href="/img/console/04-capsule-controls.png" target="_blank" rel="noopener">
             <img src="/img/console/04-capsule-controls.png" width="1600" height="1000" loading="lazy" alt="MultiConsole in arrange mode, where each knob carries a small x for removing it and a dashed ADD circle waits at the end for putting one back, beside the latency readout and record button.">
           </a>
-          <figcaption data-copy="ms-shot4">Fig. 4: Rearrange knobs right on the capsule</figcaption>
         </figure>
       </div>
 
@@ -1989,10 +1965,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <a class="shot lead" href="/img/visualize/visualize-hero.png" target="_blank" rel="noopener">
         <img src="/img/visualize/visualize-hero.png" width="1280" height="759" alt="Visualize: a spectrum with peak and whole-song average curves over a waterfall, the 3D stereo-width cylinder in the middle, and loudness, true-peak, correlation, polar and balance meters on the right.">
       </a>
-      <p class="usage-cap">
-        <span data-copy="vz-usage-cap">Fig. 1: Spectrum, waterfall, stereo width in 3D and loudness on one screen</span>
-        <span data-copy="vz-usage-cap2">Click to enlarge</span>
-      </p>
 
       <!-- Download = the 7-day trial (no code needed to start it). Version and size come from
            updates/visualize.json and updates/visualize-mac.json. Both buttons go through the
@@ -2175,10 +2147,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <a class="shot lead" href="/img/mixalign/mixalign-hero.png" target="_blank" rel="noopener">
         <img src="/img/mixalign/mixalign-hero.png" width="1480" height="920" alt="MixAlign: three versions of a song (two mixes and the master) lined up on one timeline, each with its loudness and alignment, and the listening controls along the top.">
       </a>
-      <p class="usage-cap">
-        <span data-copy="mx-usage-cap">Fig. 1: Two mixes and the master, lined up to the sample on one timeline</span>
-        <span data-copy="mx-usage-cap2">Click to enlarge</span>
-      </p>
 
       <!-- purchase -->
       <div class="dl-box" id="download-mixalign">
@@ -2355,10 +2323,6 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       <a class="shot" href="/img/beatmaker/01-main.png" target="_blank" rel="noopener">
         <img src="/img/beatmaker/01-main.png" width="1920" height="1080" alt="Beatmaker showing a generated Boom Bap beat in G# minor with kick, snare, hi-hat, 808 bass, a locked chords track open in its piano roll, and a melody track.">
       </a>
-      <p class="usage-cap">
-        <span data-copy="bm-usage-cap">Fig. 1: A full beat idea in one click</span>
-        <span data-copy="bm-usage-cap2">Click to enlarge</span>
-      </p>
 
       <!-- purchase -->
       <div class="buy">
@@ -2486,19 +2450,16 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <a class="shot" href="/img/beatmaker/02-generate-menu.png" target="_blank" rel="noopener">
             <img src="/img/beatmaker/02-generate-menu.png" width="1600" height="1000" loading="lazy" alt="The Generate menu open over a beat, listing Generate new, Recommend track, Shuffle sounds, Regroove, Variation, Humanize, fills, Change chords and learned groove patterns.">
           </a>
-          <figcaption data-copy="bm-shot2">Fig. 2: Shuffle, regroove, humanize and change chords</figcaption>
         </figure>
         <figure>
           <a class="shot" href="/img/beatmaker/03-library.png" target="_blank" rel="noopener">
             <img src="/img/beatmaker/03-library.png" width="1600" height="1000" loading="lazy" alt="The sample library with the Kick category open, listing sixteen kick samples next to the beat that uses them.">
           </a>
-          <figcaption data-copy="bm-shot3">Fig. 3: Your samples, sorted into categories automatically</figcaption>
         </figure>
         <figure>
           <a class="shot" href="/img/beatmaker/04-piano-roll.png" target="_blank" rel="noopener">
             <img src="/img/beatmaker/04-piano-roll.png" width="1600" height="1000" loading="lazy" alt="A chord progression in the piano roll with piano keys, above the built-in YBK Synth panel with the Lo-fi Keys preset selected.">
           </a>
-          <figcaption data-copy="bm-shot4">Fig. 4: Built-in synth with a piano roll</figcaption>
         </figure>
       </div>
 
