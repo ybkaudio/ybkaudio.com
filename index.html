@@ -299,6 +299,7 @@ h2{
 .duo .buy-total b{font-family:var(--f-display);font-weight:900;font-size:clamp(24px,3vw,32px)}
 .duo .dl-act{grid-template-columns:repeat(2,minmax(0,1fr))}
 .duo .dl-act .btn{min-height:0!important;padding-block:11px}
+.duo .btn.soon{opacity:.5;cursor:default;pointer-events:none;justify-content:center}
 .duo-buy{display:grid;gap:10px}.duo-buy .btn{width:100%;justify-content:center}.duo-buy .buy-links{margin:0;font-size:12.5px;color:var(--muted)}
 .duo-head.p{margin-top:18px;padding-top:18px;border-top:1px solid var(--rule)}
 @media(min-width:900px){
@@ -333,6 +334,7 @@ h2{
 /* explanation: the home page text on the left, why get it on the right (owner 2026-10-08) */
 .explain{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gap);align-items:start}
 @media(min-width:820px){.explain{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
+.explain.solo{grid-template-columns:minmax(0,1fr)!important}.explain.solo .prose{max-width:75ch}
 .why{background:var(--surface);border:1px solid var(--rule);border-top:2px solid var(--accent);padding:clamp(18px,2.6vw,26px)}
 .why h3{font-size:20px;font-weight:900;letter-spacing:-.02em;text-transform:uppercase;margin:0 0 14px}
 .why ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
@@ -1403,7 +1405,7 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
           <div class="duo-buy"><button type="button" class="btn" data-buy="synth">
             <span data-copy="sp-buy-btn">Get Standard License</span><span aria-hidden="true">→</span>
           </button><p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p></div>
-          <div class="duo-head p"><p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="duo-eye-pro">Windows</span></p><h3><span data-copy="duo-pro-h">Pro</span><span class="pro-tag" data-copy="pp-tag">Pro</span></h3></div>
+          <div class="duo-head p"><p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="duo-eye-pro">Windows &amp; Mac</span></p><h3><span data-copy="duo-pro-h">Pro</span><span class="pro-tag" data-copy="pp-tag">Pro</span></h3></div>
           <div class="duo-gets p"><ul class="gets plus">
             <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g1"><b>Pro Editor</b>: pitch bend and mod wheel lanes, quantize strength, humanize</span></li>
             <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g2"><b>MIDI Replay</b> remembers 30 minutes</span></li>
@@ -1417,6 +1419,9 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
               <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <span data-copy="ppdl-btn">Download for Windows</span>
             </a>
+          </div>
+          <div class="dl-choice">
+            <span class="btn soon" aria-disabled="true"><span data-copy="ppdl-btn-mac">Coming soon!</span></span>
           </div>
         </div></div>
           <div class="duo-buy p"><button type="button" class="btn" data-buy="playerpro">
@@ -1486,22 +1491,12 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
 
   <section class="band" style="border-top:none">
     <div class="wrap">
-      <div class="explain">
+      <div class="explain solo">
         <div class="prose">
           <p data-copy="sp-home-p1"><b>Play your VSTs without opening the DAW.</b> Switch between massive instrument banks with little latency.</p>
           <p data-copy="sp-home-p2"><b>No one said idea generation had to start in a heavy DAW.</b> Instrument Player helps you get closer to your instruments without having to enter work mode all the time.</p>
           <p data-copy="sp-home-p3"><b>It remembers what you play.</b> The app provides MIDI replay, which brings back the last 5 minutes of your playing. Load up your sudden ideas and make small edits via the MIDI editor, and export the .mid file for later use.</p>
         </div>
-        <aside class="why">
-          <h3 data-copy="sp-why-h">Why get it</h3>
-          <ul>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Plays any VST3 instrument on its own, with no DAW project to set up.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>MIDI Replay keeps the last 5 minutes of your playing without pressing Record.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Tidy an idea in the piano roll and export it as a .mid for your DAW.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>No controller? Press M and your computer keyboard plays like a piano.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Low CPU use, and roughly 5 to 10 ms latency in WASAPI exclusive mode.</span></li>
-          </ul>
-        </aside>
       </div>
 
       <h2 class="explore-h">Explore each feature</h2>
