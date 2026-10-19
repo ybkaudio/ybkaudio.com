@@ -3111,7 +3111,18 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
       history.pushState(null, '', url.pathname + url.search + url.hash);
     route(); scrollForRoute();
   });
-  window.addEventListener('popstate', function () { route(); scrollForRoute(); });
+  /* Back while a payment window is open closes it and stays on this page (owner 2026-10-20): the checkout
+     adds one history entry when it opens (see checkoutStep) and takes it away again when it closes. */
+  window.addEventListener('popstate', function (e) {
+    if (window.__ybkCheckoutOpen) {
+      window.__ybkCheckoutOpen = false;
+      try { if (window.Paddle && Paddle.Checkout) Paddle.Checkout.close(); } catch (err) {}
+      return;
+    }
+    if (window.__ybkSkipPop) { window.__ybkSkipPop = false; return; }
+    if (e.state && e.state.checkout) return;
+    route(); scrollForRoute();
+  });
   route();
   if (location.hash) setTimeout(scrollForRoute, 0);
 
@@ -3216,6 +3227,14 @@ html.home-snap,html.home-snap body{overscroll-behavior-y:none}
   };
   var checkoutPaid = false;
   function checkoutStep(ev) {
+    if (ev && ev.name === 'checkout.loaded' && !window.__ybkCheckoutOpen) {
+      window.__ybkCheckoutOpen = true;
+      history.pushState({ checkout: true }, '', location.href);
+    }
+    if (ev && ev.name === 'checkout.closed' && window.__ybkCheckoutOpen) {
+      window.__ybkCheckoutOpen = false;
+      if (history.state && history.state.checkout) { window.__ybkSkipPop = true; history.back(); }
+    }
     var step = ev && CHECKOUT_STEPS[ev.name];
     if (!step) return;
     if (step === 'checkout_open') checkoutPaid = false;
