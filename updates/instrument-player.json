@@ -1,11 +1,19 @@
 {
-    "version": "1.9.9",
-    "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.9.9.exe",
-    "sha256": "dfd79dd6ef93827541d5dce917a044c8ab0c6af6161efd2e8dc6ecfcdfc6c025",
-    "size": 8323863,
-    "notes": "New Record button: record what you play and save it as WAV, MP3 or FLAC.\nMIDI editor: velocity and sustain pedal lanes under the notes.\nInstrument list: type a letter to jump to instruments starting with it.\nPlugin scan method was greatly optimized.\nWe greatly appreciate your using Instrument Player in its first month.",
+    "version": "1.9.10",
+    "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.9.10.exe",
+    "sha256": "35ed5e6e760d3950d8e0581d94838bc5fe363fd637cfac8b824d4c9252012558",
+    "size": 8324168,
+    "notes": "Fixed: with an instrument open, the welcome tour could hide behind it and leave the app unclickable.",
     "released": "2026-10-19",
     "history": [
+        {
+            "version": "1.9.10",
+            "released": "2026-10-19",
+            "notes": "Fixed: with an instrument open, the welcome tour could hide behind it and leave the app unclickable.",
+            "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.9.10.exe",
+            "sha256": "35ed5e6e760d3950d8e0581d94838bc5fe363fd637cfac8b824d4c9252012558",
+            "size": 8324168
+        },
         {
             "version": "1.9.9",
             "released": "2026-10-19",
