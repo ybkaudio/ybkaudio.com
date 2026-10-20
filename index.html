@@ -299,6 +299,8 @@ h2{
 .duo .buy-total b{font-family:var(--f-display);font-weight:900;font-size:clamp(24px,3vw,32px)}
 .duo .dl-act{grid-template-columns:repeat(2,minmax(0,1fr))}
 .duo .dl-act .btn{min-height:0!important;padding-block:11px}
+/* phones: the two download buttons stack, so "Download for Windows" never runs out of its button */
+@media(max-width:520px){.duo .dl-act,.hz-box .dl-act{grid-template-columns:minmax(0,1fr)!important}}
 .duo .btn.soon{opacity:.5;cursor:default;pointer-events:none;justify-content:center}
 .duo-buy{display:grid;gap:10px}.duo-buy .btn{width:100%;justify-content:center}.duo-buy .buy-links{margin:0;font-size:12.5px;color:var(--muted)}
 .duo-head.p{margin-top:18px;padding-top:18px;border-top:1px solid var(--rule)}
@@ -2099,7 +2101,7 @@ html.co-open{overflow:hidden}
           </ul>
           </div>
           <div class="vz-r p">
-            <div class="duo-price"><div class="buy-total"><span data-copy="vz-total-l">Total</span><span class="vz-tot-col"><span class="vz-tot"><span class="trial-badge" data-copy="vz-card-trial">Trial</span><b data-copy="vz-total">$19.00</b><s>$29</s></span><span class="vz-pricenote" data-copy="vz-fine">Launch price until Nov 6</span></span></div></div>
+            <div class="duo-price"><div class="buy-total"><span data-copy="vz-total-l">Total</span><span class="vz-tot-col"><span class="vz-tot"><b data-copy="vz-total">$19.00</b><s>$29</s></span><span class="vz-pricenote" data-copy="vz-fine">Launch price until Nov 6</span></span></div></div>
             <div class="duo-dl"><div class="dl-act">
           <div class="dl-choice">
             <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/visualize-win?src=site" data-dl="visualize" data-os="win">
