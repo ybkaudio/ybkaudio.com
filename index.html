@@ -1164,6 +1164,9 @@ html.home-snap .brandbar .r{flex:1 1 auto}
 .hz-feat li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:14.5px;line-height:1.5}
 .hz-feat svg{width:16px;height:16px;margin-top:4px;color:var(--accent)}
 .hz-right{display:grid;gap:18px;align-content:start}
+.hz-total{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:10px}
+.hz-total span{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hz-total b{font-family:var(--f-display);font-weight:900;font-size:clamp(24px,3vw,32px)}
 @media(min-width:820px){.hz-right{border-left:1px solid var(--rule);padding-left:clamp(24px,3vw,40px)}.hz-box .hz-right .hz-tip{border-left:0;padding-left:0}}
 @media(max-width:819px){.hz-right{border-top:1px solid var(--rule);padding-top:18px}.hz-box .hz-right .hz-tip{border-top:0;padding-top:0}}
 
@@ -1411,10 +1414,6 @@ html.co-open{overflow:hidden}
         <div>
           <h2 data-copy="sp-name">Instrument Player</h2>
           <p class="kicker" data-copy="sp-k">Why open a DAW to play an instrument?</p>
-        </div>
-        <div class="prod-price">
-          <span data-launch="active" hidden>Free <s>$10</s>
-          <small data-copy="sp-home-pricenote">Free launch: until 10/19</small></span><span data-launch-hide="active upcoming">$10~</span>
         </div>
       </div>
 
@@ -1701,9 +1700,6 @@ html.co-open{overflow:hidden}
           <h2 data-copy="hz-name">432hz</h2>
           <p class="kicker" data-copy="hz-k">Your whole computer sound, retuned</p>
         </div>
-        <div class="prod-price">
-          Free
-        </div>
       </div>
 
       <a class="shot lead" href="/img/432/432-fullscreen.png" target="_blank" rel="noopener">
@@ -1731,6 +1727,7 @@ html.co-open{overflow:hidden}
             </ul>
         </div>
         <div class="hz-right">
+          <div class="hz-total"><span data-copy="hz-total-l">Total</span><b data-copy="hz-total">Free</b></div>
         <div class="hz-tip" data-hz-tip>
           <div class="field" data-tip hidden>
             <label for="hz-amount" data-copy="hz-tip-label">Name your price (optional)</label>
@@ -2076,10 +2073,6 @@ html.co-open{overflow:hidden}
           <h2 data-copy="vz-name">Visualize</h2>
           <p class="kicker" data-copy="vz-k">Stereo imaging, in 3D.</p>
         </div>
-        <div class="prod-price">
-          <span class="trial-badge" data-copy="vz-trial">Trial</span>$19 <s>$29</s>
-          <small data-copy="vz-home-pricenote">Launch price until Nov 6<br>Not sure? Try our 7-day free trial</small>
-        </div>
       </div>
 
 
@@ -2106,7 +2099,7 @@ html.co-open{overflow:hidden}
           </div>
           <div class="vz-r p">
             <div class="duo-price"><div class="buy-total"><span data-copy="vz-total-l">Total</span><span class="vz-tot"><span class="trial-badge" data-copy="vz-card-trial">Trial</span><b data-copy="vz-total">$19.00</b><s>$29</s></span></div>
-              <p class="vz-pricenote" data-copy="vz-fine">Launch price until Nov 6, 2026.</p></div>
+              <p class="vz-pricenote" data-copy="vz-fine">Launch price until Nov 6</p></div>
             <div class="duo-dl"><div class="dl-act">
           <div class="dl-choice">
             <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/visualize-win?src=site" data-dl="visualize" data-os="win">
@@ -2120,7 +2113,7 @@ html.co-open{overflow:hidden}
               <span data-copy="vz-dl-btn-mac">Download for Mac</span>
             </a>
           </div>
-        </div><p class="vz-dlnote" data-copy="vz-dl-note">Includes the 7-day free trial</p></div>
+        </div><p class="vz-dlnote" data-copy="vz-dl-note">Not sure? Try our 7-day free trial</p></div>
             <div class="duo-buy"><button type="button" class="btn" data-buy="visualize"><span data-copy="vz-buy-btn">Get Visualize License</span><span aria-hidden="true">→</span></button><p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p></div>
           </div>
         </div>
