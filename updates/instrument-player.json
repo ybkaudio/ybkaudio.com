@@ -1,11 +1,19 @@
 {
-    "version": "1.9.10",
-    "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.9.10.exe",
-    "sha256": "35ed5e6e760d3950d8e0581d94838bc5fe363fd637cfac8b824d4c9252012558",
-    "size": 8324168,
-    "notes": "Fixed: with an instrument open, the welcome tour could hide behind it and leave the app unclickable.",
+    "version": "1.9.11",
+    "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.9.11.exe",
+    "sha256": "d70f7034951547ea8231010b32798f6d1e79fde27473286dc0eeddb966ffd9d6",
+    "size": 8328106,
+    "notes": "Fixed: a new install now starts clean, and uninstalling removes the app's settings (your license and projects stay).",
     "released": "2026-10-19",
     "history": [
+        {
+            "version": "1.9.11",
+            "released": "2026-10-19",
+            "notes": "Fixed: a new install now starts clean, and uninstalling removes the app's settings (your license and projects stay).",
+            "url": "https://ybkaudio.com/downloads/InstrumentPlayerSetup-1.9.11.exe",
+            "sha256": "d70f7034951547ea8231010b32798f6d1e79fde27473286dc0eeddb966ffd9d6",
+            "size": 8328106
+        },
         {
             "version": "1.9.10",
             "released": "2026-10-19",
