@@ -1,0 +1,18 @@
+{
+    "version":  "1.9.9",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-1.9.9.exe",
+    "sha256":  "96c96eca939d7b8179969188d65b5f6571512835da8b9b955be159b853a8aab8",
+    "size":  8280416,
+    "notes":  "",
+    "released":  "2026-10-19",
+    "history":  [
+                    {
+                        "version":  "1.9.9",
+                        "released":  "2026-10-19",
+                        "notes":  "",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-1.9.9.exe",
+                        "sha256":  "96c96eca939d7b8179969188d65b5f6571512835da8b9b955be159b853a8aab8",
+                        "size":  8280416
+                    }
+                ]
+}
