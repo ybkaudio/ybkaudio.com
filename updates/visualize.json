@@ -1,11 +1,19 @@
 {
-    "version":  "1.0.4",
-    "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.4.exe",
-    "sha256":  "663a9c1621ae67e24bacdb33fdb61e29136797fdd900f36e4dfad7745d4a2bfc",
-    "size":  14948836,
-    "notes":  "3D pictures can turn on their own: ROTATE under SPEED. ROOM now works out real room acoustics - reflections off the walls, bass piling up in corners and the reverb time - for an ordinary room, a treated studio or outdoors, with the room\u0027s furniture and treatment drawn in. New ISSUES markers on the spectrum: resonances, mud and harshness. BALANCE shows how much each range loses in mono. All-new CHORD and KEY detection with an AI model: 170 kinds of chords, shown within half a second. Right click to hear hints.",
-    "released":  "2026-10-18",
+    "version":  "1.0.5",
+    "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.5.exe",
+    "sha256":  "ee1be1cfe396f6e76c24977ddf6b30ff2e9bcfb7737f2ca5bc36546985bfa4ac",
+    "size":  14935009,
+    "notes":  "",
+    "released":  "2026-10-20",
     "history":  [
+                    {
+                        "version":  "1.0.5",
+                        "released":  "2026-10-20",
+                        "notes":  "",
+                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.5.exe",
+                        "sha256":  "ee1be1cfe396f6e76c24977ddf6b30ff2e9bcfb7737f2ca5bc36546985bfa4ac",
+                        "size":  14935009
+                    },
                     {
                         "version":  "1.0.4",
                         "released":  "2026-10-18",
