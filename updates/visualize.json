@@ -1,58 +1,26 @@
 {
-    "version":  "1.0.5",
-    "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.5.exe",
-    "sha256":  "ee1be1cfe396f6e76c24977ddf6b30ff2e9bcfb7737f2ca5bc36546985bfa4ac",
-    "size":  14935009,
-    "notes":  "",
-    "released":  "2026-10-20",
-    "history":  [
-                    {
-                        "version":  "1.0.5",
-                        "released":  "2026-10-20",
-                        "notes":  "",
-                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.5.exe",
-                        "sha256":  "ee1be1cfe396f6e76c24977ddf6b30ff2e9bcfb7737f2ca5bc36546985bfa4ac",
-                        "size":  14935009
-                    },
-                    {
-                        "version":  "1.0.4",
-                        "released":  "2026-10-18",
-                        "notes":  "3D pictures can turn on their own: ROTATE under SPEED. ROOM now works out real room acoustics - reflections off the walls, bass piling up in corners and the reverb time - for an ordinary room, a treated studio or outdoors, with the room\u0027s furniture and treatment drawn in. New ISSUES markers on the spectrum: resonances, mud and harshness. BALANCE shows how much each range loses in mono. All-new CHORD and KEY detection with an AI model: 170 kinds of chords, shown within half a second. Right click to hear hints.",
-                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.4.exe",
-                        "sha256":  "663a9c1621ae67e24bacdb33fdb61e29136797fdd900f36e4dfad7745d4a2bfc",
-                        "size":  14948836
-                    },
-                    {
-                        "version":  "1.0.3",
-                        "released":  "2026-10-08",
-                        "notes":  "IN TARGET / OUTSIDE now work together with VOCAL / INST: right click both to hear only the part of the voice (or the instruments) inside or outside the target. The BUY button opens the Visualize page directly.",
-                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.3.exe",
-                        "sha256":  "818116661d194cf2ba155b664a5dbe088ac52be0b2384d0cab01f86452d5dbaf",
-                        "size":  9411259
-                    },
-                    {
-                        "version":  "1.0.2",
-                        "released":  "2026-10-07",
-                        "notes":  "New MONITOR picture: what is lost when the mix is played in mono, a target shape and a score - IN TARGET / OUTSIDE to see (left click) or hear (right click) only those parts. IMAGE redrawn: each sound a cloud - loud sounds in front, echo and reverb trail behind, wide sounds spread out. CYLINDER is now called VECTOR. A short tour on first start (the ? in Settings shows it again) and RETURN ALL TO DEFAULT in Settings. Loudness: the big number is the whole song. 3D pictures turn freely by dragging, the mouse wheel or the arrow keys. Smaller buttons, faster drawing and less delay.",
-                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.2.exe",
-                        "sha256":  "9827d4f588bc96aa33aa68cef6fae41bb512ca0508748b4b75993dd7eefc223d",
-                        "size":  9411271
-                    },
-                    {
-                        "version":  "1.0.1",
-                        "released":  "2026-10-07",
-                        "notes":  "VOCAL / INST: see (left click) or hear (right click) only the voice or only the instruments, separated by AI - the AI files download once, the first time you use it. STEMS colours: every graph in the colour of its instrument. New width pictures IMAGE and HEAT. COLOR choices and a CPU meter at the top. Lighter, smoother drawing.",
-                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.1.exe",
-                        "sha256":  "92f6caa4d939342bb581e254878d0f37bd6d2ad577df8fcad29618b48a5a5ef7",
-                        "size":  9388363
-                    },
-                    {
-                        "version":  "1.0.0",
-                        "released":  "2026-10-06",
-                        "notes":  "",
-                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.0.exe",
-                        "sha256":  "0271abd79c9f08e96baf3868658102be096a0e16480ce13688b428a4c9f5e0e7",
-                        "size":  9298185
-                    }
-                ]
+    "version": "1.0.6",
+    "url": "https://ybkaudio.com/downloads/VisualizeSetup-1.0.6.exe",
+    "sha256": "efa2ec800c3990947da0879c0869148abb0e4caaf74950573f4b00366c320470",
+    "size": 14935071,
+    "notes": "",
+    "released": "2026-10-21",
+    "history": [
+        {
+            "version": "1.0.6",
+            "released": "2026-10-21",
+            "notes": "",
+            "url": "https://ybkaudio.com/downloads/VisualizeSetup-1.0.6.exe",
+            "sha256": "efa2ec800c3990947da0879c0869148abb0e4caaf74950573f4b00366c320470",
+            "size": 14935071
+        },
+        {
+            "version": "1.0.5",
+            "released": "2026-10-20",
+            "notes": "",
+            "url": "https://ybkaudio.com/downloads/VisualizeSetup-1.0.5.exe",
+            "sha256": "ee1be1cfe396f6e76c24977ddf6b30ff2e9bcfb7737f2ca5bc36546985bfa4ac",
+            "size": 14935009
+        }
+    ]
 }
