@@ -1,11 +1,19 @@
 {
-    "version":  "2.0.0",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.0.exe",
-    "sha256":  "6723c76ee183c87f1e43c05e725a73c15a8738f3ece931362b559c036dd7f0e2",
-    "size":  8330652,
-    "notes":  "New Pro Editor: pitch bend and mod wheel lanes, quantize strength and humanize.\nExport audio: keep the part you want and save it as WAV, MP3 or FLAC.\nFixed: with an instrument open, the welcome tour could hide behind it and leave the app unclickable.\nA new install now starts fresh, and uninstalling removes the app\u0027s settings.",
+    "version":  "2.0.1",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.1.exe",
+    "sha256":  "9f86ef43778561b0bcb561e7c5c88269b97f9472212d44b35dcf3e8983f75466",
+    "size":  8330530,
+    "notes":  "",
     "released":  "2026-10-21",
     "history":  [
+                    {
+                        "version":  "2.0.1",
+                        "released":  "2026-10-21",
+                        "notes":  "",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.1.exe",
+                        "sha256":  "9f86ef43778561b0bcb561e7c5c88269b97f9472212d44b35dcf3e8983f75466",
+                        "size":  8330530
+                    },
                     {
                         "version":  "2.0.0",
                         "released":  "2026-10-21",
