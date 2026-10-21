@@ -1355,7 +1355,7 @@ html.co-open{overflow:hidden}
       <a class="navlink nav-live" href="/player/" data-nav="synth">Instrument Player</a>
       <a class="navlink nav-live" href="/432hz/" data-nav="hz432">432hz</a>
       <a class="navlink nav-live" href="/visualize/" data-nav="visualize">Visualize</a>
-      <a class="navlink" href="/mixalign/" data-nav="mixalign">MixAlign</a>
+      <a class="navlink nav-live" href="/mixalign/" data-nav="mixalign">MixAlign</a>
       <a class="navlink" href="/beatmaker/" data-nav="beatmaker">Beatmaker</a>
       <a class="navlink" href="/multiconsole/" data-nav="midside">MultiConsole</a>
     </nav>
@@ -1421,8 +1421,8 @@ html.co-open{overflow:hidden}
         </a>
         <a class="app-card" data-reveal style="--d:0ms" href="/mixalign/">
           <img src="/img/mixalign/mixalign-hero.png" alt="" loading="lazy">
-          <span class="status">In development</span>
-          <b>MixAlign</b>
+          <span class="status gold">7-day trial</span>
+          <span class="card-top"><b>MixAlign</b><span class="card-price"><span data-mx-sale>$19 <s>$25</s></span><span data-mx-full hidden>$25</span></span></span>
           <span>Compare every version of your song, aligned to the sample.</span>
           <span class="go">See MixAlign →</span>
         </a>
@@ -1452,7 +1452,7 @@ html.co-open{overflow:hidden}
         <p class="blurb" data-copy="su-p">We'll let you know when our newer apps and updates are ready.</p>
       </div>
       <div>
-        <a class="btn" href="mailto:support@ybkaudio.com?subject=Notify%20me%20when%20YBK%20Audio%20launches" data-waitlist="mixalign beatmaker console">
+        <a class="btn" href="mailto:support@ybkaudio.com?subject=Notify%20me%20when%20YBK%20Audio%20launches" data-waitlist="beatmaker console">
           <span data-copy="su-cta">Subscribe</span>
           <span aria-hidden="true">→</span>
         </a>
@@ -2326,40 +2326,41 @@ html.co-open{overflow:hidden}
         <img src="/img/mixalign/mixalign-hero.png" width="1480" height="920" alt="MixAlign: three versions of a song (two mixes and the master) lined up on one timeline, each with its loudness and alignment, and the listening controls along the top.">
       </a>
 
-      <!-- purchase -->
-      <div class="dl-box" id="download-mixalign">
-        <div>
-          <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="mx-dl-eye">Windows &amp; Mac</span></p>
-          <h3 data-copy="mx-dl-h">Download the App</h3>
-        </div>
-        <div class="dl-act">
-          <div class="dl-choice">
-            <!-- LAUNCH DAY (11/3): restore the real windows download button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). -->
-            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon">Available Nov 3</span></span>
-          </div>
-          <div class="dl-choice">
-            <!-- LAUNCH DAY (11/3): restore the real mac download button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). -->
-            <span class="btn ghost" aria-disabled="true"><span data-copy="mx-dl-soon-mac">Available Nov 3</span></span>
-          </div>
-        </div>
-      </div>
-      <div class="buy">
-        <div>
-          <h3 data-copy="mx-buy-h">Coming soon</h3>
-          <ul class="gets">
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="mx-g2">Works with the Windows and the Mac version</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="mx-g3">Runs on one computer at a time, and moves with you when you change computers</span></li>
+      <!-- MixAlign: one card like Visualize's (launch 11/3) -->
+      <div class="duo-box" id="download-mixalign">
+        <div class="duo vz">
+          <div class="vz-l">
+            <div class="duo-head"><p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="mx-dl-eye">Windows &amp; Mac</span></p><h3 data-copy="mx-card-h">Get MixAlign <span class="vz-or">/ Try it out</span></h3></div>
+            <p class="vz-label" data-copy="mx-why-h">Features</p>
+            <ul class="gets">
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Mixes, masters and references line up automatically.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Switching has no gap and matches loudness, so the volume doesn’t sway your choice.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>NULL and DIFF play only what changed, and the panel puts the differences in plain words.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Hide the names, rate with stars, then reveal.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Comments on the timeline, exported as a PDF.</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>7-day free trial on Windows and Mac.</span></li>
           </ul>
+          </div>
+          <div class="vz-r p">
+            <div class="duo-price"><div class="buy-total"><span data-copy="mx-total-l">Total</span><span class="vz-tot-col"><span class="vz-tot" data-mx-sale><b data-copy="mx-total">$19.00</b><s>$25</s></span><span class="vz-tot" data-mx-full hidden><b>$25.00</b></span><span class="vz-pricenote" data-mx-sale data-copy="mx-fine">Launch price until Dec 3</span></span></div></div>
+            <div class="duo-dl"><div class="dl-act">
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-win?src=site" data-dl="mixalign" data-os="win">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="mx-dl-btn">Download for Windows</span>
+            </a>
+          </div>
+          <div class="dl-choice">
+            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-mac?src=site" data-dl="mixalign" data-os="mac">
+              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-copy="mx-dl-btn-mac">Download for Mac</span>
+            </a>
+          </div>
+        </div><p class="vz-dlnote" data-copy="mx-dl-note">Not sure? Download and try our 7-day free trial</p></div>
+            <div class="duo-buy"><button type="button" class="btn" data-buy="mixalign"><span data-copy="mx-buy-btn">Get MixAlign License</span><span aria-hidden="true">→</span></button><p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p></div>
+          </div>
         </div>
-        <div class="buy-side">
-          <div class="buy-total"><span data-copy="mx-soon-l">Status</span><b data-copy="mx-soon">Out Nov 3</b></div>
-          <!-- LAUNCH DAY (11/3): this "Notify me" button is replaced by the real purchase button from YBK AUDIO\_site-launch-snippets\mixalign-launch-day.html on the owner's PC (kept off the live site). Also remove the "In development" tags (home block + page title). -->
-          <a class="btn" href="#subscribe" data-waitlist="mixalign"><span data-copy="mx-notify-btn">Notify me when it’s out</span><span aria-hidden="true">→</span></a>
-          <p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p>
-        </div>
-
-
-        <div class="checkout" data-checkout="mixalign" hidden style="grid-column:1/-1">
+        <div class="checkout" data-checkout="mixalign" hidden>
           <h4 data-copy="mx-co-h">The payment window didn’t open</h4>
           <p data-copy="mx-co-p1">Our payment provider’s checkout couldn’t load. This is usually an ad or tracker blocker, or a connection that dropped for a moment. Reload the page and press Purchase again.</p>
           <p><a href="mailto:support@ybkaudio.com?subject=Can%E2%80%99t%20buy%20MixAlign" data-copy="mx-co-cta">Still not working? Email us →</a></p>
@@ -2392,21 +2393,11 @@ html.co-open{overflow:hidden}
 
   <section class="band" style="border-top:none">
     <div class="wrap">
-      <div class="explain">
+      <div class="explain solo">
         <div class="prose">
           <p data-copy="mx-home-p1"><b>Switch instantaneously between different versions to hear differences.</b> One click and you will be hearing another version of your mix with no delay – all easily possible because we auto-align your uploaded mixes with beat detection. Also you can check the analysis panel, which provides written description on differences between versions. The app provides difference/null buttons to hear just the differences, so you can check and compare yourself.</p>
           <p data-copy="mx-home-p2"><b>Blind test &amp; Annotate.</b> Hide track names and test your decision on what’s better. Rate each track you go through with stars to come back to them. When you’re sure on what you think is best, make the big reveal to find out which track to share. Also while sharing, you can leave your thoughts on the timeline of each track and export them as PDF for whoever to see.</p>
         </div>
-        <aside class="why">
-          <h3 data-copy="mx-why-h">Features</h3>
-          <ul>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Mixes, masters and references line up automatically.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Switching has no gap and matches loudness, so the volume doesn’t sway your choice.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>NULL and DIFF play only what changed, and the panel puts the differences in plain words.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Hide the names, rate with stars, then reveal.</span></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span>Comments on the timeline, exported as a PDF.</span></li>
-          </ul>
-        </aside>
       </div>
 
       <h2 class="explore-h">Explore each feature</h2>
@@ -3006,7 +2997,6 @@ html.co-open{overflow:hidden}
     <label class="wl-opt"><input type="checkbox" name="notify"> <span data-copy="wl-notify">Notify me when released</span></label>
     <fieldset class="wl-apps">
       <legend class="sr-only">Which apps?</legend>
-      <label><input type="checkbox" name="products" value="mixalign"> MixAlign</label>
       <label><input type="checkbox" name="products" value="beatmaker"> Beatmaker</label>
       <label><input type="checkbox" name="products" value="console"> MultiConsole</label>
     </fieldset>
@@ -3397,6 +3387,8 @@ html.co-open{overflow:hidden}
       gets: ['Pro Editor, 30-minute MIDI Replay, audio export', 'Opens both Standard and Pro', 'One license code by email'] },
     visualize: { eye: 'Visualize', name: 'Visualize', what: 'One license, pay once', pic: '/img/visualize/visualize-hero.png', price: '[data-copy="vz-total"]',
       gets: ['Windows and Mac, download right after payment', 'One license code by email', 'Every 3D view, notes, key and chords'] },
+    mixalign: { eye: 'MixAlign', name: 'MixAlign', what: 'One license, pay once', pic: '/img/mixalign/mixalign-hero.png', price: '[data-copy="mx-total"]',
+      gets: ['Windows and Mac, download right after payment', 'One license code by email', 'Every version lined up, NULL and DIFF, blind tests'] },
     upgrade: { eye: 'Instrument Player · Upgrade', name: 'Upgrade to Pro', what: 'Same license code, now Pro', pic: '/img/player/06-midi-edit.png',
       gets: ['Your code opens Instrument Player Pro after payment', 'Nothing new to type in', 'Pro opens both Standard and Pro'] },
     tip: { eye: 'Name your price', name: 'Thank you for supporting us', what: 'Your support', pic: '/img/432/432-main.png',
@@ -4436,7 +4428,7 @@ html.co-open{overflow:hidden}
 <script>
 /* Version beside the title of released apps; unreleased apps have no updates file and show nothing. */
 (function () {
-  var FILES = { synth: 'instrument-player.json', hz432: '432hz.json', visualize: 'visualize.json' };
+  var FILES = { synth: 'instrument-player.json', hz432: '432hz.json', visualize: 'visualize.json', mixalign: 'mixalign.json' };
   Object.keys(FILES).forEach(function (key) {
     var h2 = document.querySelector('[data-page="' + key + '"] .prod-title h2');
     if (!h2) return;
@@ -4449,6 +4441,14 @@ html.co-open{overflow:hidden}
         h2.appendChild(v);
       })['catch'](function () {});
   });
+})();
+</script>
+<script>
+/* MixAlign launch price: $19 through Dec 3, $25 from 2026-12-04 00:00 KST (same date as PADDLE.prices.mixalign). */
+(function () {
+  if (Date.now() < Date.parse('2026-12-04T00:00:00+09:00')) return;
+  document.querySelectorAll('[data-mx-sale]').forEach(function (el) { el.hidden = true; });
+  document.querySelectorAll('[data-mx-full]').forEach(function (el) { el.hidden = false; });
 })();
 </script>
 </body>
