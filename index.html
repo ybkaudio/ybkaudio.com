@@ -302,6 +302,13 @@ h2{
 /* phones: the two download buttons stack, so "Download for Windows" never runs out of its button */
 @media(max-width:520px){.duo .dl-act,.hz-box .dl-act{grid-template-columns:minmax(0,1fr)!important}}
 .duo .btn.soon{opacity:.5;cursor:default;pointer-events:none;justify-content:center}
+/* Standard: 1 PC / 3 PCs choice (owner 2026-10-22) */
+.pc-pick{display:grid;gap:8px}
+.pc-opt{display:flex;align-items:center;gap:10px;border:1px solid var(--rule);border-radius:12px;padding:10px 14px;cursor:pointer;font-size:15px}
+.pc-opt[hidden]{display:none}
+.pc-opt input{accent-color:var(--accent);margin:0;width:16px;height:16px}
+.pc-opt b{margin-left:auto;font-family:var(--f-display);font-weight:900;font-size:clamp(20px,2.4vw,26px)}
+.pc-opt:has(input:checked){border-color:var(--accent)}
 .duo-buy{display:grid;gap:10px}.duo-buy .btn{width:100%;justify-content:center}.duo-buy .buy-links{margin:0;font-size:12.5px;color:var(--muted)}
 .duo-head.p{margin-top:18px;padding-top:18px;border-top:1px solid var(--rule)}
 @media(min-width:900px){
@@ -1475,7 +1482,10 @@ html.co-open{overflow:hidden}
         <div class="duo">
           <div class="duo-head"><p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="duo-eye">Windows &amp; Mac</span></p><h3 data-copy="duo-std-h">Standard</h3></div>
           <div class="duo-gets"><ul class="gets"><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s1"><b>Play any VST3 instrument</b> (plus the built-in Starter Synth), straight away</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s2">Play from your <b>computer keyboard or a MIDI keyboard</b></span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s3"><b>MIDI Replay</b>: bring back the last 5 minutes of playing as MIDI notes</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s4"><b>MIDI editor</b>: draw, record and edit notes, with velocity and sustain pedal lanes</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s5"><b>Record</b> what you play and save it as WAV, MP3 or FLAC</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s6"><b>Audio effects</b> rack</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#tick"/></svg><span data-copy="duo-s7"><b>Save and open</b> projects</span></li></ul></div>
-          <div class="duo-price"><div class="buy-total"><span data-copy="sp-total-l">Total</span><b data-copy="sp-total">$10.00</b></div></div>
+          <div class="duo-price"><div class="pc-pick" role="radiogroup" aria-label="Number of computers">
+            <label class="pc-opt"><input type="radio" name="sp-pcs" value="synth" checked><span data-copy="sp-pc1">1 PC</span><b data-copy="sp-total">$10.00</b></label>
+            <label class="pc-opt" data-pc3 hidden><input type="radio" name="sp-pcs" value="synth3"><span data-copy="sp-pc3">3 PCs</span><b data-copy="sp-total3">$20.00</b></label>
+          </div></div>
           <div class="duo-dl"><div class="dl-act">
           <div class="dl-choice">
             <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/player-win?src=site" data-dl="player" data-os="win">
@@ -3103,7 +3113,7 @@ html.co-open{overflow:hidden}
     device: visitDevice,
     visit: visitId   // the same anonymous visit id as the page-view statistics, so the dashboard can show the pages this sign-up saw
   };
-  var PRODUCT_SLUG = { synth: 'player', playerpro: 'playerpro', midside: 'console', beatmaker: 'beatmaker', hz432: '432hz', visualize: 'visualize', mixalign: 'mixalign', mixalignFull: 'mixalign' };
+  var PRODUCT_SLUG = { synth: 'player', synth3: 'player', playerpro: 'playerpro', midside: 'console', beatmaker: 'beatmaker', hz432: '432hz', visualize: 'visualize', mixalign: 'mixalign', mixalignFull: 'mixalign' };
   var PAGE_SLUG = { synth: 'player', midside: 'console', account: 'help', about: 'about', hz432: '432hz', mixalign: 'mixalign' };
   function track(step, extra) {
     var e = { step: step, visit: visitId, device: visitDevice };
@@ -3239,6 +3249,8 @@ html.co-open{overflow:hidden}
     clientToken: 'live_c368a3e2c91fc58f6b40c7258dd',
     prices: {
       synth:   'pri_01m26a79x1e2751c91k981ra5v',  // Instrument Player, $10 (live)
+      // Instrument Player Standard for 3 PCs, $20 (owner 2026-10-22). Empty = the "3 PCs" row stays hidden.
+      synth3:  'pri_01m5hen2nzptn3e827vsycd78q',
       playerpro: 'pri_01m489qemegfqasntrnhth1ay7',  // Instrument Player Pro, $20 (live from 2026-10-20)
       // Visualize, $19 launch price (live, 2026-10-07). After Nov 6, 2026 switch this to
       // the $29 price id (not created in Paddle yet) and update the page's $19 / $19.00.
@@ -3300,6 +3312,8 @@ html.co-open{overflow:hidden}
   var CO_INFO = {
     synth: { eye: 'Instrument Player · Standard', name: 'Instrument Player', what: 'Standard license, pay once', pic: '/img/player/01-main.png', price: '[data-copy="sp-total"]',
       gets: ['Windows and Mac, download right after payment', 'One license code by email', 'Play VST3 instruments without a DAW'] },
+    synth3: { eye: 'Instrument Player · Standard', name: 'Instrument Player — 3 PCs', what: '3 Standard licenses, pay once', pic: '/img/player/01-main.png', price: '[data-copy="sp-total3"]',
+      gets: ['3 license codes by email, one for each computer', 'Windows and Mac, download right after payment'] },
     playerpro: { eye: 'Instrument Player · Pro', name: 'Instrument Player Pro', what: 'Pro license, pay once', pic: '/img/player/06-midi-edit.png', price: '[data-copy="pp-total"]',
       gets: ['Pro Editor, 30-minute MIDI Replay, audio export', 'Opens both Standard and Pro', 'One license code by email'] },
     visualize: { eye: 'Visualize', name: 'Visualize', what: 'One license, pay once', pic: '/img/visualize/visualize-hero.png', price: '[data-copy="vz-total"]',
@@ -3319,7 +3333,7 @@ html.co-open{overflow:hidden}
     var el = d.price && document.querySelector(d.price);
     document.getElementById('co-price').textContent = price || (el ? el.textContent.trim() : '');
     document.getElementById('co-gets').innerHTML = d.gets.map(function (g) { return '<li>' + CO_TICK + '<span>' + g + '</span></li>'; }).join('');
-    document.getElementById('co-mail').textContent = kind === 'tip' ? 'Paddle emails you the receipt.' : 'Your license code arrives by email right after payment, from YBK Audio.';
+    document.getElementById('co-mail').textContent = kind === 'tip' ? 'Paddle emails you the receipt.' : kind === 'synth3' ? 'Your 3 license codes arrive by email right after payment, from YBK Audio.' : 'Your license code arrives by email right after payment, from YBK Audio.';
   }
   function coShow() {
     document.getElementById('co-frame').innerHTML = '<p class="co-loading">Loading the secure payment form…</p>';
@@ -3371,6 +3385,17 @@ html.co-open{overflow:hidden}
     for (var k in PADDLE.prices) if (PADDLE.prices[k] === priceId) product = PRODUCT_SLUG[k];
     track(step, { product: product });
   }
+
+  /* Standard: 1 PC or 3 PCs. The radio picks which price the "Get Standard License" button opens. */
+  (function () {
+    var row3 = document.querySelector('[data-pc3]');
+    var btn = document.querySelector('.duo-buy [data-buy="synth"]');
+    if (!row3 || !btn) return;
+    if (PADDLE.prices.synth3) row3.hidden = false;
+    document.querySelectorAll('input[name="sp-pcs"]').forEach(function (r) {
+      r.addEventListener('change', function () { if (r.checked) btn.setAttribute('data-buy', r.value); });
+    });
+  })();
 
   document.querySelectorAll('[data-buy]').forEach(function (btn) {
     btn.addEventListener('click', function () {
