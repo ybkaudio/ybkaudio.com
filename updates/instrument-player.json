@@ -1,11 +1,19 @@
 {
-    "version":  "2.0.1",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-2.0.1.exe",
-    "sha256":  "12afd6662f8f04f78f05faeb47bdf340cde844a5c14d0c4820eb32bfce085c5a",
-    "size":  8332706,
-    "notes":  "",
-    "released":  "2026-10-21",
+    "version":  "2.0.2",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-2.0.2.exe",
+    "sha256":  "4199312e28bad69b53ce3bc6c01fa6985d55a37cdbb74bd43723744acb3c8766",
+    "size":  8332514,
+    "notes":  "Waves plugins now open the one you picked.",
+    "released":  "2026-10-22",
     "history":  [
+                    {
+                        "version":  "2.0.2",
+                        "released":  "2026-10-22",
+                        "notes":  "Waves plugins now open the one you picked.",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerSetup-2.0.2.exe",
+                        "sha256":  "4199312e28bad69b53ce3bc6c01fa6985d55a37cdbb74bd43723744acb3c8766",
+                        "size":  8332514
+                    },
                     {
                         "version":  "2.0.1",
                         "released":  "2026-10-21",
