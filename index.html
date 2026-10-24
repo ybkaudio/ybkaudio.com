@@ -3330,7 +3330,7 @@ html.co-open{overflow:hidden}
   function coOpen(kind, checkout, price, extra) {
     coFill(kind, price, extra); coShow();
     return loadPaddle().then(function (Paddle) {
-      checkout.settings = { displayMode: 'inline', variant: 'one-page', theme: 'dark', frameTarget: 'co-frame',
+      checkout.settings = { displayMode: 'inline', variant: 'one-page', theme: 'light', frameTarget: 'co-frame',
         frameInitialHeight: 450, frameStyle: 'width:100%; min-width:286px; background-color:transparent; border:none;' };
       Paddle.Checkout.open(checkout);
     })['catch'](function (e) { window.__ybkCloseCo(); throw e; });
