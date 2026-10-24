@@ -1240,7 +1240,7 @@ html.co-open{overflow:hidden}
 .co-pay{border:1px solid var(--rule);border-radius:32px;background:var(--surface);padding:clamp(14px,2vw,22px);min-height:460px}
 .co-pay h3{margin:2px 4px 12px;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .co-frame{min-height:420px;border-radius:20px;overflow:hidden}
-.co-frame iframe{border-radius:20px}
+.co-frame iframe{border-radius:20px;color-scheme:normal}   /* dark page + Paddle's light-scheme frame = Chrome paints the frame white; same scheme keeps it see-through */
 .co-loading{color:var(--muted);font-size:14px;padding:30px 6px;margin:0}
 .co-done{display:grid;gap:10px;padding:22px 6px}.co-done h4{margin:0;font-family:var(--f-display);font-size:26px;text-transform:uppercase}
 .co-done p{margin:0;color:var(--muted)}
@@ -3356,7 +3356,7 @@ html.co-open{overflow:hidden}
   function coOpen(kind, checkout, price, extra) {
     coFill(kind, price, extra); coShow();
     return loadPaddle().then(function (Paddle) {
-      checkout.settings = { displayMode: 'inline', variant: 'one-page', theme: 'light', frameTarget: 'co-frame',
+      checkout.settings = { displayMode: 'inline', variant: 'one-page', theme: 'dark', frameTarget: 'co-frame',
         frameInitialHeight: 720, frameStyle: 'width:100%; min-width:286px; background-color:transparent; border:none;' };
       Paddle.Checkout.open(checkout);
     })['catch'](function (e) { window.__ybkCloseCo(); throw e; });
