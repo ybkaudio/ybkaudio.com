@@ -1262,8 +1262,10 @@ html.co-open{overflow:hidden}
 .co-view .co-line b{font-family:inherit;font-weight:800;font-size:24px}
 .co-view .co-line small{font-size:12px;font-weight:500;color:var(--muted)}
 .co-view .co-trust{background:var(--ground);border-radius:14px}
-.co-view .co-pay{border-radius:20px;min-height:0}
-.co-view .co-pay .co-h{margin:2px 4px 10px}
+/* the whole form shows without scrolling inside it: no box or heading around Paddle's form, less room on top */
+.co-view .co-pay{border:0;background:none;padding:0;border-radius:0;min-height:0}
+.co-view .co-pay .co-h{display:none}
+.co-view .co-main{padding-top:clamp(14px,2vw,22px)}
 @media(min-width:900px){.co-main{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}.co-view .co-pay{order:-1}.co-order{position:sticky;top:90px}}
 @media(max-width:899px){.co-view .co-gets{display:none}.co-view .co-order{gap:12px}.co-view .co-secure{font-size:0;gap:0}}
 /* ============ end CHECKOUT VIEW ============ */
@@ -3355,7 +3357,7 @@ html.co-open{overflow:hidden}
     coFill(kind, price, extra); coShow();
     return loadPaddle().then(function (Paddle) {
       checkout.settings = { displayMode: 'inline', variant: 'one-page', theme: 'light', frameTarget: 'co-frame',
-        frameInitialHeight: 450, frameStyle: 'width:100%; min-width:286px; background-color:transparent; border:none;' };
+        frameInitialHeight: 720, frameStyle: 'width:100%; min-width:286px; background-color:transparent; border:none;' };
       Paddle.Checkout.open(checkout);
     })['catch'](function (e) { window.__ybkCloseCo(); throw e; });
   }
