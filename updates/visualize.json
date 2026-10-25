@@ -1,26 +1,34 @@
 {
-    "version": "1.0.6",
-    "url": "https://ybkaudio.com/downloads/VisualizeSetup-1.0.6.exe",
-    "sha256": "efa2ec800c3990947da0879c0869148abb0e4caaf74950573f4b00366c320470",
-    "size": 14935071,
-    "notes": "",
-    "released": "2026-10-21",
-    "history": [
-        {
-            "version": "1.0.6",
-            "released": "2026-10-21",
-            "notes": "",
-            "url": "https://ybkaudio.com/downloads/VisualizeSetup-1.0.6.exe",
-            "sha256": "efa2ec800c3990947da0879c0869148abb0e4caaf74950573f4b00366c320470",
-            "size": 14935071
-        },
-        {
-            "version": "1.0.5",
-            "released": "2026-10-20",
-            "notes": "",
-            "url": "https://ybkaudio.com/downloads/VisualizeSetup-1.0.5.exe",
-            "sha256": "ee1be1cfe396f6e76c24977ddf6b30ff2e9bcfb7737f2ca5bc36546985bfa4ac",
-            "size": 14935009
-        }
-    ]
+    "version":  "1.0.7",
+    "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.7.exe",
+    "sha256":  "3dbd91d74a5f8d5ebe2096ee482bd6a5a1ef3b47b2afb99523ac1d22e42636ec",
+    "size":  14935399,
+    "notes":  "",
+    "released":  "2026-10-25",
+    "history":  [
+                    {
+                        "version":  "1.0.7",
+                        "released":  "2026-10-25",
+                        "notes":  "",
+                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.7.exe",
+                        "sha256":  "3dbd91d74a5f8d5ebe2096ee482bd6a5a1ef3b47b2afb99523ac1d22e42636ec",
+                        "size":  14935399
+                    },
+                    {
+                        "version":  "1.0.6",
+                        "released":  "2026-10-21",
+                        "notes":  "",
+                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.6.exe",
+                        "sha256":  "efa2ec800c3990947da0879c0869148abb0e4caaf74950573f4b00366c320470",
+                        "size":  14935071
+                    },
+                    {
+                        "version":  "1.0.5",
+                        "released":  "2026-10-20",
+                        "notes":  "",
+                        "url":  "https://ybkaudio.com/downloads/VisualizeSetup-1.0.5.exe",
+                        "sha256":  "ee1be1cfe396f6e76c24977ddf6b30ff2e9bcfb7737f2ca5bc36546985bfa4ac",
+                        "size":  14935009
+                    }
+                ]
 }
