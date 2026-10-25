@@ -1,11 +1,19 @@
 {
-    "version":  "2.0.2",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.2.exe",
-    "sha256":  "9f4cd5e534bc8823d9220563906cb9d76ca2590e9f85bc7abc65f8fedb73ca57",
-    "size":  8330622,
-    "notes":  "Waves plugins now open the one you picked.",
-    "released":  "2026-10-22",
+    "version":  "2.0.4",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.4.exe",
+    "sha256":  "595ae766fb122c31a69a327e077205d5cab20cee1a1fa5ea4769ac488ba1934a",
+    "size":  8429108,
+    "notes":  "Add notes with a click in the MIDI editor, and mark several parts to keep with the scissors. More hotkeys, like Ctrl+S to save. Effects open beside the instrument, with undo and redo. Make your own plugin lists. Pick up where you left off when the app starts.",
+    "released":  "2026-10-25",
     "history":  [
+                    {
+                        "version":  "2.0.4",
+                        "released":  "2026-10-25",
+                        "notes":  "Add notes with a click in the MIDI editor, and mark several parts to keep with the scissors. More hotkeys, like Ctrl+S to save. Effects open beside the instrument, with undo and redo. Make your own plugin lists. Pick up where you left off when the app starts.",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.4.exe",
+                        "sha256":  "595ae766fb122c31a69a327e077205d5cab20cee1a1fa5ea4769ac488ba1934a",
+                        "size":  8429108
+                    },
                     {
                         "version":  "2.0.2",
                         "released":  "2026-10-22",
