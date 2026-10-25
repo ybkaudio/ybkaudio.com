@@ -323,6 +323,9 @@ h2{
 .upgrade-box{margin-top:clamp(14px,2vw,18px);border:1px solid var(--rule);background:var(--surface);padding:clamp(18px,3vw,28px);display:grid;gap:18px}
 @media(min-width:820px){.upgrade-box{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
 .upgrade-box h3{margin:0 0 8px}
+/* What Pro adds: four cards, two a row */
+.pro-adds .explore-h .pro-tag{font-size:12px;margin-left:12px}
+@media(min-width:700px){.features.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .upgrade-box p{margin:0 0 10px;color:var(--muted);line-height:1.55}
 .upgrade-box .prices{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
 .upgrade-box form .btn{width:100%;justify-content:center}
@@ -1529,7 +1532,7 @@ html.co-open{overflow:hidden}
           <div class="duo-buy"><button type="button" class="btn" data-buy="synth">
             <span data-copy="sp-buy-btn">Get Standard License</span><span aria-hidden="true">→</span>
           </button><p class="buy-links">By purchasing you agree to the <a href="/terms/">Terms</a>.</p></div>
-          <div class="duo-head p"><p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="duo-eye-pro">Windows &amp; Mac</span></p><h3><span data-copy="duo-pro-h">Pro</span><span class="pro-tag" data-copy="pp-tag">Pro</span></h3></div>
+          <div class="duo-head p"><p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="duo-eye-pro">Windows</span></p><h3><span data-copy="duo-pro-h">Pro</span><span class="pro-tag" data-copy="pp-tag">Pro</span></h3></div>
           <div class="duo-gets p"><ul class="gets plus">
             <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g1"><b>Pro Editor</b>: pitch bend and mod wheel lanes, quantize strength, humanize</span></li>
             <li><span class="plus-mark" aria-hidden="true">+</span><span data-copy="pp-g2"><b>MIDI Replay</b> remembers 30 minutes</span></li>
@@ -1563,7 +1566,32 @@ html.co-open{overflow:hidden}
           <p><a href="mailto:ybkaudio@gmail.com?subject=Can%E2%80%99t%20buy%20Instrument%20Player%20Pro" data-copy="pp-co-cta">Still not working? Email us →</a></p>
         </div>
       </div>
-<div class="upgrade-box" id="upgrade">
+<section class="pro-adds" id="upgrade" aria-labelledby="pro-adds-h">
+        <h2 class="explore-h" id="pro-adds-h"><span data-copy="pa-h">What Pro adds</span><span class="pro-tag">Pro</span></h2>
+        <div class="features two">
+          <div class="feat">
+            <span class="n" data-copy="pa1n">Pro Editor</span>
+            <h4 data-copy="pa1h">Shape every note</h4>
+            <p data-copy="pa1p">Pitch bend, mod wheel, volume, pan and expression lanes. Quantize strength, humanize and note length.</p>
+          </div>
+          <div class="feat">
+            <span class="n" data-copy="pa2n">MIDI Replay</span>
+            <h4 data-copy="pa2h">30 minutes, not 5</h4>
+            <p data-copy="pa2p">Bring back the last 30 minutes of your playing.</p>
+          </div>
+          <div class="feat">
+            <span class="n" data-copy="pa3n">Export audio</span>
+            <h4 data-copy="pa3h">Save the part you want</h4>
+            <p data-copy="pa3p">Select a part in the MIDI editor and save it as audio.</p>
+          </div>
+          <div class="feat">
+            <span class="n" data-copy="pa4n">Updates</span>
+            <h4 data-copy="pa4h">More on the way</h4>
+            <p data-copy="pa4p">Every Pro update is included. Next: setlists, keyboard split and MIDI Learn.</p>
+          </div>
+        </div>
+      </section>
+<div class="upgrade-box" id="upgrade-form">
         <div>
           <h3 data-copy="pp-up-h">Already have Instrument Player? Upgrade to Pro</h3>
           <p data-copy="pp-up-p1">Free month codes / Standard bought codes can be upgraded to Pro with half the price.</p>
@@ -1716,12 +1744,12 @@ html.co-open{overflow:hidden}
           <tr><th scope="row" data-copy="sp-s3t">Plugin scan</th><td data-copy="sp-s3v">Separate process · scan new only or rescan all · favourites</td></tr>
           <tr><th scope="row" data-copy="sp-s4t">Input</th><td data-copy="sp-s4v">All MIDI inputs, hot-plug · computer keyboard (M), one or two rows, Z/X or [ ] for octaves</td></tr>
           <tr><th scope="row" data-copy="sp-s5t">MIDI capture</th><td data-copy="sp-s5v">MIDI Replay, always on · Record · piano-roll editor</td></tr>
-          <tr><th scope="row" data-copy="sp-s6t">Files</th><td data-copy="sp-s6v">Export and import standard .mid (MIDI only, no audio recording or export)</td></tr>
+          <tr><th scope="row" data-copy="sp-s6t">Files</th><td data-copy="sp-s6v">Export and import standard .mid · record audio as WAV, MP3 or FLAC</td></tr>
           <tr><th scope="row" data-copy="sp-s7t">Audio</th><td data-copy="sp-s7v">WASAPI shared or exclusive · DirectSound</td></tr>
           <tr><th scope="row" data-copy="sp-s8t">Remembers</th><td data-copy="sp-s8v">Last instrument and its patch, audio device, output volume</td></tr>
           <tr><th scope="row" data-copy="sp-s9t">Platform</th><td data-copy="sp-s9v">Windows 10 / 11</td></tr>
-          <tr><th scope="row" data-copy="sp-s10t">Licence</th><td data-copy="sp-s10v">One computer at a time; move it to a new one from Settings once every 30 days</td></tr>
-          <tr><th scope="row" data-copy="sp-s11t">Price</th><td data-copy="sp-s11v">$10.00, one-time, no subscription</td></tr>
+          <tr><th scope="row" data-copy="sp-s10t">Licence</th><td data-copy="sp-s10v">One computer at a time; move it from Settings &gt; Release license</td></tr>
+          <tr><th scope="row" data-copy="sp-s11t">Price</th><td data-copy="sp-s11v">Standard $10 (3 PCs $20) · Pro $20, one-time, no subscription</td></tr>
         </tbody>
       </table>
 
