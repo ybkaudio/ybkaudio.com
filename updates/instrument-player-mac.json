@@ -1,18 +1,26 @@
 {
-    "version": "1.8.0",
-    "url": "https://ybkaudio.com/downloads/InstrumentPlayer-1.8.0.dmg",
-    "sha256": "becef022f46a7ba80debec2fa7511e33d70281cfa38db05305fbc2b832b615e3",
-    "size": 6944781,
-    "notes": "New features\n- Count-in for recording in the MIDI editor: turn on the hand button beside Record, pick 1, 2, 3, 4 or 8 beats, and recording starts after the count.\n- MIDI Replay has a new look.",
-    "released": "2026-10-13",
-    "history": [
-        {
-            "version": "1.8.0",
-            "released": "2026-10-13",
-            "notes": "New features\n- Count-in for recording in the MIDI editor: turn on the hand button beside Record, pick 1, 2, 3, 4 or 8 beats, and recording starts after the count.\n- MIDI Replay has a new look.",
-            "url": "https://ybkaudio.com/downloads/InstrumentPlayer-1.8.0.dmg",
-            "sha256": "becef022f46a7ba80debec2fa7511e33d70281cfa38db05305fbc2b832b615e3",
-            "size": 6944781
-        }
-    ]
+    "version":  "2.0.4",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayer-2.0.4.dmg",
+    "sha256":  "a3cb262db3dfe98e76da1c9469461309191bf9d7f186ba6a07ea8971a36a2b3a",
+    "size":  7668768,
+    "notes":  "Add notes with a click in the MIDI editor, and mark several parts to keep with the scissors. More hotkeys, like Ctrl+S to save. Effects open beside the instrument, with undo and redo. Make your own plugin lists. Pick up where you left off when the app starts.",
+    "released":  "2026-10-25",
+    "history":  [
+                    {
+                        "version":  "2.0.4",
+                        "released":  "2026-10-25",
+                        "notes":  "Add notes with a click in the MIDI editor, and mark several parts to keep with the scissors. More hotkeys, like Ctrl+S to save. Effects open beside the instrument, with undo and redo. Make your own plugin lists. Pick up where you left off when the app starts.",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayer-2.0.4.dmg",
+                        "sha256":  "a3cb262db3dfe98e76da1c9469461309191bf9d7f186ba6a07ea8971a36a2b3a",
+                        "size":  7668768
+                    },
+                    {
+                        "version":  "1.8.0",
+                        "released":  "2026-10-13",
+                        "notes":  "New features\n- Count-in for recording in the MIDI editor: turn on the hand button beside Record, pick 1, 2, 3, 4 or 8 beats, and recording starts after the count.\n- MIDI Replay has a new look.",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayer-1.8.0.dmg",
+                        "sha256":  "becef022f46a7ba80debec2fa7511e33d70281cfa38db05305fbc2b832b615e3",
+                        "size":  6944781
+                    }
+                ]
 }
