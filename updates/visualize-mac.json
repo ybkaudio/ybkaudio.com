@@ -1,11 +1,19 @@
 {
-    "version": "1.0.3",
-    "url": "https://ybkaudio.com/downloads/Visualize-1.0.3.dmg",
-    "sha256": "4760ed775994420157f0e165ac43c185752a5bf9a3c80bf317237515cdc593ee",
-    "size": 9589347,
-    "notes": "IN TARGET / OUTSIDE now work together with VOCAL / INST: right click both to hear only the part of the voice (or the instruments) inside or outside the target. The BUY button opens the Visualize page directly.",
-    "released": "2026-10-08",
+    "version": "1.0.7",
+    "url": "https://ybkaudio.com/downloads/Visualize-1.0.7.dmg",
+    "sha256": "f2fce9021642fa8915ea5cb373fe431ced160b8143d29a9e1086fed7469e2309",
+    "size": 20688349,
+    "notes": "",
+    "released": "2026-10-25",
     "history": [
+        {
+            "version": "1.0.7",
+            "url": "https://ybkaudio.com/downloads/Visualize-1.0.7.dmg",
+            "sha256": "f2fce9021642fa8915ea5cb373fe431ced160b8143d29a9e1086fed7469e2309",
+            "size": 20688349,
+            "notes": "",
+            "released": "2026-10-25"
+        },
         {
             "version": "1.0.3",
             "url": "https://ybkaudio.com/downloads/Visualize-1.0.3.dmg",
