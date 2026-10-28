@@ -600,6 +600,13 @@ h2{
 .help-warn p:last-child{margin-bottom:0}
 .help-h{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
 .acct-grid .help-h ~ .help-h{margin-top:28px}
+.manuals{margin-top:clamp(30px,4vw,46px);scroll-margin-top:90px}
+.man-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.man-card{display:flex;align-items:center;gap:14px;padding:16px 18px;border:1px solid var(--rule);border-radius:24px;background:var(--surface);color:var(--ink);text-decoration:none;transition:border-color .2s}
+.man-card:hover{border-color:var(--accent)}
+.man-card .pdf{flex:none;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;padding:6px 7px;border:1px solid var(--rule);border-radius:8px;color:var(--muted)}
+.man-card b{display:block;font-size:16px}
+.man-card small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
 
 /* sign-in form */
 .field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
@@ -2663,6 +2670,14 @@ html.co-open{overflow:hidden}
         <p data-copy="ac-ss-p1">When you open the Instrument Player installer, Windows may show a blue box that says “Windows protected your PC” and “Unknown publisher”. That is Windows SmartScreen. It appears for new apps that aren’t signed with a code-signing certificate yet and haven’t built up a history with Microsoft. Instrument Player is new, and our certificate is still being issued, so for now Windows can’t tell who made it.</p>
         <p data-copy="ac-ss-p2">To install it anyway, click “More info”, then “Run anyway”. Only do this with the installer you downloaded from ybkaudio.com or from the link in our email.</p>
         <p data-copy="ac-ss-p3"><b>This has nothing to do with your license.</b> Your code only counts when you type it into the app. Seeing this warning, closing it, or downloading the installer again never uses up a license, so there is no need to ask for a new code.</p>
+      </div>
+
+      <div class="manuals" id="manuals">
+        <h3 class="help-h" data-copy="man-h">Manuals</h3>
+        <div class="man-grid">
+          <a class="man-card" href="/manuals/instrument-player-manual.pdf" target="_blank" rel="noopener"><span class="pdf">PDF</span><span><b>Instrument Player</b><small>Standard edition</small></span></a>
+          <a class="man-card" href="/manuals/instrument-player-pro-manual.pdf" target="_blank" rel="noopener"><span class="pdf">PDF</span><span><b>Instrument Player Pro</b><small>Pro edition</small></span></a>
+        </div>
       </div>
 
       <div class="acct-grid" style="margin-top:clamp(30px,4vw,46px)">
