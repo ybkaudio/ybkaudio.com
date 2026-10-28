@@ -1,11 +1,19 @@
 {
-    "version":  "2.0.5",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.5.exe",
-    "sha256":  "fe0667870ed9025e23b690e5f816e95cf1e9059ab44f87cfe5453d60703ea7bf",
-    "size":  8439029,
-    "notes":  "Ctrl+D copies the chosen stretch, and the copy comes out selected. Choose how the mouse works in the MIDI editor: Draw (like FL Studio) or Select (like Ableton Live). Drag one velocity bar to change every selected note. Pick the length of new notes. The built-in synth is now called Basic, with a new look.",
+    "version":  "2.0.6",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.6.exe",
+    "sha256":  "3d03a1477a36bf9bbb284afb553587a9ed088a05a28c51f2228da186c1fa3495",
+    "size":  8439024,
+    "notes":  "The built-in synth shows its new name, Basic, at the top of the window too.",
     "released":  "2026-10-28",
     "history":  [
+                    {
+                        "version":  "2.0.6",
+                        "released":  "2026-10-28",
+                        "notes":  "The built-in synth shows its new name, Basic, at the top of the window too.",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.6.exe",
+                        "sha256":  "3d03a1477a36bf9bbb284afb553587a9ed088a05a28c51f2228da186c1fa3495",
+                        "size":  8439024
+                    },
                     {
                         "version":  "2.0.5",
                         "released":  "2026-10-28",
