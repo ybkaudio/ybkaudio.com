@@ -49,6 +49,18 @@ for (const key of Object.keys(seo)) {
 }
 fs.writeFileSync(path.join(out, '404.html'), page(seo.home, '<meta name="robots" content="noindex">\n'));
 
+// Old and spare addresses in the router's ROUTES (/faq, /console, /432 ...) get a real folder too, so
+// Google gets a page instead of a 404; its canonical points at the real address (2026-10-28).
+const routes = html.match(/var ROUTES = \{([\s\S]*?)\};/)[1];
+for (const m of routes.matchAll(/'(\/[a-z0-9-]+)':\s*'([a-z0-9]+)'/g)) {
+  const e = seo[m[2]];
+  if (!e || e.path === m[1] + '/') continue;
+  const dir = path.join(out, m[1]);
+  if (fs.existsSync(path.join(dir, 'index.html'))) continue;
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'index.html'), page(e));
+}
+
 const today = new Date().toISOString().slice(0, 10);
 fs.writeFileSync(path.join(out, 'sitemap.xml'),
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
+# installers: no need for search results (Google may still list the bare link)
 Disallow: /downloads/
-Disallow: /checkout-preview/
+# /checkout-preview/ is NOT blocked here on purpose: the page says noindex, and Google has to
+# be allowed to read it to see that (blocking it is what left it "indexed, though blocked").
 
 Sitemap: https://ybkaudio.com/sitemap.xml
