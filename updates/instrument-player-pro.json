@@ -1,11 +1,19 @@
 {
-    "version":  "2.0.4",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.4.exe",
-    "sha256":  "595ae766fb122c31a69a327e077205d5cab20cee1a1fa5ea4769ac488ba1934a",
-    "size":  8429108,
-    "notes":  "Add notes with a click in the MIDI editor, and mark several parts to keep with the scissors. More hotkeys, like Ctrl+S to save. Effects open beside the instrument, with undo and redo. Make your own plugin lists. Pick up where you left off when the app starts.",
-    "released":  "2026-10-25",
+    "version":  "2.0.5",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.5.exe",
+    "sha256":  "fe0667870ed9025e23b690e5f816e95cf1e9059ab44f87cfe5453d60703ea7bf",
+    "size":  8439029,
+    "notes":  "Ctrl+D copies the chosen stretch, and the copy comes out selected. Choose how the mouse works in the MIDI editor: Draw (like FL Studio) or Select (like Ableton Live). Drag one velocity bar to change every selected note. Pick the length of new notes. The built-in synth is now called Basic, with a new look.",
+    "released":  "2026-10-28",
     "history":  [
+                    {
+                        "version":  "2.0.5",
+                        "released":  "2026-10-28",
+                        "notes":  "Ctrl+D copies the chosen stretch, and the copy comes out selected. Choose how the mouse works in the MIDI editor: Draw (like FL Studio) or Select (like Ableton Live). Drag one velocity bar to change every selected note. Pick the length of new notes. The built-in synth is now called Basic, with a new look.",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.5.exe",
+                        "sha256":  "fe0667870ed9025e23b690e5f816e95cf1e9059ab44f87cfe5453d60703ea7bf",
+                        "size":  8439029
+                    },
                     {
                         "version":  "2.0.4",
                         "released":  "2026-10-25",
