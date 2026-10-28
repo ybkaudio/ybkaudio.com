@@ -1784,11 +1784,10 @@ html.co-open{overflow:hidden}
         <img src="/img/432/432-fullscreen-1920.png" width="1920" height="782" alt="432hz maximised: the live spectrum fills the screen with every A marked from A0 at 27 Hz to A9, and a small panel on the left shows the gold button reading “432 Hz, ON” with “A4 = 432 Hz” between the minus and plus buttons.">
       </a>
 
-      <!-- 432hz is a plain free download (owner 2026-10-09): no email, no sign-up. Both buttons go
-           through the worker's counted links (/dl/432hz-win, /dl/432hz-mac) and are tracked as
-           download_click (product 432hz, page win/mac). "Name your price" stays, under the buttons:
-           picking an amount shows "Continue to payment"; the worker's /tip opens a Paddle checkout
-           without an email for 432hz (worker a748fdf5) and Paddle's checkout asks for it. -->
+      <!-- 432hz asks for an email again (owner 2026-10-28; it was a plain download 10/09-10/28): the worker's
+           /claim with product "432" sends a confirmation link, then the download links (/dl/432hz-win, -mac).
+           "Name your price" sits in the form under the email: an amount above 0 opens the tip checkout
+           after the sign-up, as before 10/09. -->
       <div class="dl-box hz-box" id="hz-download">
         <div class="dl-head">
           <p class="launch-eye"><span class="dot" aria-hidden="true"></span><span data-copy="hz-eye">Windows &amp; Mac</span></p>
@@ -1806,7 +1805,11 @@ html.co-open{overflow:hidden}
         </div>
         <div class="hz-right">
           <div class="hz-total"><span data-copy="hz-total-l">Total</span><b data-copy="hz-total">Free</b></div>
-        <div class="hz-tip" data-hz-tip>
+        <form class="hz-tip" data-claim data-product="432" novalidate>
+          <div class="field">
+            <label for="hz-email" data-copy="hz-label">Your email</label>
+            <input id="hz-email" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
+          </div>
           <div class="field" data-tip hidden>
             <label for="hz-amount" data-copy="hz-tip-label">Name your price (optional)</label>
             <div class="tip-presets" role="group" aria-label="Suggested amounts">
@@ -1818,24 +1821,16 @@ html.co-open{overflow:hidden}
               <span aria-hidden="true">$</span>
               <input id="hz-amount" name="amount" type="number" inputmode="numeric" min="0" max="200" step="1" placeholder="0">
             </div>
-            <button type="button" class="btn" data-hz-tip-go hidden><span data-copy="hz-tip-btn">Continue to payment</span><span aria-hidden="true">→</span></button>
-            <p class="claim-msg" role="status" aria-live="polite"></p>
           </div>
-        </div>
-        <div class="dl-act hz-dl">
-          <div class="dl-choice">
-            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/432hz-win?src=site" data-dl="432hz" data-os="win">
-              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-copy="hz-dl-btn">Download for Windows</span>
-            </a>
+          <div class="hp" aria-hidden="true">
+            <label for="hz-website">Leave this empty</label>
+            <input id="hz-website" name="website" tabindex="-1" autocomplete="off">
           </div>
-          <div class="dl-choice">
-            <a class="btn" href="https://ybk-license-webhook.ybkaudio.workers.dev/dl/432hz-mac?src=site" data-dl="432hz" data-os="mac">
-              <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v9M4 7l4 4 4-4M2 14.5h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-copy="hz-dl-btn-mac">Download for Mac</span>
-            </a>
-          </div>
-        </div>
+          <div class="ts-box" data-turnstile></div>
+          <button type="submit" class="btn"><span data-copy="hz-btn">Email me the download</span><span aria-hidden="true">→</span></button>
+          <p class="claim-msg" role="status" aria-live="polite"></p>
+          <p class="fineprint"><span data-copy="hz-agree">By signing up you agree to our</span> <a href="/terms/">Terms</a> <span data-copy="hz-and">and</span> <a href="/privacy/">Privacy Policy</a>.</p>
+        </form>
         </div>
       </div>
 
@@ -2832,7 +2827,7 @@ html.co-open{overflow:hidden}
         <ul>
           <li><b>When you buy.</b> Paddle, our Merchant of Record, collects your name, email address, country, postal code where required, and payment details. Paddle keeps your card details; we never receive them. We receive your email address, the product, the order number, the amount paid out to us, and any later refund or chargeback, so we can deliver your license, keep sales records and handle problems.</li>
           <li><b>When you ask us to tell you when an app is out.</b> Your email address, which app(s) you picked, the page you signed up on, the link that sent you (if any) and your country (worked out by Cloudflare). We use it only to send a confirmation and one email when that app is ready to buy; nothing else, and it is never shared. If you tick Join our newsletter, we also email you about new apps and updates now and then; every newsletter has an unsubscribe link. To be taken off the list, reply to any of our emails or write to us.</li>
-          <li><b>When you download 432hz.</b> Nothing about you: 432hz is a free download with no sign-up and no email. The download button is counted anonymously, like other clicks (see “When you visit this website”). If you choose to name a price, Paddle’s checkout asks for your email address for the receipt. If you then pay, we keep a record of the payment with that email address, as with any purchase, and send you one thank-you email; it is not added to any mailing list.</li>
+          <li><b>When you sign up to download 432hz.</b> Your email address; your country (worked out by Cloudflare from the connection); the website or link that sent you to us, if any; and the random visit number described below. The email address receives the confirmation link and then the download links; it is not added to any mailing list. Your IP address is counted for one hour to stop automated sign-ups. If you choose to name a price, Paddle handles that payment as described above, and we send you one thank-you email.</li>
           <li><b>When you claim a free launch license.</b> Your email address; the website or link that sent you to us and its campaign tag, if any; the first page you saw; the random visit number described below; your browser language; whether you use a phone or a computer; your country and time zone (worked out by Cloudflare from the connection); and your <b>IP address</b>. We also record the IP address that opens the confirmation link (often your email provider’s link scanner rather than you). The email address receives the confirmation link, the code, one email about two weeks later asking how the Software works for you, and a few short reminders before the free month ends, each with an unsubscribe link. The IP addresses let us keep the free launch to <b>one license per person</b>: without them, one person could collect many licenses under different email addresses and sell them. If you choose to pay through “name your price”, Paddle handles that payment as described above.</li>
           <li><b>When we email you.</b> Our email provider, Resend, tells us whether each email was delivered, delayed, bounced or marked as spam, so we notice when a license code doesn’t arrive. We do not track whether you open emails or click links in them.</li>
           <li><b>When you activate the Software.</b> The app sends your license code, a machine fingerprint, the computer’s name and platform as Windows reports them, and the time. We also record the IP address and country of the activation. The fingerprint is a one-way code derived from your motherboard and CPU identifiers; it cannot be turned back into them and exists only so a license runs on one computer at a time. The computer name is whatever you or the manufacturer called your PC, which sometimes includes a person’s name; we use it only to answer support questions about that activation. When you release or move a license, we record when that happened, and the name of the computer it left, so that the once-every-30-days limit can be applied.</li>
