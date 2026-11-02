@@ -1,0 +1,26 @@
+{
+    "version": "1.0.0",
+    "url": "https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-win?src=update",
+    "sha256": "220cb34e3f66b304fa2d39d9bc03d28bafadb726c6d8f2486aa8e6ea1a9412e7",
+    "size": 117331949,
+    "notes": "",
+    "released": "2026-11-03",
+    "history": [
+        {
+            "version": "1.0.0",
+            "released": "2026-11-03",
+            "notes": "",
+            "url": "https://github.com/ybkaudio/ybkaudio.com/releases/download/mixalign-1.0.0/MixAlignSetup-1.0.0.exe",
+            "sha256": "220cb34e3f66b304fa2d39d9bc03d28bafadb726c6d8f2486aa8e6ea1a9412e7",
+            "size": 117331949
+        }
+    ],
+    "mac": {
+        "version": "1.0.0",
+        "url": "https://ybk-license-webhook.ybkaudio.workers.dev/dl/mixalign-mac?src=update",
+        "file": "https://github.com/ybkaudio/ybkaudio.com/releases/download/mixalign-1.0.0/MixAlign-1.0.0.dmg",
+        "sha256": "cbe62fd5936ce80ff77fb048f92dfb31542c0699b13205f954f9b52c061df9ba",
+        "size": 197377452,
+        "released": "2026-11-03"
+    }
+}
