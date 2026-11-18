@@ -1,11 +1,19 @@
 {
-    "version":  "2.0.6",
-    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.6.exe",
-    "sha256":  "3d03a1477a36bf9bbb284afb553587a9ed088a05a28c51f2228da186c1fa3495",
-    "size":  8439024,
-    "notes":  "The built-in synth shows its new name, Basic, at the top of the window too.",
-    "released":  "2026-10-28",
+    "version":  "2.0.7",
+    "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.7.exe",
+    "sha256":  "be41b4348e9a622e49860e9a89ef0659c745ae9c6cb7ff73afe224b1b932c4ff",
+    "size":  8456565,
+    "notes":  "The MIDI editor\u0027s mouse switch is now Control Mode A (like FL Studio) or B (like Ableton Live).\nAlt+Up and Alt+Down make the selected notes louder or softer.\nNew option in Settings \u003e Hotkeys: after a pause, Space plays again from where you started.\nThe on-screen keys light up for notes from your MIDI keyboard and the MIDI editor.\nEffects that use MIDI now get your MIDI keyboard and pedals.\nFixed: a tall effect was cut off at the bottom of the window.",
+    "released":  "2026-11-19",
     "history":  [
+                    {
+                        "version":  "2.0.7",
+                        "released":  "2026-11-19",
+                        "notes":  "The MIDI editor\u0027s mouse switch is now Control Mode A (like FL Studio) or B (like Ableton Live).\nAlt+Up and Alt+Down make the selected notes louder or softer.\nNew option in Settings \u003e Hotkeys: after a pause, Space plays again from where you started.\nThe on-screen keys light up for notes from your MIDI keyboard and the MIDI editor.\nEffects that use MIDI now get your MIDI keyboard and pedals.\nFixed: a tall effect was cut off at the bottom of the window.",
+                        "url":  "https://ybkaudio.com/downloads/InstrumentPlayerProSetup-2.0.7.exe",
+                        "sha256":  "be41b4348e9a622e49860e9a89ef0659c745ae9c6cb7ff73afe224b1b932c4ff",
+                        "size":  8456565
+                    },
                     {
                         "version":  "2.0.6",
                         "released":  "2026-10-28",
