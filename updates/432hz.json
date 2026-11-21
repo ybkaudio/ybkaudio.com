@@ -1,11 +1,19 @@
 {
-    "version": "1.1.1",
-    "url": "https://ybkaudio.com/downloads/432hzSetup-1.1.1.exe",
-    "sha256": "e2331a7159b86ff7bddd95d33ec99bee77adf366ac927be3bb21dd8b2b59fe91",
-    "size": 9340054,
-    "notes": "Fixed 432hz not changing the sound on some PCs, for example with Boom3D.",
-    "released": "2026-10-25",
+    "version": "1.1.2",
+    "url": "https://ybkaudio.com/downloads/432hzSetup-1.1.2.exe",
+    "sha256": "fff699572bce8ad93cd9d6dcf0dde239a87ae7dbed31a850fefabf4770a471c7",
+    "size": 9341665,
+    "notes": "The window can no longer be moved above the top of the screen.\nThe full-screen view now opens only when you maximize the window.",
+    "released": "2026-11-21",
     "history": [
+        {
+            "version": "1.1.2",
+            "released": "2026-11-21",
+            "notes": "The window can no longer be moved above the top of the screen.\nThe full-screen view now opens only when you maximize the window.",
+            "url": "https://ybkaudio.com/downloads/432hzSetup-1.1.2.exe",
+            "sha256": "fff699572bce8ad93cd9d6dcf0dde239a87ae7dbed31a850fefabf4770a471c7",
+            "size": 9341665
+        },
         {
             "version": "1.1.1",
             "released": "2026-10-25",
